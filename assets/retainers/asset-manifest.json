@@ -1,0 +1,46 @@
+{
+  "status": "SOURCE ASSETS ONLY \u2014 PZ import/attachment/fit NOT TESTED",
+  "model_vertices": 354,
+  "model_triangles": 488,
+  "parts": [
+    {
+      "name": "Cord",
+      "vertices": 162,
+      "triangles": 296
+    },
+    {
+      "name": "LeftTempleSleeve",
+      "vertices": 64,
+      "triangles": 64
+    },
+    {
+      "name": "RightTempleSleeve",
+      "vertices": 64,
+      "triangles": 64
+    },
+    {
+      "name": "AdjustmentSlider",
+      "vertices": 64,
+      "triangles": 64
+    }
+  ],
+  "units": "metres",
+  "source_axes": "Y up, Z forward (provisional; calibrate against vanilla export)",
+  "attachment_bone": "Bip01_Head (verified vanilla XML; not applied in a game asset yet)",
+  "sprite_dimensions": [
+    64,
+    64
+  ],
+  "texture_dimensions": [
+    128,
+    32
+  ],
+  "files": {
+    "B47ANCEDEyewearRetainer.glb": "fd0a988d46f91e71353b0668e3e1ad635fa9de14988c64e3fc9916bcb374612f",
+    "B47ANCEDEyewearRetainer.mtl": "567bd9507aee448a08fc02651d2d577897d30fe6d3d00d2628ff8b4ba0df2737",
+    "B47ANCEDEyewearRetainer.obj": "a4b3649afc5109945882c67393f56c3f6a0bf1b9018ce586e15035b8b9a0d214",
+    "B47ANCEDEyewearRetainer_Texture.png": "1d2ebf89cae60852e4378754ebf189c4dd813eed892ccfe04ceaba3013296741",
+    "EyewearRetainer_Inventory_Source.png": "170945142ce0dee15bc7e06cc5f958ba2aa2558b5db81e4d038bd708e2fed8ac",
+    "Item_B47ANCEDEyewearRetainer.png": "fe385b9970b116d24fb65b602a6f1a1dd337e17328a276a262f37cb68ddcf260"
+  }
+}

@@ -1,0 +1,26 @@
+VERSION = 1,
+option B47ANCEDEyewear.MakeshiftRetainersEnabled
+{
+    type = boolean, default = true,
+    page = B47ANCEDEyewear, translation = B47ANCEDEyewear_MakeshiftRetainersEnabled,
+}
+option B47ANCEDEyewear.PermanentRetainerEnabled
+{
+    type = boolean, default = true,
+    page = B47ANCEDEyewear, translation = B47ANCEDEyewear_PermanentRetainerEnabled,
+}
+option B47ANCEDEyewear.RetainerDurabilityMultiplier
+{
+    type = double, default = 1, min = 0.25, max = 10,
+    page = B47ANCEDEyewear, translation = B47ANCEDEyewear_RetainerDurabilityMultiplier,
+}
+option B47ANCEDEyewear.RetainerImpactDamageMultiplier
+{
+    type = double, default = 1, min = 0.25, max = 10,
+    page = B47ANCEDEyewear, translation = B47ANCEDEyewear_RetainerImpactDamageMultiplier,
+}
+option B47ANCEDEyewear.PermanentRetainerRarity
+{
+    type = enum, default = 2, numValues = 3,
+    page = B47ANCEDEyewear, translation = B47ANCEDEyewear_PermanentRetainerRarity,
+}

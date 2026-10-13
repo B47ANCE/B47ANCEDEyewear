@@ -1,0 +1,33 @@
+[h1]B47ANCE'd Eyewear — Development Build[/h1]
+
+[b]DEVELOPMENT BUILD — 0.5.0-dev.1[/b]
+This is an unfinished development candidate. Native combat, existing-save migration and dedicated multiplayer validation remain pending. This upload includes the Lua makeshift-retainer candidate and read-only inventory inspection. Finite catches require a separately loaded exact-build Java bridge, which is NOT included or automatically installed by Workshop subscription.
+
+[b]Build 42.21 development target · Version 0.5.0-dev.1[/b]
+
+Keep compatible glasses and hats from being knocked off. Tie them with common materials, or rely on the item-specific retention already built into the mod.
+
+[h2]Tie and untie[/h2]
+Wear supported eyewear or a straw/summer hat, then use the [b]Tie glasses[/b] crafting recipe or its inventory right-click menu. Choose twine, a rubber band, dental floss, or thread.
+
+A tied item keeps its original instance, sprite, condition, and prescription data, gains the [b](Tied)[/b] name, and has a zero knock-off chance. Right-click a tied item to [b]Untie[/b]; no material is refunded.
+
+[h2]Retention[/h2]
+• Vanilla eyewear has individual untied knock-off values based on its frame or strap design.
+• Supported helmets stay secured; loose headwear keeps its vanilla behavior.
+• Monocles use a high knock-off value and cannot be tied.
+• Supported vanilla eyewear, Authentic Z, and Faded's Authentic Z eyewear are included. Compatibility patches can register additional profiles.
+
+[h2]Multiplayer[/h2]
+Tie requests are validated by the server and synchronize the changed wearable. Native hosted and dedicated-server verification remains pending.
+
+Mod ID: `B47ANCEDEyewear`
+
+
+[h2]Upgrade notice[/h2]
+Formerly Glasses Stay Put. Replace the previous technical Mod ID in saved mod selections and server Mods lists with B47ANCEDEyewear. Workshop item 3799754736 remains the same. Legacy tied-item records are preserved and migrated to the new namespace; native existing-save and dedicated multiplayer acceptance remain pending.
+
+[h2]Retainer development status[/h2]
+Finite makeshift retainers, layering, tape, durability inspection and server-validated actions are development candidates requiring a separately loaded exact-build native bridge. Permanent reusable-item attachment, rare loot and wearable visuals remain blocked. In-game/dedicated multiplayer validation is pending.
+
+Read-only inventory retainer inspection is now included in this development build. It displays replicated material, condition, durability percentage and installed reinforcement contributions. Live UI and multiplayer validation remain pending.

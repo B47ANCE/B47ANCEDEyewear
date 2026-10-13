@@ -1,0 +1,23 @@
+# Local guidance/configuration and machine-specific data
+/.codex/
+/.agents/
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+*.ppk
+local.settings*.json
+# Generated packages, logs and historical binary/decompiler outputs
+/dist/
+/historical/
+/research/
+/native/*
+!/native/README.md
+__pycache__/
+*.pyc
+*.log
+*.jar
+*.class
+*.zip
+*.sha256

@@ -1,0 +1,19 @@
+module B47ANCEDEyewear
+{
+    imports { Base }
+    craftRecipe TieGlasses
+    {
+        timedAction = Making,
+        time = 80,
+        Tags = InHandCraft,
+        category = Tailoring,
+        OnCreate = B47ANCEDEyewear.onCraftCreate,
+        inputs
+        {
+            item 1 [Base.Glasses;Base.Glasses_Prescription;Base.Glasses_Aviators;Base.Glasses_Prescription_Aviators;Base.Glasses_Normal;Base.Glasses_Cosmetic_Normal;Base.Glasses_Reading;Base.Glasses_SafetyGoggles;Base.Glasses_Shooting;Base.Glasses_Prescription_Shooting;Base.Glasses_SkiGoggles;Base.Glasses_Sun;Base.Glasses_Prescription_Sun;Base.Glasses_SwimmingGoggles;Base.Glasses_CatsEye;Base.Glasses_CatsEye_Sun;Base.Glasses_Cosmetic_CatsEye;Base.Glasses_Prescription_CatsEye_Sun;Base.Glasses_Normal_HornRimmed;Base.Glasses_Cosmetic_Normal_HornRimmed;Base.Glasses_JackieO;Base.Glasses_Prescription_JackieO;Base.Glasses_Macho;Base.Glasses_Round_Normal;Base.Glasses_Round_Shades;Base.Glasses_Cosmetic_Round_Normal;Base.Glasses_Prescription_Round_Shades;Base.Glasses_70s_Gold;Base.Glasses_Cosmetic_70s_Gold;Base.Glasses_Round_HoloSkulls;Base.Glasses_OldWeldingGoggles;Base.Glasses_HalfMoon;Base.Glasses_Cosmetic_HalfMoon;Base.Glasses_SunCheap;Base.Glasses_3dGlasses;Base.Glasses_Groucho;Base.Glasses_Venetian;Base.Glasses_NewWave;Base.Glasses_Novelty_Xray;AuthenticZClothing.Glasses_AviatorsSunset;AuthenticZClothing.Glasses_Cheese;AuthenticZClothing.Glasses_ReadingBlack;AuthenticZClothing.Glasses_Popeyes;AuthenticZClothing.Glasses_AZ_Sunglasses1;AuthenticZClothing.Glasses_AZ_Sunglasses2;Base.Hat_StrawHat;Base.Hat_SummerHat] mode:keep,
+            item 1 [Base.Twine;Base.RubberBand;Base.DentalFloss;Base.Thread;Base.Thread_Aramid;Base.Thread_Sinew],
+        }
+        outputs { }
+    }
+
+}
