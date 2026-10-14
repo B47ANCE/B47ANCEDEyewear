@@ -1,25 +1,20 @@
-local S = require 'B47ANCEDEyewear/Core'
-
-local Server = {}
-local MODULE, COMMAND = 'B47ANCEDEyewear', 'Tie'
-
-local function itemById(player, id)
-    if not player or type(player.getInventory) ~= 'function' then return nil end
-    local inventory = player:getInventory()
-    if not inventory or type(inventory.getItemById) ~= 'function' then return nil end
-    local numeric = tonumber(id)
-    if not numeric then return nil end
-    local ok, item = pcall(inventory.getItemById, inventory, numeric)
+local S=require 'B47ANCEDEyewear/Core'
+local Server={}
+local function itemById(player,id)
+    if not player or type(id)~='number' or id~=id or id< -2147483648 or id>2147483647
+        or id~=math.floor(id) then return nil end
+    local inventory=player:getInventory()
+    if not inventory then return nil end
+    local ok,item=pcall(inventory.getItemById,inventory,id)
     return ok and item or nil
 end
-
-function Server.onClientCommand(module, command, player, args)
-    if module ~= MODULE or command ~= COMMAND or type(args) ~= 'table' then return false end
-    local headwear, material = itemById(player, args.itemId), itemById(player, args.materialId)
-    return S.tie(player, headwear, material)
+function Server.onClientCommand(module,command,player,args)
+    if module~='B47ANCEDEyewear' or type(args)~='table' or not player then return false end
+    if command~='Tie' and command~='Untie' then return false end
+    local item=itemById(player,args.itemId)
+    if command=='Untie' then return S.untie(player,item) end
+    return S.tie(player,item,itemById(player,args.materialId))
 end
-
 if Events and Events.OnClientCommand then Events.OnClientCommand.Add(Server.onClientCommand) end
-B47ANCEDEyewear = B47ANCEDEyewear or {}
-B47ANCEDEyewear.Server = Server
+B47ANCEDEyewear.Server=Server
 return Server

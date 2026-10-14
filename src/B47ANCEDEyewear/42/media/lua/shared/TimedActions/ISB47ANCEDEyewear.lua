@@ -32,11 +32,10 @@ function ISB47ANCEDEyewear:perform()
     self.started = false
     if not self.submitted then
         self.submitted = true
-        if isClient() and not self.untie and self.glasses and self.material
-            and type(sendClientCommand) == 'function'
-            and type(self.glasses.getID) == 'function' and type(self.material.getID) == 'function' then
-            sendClientCommand(self.character, 'B47ANCEDEyewear', 'Tie', {
-                itemId = self.glasses:getID(), materialId = self.material:getID()
+        if isClient() and self.glasses and (self.untie or self.material)
+            and type(sendClientCommand)=='function' then
+            sendClientCommand(self.character,'B47ANCEDEyewear',self.untie and 'Untie' or 'Tie',{
+                itemId=self.glasses:getID(),materialId=self.material and self.material:getID()
             })
         elseif not isClient() then
             self:complete()
@@ -46,7 +45,10 @@ function ISB47ANCEDEyewear:perform()
 end
 
 function ISB47ANCEDEyewear:complete()
-    if isClient() then return false end
+    -- Multiplayer commits travel only through validated server commands.
+    if isServer() then return true end -- Completion acknowledgement only; command handler owns MP mutation.
+    if isClient() or self.completed then return false end
+    self.completed=true
     if self.untie then return S.untie(self.character, self.glasses) end
     return S.tie(self.character, self.glasses, self.material)
 end

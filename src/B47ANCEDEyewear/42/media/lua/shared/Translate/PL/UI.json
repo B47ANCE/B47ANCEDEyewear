@@ -12,8 +12,6 @@
   "UI_B47ANCEDEyewear_PermanentMaterial": "Eyewear Retainer",
   "UI_B47ANCEDEyewear_Permanent": "Permanent",
   "UI_B47ANCEDEyewear_InfiniteDurability": "Durability: Infinite",
-  "UI_B47ANCEDEyewear_NoDurabilityLoss": "No durability loss",
-  "UI_B47ANCEDEyewear_NoMaintenance": "No maintenance required",
   "UI_B47ANCEDEyewear_Secure": "Secure",
   "UI_B47ANCEDEyewear_Worn": "Worn",
   "UI_B47ANCEDEyewear_Fraying": "Fraying",
@@ -21,5 +19,9 @@
   "UI_B47ANCEDEyewear_Damaged": "Damaged",
   "UI_B47ANCEDEyewear_AboutToBreak": "About to Break",
   "UI_B47ANCEDEyewear_Broken": "Broken",
-  "UI_B47ANCEDEyewear_Unavailable": "Retainer information unavailable"
+  "UI_B47ANCEDEyewear_Unavailable": "Retainer information unavailable",
+  "UI_B47ANCEDEyewear_TiedName": "%1 (Tied)",
+  "UI_B47ANCEDEyewear_Headwear": "Headwear",
+  "UI_B47ANCEDEyewear_TiedAttachment": "Tied attachment — no durability system",
+  "UI_B47ANCEDEyewear_InactiveProtection": "Historical retainer record — protection inactive"
 }

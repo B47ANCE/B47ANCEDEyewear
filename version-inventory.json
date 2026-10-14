@@ -19,16 +19,24 @@
       "pattern": "^\\[b\\]Version (?P<version>[^\\s\\[]+)\\[/b\\]$"
     },
     {
-      "path": "native/README.md",
+      "path": "docs/VALIDATION.md",
       "pattern": "^Project Version: (?P<version>\\S+)$"
     },
     {
-      "path": "docs/RETAINER_TOOLTIP_INTEGRATION.md",
+      "path": "docs/CLEANUP_AND_WORKSHOP_PREPARATION.md",
       "pattern": "^Project Version: (?P<version>\\S+)$"
     },
     {
-      "path": "docs/WORKSHOP_DEPLOYMENT_0_5.md",
+      "path": "docs/RELEASE_STATUS.json",
+      "pattern": "^  \"project_version\": \"(?P<version>[^\\\"]+)\""
+    },
+    {
+      "path": "docs/API_EVIDENCE.md",
       "pattern": "^Project Version: (?P<version>\\S+)$"
+    },
+    {
+      "path": "docs/VERSIONING.md",
+      "pattern": "^Current development iteration: (?P<version>\\S+)\\. Pre-1\\.0"
     }
   ],
   "changelog": {
@@ -66,8 +74,8 @@
     },
     {
       "category": "compatibility",
-      "reference": "Core.lua: data.version=1; TestKit.lua: VERSION=1; Build-Workshop.ps1: version=1",
-      "reason": "Persistence schema, kit-grant schema and Workshop format"
+      "reference": "Core.lua: data.version=1; Build-Workshop.ps1: version=1",
+      "reason": "Persistence schema, Workshop format"
     },
     {
       "category": "framework",
@@ -78,16 +86,11 @@
       "category": "inventory-schema",
       "reference": "version-inventory.json: schema",
       "reason": "Inventory format"
-    },
-    {
-      "category": "compatibility",
-      "reference": "native/src/b47ance/bridge/Patch.java: SHA-256 build pins; native/build/Version.java and MANIFEST.MF",
-      "reason": "Build-specific class hashes are independent of Project Version; generated Java constant/manifest read root VERSION and are checked by the native offline harness; development build outputs are excluded from mod release packages."
     }
   ],
   "historical": [
     {
-      "reference": "docs/RETAINER_IMPLEMENTATION_HANDOFF.md and docs/ROADMAP.md: planned 0.4.0-dev.1; CHANGELOG.md preparation record",
+      "reference": "docs/historical/RETAINER_IMPLEMENTATION_HANDOFF.md and docs/ROADMAP.md: planned 0.4.0-dev.1; CHANGELOG.md preparation record",
       "reason": "Future feature version decision; not enabled runtime and not a current version mirror"
     },
     {
@@ -103,16 +106,28 @@
       "reason": "Version history and compatibility decision"
     },
     {
-      "reference": "docs/IDENTITY_MIGRATION.md; docs/RENAME_VALIDATION.md; docs/RETAINER_SOURCE_AUDIT.md; docs/RETAINER_IMPLEMENTATION_HANDOFF.md; docs/RETAINER_VALIDATION.md; docs/NATIVE_BRIDGE_REPORT.md; docs/NATIVE_RUNTIME_VALIDATION.md; docs/WORKSHOP_DEVELOPMENT_DEPLOYMENT.md",
+      "reference": "docs/historical/IDENTITY_MIGRATION.md; docs/historical/RENAME_VALIDATION.md; docs/historical/RETAINER_SOURCE_AUDIT.md; docs/historical/RETAINER_IMPLEMENTATION_HANDOFF.md; docs/historical/RETAINER_VALIDATION.md; docs/historical/NATIVE_BRIDGE_REPORT.md; docs/historical/NATIVE_RUNTIME_VALIDATION.md; docs/historical/WORKSHOP_DEVELOPMENT_DEPLOYMENT.md",
       "reason": "Retained exact 0.3.0-dev.1 source audits, validation and publication evidence; not relabeled as 0.4.0 results."
     },
     {
-      "reference": "docs/RETAINER_EXPANSION_IMPLEMENTATION.md",
+      "reference": "docs/historical/RETAINER_EXPANSION_IMPLEMENTATION.md",
       "reason": "Historical 0.4.0-dev.1 offline gameplay evidence."
     },
     {
       "reference": "native/build (0.4.0-dev.1 compiled bridge and prior test logs)",
       "reason": "Previous native experiment outputs; no current UI release artifact or rebuilt bridge."
+    },
+    {
+      "reference": "native/README.md; docs/historical/RETAINER_TOOLTIP_INTEGRATION.md; docs/historical/WORKSHOP_DEPLOYMENT_0_5.md",
+      "reason": "0.5.0-dev.1 UI/publication evidence; native experiments quarantined outside active repository under cleanup ledger."
+    },
+    {
+      "reference": "Retired native/test/research sources and former docs/TESTING.md",
+      "reason": "Recoverable private external quarantine; removed from current development and release tooling by explicit user request."
+    },
+    {
+      "reference": "docs/historical/VERSIONING_BASELINE.md",
+      "reason": "Preserved original 0.3 version-adoption record; not current development guidance."
     }
   ]
 }

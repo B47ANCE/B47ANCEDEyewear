@@ -12,6 +12,19 @@ R.categories = {
     tethered = { chance = 0 },
 }
 
+-- Gameplay settings use the synchronized server sandbox; profiles remain defaults.
+function R.options()
+    local raw=SandboxVars and SandboxVars.B47ANCEDEyewear or {}
+    local function number(key,default,low,high)
+        local n=raw[key]
+        return type(n)=='number' and n==n and n>=low and n<=high and n or default
+    end
+    return {tying=raw.TyingEnabled~=false,
+        multiplier=number('EyewearFallMultiplier',1,0.25,5),
+        headwear=math.floor(number('StrappedHeadwearFallChance',0,0,100))}
+end
+local function eyewearChance(chance) return math.min(100,math.ceil(chance*R.options().multiplier)) end
+
 -- Exact item-type overrides, populated through `register`. Names are keyed by
 -- the full type (e.g. "Base.Hat_Army") so compatibility patches can classify
 -- third-party items without editing gameplay code.
@@ -69,7 +82,7 @@ end
 
 function R.registerEyewearProfile(itemType, chance)
     if type(itemType) ~= 'string' or itemType == '' then return false end
-    if type(chance) ~= 'number' or chance < 0 or chance > 100 then return false end
+    if type(chance) ~= 'number' or chance ~= chance or chance < 0 or chance > 100 then return false end
     R.eyewearProfiles[itemType] = chance
     return true
 end
@@ -103,10 +116,12 @@ function R.chanceFor(item, tied, original)
     if tied then return R.categories.tethered.chance end
     local kind = item and item:getFullType()
     local profile = type(kind) == 'string' and R.eyewearProfiles[kind] or nil
-    if profile ~= nil then return profile end
+    if profile ~= nil then return eyewearChance(profile) end
     local category = R.classify(item)
     if not category then return nil end
+    if category=='strapped' then return R.options().headwear end
     local def = R.categories[category]
+    if category=='fitted' or category=='monocle' then return eyewearChance(def.chance) end
     if def and def.chance ~= nil then return def.chance end
     -- chance = nil means "keep vanilla"; restore the recorded vanilla chance
     -- when it is known (a previously tied loose item), otherwise leave it.

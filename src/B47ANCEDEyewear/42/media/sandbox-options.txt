@@ -1,26 +1,16 @@
 VERSION = 1,
-option B47ANCEDEyewear.MakeshiftRetainersEnabled
+option B47ANCEDEyewear.TyingEnabled
 {
     type = boolean, default = true,
-    page = B47ANCEDEyewear, translation = B47ANCEDEyewear_MakeshiftRetainersEnabled,
+    page = B47ANCEDEyewear, translation = B47ANCEDEyewear_TyingEnabled,
 }
-option B47ANCEDEyewear.PermanentRetainerEnabled
+option B47ANCEDEyewear.EyewearFallMultiplier
 {
-    type = boolean, default = true,
-    page = B47ANCEDEyewear, translation = B47ANCEDEyewear_PermanentRetainerEnabled,
+    type = double, default = 1, min = 0.25, max = 5,
+    page = B47ANCEDEyewear, translation = B47ANCEDEyewear_EyewearFallMultiplier,
 }
-option B47ANCEDEyewear.RetainerDurabilityMultiplier
+option B47ANCEDEyewear.StrappedHeadwearFallChance
 {
-    type = double, default = 1, min = 0.25, max = 10,
-    page = B47ANCEDEyewear, translation = B47ANCEDEyewear_RetainerDurabilityMultiplier,
-}
-option B47ANCEDEyewear.RetainerImpactDamageMultiplier
-{
-    type = double, default = 1, min = 0.25, max = 10,
-    page = B47ANCEDEyewear, translation = B47ANCEDEyewear_RetainerImpactDamageMultiplier,
-}
-option B47ANCEDEyewear.PermanentRetainerRarity
-{
-    type = enum, default = 2, numValues = 3,
-    page = B47ANCEDEyewear, translation = B47ANCEDEyewear_PermanentRetainerRarity,
+    type = integer, default = 0, min = 0, max = 100,
+    page = B47ANCEDEyewear, translation = B47ANCEDEyewear_StrappedHeadwearFallChance,
 }

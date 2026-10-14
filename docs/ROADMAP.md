@@ -1,18 +1,18 @@
 # Roadmap
 
-- 0.1.0: implement tying and untying existing glasses with improvised ties.
-- 0.2.0: generalize to a headwear/eyewear retention framework (loose, fitted,
-  strapped, tethered), keep protective helmets secure during grabs, and extend
-  the string mechanic to straw and sun hats.
-- Validate native combat, cancellation, persistence, transfer, and multiplayer.
-- Faded's Authentic Z 42.20.2.1 item metadata checked and host-tested; run native
-  compatibility checks with that edition as well as original Authentic Z.
-- Publish only after those observations.
+Current development source is 0.6.0-dev.1: Lua-only context-menu retention,
+read-only inspection, cleanup and production packaging preflight.
 
-- Planned 0.4.0-dev.1: finite makeshift retainers, same-material layering, one tape
-  reinforcement and a very rare permanent reusable retainer. Source/material
-  audits and original sprite/mesh sources are prepared. Gameplay remains BLOCKED
-  on supported native interception and actual reusable-object storage; see
-  RETAINER_IMPLEMENTATION_HANDOFF.md. This paragraph records the earlier preparation boundary; see RETAINER_EXPANSION_IMPLEMENTATION.md for the subsequent gameplay candidate.
+Before stable release, obtain actual SP and dedicated multiplayer evidence for
+Tie/Untie, cancellation, duplicates, one-use consumption, clothing-field sync,
+existing saves, item transfers, reconnects, server restarts and UI scales/controllers.
+Dedicated G7 must pass before release G8.
 
-- 0.5.0-dev.1: read-only inventory retainer tooltip candidate implemented; see RETAINER_TOOLTIP_INTEGRATION.md. Runtime UI and dedicated MP gates remain open.
+Finite-retainer catches require a verified exposed Lua hook with server authority
+and the original engine fall decision. No Java extension or replacement RNG is permitted.
+Reusable permanent items also require proven actual-item persistence/conservation.
+These remain design blockers, not active features. Prepared original assets are retained.
+
+Earlier validation/publication documents describe their own versions only; they
+are not current readiness evidence. Stable tags, live deployment and Steam Workshop
+upload require separate authorization and applicable gates.

@@ -1,0 +1,37 @@
+# Cleanup and Workshop preparation
+
+Project Version: 0.6.0-dev.1
+Date: 2026-10-14
+
+Authorization: remove all testing code, clean repository/code, prepare Workshop.
+This authorizes preparation, not publication, live deployment or a game/server launch.
+
+Reversible quarantine removed tests/, native/, obsolete research/audit generation,
+the runtime TestKit, finite-retainer action modules and TieGlasses recipe. The
+quarantine also preserves 17 older staging snapshots containing TestKit copies.
+1678 files were preserved outside the active repository with SHA-256 records;
+no permanent artifact deletion was performed. Asset masters, runtime evidence and
+immutable published ZIPs were retained. The full ledger and recovery paths are private
+local cleanup records, not public repository payload. The previous published 0.5.0
+package was reclassified as historical rather than relabeled to this iteration.
+Shared .agents/.codex junctions and the pre-existing AGENTS.md change were left intact.
+
+Version decision: pre-1.0 MINOR 0.5.0-dev.1 â†’ 0.6.0-dev.1. Withdraw experimental
+finite-retainer action APIs, the unsafe crafting recipe and debugger commands;
+retain legacy tie data and explicit Tie/Untie context-menu behavior. Historical
+schema-2 data stays read-only and grants no new protection. No synthetic catches,
+replacement eyewear, material refunds or Java dependencies are introduced.
+
+Workshop inputs remain WORKSHOP_DESCRIPTION.txt and WORKSHOP_CHANGE_NOTE.txt.
+Existing item 3799754736, App ID 108600 and public GitHub identity are preserved.
+Build-Workshop.ps1 prepares temporary staging, verifies it before promotion,
+archives prior staging outside the active repository, and records version/commit/
+source/package provenance. Publish-Workshop.ps1 -PrepareOnly creates a versioned
+VDF preserving canonical paragraphs and existing visibility without authentication.
+No test suite is required or run by either entry point.
+
+[UNKNOWN / RUNTIME GATE] Functional fixes are source changes, not newly tested
+behavior. SP and dedicated MP are NOT TESTED; gameplay G7/G8 remain BLOCKED.
+Actual publication requires a separate request and all applicable preflight checks.
+Missing dedicated evidence alone permits only labelled MP test distribution, never
+G7 PASS or stable G8 approval. Both canonical texts carry the mandatory MP-testing notice.

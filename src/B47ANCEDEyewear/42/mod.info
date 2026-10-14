@@ -1,6 +1,6 @@
 name=B47ANCE'd Eyewear
 id=B47ANCEDEyewear
 author=B47ANCE
-description=Development build; native and dedicated multiplayer validation pending. Tie your glasses, straw and sun hats with twine, rubber bands, dental floss, or thread so they stay on. Protective helmets with chin straps (military, crash, riot, hard hats) no longer fall off during grabs; loose headwear only has a chance to fall.
-modversion=0.5.0-dev.1
-versionMin=42.20.3
+description=Lua-only development build. Tie or untie compatible worn glasses and supported hats through inventory context menus. In-game and dedicated multiplayer validation remain pending.
+modversion=0.6.0-dev.1
+versionMin=42.21

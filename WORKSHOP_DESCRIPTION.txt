@@ -1,33 +1,35 @@
-[h1]B47ANCE'd Eyewear — Development Build[/h1]
+[h1]B47ANCE'd Eyewear â€” Development Build[/h1]
 
-[b]DEVELOPMENT BUILD — 0.5.0-dev.1[/b]
-This is an unfinished development candidate. Native combat, existing-save migration and dedicated multiplayer validation remain pending. This upload includes the Lua makeshift-retainer candidate and read-only inventory inspection. Finite catches require a separately loaded exact-build Java bridge, which is NOT included or automatically installed by Workshop subscription.
+[b]Version 0.6.0-dev.1[/b]
+[b]MP testing build - dedicated multiplayer NOT TESTED[/b]
+[b]Development build for Project Zomboid 42.21. In-game and dedicated multiplayer validation remain pending.[/b]
 
-[b]Build 42.21 development target · Version 0.5.0-dev.1[/b]
+[h2]Overview[/h2]
+Secure compatible glasses and supported hats using common materials. This is a Lua-only mod with no Java or JAR dependency.
 
-Keep compatible glasses and hats from being knocked off. Tie them with common materials, or rely on the item-specific retention already built into the mod.
+[h2]Features[/h2]
+â€¢ Right-click worn glasses or a straw/summer hat and choose Tie. The menu lists only supported materials in your main inventory.
+â€¢ Use twine, a rubber band, dental floss, ordinary thread, sinew thread or aramid thread. One use is consumed.
+â€¢ Tied items retain their original identity, condition, prescription and model. Untie restores the original name; no material is refunded.
+â€¢ Untied eyewear uses individual retention profiles. Strapped protective headwear defaults to a zero fall value; loose hats retain vanilla behavior.
+â€¢ Inventory inspection preserves vanilla information and displays tied attachment material and secured state. Historical finite-retainer records are labeled inactive.
 
-[h2]Tie and untie[/h2]
-Wear supported eyewear or a straw/summer hat, then use the [b]Tie glasses[/b] crafting recipe or its inventory right-click menu. Choose twine, a rubber band, dental floss, or thread.
+[h2]Compatibility & Requirements[/h2]
+Mod ID: B47ANCEDEyewear. Target: Build 42.21. Monocles cannot be tied. Existing optional Authentic Z eyewear support is retained; current in-game compatibility remains unverified.
+Client requests are validated by the server. Single-player and dedicated multiplayer acceptance are pending; this build is not multiplayer-certified.
 
-A tied item keeps its original instance, sprite, condition, and prescription data, gains the [b](Tied)[/b] name, and has a zero knock-off chance. Right-click a tied item to [b]Untie[/b]; no material is refunded.
+[h2]Configuration[/h2]
+Server sandbox settings control new tying, the untied-eyewear fall multiplier, and the strapped-headwear fall value. Defaults preserve the previous retention behavior. Disabling new ties does not remove existing ties or prevent untying.
 
-[h2]Retention[/h2]
-• Vanilla eyewear has individual untied knock-off values based on its frame or strap design.
-• Supported helmets stay secured; loose headwear keeps its vanilla behavior.
-• Monocles use a high knock-off value and cannot be tied.
-• Supported vanilla eyewear, Authentic Z, and Faded's Authentic Z eyewear are included. Compatibility patches can register additional profiles.
+[h2]Source Code & Development[/h2]
+[url=https://github.com/B47ANCE/B47ANCEDEyewear]GitHub â€” Source Code & Issues[/url]
 
-[h2]Multiplayer[/h2]
-Tie requests are validated by the server and synchronize the changed wearable. Native hosted and dedicated-server verification remains pending.
+[h2]Known Issues[/h2]
+The old TieGlasses crafting recipe has been retired; use the inventory context menu. Finite durability catches, permanent reusable retainers, rare loot and retainer models are not included. Exact post-roll interception remains an unresolved Lua-only capability.
+This candidate has source and package preflight checks only. Actual UI, combat, save/reconnect and dedicated multiplayer behavior remain unverified.
 
-Mod ID: `B47ANCEDEyewear`
+[h2]Credits & Permissions[/h2]
+Created by B47ANCE. Original mod implementation and artwork; optional third-party mods are not bundled.
 
-
-[h2]Upgrade notice[/h2]
-Formerly Glasses Stay Put. Replace the previous technical Mod ID in saved mod selections and server Mods lists with B47ANCEDEyewear. Workshop item 3799754736 remains the same. Legacy tied-item records are preserved and migrated to the new namespace; native existing-save and dedicated multiplayer acceptance remain pending.
-
-[h2]Retainer development status[/h2]
-Finite makeshift retainers, layering, tape, durability inspection and server-validated actions are development candidates requiring a separately loaded exact-build native bridge. Permanent reusable-item attachment, rare loot and wearable visuals remain blocked. In-game/dedicated multiplayer validation is pending.
-
-Read-only inventory retainer inspection is now included in this development build. It displays replicated material, condition, durability percentage and installed reinforcement contributions. Live UI and multiplayer validation remain pending.
+[h2]Upgrade Notice[/h2]
+Formerly Glasses Stay Put. Keep Workshop item 3799754736 and select Mod ID B47ANCEDEyewear in game/server mod lists. Existing legacy tie records remain supported.

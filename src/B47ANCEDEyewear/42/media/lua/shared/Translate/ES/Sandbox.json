@@ -1,16 +1,9 @@
 {
   "Sandbox_B47ANCEDEyewear": "B47ANCE'd Eyewear",
-  "Sandbox_B47ANCEDEyewear_MakeshiftRetainersEnabled": "Enable makeshift retainers",
-  "Sandbox_B47ANCEDEyewear_PermanentRetainerEnabled": "Enable permanent retainers",
-  "Sandbox_B47ANCEDEyewear_RetainerDurabilityMultiplier": "Retainer durability multiplier",
-  "Sandbox_B47ANCEDEyewear_RetainerImpactDamageMultiplier": "Retainer catch damage multiplier",
-  "Sandbox_B47ANCEDEyewear_PermanentRetainerRarity": "Permanent retainer rarity",
-  "Sandbox_B47ANCEDEyewear_PermanentRetainerRarity_option1": "Extremely rare",
-  "Sandbox_B47ANCEDEyewear_PermanentRetainerRarity_option2": "Very rare",
-  "Sandbox_B47ANCEDEyewear_PermanentRetainerRarity_option3": "Rare",
-  "Sandbox_B47ANCEDEyewear_MakeshiftRetainersEnabled_tooltip": "Server-authoritative setting. Existing contribution snapshots are preserved. Native bridge is required for catches.",
-  "Sandbox_B47ANCEDEyewear_PermanentRetainerEnabled_tooltip": "Reserved for the permanent-retainer attachment capability. Attachment and loot stay unavailable until actual-item conservation is established.",
-  "Sandbox_B47ANCEDEyewear_RetainerDurabilityMultiplier_tooltip": "Server-authoritative setting. Existing contribution snapshots are preserved. Native bridge is required for catches.",
-  "Sandbox_B47ANCEDEyewear_RetainerImpactDamageMultiplier_tooltip": "Server-authoritative setting. Existing contribution snapshots are preserved. Native bridge is required for catches.",
-  "Sandbox_B47ANCEDEyewear_PermanentRetainerRarity_tooltip": "Reserved rarity setting; no permanent-retainer loot is enabled while attachment is blocked."
+  "Sandbox_B47ANCEDEyewear_TyingEnabled": "Allow tying",
+  "Sandbox_B47ANCEDEyewear_TyingEnabled_tooltip": "Allow new eyewear and supported hat ties. Existing ties remain effective and can always be untied. Server setting.",
+  "Sandbox_B47ANCEDEyewear_EyewearFallMultiplier": "Untied eyewear fall multiplier",
+  "Sandbox_B47ANCEDEyewear_EyewearFallMultiplier_tooltip": "Multiply the default fall values for untied eyewear, including monocles. Range 0.25–5; default 1. Updates worn eyewear without changing tied items. Server setting.",
+  "Sandbox_B47ANCEDEyewear_StrappedHeadwearFallChance": "Strapped headwear fall value",
+  "Sandbox_B47ANCEDEyewear_StrappedHeadwearFallChance_tooltip": "Fall value for supported strapped protective headwear. Range 0–100; default 0. The vanilla impact calculation still applies. Server setting."
 }

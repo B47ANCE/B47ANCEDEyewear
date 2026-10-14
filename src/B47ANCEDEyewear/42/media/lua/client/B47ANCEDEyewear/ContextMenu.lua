@@ -5,7 +5,6 @@ B47ANCEDEyewear = B47ANCEDEyewear or {}
 B47ANCEDEyewear.Menu = B47ANCEDEyewear.Menu or {}
 
 local S = require 'B47ANCEDEyewear/Core'
-local F = require 'B47ANCEDEyewear/Retainers'
 local Menu = B47ANCEDEyewear.Menu
 local NO_MATERIALS = 'ContextMenu_B47ANCEDEyewear_NoMaterials'
 
@@ -14,8 +13,7 @@ local function unwrap(entry)
     return ok and item or nil
 end
 
--- Build 42 passes an ArrayList to the inventory context event. Tests and some
--- compatibility callers use a Lua table, so normalize both forms at the edge.
+-- Normalize the vanilla ArrayList and Lua tables used by compatibility callers.
 local function selectedItems(rawItems)
     local result = {}
     if rawItems and type(rawItems.size) == 'function' and type(rawItems.get) == 'function' then
@@ -50,7 +48,7 @@ local function nameOf(item)
             if ok and value and tostring(value) ~= '' then return tostring(value) end
         end
     end
-    return 'Headwear'
+    return getText('UI_B47ANCEDEyewear_Headwear')
 end
 
 local function inventoryItems(inventory)
@@ -128,8 +126,7 @@ function Menu.add(playerIndex, context, rawItems)
     local headwear
     for _, entry in ipairs(selectedItems(rawItems)) do
         local item = unwrap(entry)
-        if not (S.isGlasses(item) and (F.available() or F.state(item)))
-            and (canTie(player,item) or canUntie(player,item)) then headwear=item; break end
+        if canTie(player,item) or canUntie(player,item) then headwear=item; break end
     end
     if not headwear then return end
 

@@ -1,142 +1,55 @@
-> **Lua-only policy (2026-10-12):** Custom Java code, agents, bridges and JAR mod dependencies are prohibited. Older bridge documentation is historical and superseded. The current snapshot has disabled bridge-dependent retainer paths awaiting Lua-only redesign; it does not supply functioning finite-retainer catches. Offline tests do not prove in-game or dedicated multiplayer behavior. Workshop publication remains a separate operation.
 # B47ANCE'd Eyewear
 
-
-
-Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.5.0-dev.1.
-
-Current source adds a finite makeshift-retainer development candidate: 14 materials,
-same-material layering, tape reinforcement, durability display and server-validated
-installation/removal. It requires the separately loaded, exact-build native bridge
-to intercept the original post-roll fall. The bridge is not automatically installed
-by subscribing to the Workshop item. Permanent reusable retainers, loot and worn
-visuals remain blocked on safe actual-item ownership/persistence.
-
-See [current implementation and validation](docs/RETAINER_EXPANSION_IMPLEMENTATION.md).
-Workshop remains on 0.3.0-dev.1. The legacy behavior described below remains the
-fallback when the bridge is unavailable. No in-game or dedicated MP readiness is claimed.
-
-
-Wear glasses, carry twine, a rubber band, dental floss, or thread in your main
-
-inventory, then use the **Tie glasses** crafting recipe and select the worn pair
-
-and a material. One use is consumed (one whole rubber band). The attached tie
-
-stays with the original glasses until it is untied from that item's right-click
-
-menu; untying does not refund material.
-
-
-
-You can also right-click a worn supported pair or hat. An untied item submenu
-
-contains **Tie**, followed by only the tying materials currently in your
-
-inventory. A tied item submenu contains **Untie** only. If no materials are
-
-available, Tie is disabled with an explanation. Multiplayer requests are
-
-validated and applied by the server.
-
-No skills, tools, dependencies, new loot, or prescription changes.
-
-
-
-Supports vanilla glasses, including Face-slot Reading Glasses, original
-
-Authentic Z and Faded's Authentic Z 42.20.2.1 glasses. The recipes enumerate
-
-all tieable current vanilla glasses definitions and the six shared Authentic Z
-
-definitions, so only actual eyewear is selectable. Eyepatches, masks, clown
-
-noses, monocles, and non-clothing props remain excluded. Vanilla eyewear uses
-
-item-specific untied knock-off profiles; see `docs/RETENTION_PROFILES.md`.
-
-Monocles use a 70 ChanceToFall profile and cannot be tied. Frockin uses vanilla eyewear and
-
-has no distinct eyewear item definition requiring an adapter. Compatibility is
-
-host-tested; native validation is pending.
-
-
-
-Source: `src/B47ANCEDEyewear/42/`. Development candidate; native and multiplayer
-
-validation remain UNVERIFIED. See `docs/TESTING.md`.
-
-
-
-For single-player testing, enter `B47ANCEDEyewearTestKit()` in the Lua debugger.
-
-It gives every supported vanilla and Authentic Z pair, both supported hats, and
-
-two of every supported material. Compatibility items that are unavailable are
-
-listed in the console. The kit is granted once per character; use
-
-`B47ANCEDEyewearTestKit(true)` to grant another.
-
-
-
-Workshop staging is generated with `./Build-Workshop.ps1`. It runs host checks,
-
-packages only runtime content, creates a 256x256 Workshop preview, preserves
-
-existing Workshop identity/visibility on rebuild, and verifies source/staging/ZIP
-
-hashes. Tests, documentation, build scripts, and caches stay outside the upload.
-
-Default staging: `C:/Users/willi/Zomboid/Workshop/B47ANCEDEyewear`.
-
-
-
-Identity migration: see `docs/IDENTITY_MIGRATION.md`. Existing servers must use
-
-`Mods=B47ANCEDEyewear`; Workshop ID `3799754736` is preserved. Legacy item state
-
-is read compatibly and migrated by authority; existing-save runtime acceptance
-
-is pending. No SandboxVars existed in the baseline.
-
-
-
-Canonical version: root `VERSION`; policy and inventory: `docs/VERSION_POLICY.md`,
-
-`version-inventory.json`. Current validation: `docs/RENAME_VALIDATION.md`.
-
-Workshop development build was published on 2026-10-04 with replacement preview
-artwork; see docs/WORKSHOP_DEVELOPMENT_DEPLOYMENT.md. Native and dedicated gates
-remain open.
-
-Historical packages and artwork are preserved under `historical/`, excluded from
-
-active distribution. Earlier preparation records describe their original
-no-publication state; the later development upload is documented separately.
-
-
-
-Retainer expansion is currently BLOCKED at the native post-knock-off-roll hook
-
-and reusable permanent-item storage. Source audits, original inventory art and
-
-3D model sources are prepared outside runtime source; no retainer gameplay or
-
-loot is enabled. See `docs/RETAINER_SOURCE_AUDIT.md`,
-
-`docs/RETAINER_IMPLEMENTATION_HANDOFF.md`, and `assets/retainers/README.md`.
-
-
-
-Native catch bridge development spike: build and offline loading are verified
-
-separately in `docs/NATIVE_BRIDGE_REPORT.md`. Recommendation REVISE; real PZ
-
-combat, dedicated multiplayer and Linux loading remain untested. The bridge and
-
-fixture stay outside runtime source and are not automatically deployed.
-
-
-Current read-only inventory tooltip implementation and validation: docs/RETAINER_TOOLTIP_INTEGRATION.md (from docs, use RETAINER_TOOLTIP_INTEGRATION.md). Vanilla tooltip remains intact; companion panel displays finite condition and actual reinforcement contributions. Runtime UI and gameplay synchronization remain untested.
+Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.6.0-dev.1.
+
+Lua-only development build targeting Project Zomboid 42.21. No Java agent, bridge,
+JAR dependency, test suite or debugger item-grant command is part of the project.
+Gameplay and dedicated multiplayer acceptance remain unverified.
+
+Wear compatible glasses or a straw/summer hat, keep a supported material in your
+main inventory, and right-click the worn item. **Tie** lists available twine,
+rubber bands, dental floss, ordinary thread, sinew thread or aramid thread.
+Tying consumes one use and preserves the original item, condition, prescription,
+model and custom name. **Untie** restores the original name without refunding material.
+The TieGlasses crafting recipe was retired; inventory context menus are the supported route.
+Monocles remain incompatible with tying.
+
+Tied attachments use the existing zero-fall retention behavior. Untied eyewear
+uses item-specific profiles. Strapped protective headwear defaults to zero fall
+value, while loose hats retain vanilla behavior. Vanilla impact calculation remains in control.
+Server sandbox options control new tying, the untied-eyewear multiplier and the
+strapped-headwear fall value. Existing ties remain valid when new tying is disabled.
+
+Hovering tied eyewear shows its material and secured state beside the normal
+inventory tooltip, without a fabricated durability bar. Historical finite or
+permanent retainer records are preserved for inspection and clearly marked inactive.
+Finite-retainer catches, permanent reusable-item gameplay, rare loot and worn
+retainer models are not included. Their Lua-only implementation requires a verified
+engine capability and authority design; no substitute catch calculation is installed.
+
+Authoritative runtime source: `src/B47ANCEDEyewear/42/`.
+Workshop item: https://steamcommunity.com/sharedfiles/filedetails/?id=3799754736
+Public source: https://github.com/B47ANCE/B47ANCEDEyewear
+
+See [architecture](docs/ARCHITECTURE.md), [validation and release gates](docs/VALIDATION.md),
+[cleanup record](docs/CLEANUP_AND_WORKSHOP_PREPARATION.md) and [version policy](docs/VERSION_POLICY.md).
+Old audit/publication documents retain their original tested versions and are historical evidence.
+
+## Development tools
+
+Release tooling uses Python with `requirements-tools.txt` for syntax parsing;
+it never runs gameplay fixtures or a unit-test suite. The runtime mod has no Python dependency.
+
+```powershell
+python -m pip install -r requirements-tools.txt
+python -B scripts/check_versions.py
+python -B scripts/validate_release.py
+./Build-Workshop.ps1 -PythonExe <python-with-lupa>
+./Publish-Workshop.ps1 -PrepareOnly -PythonExe <python-with-lupa>
+```
+
+Preparation generates source/staging/ZIP provenance and an upload VDF while
+preserving the existing item and visibility. It does not upload. Publication requires a separate explicit request. The labelled MP testing build may
+be distributed before dedicated validation; stable release still requires G7/G8.
+Published packages, asset masters and superseded experiment evidence are preserved;
+retired test/Java code is recoverable in the private cleanup quarantine, outside this repository.

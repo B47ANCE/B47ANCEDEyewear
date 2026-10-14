@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.6.0-dev.1] — 2026-10-14
+
+- Lua-only cleanup: remove testing/debug code and retire Java-dependent finite-retainer actions and the unsafe crafting recipe.
+- Keep server-validated item context-menu tying/untying and read-only historical retainer inspection; preserve existing item data and released artifacts.
+- Fix tie transaction failures, tighten inventory commands, localize item labels and bound tooltip placement.
+- Prepare Workshop content using production-only version/content checks. No game/server or dedicated MP validation; G7/G8 remain blocked.
+- Pre-1.0 MINOR compatibility decision: withdraw experimental retainer action APIs, debugger grants and TieGlasses recipe. Existing legacy tie data remains supported; finite records are retained read-only and do not provide protection.
+
 ## [0.5.0-dev.1] — 2026-10-10
 
 - Add read-only inventory retainer inspection, condition bar and reinforcement breakdown.
