@@ -111,15 +111,33 @@ function S.restoreName(item,data)
     if item.setCustomName then item:setCustomName(data.customName == true) end
 end
 
-function S.valid(character, item, material, untie)
+local function ownsWornItem(character, item)
     if not character or character:isDead() or not S.isTieable(item) then return false end
     local inventory = character:getInventory()
-    if not inventory or item:getContainer() ~= inventory or not inventory:contains(item)
-        or not character:isEquippedClothing(item) then return false end
-    if untie then return S.isTied(item) end
-    return R.options().tying and not item:isBroken() and not S.isTied(item)
+    return inventory ~= nil and item:getContainer() == inventory and inventory:contains(item)
+        and character:isEquippedClothing(item)
+end
+
+-- Item-only eligibility also supports vanilla crafting previews without a player.
+function S.isReadyToTie(item)
+    return S.isTieable(item) and R.options().tying
+        and not item:isBroken() and not S.isTied(item)
         and item:getChanceToFall() > 0 and item:getChanceToFall() <= 100
-        and S.isMaterial(material) and material:getContainer() == inventory and inventory:contains(material)
+end
+
+function S.canTie(character, item)
+    return ownsWornItem(character, item) and S.isReadyToTie(item)
+end
+
+function S.canUseMaterial(character, material)
+    if not character or character:isDead() or not S.isMaterial(material) then return false end
+    local inventory = character:getInventory()
+    return inventory ~= nil and material:getContainer() == inventory and inventory:contains(material)
+end
+
+function S.valid(character, item, material, untie)
+    if untie then return ownsWornItem(character, item) and S.isTied(item) end
+    return S.canTie(character, item) and S.canUseMaterial(character, material)
 end
 
 local syncFailureReported = false

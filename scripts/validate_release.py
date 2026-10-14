@@ -57,7 +57,7 @@ def validate_source(files):
     if actual != set(LANGUAGES):
         raise ValueError('Translation language inventory mismatch')
     english = {}
-    for category in ('UI', 'ContextMenu', 'Sandbox'):
+    for category in ('UI', 'ContextMenu', 'Sandbox', 'Recipes'):
         reference = json.loads((translated / 'EN' / (category + '.json')).read_text(encoding='utf-8'))
         english.update(reference)
         for language in LANGUAGES:
@@ -74,6 +74,14 @@ def validate_source(files):
             for key in re.findall(r"\bgetText\(\s*['\"]((?:UI|ContextMenu)_B47ANCEDEyewear_[^'\"]+)['\"]", data.decode('utf-8')):
                 if key not in english:
                     raise ValueError('Untranslated Lua label: ' + key)
+        if name.startswith('media/scripts/') and name.endswith('.txt'):
+            script = data.decode('utf-8')
+            for recipe in re.findall(r'\bcraftRecipe\s+(\w+)', script):
+                if recipe not in english:
+                    raise ValueError('Untranslated crafting recipe: ' + recipe)
+            for key in re.findall(r'\bTooltip\s*=\s*(\w+)\s*,', script):
+                if key not in english:
+                    raise ValueError('Untranslated recipe instructions: ' + key)
     for filename in ('WORKSHOP_DESCRIPTION.txt', 'WORKSHOP_CHANGE_NOTE.txt'):
         text = (ROOT / filename).read_text(encoding='utf-8').strip()
         if filename=='WORKSHOP_DESCRIPTION.txt' and len(text.encode('utf-8'))>8000:

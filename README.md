@@ -1,6 +1,6 @@
 # B47ANCE'd Eyewear
 
-Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.6.0-dev.1.
+Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.7.0-dev.1.
 
 Lua-only development build targeting Project Zomboid 42.21. No Java agent, bridge,
 JAR dependency, test suite or debugger item-grant command is part of the project.
@@ -11,7 +11,11 @@ main inventory, and right-click the worn item. **Tie** lists available twine,
 rubber bands, dental floss, ordinary thread, sinew thread or aramid thread.
 Tying consumes one use and preserves the original item, condition, prescription,
 model and custom name. **Untie** restores the original name without refunding material.
-The TieGlasses crafting recipe was retired; inventory context menus are the supported route.
+Crafting → Tailoring also offers **Tie worn eyewear**. Wear compatible vanilla
+glasses, a straw hat or a summer hat and keep a supported material in your main
+inventory. The recipe consumes one use, modifies the same item and cannot batch
+craft. Already tied, broken or unworn items are rejected. No skill, magazine or
+workbench is required. Modded eyewear can continue using the inventory context menu.
 Monocles remain incompatible with tying.
 
 Tied attachments use the existing zero-fall retention behavior. Untied eyewear

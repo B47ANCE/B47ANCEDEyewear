@@ -1,7 +1,16 @@
 # Cleanup and Workshop preparation
 
-Project Version: 0.6.0-dev.1
+Project Version: 0.7.0-dev.1
 Date: 2026-10-14
+
+Current continuation: 0.7.0-dev.1 adds a production crafting recipe by explicit
+request. Both inputs are kept during vanilla processing; the existing authoritative
+tie transaction validates and consumes one material use. The new recipe replaces
+the unsafe retired definition without restoring test/debug code or Java paths.
+The cleanup described below remains the historical 0.6.0-dev.1 action record.
+Its prepared package, checksum and provenance were preserved with unchanged
+hashes and a verified ZIP CRC in ignored dist/historical/0.6.0-dev.1-prepared.
+Its retention ledger records the three preserved files; nothing was deleted.
 
 Authorization: remove all testing code, clean repository/code, prepare Workshop.
 This authorizes preparation, not publication, live deployment or a game/server launch.
@@ -16,7 +25,7 @@ local cleanup records, not public repository payload. The previous published 0.5
 package was reclassified as historical rather than relabeled to this iteration.
 Shared .agents/.codex junctions and the pre-existing AGENTS.md change were left intact.
 
-Version decision: pre-1.0 MINOR 0.5.0-dev.1 â†’ 0.6.0-dev.1. Withdraw experimental
+Version decision: pre-1.0 MINOR 0.5.0-dev.1 → 0.6.0-dev.1. Withdraw experimental
 finite-retainer action APIs, the unsafe crafting recipe and debugger commands;
 retain legacy tie data and explicit Tie/Untie context-menu behavior. Historical
 schema-2 data stays read-only and grants no new protection. No synthetic catches,

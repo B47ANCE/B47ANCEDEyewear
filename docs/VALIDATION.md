@@ -1,6 +1,6 @@
 # Validation and release gates
 
-Project Version: 0.6.0-dev.1
+Project Version: 0.7.0-dev.1
 
 The user explicitly requested removal of all testing code. No test suites,
 gameplay doubles, item-grant/debug commands or Java harnesses remain in active source.
@@ -18,11 +18,27 @@ python -B scripts/check_versions.py --release
 ```
 
 The syntax parser compiles Lua without executing gameplay. Source preflight checks
-Lua-only payloads, case-correct requires, JSON/key/placeholder coverage, canonical
+Lua-only payloads, case-correct requires, JSON/key/placeholder coverage,
+recipe-name/instruction localization, canonical
 Workshop text and source URL. Package preflight verifies inventory, safe paths,
 case collisions, ZIP CRC, source/staging hashes and version provenance. Upload
 preparation compares VDF description/change-note text to canonical real paragraphs.
 These checks are static/offline integrity, not behavior tests or Linux/runtime evidence.
+
+[VERIFIED: source] The crafting adapter uses installed vanilla OnTest/OnCreate,
+IsWorn and keep semantics. Payment stays in the existing server/SP tie transaction;
+clients submit the vanilla crafting action. No gameplay test suite was restored.
+Recipe labels/instructions use English fallback in the 29 supported language
+folders, matching the existing localization policy; key presence is not proof of
+native-language translation quality.
+
+[TESTED: offline, 2026-10-14] `python -B scripts/check_versions.py` passed for
+0.7.0-dev.1. `python -B scripts/validate_release.py` passed for 128 runtime files,
+including compilation of all nine Lua files without execution and translation
+key/instruction coverage. A read-only identity audit matched all 47 recipe input
+IDs against the installed generated item definitions. `git diff --check` passed.
+Package results, source hashes and commit are recorded in generated provenance;
+they do not replace the untested gameplay gates below.
 
 [RUNTIME GATE] SP behavior and dedicated MP have not been validated for this iteration.
 G7 BLOCKED / NOT TESTED; G8 BLOCKED. Stable release requires current-commit dedicated evidence and gates. Under the

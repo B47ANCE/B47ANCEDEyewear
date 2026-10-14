@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.7.0-dev.1] — 2026-10-14
+
+- MINOR: add Tie worn eyewear to Crafting → Tailoring using verified Build42 recipe hooks and the existing server-owned tie transaction.
+- Keep both selected inputs in vanilla processing; consume exactly one material use in successful authoritative completion without replacing the eyewear.
+- Reject worn-state, ownership, broken/tied-state or sandbox failures; disable batch crafting and preserve context-menu support for optional modded eyewear.
+- Add recipe labels/instructions and production localization checks. Preserve the prepared0.6 candidate with hashes; no testing/debug or Java code is restored.
+- Source inspection and offline syntax/integrity checks only. Actual SP/dedicated crafting remains NOT TESTED; G7/G8 stay blocked.
+
 ## [0.6.0-dev.1] — 2026-10-14
 
 - Lua-only cleanup: remove testing/debug code and retire Java-dependent finite-retainer actions and the unsafe crafting recipe.

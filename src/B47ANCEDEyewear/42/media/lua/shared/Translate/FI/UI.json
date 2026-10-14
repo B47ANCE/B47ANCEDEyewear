@@ -23,5 +23,6 @@
   "UI_B47ANCEDEyewear_TiedName": "%1 (Tied)",
   "UI_B47ANCEDEyewear_Headwear": "Headwear",
   "UI_B47ANCEDEyewear_TiedAttachment": "Tied attachment — no durability system",
-  "UI_B47ANCEDEyewear_InactiveProtection": "Historical retainer record — protection inactive"
+  "UI_B47ANCEDEyewear_InactiveProtection": "Historical retainer record — protection inactive",
+  "UI_B47ANCEDEyewear_CraftingTieInstructions": "Wear compatible glasses, a straw hat or a summer hat. Keep one supported tying material in your main inventory. Consumes one material use and keeps the original item."
 }

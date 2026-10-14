@@ -37,6 +37,10 @@
     {
       "path": "docs/VERSIONING.md",
       "pattern": "^Current development iteration: (?P<version>\\S+)\\. Pre-1\\.0"
+    },
+    {
+      "path": "docs/ROADMAP.md",
+      "pattern": "^Current development source is (?P<version>[^:\\s]+):"
     }
   ],
   "changelog": {
@@ -128,6 +132,10 @@
     {
       "reference": "docs/historical/VERSIONING_BASELINE.md",
       "reason": "Preserved original 0.3 version-adoption record; not current development guidance."
+    },
+    {
+      "reference": "dist/historical/0.6.0-dev.1-prepared; docs/CLEANUP_AND_WORKSHOP_PREPARATION.md historical cleanup decision",
+      "reason": "Prepared 0.6.0-dev.1 ZIP/checksum/provenance and historical cleanup are preserved without relabeling as current crafting validation."
     }
   ]
 }

@@ -1,10 +1,9 @@
-[b]Version 0.6.0-dev.1[/b]
+[b]Version 0.7.0-dev.1[/b]
 [b]MP testing build - dedicated multiplayer NOT TESTED[/b]
 
-[h2]Lua-only cleanup â€” development build[/h2]
-â€¢ Remove testing/debug code, debugger grants and unavailable Java-dependent retainer actions.
-â€¢ Retire the unsafe TieGlasses crafting recipe. Use server-validated inventory context-menu tying and untying.
-â€¢ Improve material-use rollback, command validation, localized tied labels and tooltip placement.
-â€¢ Add server sandbox settings for the remaining retention behavior; preserve existing item/save data.
-â€¢ Update Workshop preparation and package provenance. Finite catches, permanent-item gameplay, rare loot and worn models remain excluded.
-â€¢ Source/package checks only. In-game and dedicated multiplayer acceptance remain pending.
+[h2]Crafting support — development build[/h2]
+• Add Crafting → Tailoring → Tie worn eyewear for compatible vanilla glasses and straw/summer hats.
+• Keep the original item and consume one supported material use through the existing server-owned transaction. Both vanilla recipe inputs are kept to prevent double consumption.
+• Reject unavailable, unworn, broken or already tied items; respect server sandbox settings and disable batch crafting.
+• Preserve inventory context menus and existing save data. No testing/debug code or Java dependencies are restored.
+• Source and offline preflight checks only. In-game crafting and dedicated multiplayer acceptance remain NOT TESTED; stable G7/G8 gates stay blocked.

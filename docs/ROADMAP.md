@@ -1,10 +1,10 @@
 # Roadmap
 
-Current development source is 0.6.0-dev.1: Lua-only context-menu retention,
-read-only inspection, cleanup and production packaging preflight.
+Current development source is 0.7.0-dev.1: Lua-only context-menu and crafting
+retention, read-only inspection and production packaging preflight.
 
 Before stable release, obtain actual SP and dedicated multiplayer evidence for
-Tie/Untie, cancellation, duplicates, one-use consumption, clothing-field sync,
+Tie/Untie and crafting, cancellation, duplicates, one-use consumption, clothing-field sync,
 existing saves, item transfers, reconnects, server restarts and UI scales/controllers.
 Dedicated G7 must pass before release G8.
 
