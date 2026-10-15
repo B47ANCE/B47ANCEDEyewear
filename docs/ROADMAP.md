@@ -1,6 +1,6 @@
 # Roadmap
 
-Current development source is 0.7.0-dev.1: Lua-only context-menu and crafting
+Current development source is 0.7.0-dev.2: Lua-only context-menu and crafting
 retention, read-only inspection and production packaging preflight.
 
 Before stable release, obtain actual SP and dedicated multiplayer evidence for

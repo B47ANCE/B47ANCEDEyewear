@@ -1,4 +1,4 @@
-[b]Version 0.7.0-dev.1[/b]
+[b]Version 0.7.0-dev.2[/b]
 [b]MP testing build - dedicated multiplayer NOT TESTED[/b]
 
 [h2]Crafting support — development build[/h2]

@@ -4,7 +4,7 @@ Root VERSION is the only canonical project version. docs/VERSION_POLICY.md is th
 authoritative inherited policy; version-inventory.json declares current mirrors,
 package selectors, schema/game distinctions and historical evidence.
 
-Current development iteration: 0.7.0-dev.1. Pre-1.0 MINOR adds a compatible
+Current development iteration: 0.7.0-dev.2. Pre-1.0 MINOR adds a compatible
 vanilla CraftRecipe route to existing server-owned tying, following the 0.6 cleanup.
 The original item, context-menu API and schema1 tie records remain compatible;
 schema2 historical records stay read-only. Neither schema number is the project version.

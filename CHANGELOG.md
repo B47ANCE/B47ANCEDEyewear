@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.7.0-dev.2]
+- Add user-supplied fallback icon/thumbnail; preserve manually supplied artwork. Asset-only iteration; gameplay unchanged.
+- Offline branding/version checks only; earlier validation remains historical at 0.7.0-dev.1. No new SP/dedicated MP evidence.
+
 ## [0.7.0-dev.1] — 2026-10-14
 
 - MINOR: add Tie worn eyewear to Crafting → Tailoring using verified Build42 recipe hooks and the existing server-owned tie transaction.
