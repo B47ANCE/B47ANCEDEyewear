@@ -1,8 +1,10 @@
-# Permanent eyewear retainer — original source assets
+# Unbreakable eyewear retainer — original source assets
 
 These editable sources remain outside src/. The exact 64x64 inventory icon is
-now copied into the runtime texture folder for the two wearable retainer items.
-The mesh and model texture remain authoring-only and are not distributed.
+now reserved for the loot-only UnbreakableRetainer and copied into its runtime
+texture slot unchanged. The mesh/model texture are reserved for the same item,
+remain authoring-only and are not distributed. Crafted cloth and leather items
+have separate generated masters and 64x64 exports in crafted-icons.json.
 Source geometry/texture validation is distinct from PZ import, head fit and networking.
 
 - Item_B47ANCEDEyewearRetainer.png: 64×64 RGBA inventory icon, real transparency.
@@ -71,3 +73,14 @@ animations, hats/hair clipping, two-client remote visuals, reconnect and restart
 
 The 64×64 icon was inspected after downscaling and is structurally alpha-checked.
 Its native inventory appearance and any lighting/color differences remain NOT TESTED.
+
+## Crafted inventory artwork
+
+- ClothRetainer_Inventory_Source.png → Item_B47ANCEDEyewearClothRetainer.png.
+- LeatherRetainer_Inventory_Source.png → Item_B47ANCEDEyewearLeatherRetainer.png.
+
+Built-in image_gen created both transparent originals from text prompts. Normal
+Pillow export resizes the artwork to 60x60 and pads it with 2 transparent pixels
+inside a 64x64 RGBA icon, preserving alpha. The originals remain unchanged.
+crafted-icons.json records dimensions, export/source SHA-256 and runtime paths;
+ART_PROVENANCE.md records the full prompts. No new worn mesh is claimed.

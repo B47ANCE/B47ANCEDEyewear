@@ -1,6 +1,6 @@
 # Validation and release gates
 
-Project Version: 0.8.0-dev.1
+Project Version: 0.9.0-dev.1
 
 The user explicitly requested removal of all testing code. No test suites,
 gameplay doubles, item-grant/debug commands or Java harnesses remain in active source.
@@ -59,6 +59,18 @@ See RETAINER_ITEMS.md for the exact durability hook blocker and current manual
 runtime scenarios. Dedicated G7 and stable G8 remain blocked.
 
 [RUNTIME GATE] SP behavior and dedicated MP have not been validated for this iteration.
+[TESTED: offline, 2026-10-14, 0.9.0-dev.1] The same exact Python/version/source
+commands above and `git diff --check` pass for 168 runtime files, including all 13
+Lua files compiled without gameplay execution. Source review confirms three
+distinct icon/item bindings, no crafting output for UnbreakableRetainer, and the
+native cosmetic/no-hole/no-coverage properties. Installed world-fill event,
+capacity and item-creation APIs and core school/optical/pharmacy room keys were
+checked. Both new generated masters and all 64x64 runtime icons are true RGBA
+with transparent borders; source/export/runtime hashes match. Original black
+icon and model master hashes remain unchanged. No test suite was restored.
+New loot appearances, native wear/damage, transfers, synchronization and saves
+remain NOT TESTED. No 0.9 package, live deployment or Workshop upload was run.
+
 G7 BLOCKED / NOT TESTED; G8 BLOCKED. Stable release requires current-commit dedicated evidence and gates. Under the
 2026-10-14 Workshop MP testing policy, an explicit publish request may distribute
 this labelled test build before G7, after all source/authority/security/package checks.

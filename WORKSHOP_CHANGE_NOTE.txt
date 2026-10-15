@@ -1,9 +1,9 @@
-[b]Version 0.8.0-dev.1[/b]
+[b]Version 0.9.0-dev.1[/b]
 [b]MP testing build - dedicated multiplayer NOT TESTED[/b]
 
-[h2]Reusable wearable retainers — development source[/h2]
-• Add Cloth Eyewear Retainer and Eyewear Retainer, each with a Tailoring crafting recipe and original inventory icon.
-• Use vanilla Wear/Take Off in a dedicated slot. The actual retainer item is preserved and protects one compatible untied pair; no item is reconstructed.
-• Add server sandbox enable/protection settings and authoritative equipment refresh. Preserve legacy ties and historical retainer records.
-• Exact minus-one durability for a successful native knock-off remains blocked by a missing Lua hook. No Java, substitute damage, second fall roll, fitted worn models or rare loot are added.
-• Static/offline source validation only. No package/deployment/upload in this iteration; SP and dedicated MP remain NOT TESTED, G7/G8 blocked.
+[h2]Rare unbreakable retainer and distinct artwork[/h2]
+• Add Unbreakable Eyewear Retainer as rare loot in school lockers, optical-store containers and pharmacy cabinets. No recipe produces this item.
+• Keep the original black adjustable-cord artwork for the unbreakable retainer. Add distinct original cloth and stitched-leather icons for the craftable retainers.
+• Add server/SP-only loot generation with a sandbox chance of 0.25% per eligible new fill by default (0–5%; zero disables). Already filled containers remain unchanged.
+• Native cosmetic/no-hole/non-armor properties prevent ordinary wear/catch durability loss. No repair timer, Java code or finite-catch approximation is added.
+• Source/offline checks only. Actual SP and dedicated behavior remain NOT TESTED; G7 and stable G8 remain blocked.

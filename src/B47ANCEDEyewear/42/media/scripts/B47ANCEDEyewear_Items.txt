@@ -6,7 +6,7 @@ module B47ANCEDEyewear
         DisplayCategory = Accessory,
         ItemType = base:clothing,
         Weight = 0.05,
-        Icon = B47ANCEDEyewearRetainer,
+        Icon = B47ANCEDEyewearClothRetainer,
         BodyLocation = b47ancedeyewear:retainer,
         ClothingItem = B47ANCEDEyewearRetainer,
         Cosmetic = true,
@@ -19,11 +19,27 @@ module B47ANCEDEyewear
         DisplayCategory = Accessory,
         ItemType = base:clothing,
         Weight = 0.05,
-        Icon = B47ANCEDEyewearRetainer,
+        Icon = B47ANCEDEyewearLeatherRetainer,
         BodyLocation = b47ancedeyewear:retainer,
         ClothingItem = B47ANCEDEyewearRetainer,
         Cosmetic = true,
         ChanceToFall = 0,
         Tooltip = UI_B47ANCEDEyewear_WearableInstructions,
+    }
+    item UnbreakableRetainer
+    {
+        DisplayName = Unbreakable Eyewear Retainer,
+        DisplayCategory = Accessory,
+        ItemType = base:clothing,
+        Weight = 0.05,
+        Icon = B47ANCEDEyewearRetainer,
+        BodyLocation = b47ancedeyewear:retainer,
+        ClothingItem = B47ANCEDEyewearRetainer,
+        Cosmetic = true,
+        CanHaveHoles = false,
+        RemoveOnBroken = false,
+        ConditionMax = 100,
+        ChanceToFall = 0,
+        Tooltip = UI_B47ANCEDEyewear_UnbreakableInstructions,
     }
 }

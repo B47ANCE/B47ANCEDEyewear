@@ -1,6 +1,6 @@
 # Reusable retainer items
 
-Project Version: 0.8.0-dev.1
+Project Version: 0.9.0-dev.1
 Source review: 2026-10-14; installed Project Zomboid 42.21, Steam build 25485521.
 
 ## Items and recipes
@@ -8,7 +8,10 @@ Source review: 2026-10-14; installed Project Zomboid 42.21, Steam build 25485521
 The previous expansion reserved EyewearRetainer and prepared artwork, but never
 shipped its permanent-item definition. This iteration supplies real clothing
 items with ordinary vanilla CraftRecipe outputs, implemented entirely in Lua and
-game data. Both are reusable material alternatives with identical protection.
+game data. The two crafted items are reusable material alternatives with identical
+protection. The third, UnbreakableRetainer, is rare loot only and has no crafting
+recipe. Its native no-hole/non-armor properties prevent normal wear/catch loss;
+see RARE_RETAINER.md for loot rules and evidence.
 
 | Recipe in Crafting / Tailoring | Consumed inputs | Kept tools | Output |
 | --- | --- | --- | --- |
@@ -47,8 +50,9 @@ The server determines eligibility and fall values from its sandbox configuration
 Persistence and transfer use vanilla clothing items and worn-item mappings. No
 new persistent retainer schema or historical-data migration is introduced. Older
 schema 2 records retain their read-only inactive interpretation. Prior schema1
-ties and original artwork are preserved. Fitted worn meshes and loot are absent;
-the new clothing XML follows the installed emptytexture convention.
+ties and original artwork are preserved. Fitted worn meshes remain absent;
+the clothing XML follows the installed emptytexture convention. The rare item
+uses the original black icon; the crafted items use distinct cloth/leather icons.
 
 ## Exact per-catch durability: BLOCKED
 

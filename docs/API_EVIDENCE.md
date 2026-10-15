@@ -1,6 +1,6 @@
 # Lua API evidence
 
-Project Version: 0.8.0-dev.1
+Project Version: 0.9.0-dev.1
 Source inspection: 2026-10-14. Target Build 42.21.
 
 The installed Steam app108600 build25485521 uses the original JAR Core.class hash
@@ -72,3 +72,20 @@ remains BLOCKED in Lua under the current exposed API; no approximation is enable
 derived ChanceToFall ownership/synchronization, save/reconnect behavior, material
 consumption recovery and tooltip UI scales/controllers remain untested. G7 remains
 BLOCKED / NOT TESTED and stable G8 BLOCKED. No custom Java runtime is used.
+
+
+[VERIFIED: source, 0.9.0-dev.1] ItemPickerJava.fillContainerInternal returns on
+GameClient.client and emits OnFillContainer with room name, actual container type
+and actual ItemContainer after native fill. The server hook reads current sandbox
+values then; it does not use OnPreDistributionMerge (which occurs before a later
+SandboxOptions.load in IsoWorld). Installed Distributions/KeyNamer/legacy aliases
+verify school lockers, optical stores and pharmacy containers. ItemContainer's
+hasRoomFor(character,float), AddItem(String), and script Item.getActualWeight are
+available. The extra rare loot roll is server/SP-owned and changes no client state
+or vanilla distribution table. Native container serialization persists the item.
+
+[VERIFIED: source] Native BloodClothingType.addHole and
+IsoGameCharacter.addHoleFromZombieAttacks select damage layers from BloodLocation
+coverage. The unbreakable item defines none, disallows holes, is cosmetic and has
+zero fall chance; Clothing.update has no condition decrement. No condition-restoring
+timer or hit callback is used. Actual native wear/damage remains a runtime gate.

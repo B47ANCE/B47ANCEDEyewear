@@ -1,0 +1,39 @@
+{
+  "method": "Built-in image_gen transparent RGBA masters; Pillow12.3.0 premultiplied-alpha export to 60x60 with 2px transparent padding in 64x64 canvas",
+  "entries": [
+    {
+      "kind": "cloth",
+      "source": "ClothRetainer_Inventory_Source.png",
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "source_sha256": "a76fe9332c270f72ec882c99c8eb9d482bf6d7aadd48e31ccd62e97cae260369",
+      "icon": "Item_B47ANCEDEyewearClothRetainer.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "3a6bd147b4e229dc9ffe59ba4d8d3c58cb1a021b7b764791fb8ad249ff1a8956",
+      "runtime_path": "media/textures/Item_B47ANCEDEyewearClothRetainer.png",
+      "transparent_padding_pixels": 2
+    },
+    {
+      "kind": "leather",
+      "source": "LeatherRetainer_Inventory_Source.png",
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "source_sha256": "e00e676b4bb9fae71009ca6fe766836b1090402722caf06a909be29eb7f10849",
+      "icon": "Item_B47ANCEDEyewearLeatherRetainer.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "59c3fb6858fee21fea1780469a428a3081126c38b6efe60853ffaa033cc33b46",
+      "runtime_path": "media/textures/Item_B47ANCEDEyewearLeatherRetainer.png",
+      "transparent_padding_pixels": 2
+    }
+  ]
+}

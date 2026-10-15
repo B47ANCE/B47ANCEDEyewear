@@ -2,13 +2,19 @@ require 'NPCs/BodyLocations'
 local R = require 'B47ANCEDEyewear/Retention'
 local T = {}
 T.types = { ['B47ANCEDEyewear.MakeshiftRetainer'] = true,
-    ['B47ANCEDEyewear.EyewearRetainer'] = true }
+    ['B47ANCEDEyewear.EyewearRetainer'] = true,
+    ['B47ANCEDEyewear.UnbreakableRetainer'] = true }
+T.unbreakableType = 'B47ANCEDEyewear.UnbreakableRetainer'
 T.slot = ItemBodyLocation.get(ResourceLocation.of('b47ancedeyewear:retainer'))
 assert(T.slot, 'B47ANCEDEyewear retainer slot was not registered')
 BodyLocations.getGroup('Human'):getOrCreateLocation(T.slot)
 
 function T.isItem(item)
     return item ~= nil and T.types[item:getFullType()] == true
+end
+
+function T.isUnbreakable(item)
+    return item ~= nil and item:getFullType() == T.unbreakableType
 end
 
 function T.worn(character)

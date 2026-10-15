@@ -1,4 +1,9 @@
 VERSION = 1,
+option B47ANCEDEyewear.RareRetainerLootChance
+{
+    type = double, default = 0.25, min = 0, max = 5,
+    page = B47ANCEDEyewear, translation = B47ANCEDEyewear_RareRetainerLootChance,
+}
 option B47ANCEDEyewear.WearableRetainersEnabled
 {
     type = boolean, default = true,

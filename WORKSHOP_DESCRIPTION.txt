@@ -1,6 +1,6 @@
 [h1]B47ANCE'd Eyewear — Development Build[/h1]
 
-[b]Version 0.8.0-dev.1[/b]
+[b]Version 0.9.0-dev.1[/b]
 [b]MP testing build - dedicated multiplayer NOT TESTED[/b]
 [b]Development build for Project Zomboid 42.21. In-game and dedicated multiplayer validation remain pending.[/b]
 
@@ -8,6 +8,8 @@
 Secure compatible glasses and supported hats using common materials. This is a Lua-only mod with no Java or JAR dependency.
 
 [h2]Features[/h2]
+• Find the rare Unbreakable Eyewear Retainer in school lockers, optical-store containers and pharmacy cabinets. It cannot be crafted and loses no condition from ordinary wear or catches.
+• The rare item retains the original black adjustable-cord artwork. Craftable cloth and leather retainers now have distinct inventory icons.
 • Craft Cloth Eyewear Retainer or Eyewear Retainer in Tailoring, then Wear it alongside glasses. Take Off keeps the same item for reuse.
 • A dedicated slot protects one compatible untied pair using the server fall setting. Both materials currently provide the same reusable protection. Monocles and hats are excluded from wearable-retainer protection.
 • Crafting → Tailoring → Tie worn eyewear secures compatible vanilla glasses or a straw/summer hat. Wear the item and keep a supported material in your main inventory.
@@ -22,13 +24,13 @@ Mod ID: B47ANCEDEyewear. Target: Build 42.21. Monocles cannot be tied. Existing 
 Client requests are validated by the server. Single-player and dedicated multiplayer acceptance are pending; this build is not multiplayer-certified.
 
 [h2]Configuration[/h2]
-Server sandbox settings control new tying, the untied-eyewear fall multiplier, and the strapped-headwear fall value. Defaults preserve the previous retention behavior. Disabling new ties does not remove existing ties or prevent untying. Wearable-retainer settings separately control crafting/protection and the retained fall value (default 0); disabling preserves existing retainer items.
+Server sandbox settings control new tying, the untied-eyewear fall multiplier, and the strapped-headwear fall value. Defaults preserve the previous retention behavior. Disabling new ties does not remove existing ties or prevent untying. Wearable-retainer settings separately control crafting/protection and the retained fall value (default 0); disabling preserves existing retainer items. RareRetainerLootChance defaults to0.25% per eligible new fill, range 0–5%; zero disables new spawns. Already filled containers remain unchanged.
 
 [h2]Source Code & Development[/h2]
 [url=https://github.com/B47ANCE/B47ANCEDEyewear]GitHub — Source Code & Issues[/url]
 
 [h2]Known Issues[/h2]
-Exact -1 durability per successful vanilla knock-off is blocked by the missing server-safe Lua hook. No durability decrement or substitute fall roll is enabled. Rare loot and fitted worn models are not included; the items have an inventory icon and invisible clothing definition.
+Exact -1 durability per successful vanilla knock-off is blocked by the missing server-safe Lua hook. No durability decrement or substitute fall roll is enabled. Fitted worn models are not included; all three items have inventory icons and an invisible clothing definition.
 This source iteration has offline source preflight checks only; no package was generated. Actual UI, combat, save/reconnect and dedicated multiplayer behavior remain unverified.
 
 [h2]Credits & Permissions[/h2]

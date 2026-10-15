@@ -83,6 +83,9 @@ def validate_source(files):
             for recipe in re.findall(r'\bcraftRecipe\s+(\w+)', script):
                 if recipe not in english:
                     raise ValueError('Untranslated crafting recipe: ' + recipe)
+            for outputs in re.findall(r'\boutputs\s*\{([^}]*)\}', script, re.S):
+                if 'B47ANCEDEyewear.UnbreakableRetainer' in outputs:
+                    raise ValueError('Loot-only unbreakable retainer cannot be a crafting output')
             for key in re.findall(r'\bTooltip\s*=\s*(\w+)\s*,', script):
                 if key not in english:
                     raise ValueError('Untranslated recipe instructions: ' + key)
@@ -111,6 +114,18 @@ def validate_source(files):
     icon = 'media/textures/Item_B47ANCEDEyewearRetainer.png'
     if digest(files[icon]) != asset_manifest['files']['Item_B47ANCEDEyewearRetainer.png']:
         raise ValueError('Runtime retainer icon differs from original authoring asset')
+    crafted = json.loads((assets / 'crafted-icons.json').read_text(encoding='utf-8'))
+    for entry in crafted['entries']:
+        for key, checksum in [('source', 'source_sha256'), ('icon', 'sha256')]:
+            if Path(entry[key]).name != entry[key]:
+                raise ValueError('Unsafe crafted asset path')
+            if digest((assets / entry[key]).read_bytes()) != entry[checksum]:
+                raise ValueError('Crafted asset provenance mismatch: ' + entry[key])
+        if digest(files[entry['runtime_path']]) != entry['sha256']:
+            raise ValueError('Runtime crafted icon differs from authoring export')
+        data = files[entry['runtime_path']]
+        if data[:8] != b'\x89PNG\r\n\x1a\n' or int.from_bytes(data[16:20], 'big') != 64 or int.from_bytes(data[20:24], 'big') != 64 or data[25] != 6:
+            raise ValueError('Crafted runtime icon must be a 64x64 RGBA PNG')
     description = (ROOT / 'WORKSHOP_DESCRIPTION.txt').read_text(encoding='utf-8')
     origin = subprocess.check_output(['git', '-C', str(ROOT), 'remote', 'get-url', 'origin'], text=True).strip()
     match = re.fullmatch(r'(?:https://github\.com/|git@github\.com:)([^/]+)/([^/]+?)(?:\.git)?', origin)

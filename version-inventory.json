@@ -45,6 +45,10 @@
     {
       "path": "docs/RETAINER_ITEMS.md",
       "pattern": "^Project Version: (?P<version>\\S+)$"
+    },
+    {
+      "path": "docs/RARE_RETAINER.md",
+      "pattern": "^Project Version: (?P<version>\\S+)$"
     }
   ],
   "changelog": {
@@ -144,6 +148,10 @@
     {
       "reference": "dist/current/release-provenance.json",
       "reason": "Last-prepared 0.7.0-dev.1 publication provenance, retained unchanged; no 0.8 package exists and future packaging must preserve/reclassify it before replacing."
+    },
+    {
+      "reference": "assets/retainers/ART_PROVENANCE.md: crafted retainer icons 0.9.0-dev.1 generation record",
+      "reason": "Original generated art provenance remains tied to its creation iteration; do not relabel prompts or image generation as future validation."
     }
   ]
 }

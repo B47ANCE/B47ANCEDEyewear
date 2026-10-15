@@ -30,5 +30,7 @@
   "UI_B47ANCEDEyewear_WearableProtection": "Worn eyewear retainer is applying the server retention setting.",
   "UI_B47ANCEDEyewear_CraftClothRetainer": "Makes one reusable cloth retainer from two ripped sheets and two uses of twine or thread. Wear with compatible glasses.",
   "UI_B47ANCEDEyewear_CraftLeatherRetainer": "Makes one reusable leather retainer from two leather strips, four thread uses and two rubber bands. A sewing needle and scissors are kept.",
-  "UI_ClothingType_b47ancedeyewear:retainer": "Eyewear Retainer"
+  "UI_ClothingType_b47ancedeyewear:retainer": "Eyewear Retainer",
+  "UI_B47ANCEDEyewear_UnbreakableInstructions": "Rare loot only: school lockers, optical-store containers and pharmacy cabinets. Cannot be crafted. Wear in the retainer slot to protect one compatible pair of glasses. Monocles and hats are excluded.",
+  "UI_B47ANCEDEyewear_UnbreakableCondition": "Unbreakable — no wear or catch durability loss."
 }

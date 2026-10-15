@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.9.0-dev.1] — 2026-10-14
+
+- MINOR: add a loot-only Unbreakable Eyewear Retainer with no crafting output recipe and native no-hole/non-armor clothing properties.
+- Add a server/SP-only rare loot roll for verified school lockers, optical stores and pharmacy containers; sandbox chance defaults to0.25% per eligible fill, range 0–5%.
+- Reserve original black cord artwork/model source for the unbreakable item; generate distinct cloth and stitched-leather inventory icons for the craftable items.
+- Preserve existing items, recipes and historical save data. No repair timer, Java dependency or per-catch durability approximation is added.
+- Offline/source checks only; game/server NOT TESTED, G7/G8 blocked. No packaging, deployment or publication.
+
 ## [0.8.0-dev.1] — 2026-10-14
 
 - MINOR: add craftable reusable cloth and leather eyewear retainers with a dedicated vanilla equipment slot.

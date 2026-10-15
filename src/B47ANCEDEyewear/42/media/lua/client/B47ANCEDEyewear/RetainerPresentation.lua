@@ -10,6 +10,10 @@ function P.model(item)
     local S=B47ANCEDEyewear
     local T=S and S.RetainerItems
     if T and T.isItem(item) then
+        if T.isUnbreakable(item) then
+            return {lines={text('RetainerTitle'),getItemNameFromFullType(item:getFullType()),
+                text('UnbreakableInstructions'),text('UnbreakableCondition')}}
+        end
         return {lines={text('RetainerTitle'),getItemNameFromFullType(item:getFullType()),
             text('WearableInstructions'),text('WearableDurability')}}
     end

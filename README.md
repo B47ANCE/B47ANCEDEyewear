@@ -1,6 +1,6 @@
 # B47ANCE'd Eyewear
 
-Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.8.0-dev.1.
+Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.9.0-dev.1.
 
 Lua-only development build targeting Project Zomboid 42.21. No Java agent, bridge,
 JAR dependency, test suite or debugger item-grant command is part of the project.
@@ -31,20 +31,28 @@ normal retention. Both materials currently have the same configurable protection
 there is no hidden durability or quality difference. Hats still use Tie/Untie.
 No magazine, skill level or workbench is required for either output recipe.
 
+**Unbreakable Eyewear Retainer** is a separate rare, non-craftable item. It keeps
+its condition through normal wear and catches and uses the original black-cord
+artwork. Look in school lockers, optical-store containers and pharmacy cabinets.
+The server's RareRetainerLootChance defaults to 0.25% per eligible new container
+fill (range 0–5%; zero disables spawns). Existing filled containers are not changed.
+Crafted cloth and leather retainers have distinct new inventory icons.
+
 Tied attachments use the existing zero-fall retention behavior. Untied eyewear
 uses item-specific profiles. Strapped protective headwear defaults to zero fall
 value, while loose hats retain vanilla behavior. Vanilla impact calculation remains in control.
 Server sandbox options control new tying, the untied-eyewear multiplier and the
 strapped-headwear fall value, wearable-retainer enable switch and retained-eyewear
-fall value (default 0). Disabling wearable retainers stops their crafting/protection
+fall value (default 0), plus the rare-item loot chance. Disabling wearable retainers stops their crafting/protection
 but preserves the actual items. Existing ties remain valid when new tying is disabled.
 
 Hovering tied eyewear shows its material and secured state beside the normal
 inventory tooltip, without a fabricated durability bar. Historical finite or
 permanent retainer records are preserved for inspection and clearly marked inactive.
 Reusable wearable retainer items and their original inventory icon are included.
-Their clothing definition is deliberately invisible: no fitted 3D worn model or
-rare loot registration is claimed. Exact -1 durability per successful vanilla
+Their clothing definition is deliberately invisible: no fitted 3D worn model is
+claimed. Loot-only acquisition and native unbreakable behavior are described in
+[the rare-item record](docs/RARE_RETAINER.md). Exact -1 durability per successful vanilla
 knock-off remains blocked by the engine's missing server-safe Lua callback.
 Ordinary hits never charge durability; no second fall roll, post-drop re-equipping
 or Java dependency is installed. See [retainer behavior and blocker](docs/RETAINER_ITEMS.md).

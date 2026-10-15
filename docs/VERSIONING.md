@@ -4,8 +4,9 @@ Root VERSION is the only canonical project version. docs/VERSION_POLICY.md is th
 authoritative inherited policy; version-inventory.json declares current mirrors,
 package selectors, schema/game distinctions and historical evidence.
 
-Current development iteration: 0.8.0-dev.1. Pre-1.0 MINOR adds a compatible
-reusable wearable items, output recipes and a vanilla equipment-slot integration.
+Current development iteration: 0.9.0-dev.1. Pre-1.0 MINOR adds
+a rare loot-only unbreakable item, server-configured loot generation and distinct
+inventory artwork for the existing craftable retainers.
 Existing Tie/Untie remains supported; no retainer state migration is introduced.
 The original item, context-menu API and schema1 tie records remain compatible;
 schema2 historical records stay read-only. Neither schema number is the project version.

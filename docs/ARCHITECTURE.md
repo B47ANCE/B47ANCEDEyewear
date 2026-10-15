@@ -63,3 +63,22 @@ padding and the presentation condition thresholds remain internal technical cons
 [VERIFIED: source] Vanilla synchronization and inventory APIs are reused.
 [RUNTIME GATE] Dedicated authority, timing, replication, join/reconnect, saves/restarts,
 consumption error recovery and actual UI behavior remain untested. G7/G8 are blocked.
+
+
+RareRetainerLoot.lua is a server-only native OnFillContainer listener, with an
+explicit client guard and no custom networking/loot command. Exact room/container
+allowlists bound its work to school lockers, optical-store containers and pharmacy
+counter/shelves. It reads validated server sandbox settings at fill time, checks
+space using the script item's actual weight, scans only that container for an
+existing rare item and makes one percentage roll. Native AddItem creates a single
+actual UnbreakableRetainer; normal world-container synchronization/persistence owns
+it. No user save or distribution table is rewritten and no filled container is
+retrofitted. Native fills/respawns may roll again, without duplicating an item
+already present. RareRetainerLootChance is 0–5%, default 0.25%, precision 0.01%; zero
+or disabled wearable retainers prevents new spawns. Existing items remain valid.
+
+The rare item has no craft output and uses the original black cord inventory icon;
+cloth and leather craft outputs have distinct icon exports. Native cosmetic,
+no-hole and no-body-coverage properties avoid normal damage/condition loss. Its
+unbreakability is not implemented with infinite numeric durability, repair loops
+or prohibited catch interception. The separate finite-catch hook remains blocked.

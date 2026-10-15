@@ -1,9 +1,15 @@
 # Cleanup and Workshop preparation
 
-Project Version: 0.8.0-dev.1
+Project Version: 0.9.0-dev.1
 Date: 2026-10-14
 
-Current 0.8 continuation: add real Lua-only wearable items and ordinary output
+Current 0.9 continuation adds a loot-only unbreakable retainer and distinct cloth/
+leather inventory art. Generated master images and export hashes are retained;
+original black cord artwork/model bytes and prior published packages are unchanged.
+No tests, Java, package, deployment or publication are added by this source task.
+
+
+Earlier 0.8 continuation: add real Lua-only wearable items and ordinary output
 recipes by explicit request. No retired tests, Java paths or finite catches are
 restored. Item artwork is copied byte-for-byte from the retained original source.
 This is source implementation only; packaging/deployment/publication are separate.
