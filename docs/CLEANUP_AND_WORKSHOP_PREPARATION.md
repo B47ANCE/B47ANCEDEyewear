@@ -1,9 +1,18 @@
 # Cleanup and Workshop preparation
 
-Project Version: 0.9.0-dev.1
+Project Version: 0.10.0-dev.1
 Date: 2026-10-14
 
-Current 0.9 continuation adds a loot-only unbreakable retainer and distinct cloth/
+Current 0.10 continuation implements the explicitly approved native head/clothing
+wear alternative for all six improvised material ties and both crafted retainers.
+Direct ties own native condition through linked clothing items, with paid-legacy
+migration and no free reconstruction. Rare-item art/definition remains unchanged.
+The published 0.9 ZIP/checksum/provenance were preserved by a bounded move to
+dist/historical/0.9.0-dev.1-published, with per-file SHA-256 verification and a
+preservation ledger. No deletion, tests/debug grants, Java, game/server launch,
+current package, deployment or publication is part of this source request.
+
+Earlier 0.9 source continuation adds a loot-only unbreakable retainer and distinct cloth/
 leather inventory art. Generated master images and export hashes are retained;
 original black cord artwork/model bytes and prior published packages are unchanged.
 No tests, Java, package, deployment or publication are added by this source task.

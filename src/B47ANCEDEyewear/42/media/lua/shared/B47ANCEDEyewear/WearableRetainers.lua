@@ -17,6 +17,17 @@ function T.isUnbreakable(item)
     return item ~= nil and item:getFullType() == T.unbreakableType
 end
 
+function T.configure(character)
+    if isClient() or not character then return end
+    local item = character:getWornItem(T.slot)
+    if not T.isItem(item) or T.isUnbreakable(item)
+        or item:getContainer() ~= character:getInventory() then return end
+    local options = R.options()
+    local resistance = item:getFullType() == 'B47ANCEDEyewear.MakeshiftRetainer'
+        and options.clothResistance or options.leatherResistance
+    if item:getConditionLowerChance() ~= resistance then item:setConditionLowerChance(resistance) end
+end
+
 function T.worn(character)
     if not character or character:isDead() or not R.options().wearable then return nil end
     local item = character:getWornItem(T.slot)
@@ -35,7 +46,7 @@ function T.target(character, S)
     for index = 0, worn:size() - 1 do
         local item = worn:get(index):getItem()
         if S.isGlasses(item) and not S.isMonocle(item) and not item:isBroken()
-            and not S.isTied(item) and item:getContainer() == inventory then
+            and not S.hasActiveTie(character, item) and item:getContainer() == inventory then
             return item
         end
     end

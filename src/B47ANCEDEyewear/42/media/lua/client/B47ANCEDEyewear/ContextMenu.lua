@@ -71,12 +71,7 @@ local function inventoryItems(inventory)
 end
 
 local function canTie(player, item)
-    if not player or not item or player:isDead() or not S.isTieable(item) or S.isTied(item) then return false end
-    if type(player.isEquippedClothing) ~= 'function' or not player:isEquippedClothing(item) then return false end
-    if type(item.isBroken) == 'function' and item:isBroken() then return false end
-    if type(item.getChanceToFall) ~= 'function' then return false end
-    local chance = item:getChanceToFall()
-    return type(chance) == 'number' and chance > 0 and chance <= 100
+    return S.canTie(player, item)
 end
 
 local function canUntie(player,item)

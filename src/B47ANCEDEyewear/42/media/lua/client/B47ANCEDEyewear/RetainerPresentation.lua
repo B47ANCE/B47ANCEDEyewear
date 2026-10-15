@@ -5,30 +5,56 @@ local function text(key,...) return getText('UI_B47ANCEDEyewear_'..key,...) end
 local function finite(n) return type(n)=='number' and n==n and n>-math.huge and n<math.huge end
 local function whole(n,lo,hi) return finite(n) and n==math.floor(n) and n>=lo and n<=hi end
 local function unknown() return {unavailable=true,lines={text('RetainerTitle'),text('Unavailable')}} end
+local function conditionModel(item, lines)
+    local current, maximum = item:getCondition(), item:getConditionMax()
+    if not whole(maximum,1,127) or not whole(current,0,maximum) then return unknown() end
+    lines[#lines+1] = text('Condition',text(current == 0 and 'Broken'
+        or current / maximum <= 0.25 and 'AboutToBreak'
+        or current < maximum and 'Worn' or 'Secure'))
+    lines[#lines+1] = text('Durability',current,maximum)
+    local ratio = current / maximum
+    return {lines=lines,barAfter=#lines,ratio=ratio,percent=math.floor(ratio*100+0.5),
+        current=current,maximum=maximum}
+end
 function P.model(item)
     if not item then return nil end
     local S=B47ANCEDEyewear
     local T=S and S.RetainerItems
+    local D=S and S.TieDurability
+    if D and D.isItem(item) then
+        return conditionModel(item,{text('RetainerTitle'),item:getName(),text('ImprovisedTieInstructions')})
+    end
     if T and T.isItem(item) then
         if T.isUnbreakable(item) then
             return {lines={text('RetainerTitle'),getItemNameFromFullType(item:getFullType()),
                 text('UnbreakableInstructions'),text('UnbreakableCondition')}}
         end
-        return {lines={text('RetainerTitle'),getItemNameFromFullType(item:getFullType()),
-            text('WearableInstructions'),text('WearableDurability')}}
+        return conditionModel(item,{text('RetainerTitle'),getItemNameFromFullType(item:getFullType()),
+            text('WearableInstructions'),text('WearableDurability')})
     end
     if T then
         local owner=item:getEquipParent()
         if owner and T.target(owner,S)==item then
-            return {lines={text('RetainerTitle'),text('WearableProtection'),text('WearableDurability')}}
+            local retainer=T.worn(owner)
+            if T.isUnbreakable(retainer) then
+                return {lines={text('RetainerTitle'),text('WearableProtection'),text('UnbreakableCondition')}}
+            end
+            return conditionModel(retainer,{text('RetainerTitle'),text('WearableProtection'),text('WearableDurability')})
         end
     end
     if not item:hasModData() then return nil end
     local tied=S and S.state and S.state(item)
     if tied and tied.tied then
         if type(tied.material)~='string' then return unknown() end
-        return {lines={text('RetainerTitle'),text('Material',getItemNameFromFullType(tied.material)),
-            text('Condition',text('Secure')),text('TiedAttachment')}}
+        local owner=item:getEquipParent()
+        local tie=D and D.item(owner,item,tied)
+        local lines={text('RetainerTitle'),text('Material',getItemNameFromFullType(tied.material)),text('TiedAttachment')}
+        if tie then
+            lines[#lines+1]=text(D.active(owner,item,tied) and 'TieActive' or 'TieInactive')
+            return conditionModel(tie,lines)
+        end
+        lines[#lines+1]=text('TieInactive')
+        return {lines=lines}
     end
     local raw=item:getModData()[R.key]
     if raw==nil then return nil end

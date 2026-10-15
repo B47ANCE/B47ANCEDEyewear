@@ -4,12 +4,17 @@ Root VERSION is the only canonical project version. docs/VERSION_POLICY.md is th
 authoritative inherited policy; version-inventory.json declares current mirrors,
 package selectors, schema/game distinctions and historical evidence.
 
-Current development iteration: 0.9.0-dev.1. Pre-1.0 MINOR adds
-a rare loot-only unbreakable item, server-configured loot generation and distinct
-inventory artwork for the existing craftable retainers.
-Existing Tie/Untie remains supported; no retainer state migration is introduced.
-The original item, context-menu API and schema1 tie records remain compatible;
-schema2 historical records stay read-only. Neither schema number is the project version.
+Current development iteration: 0.10.0-dev.1. Pre-1.0 MINOR adds native head/clothing
+durability for all six improvised ties and both crafted retainers, server wear
+configuration and actual condition tooltips. The user approved changing the wear
+trigger from hidden native knock-off rolls. Direct ties now create linked physical
+items; transferring protection requires both items. This pre-1.0 behavior change
+and one-time paid-legacy migration are explicit, not a silent compatibility claim.
+Native crafted condition stays on the existing 10-point scale. Item links extend
+schema1 additively with wearSchema=1/tieId and a scalar tie-side link. Historical
+schema2 records stay inactive; neither schema number is the project version.
+The rare item, original eyewear IDs and recipes remain supported. Saved-world
+downgrade is not validated; older packages lack the new three tie types.
 
 Source mod.info, README, canonical Workshop texts, current validation/preparation/
 API records and RELEASE_STATUS.json are current mirrors. Build reads VERSION and
@@ -24,3 +29,7 @@ and add --release after a current package exists. The check proves only declared
 version consistency. All other integrity/authority checks remain separate.
 Dedicated G7 PASS is required for stable G8. The labelled MP testing build can be
 distributed before G7 only by an explicit publish request after other preflight gates.
+
+The actual published 0.9 ZIP/checksum/provenance moved unchanged to
+dist/historical/0.9.0-dev.1-published with verified hashes and a preservation ledger.
+No current 0.10 package exists; release checks defer packaging until separately requested.

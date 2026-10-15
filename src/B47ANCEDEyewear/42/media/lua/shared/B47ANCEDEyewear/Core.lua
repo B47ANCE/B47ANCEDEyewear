@@ -2,7 +2,9 @@ B47ANCEDEyewear = B47ANCEDEyewear or {}
 local S = B47ANCEDEyewear
 local R = require 'B47ANCEDEyewear/Retention'
 local T = require 'B47ANCEDEyewear/WearableRetainers'
+local D = require 'B47ANCEDEyewear/TieDurability'
 S.RetainerItems = T
+S.TieDurability = D
 S.materials = { ['Base.Twine'] = true, ['Base.RubberBand'] = true,
     ['Base.DentalFloss'] = true, ['Base.Thread'] = true,
     ['Base.Thread_Aramid'] = true, ['Base.Thread_Sinew'] = true }
@@ -82,6 +84,11 @@ function S.isTied(item)
     return data ~= nil and data.tied
 end
 
+function S.hasActiveTie(character, item)
+    local data = S.state(item)
+    return data ~= nil and data.tied and D.active(character, item, data)
+end
+
 function S.isMaterial(item)
     return item ~= nil and S.materials[item:getFullType()] == true
         and (not instanceof(item, 'DrainableComboItem') or item:getCurrentUses() >= 1)
@@ -128,7 +135,7 @@ function S.isReadyToTie(item)
 end
 
 function S.canTie(character, item)
-    return ownsWornItem(character, item) and S.isReadyToTie(item)
+    return ownsWornItem(character, item) and S.isReadyToTie(item) and D.canInstall(character, item, S)
 end
 
 function S.canUseMaterial(character, material)
@@ -191,14 +198,18 @@ function S.tie(character, item, material)
     local original=item:getChanceToFall()
     local container,uses=material:getContainer(),material:getCurrentUses()
     local data={version=1,tied=true,original=original,material=material:getFullType(),name=name,customName=customName}
+    local tie
     local function rollback()
         modData.B47ANCEDEyewear=previous
         if name then item:setName(name);item:setCustomName(customName) end
         item:setChanceToFall(original)
+        D.discard(character, tie)
     end
     local changed,changeError=pcall(function()
         modData.B47ANCEDEyewear=data
         S.applyTiedName(item,data)
+        tie = D.install(character, item, data, S)
+        assert(tie, 'The improvised tie slot is unavailable')
         item:setChanceToFall(0)
     end)
     if not changed then
@@ -237,6 +248,7 @@ function S.untie(character, item)
         print('[B47ANCEDEyewear] Untie failed: '..tostring(err))
         return false
     end
+    D.discard(character, D.item(character, item, data))
     syncChangedItem(character,item)
     return true
 end
@@ -248,7 +260,20 @@ function S.applyChance(item, character, retained)
     S.migrateState(character, item)
     clearLegacyMonocleState(character, item)
     local data = S.state(item)
-    local tied = data ~= nil and data.tied or false
+    if data and data.tied and not isClient() then
+        if data.wearSchema == nil and ownsWornItem(character, item) then
+            -- Paid legacy ties migrate only once; missing newer links never grant a replacement.
+            local tie = D.install(character, item, data, S)
+            if tie then syncChangedItem(character, item) end
+        end
+        local tie = D.item(character, item, data)
+        if tie and tie:isBroken() then
+            data.tied = false
+            S.restoreName(item, data)
+            syncChangedItem(character, item)
+        end
+    end
+    local tied = data ~= nil and data.tied and D.active(character, item, data) or false
     local chance = R.chanceFor(item, tied, data and data.original)
     if retained == nil then retained = T.target(character, S) == item end
     if retained and not tied then chance = R.options().retainerChance end
@@ -260,11 +285,15 @@ end
 
 function S.refresh(character)
     if not character then return end
+    T.configure(character)
+    D.configure(character)
     local worn = character:getWornItems()
     if not worn then return end
     local retained = T.target(character, S)
-    for i = 0, worn:size() - 1 do
-        local item = worn:get(i):getItem()
+    -- A legacy migration can append a worn tie; iterate a stable snapshot.
+    local items = {}
+    for i = 0, worn:size() - 1 do items[#items + 1] = worn:get(i):getItem() end
+    for _, item in ipairs(items) do
         S.applyChance(item, character, item == retained)
     end
 end

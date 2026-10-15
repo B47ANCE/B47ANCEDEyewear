@@ -49,6 +49,10 @@
     {
       "path": "docs/RARE_RETAINER.md",
       "pattern": "^Project Version: (?P<version>\\S+)$"
+    },
+    {
+      "path": "docs/DURABILITY.md",
+      "pattern": "^Project Version: (?P<version>\\S+)$"
     }
   ],
   "changelog": {
@@ -152,6 +156,10 @@
     {
       "reference": "assets/retainers/ART_PROVENANCE.md: crafted retainer icons 0.9.0-dev.1 generation record",
       "reason": "Original generated art provenance remains tied to its creation iteration; do not relabel prompts or image generation as future validation."
+    },
+    {
+      "reference": "dist/historical/0.9.0-dev.1-published; dist/workshop-publish/publication-0.9.0-dev.1.json; assets/retainers/ART_PROVENANCE.md: crafted icon creation",
+      "reason": "Actual published 0.9.0-dev.1 package, hashes, provenance and icon-generation evidence are preserved; not current durability validation."
     }
   ]
 }

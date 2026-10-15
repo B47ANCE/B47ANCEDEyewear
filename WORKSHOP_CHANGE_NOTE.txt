@@ -1,10 +1,11 @@
-[b]Version 0.9.0-dev.1[/b]
+[b]Version 0.10.0-dev.1[/b]
 [b]MP testing build - dedicated multiplayer NOT TESTED[/b]
 
-[h2]Rare unbreakable retainer and distinct artwork[/h2]
-• Add Unbreakable Eyewear Retainer as rare loot in school lockers, optical-store containers and pharmacy cabinets. No recipe produces this item.
-• Keep the original black adjustable-cord artwork for the unbreakable retainer. Add distinct original cloth and stitched-leather icons for the craftable retainers.
-• Add server/SP-only loot generation with a sandbox chance of 0.25% per eligible new fill by default (0–5%; zero disables). Already filled containers remain unchanged.
-• Native cosmetic/no-hole/non-armor properties prevent ordinary wear/catch durability loss. No repair timer, Java code or finite-catch approximation is added.
-• Includes the two craftable reusable retainer items and Tailoring recipes introduced since the previous Workshop build.
-• Offline source and package preflight checks only. Actual SP and dedicated behavior remain NOT TESTED; G7 and stable G8 remain blocked.
+[h2]Lua-only native durability[/h2]
+• Add head/clothing condition wear to all six improvised material ties and both crafted retainers. The rare unbreakable loot item remains exempt.
+• Direct Tie creates one actual condition-bearing attachment linked to the original glasses or hat. Paid legacy ties upgrade once when worn; missing newer ties are not replaced. Wear and transfer both linked items together.
+• Add server wear-resistance settings, default 1 for improvised ties, 2 for cloth and 4 for leather. Each native eligible damage attempt has a one-in-N chance to remove one condition point; settings do not refill existing condition.
+• Display live condition values, status and durability bars. Broken finite items stop providing protection through vanilla equipment handling.
+• Use native damage and synchronization. No custom Java, Lua knock-off reroll, post-drop re-equipping or fake catch counter.
+• Native layering/damage ordering applies; a breaking blow can also dislodge eyewear. Back up saves before upgrading; package-only rollback is not a validated save downgrade.
+• Source/offline validation only. SP and dedicated gameplay remain NOT TESTED; G7 and stable G8 remain blocked.

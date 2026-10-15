@@ -1,85 +1,79 @@
 # B47ANCE'd Eyewear
 
-Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.9.0-dev.1.
+Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.10.0-dev.1.
 
-Lua-only development build targeting Project Zomboid 42.21. No Java agent, bridge,
-JAR dependency, test suite or debugger item-grant command is part of the project.
-Gameplay and dedicated multiplayer acceptance remain unverified.
+Lua-only development build targeting Project Zomboid 42.21. No custom Java/JAR,
+test suite or debugger grants are shipped. SP/dedicated gameplay is NOT TESTED.
 
-Wear compatible glasses or a straw/summer hat, keep a supported material in your
-main inventory, and right-click the worn item. **Tie** lists available twine,
-rubber bands, dental floss, ordinary thread, sinew thread or aramid thread.
-Tying consumes one use and preserves the original item, condition, prescription,
-model and custom name. **Untie** restores the original name without refunding material.
-Crafting → Tailoring also offers **Tie worn eyewear**. Wear compatible vanilla
-glasses, a straw hat or a summer hat and keep a supported material in your main
-inventory. The recipe consumes one use, modifies the same item and cannot batch
-craft. Already tied, broken or unworn items are rejected. No skill, magazine or
-workbench is required. Modded eyewear can continue using the inventory context menu.
-Monocles remain incompatible with tying.
+Wear compatible glasses or a straw/summer hat, keep twine, a rubber band, dental
+floss, ordinary thread, sinew thread or aramid thread in your main inventory,
+and right-click → Tie. Crafting → Tailoring → Tie worn eyewear uses the same
+server transaction. One material use creates/equips a finite improvised tie;
+the original eyewear, condition, prescription, model, ID and custom name survive.
+Monocles remain incompatible. Untie restores the name and consumes the matching
+tie without refunding material. The matching tie slot and a little inventory
+space must be free. Transfer the eyewear and its linked tie together; wearing
+both activates protection. Taking off either suspends protection. Paid legacy
+ties upgrade once when worn, without a second payment; missing newer tie items
+never receive free replacements.
 
-Crafting → Tailoring now also provides two real wearable items:
+Crafting → Tailoring also provides:
 
 - **Make cloth eyewear retainer:** 2 ripped sheets + 2 uses of twine or thread.
 - **Make eyewear retainer:** 2 leather strips + 4 thread uses + 2 rubber bands;
   a sewing needle and usable scissors are kept.
 
-Wear either in its dedicated Eyewear Retainer slot alongside compatible glasses.
-One retainer protects one untied, unbroken, non-monocle pair in vanilla worn-slot
-order. Take Off preserves the same retainer for reuse and restores the glasses'
-normal retention. Both materials currently have the same configurable protection;
-there is no hidden durability or quality difference. Hats still use Tie/Untie.
-No magazine, skill level or workbench is required for either output recipe.
+Wear these actual items in the separate Eyewear Retainer slot. One unbroken
+retainer protects one compatible pair without an active improvised tie, selected
+in worn-slot order. Hats keep the direct Tie flow. Take Off preserves the same
+retainer and its remaining condition. No learning requirement or workbench applies.
 
-**Unbreakable Eyewear Retainer** is a separate rare, non-craftable item. It keeps
-its condition through normal wear and catches and uses the original black-cord
-artwork. Look in school lockers, optical-store containers and pharmacy cabinets.
-The server's RareRetainerLootChance defaults to 0.25% per eligible new container
-fill (range 0–5%; zero disables spawns). Existing filled containers are not changed.
-Crafted cloth and leather retainers have distinct new inventory icons.
+**All improvised ties and both crafted retainers now have durability.** They lose
+native condition from eligible head/clothing damage. Defaults give a one-in-1
+condition-loss chance for improvised ties, one-in-2 for cloth and one-in-4 for
+leather, each on the existing 10-point native condition scale. Server sandbox
+settings adjust these wear-resistance values (integer 1–100). Larger values last
+longer; these are not guaranteed hit counts. The tooltip shows actual remaining
+condition, status and a live bar. Native headwear layering and damage ordering
+apply; a breaking blow can also dislodge the eyewear. No hidden knock-off roll is
+counted and no Java bridge, second Lua hit roll or post-drop re-equipping is used.
+See [durability and migration](docs/DURABILITY.md).
 
-Tied attachments use the existing zero-fall retention behavior. Untied eyewear
-uses item-specific profiles. Strapped protective headwear defaults to zero fall
-value, while loose hats retain vanilla behavior. Vanilla impact calculation remains in control.
-Server sandbox options control new tying, the untied-eyewear multiplier and the
-strapped-headwear fall value, wearable-retainer enable switch and retained-eyewear
-fall value (default 0), plus the rare-item loot chance. Disabling wearable retainers stops their crafting/protection
-but preserves the actual items. Existing ties remain valid when new tying is disabled.
+**Unbreakable Eyewear Retainer** is rare, non-craftable loot in school lockers,
+optical-store containers and pharmacy cabinets. Its original black-cord artwork
+and no-coverage/no-wear definition remain unchanged. RareRetainerLootChance is
+0.25% per eligible new fill by default (0–5%; zero disables spawns). Existing
+filled containers remain unchanged. Crafted cloth and leather keep distinct icons;
+improvised ties reuse the cloth icon. No fitted worn mesh is included.
 
-Hovering tied eyewear shows its material and secured state beside the normal
-inventory tooltip, without a fabricated durability bar. Historical finite or
-permanent retainer records are preserved for inspection and clearly marked inactive.
-Reusable wearable retainer items and their original inventory icon are included.
-Their clothing definition is deliberately invisible: no fitted 3D worn model is
-claimed. Loot-only acquisition and native unbreakable behavior are described in
-[the rare-item record](docs/RARE_RETAINER.md). Exact -1 durability per successful vanilla
-knock-off remains blocked by the engine's missing server-safe Lua callback.
-Ordinary hits never charge durability; no second fall roll, post-drop re-equipping
-or Java dependency is installed. See [retainer behavior and blocker](docs/RETAINER_ITEMS.md).
+Server sandbox settings also control new tying, untied-eyewear retention,
+strapped-headwear fall value, wearable crafting/protection and retained-eyewear
+fall value (default 0). Disabling new tying does not erase existing ties. Disabling
+wearable protection does not repair or delete actual items; worn finite clothing
+can still wear. Historical schema-2 records remain read-only and inactive.
 
-Authoritative runtime source: `src/B47ANCEDEyewear/42/`.
+Authoritative source: `src/B47ANCEDEyewear/42/`.
 Workshop item: https://steamcommunity.com/sharedfiles/filedetails/?id=3799754736
 Public source: https://github.com/B47ANCE/B47ANCEDEyewear
 
-See [architecture](docs/ARCHITECTURE.md), [validation and release gates](docs/VALIDATION.md),
-[cleanup record](docs/CLEANUP_AND_WORKSHOP_PREPARATION.md) and [version policy](docs/VERSION_POLICY.md).
-Old audit/publication documents retain their original tested versions and are historical evidence.
+This source iteration is not packaged, deployed or published. The previous 0.9
+Workshop development package and provenance are preserved. No game/server was
+launched; G7 BLOCKED / NOT TESTED and stable G8 BLOCKED.
+
+See [architecture](docs/ARCHITECTURE.md), [retainer items](docs/RETAINER_ITEMS.md),
+[validation](docs/VALIDATION.md) and [version policy](docs/VERSION_POLICY.md).
+Historical evidence retains its actual version and environment.
 
 ## Development tools
 
-Release tooling uses Python with `requirements-tools.txt` for syntax parsing;
-it never runs gameplay fixtures or a unit-test suite. The runtime mod has no Python dependency.
+Production preflight compiles Lua and checks source/assets without running gameplay:
 
 ```powershell
-python -m pip install -r requirements-tools.txt
 python -B scripts/check_versions.py
 python -B scripts/validate_release.py
-./Build-Workshop.ps1 -PythonExe <python-with-lupa>
-./Publish-Workshop.ps1 -PrepareOnly -PythonExe <python-with-lupa>
 ```
 
-Preparation generates source/staging/ZIP provenance and an upload VDF while
-preserving the existing item and visibility. It does not upload. Publication requires a separate explicit request. The labelled MP testing build may
-be distributed before dedicated validation; stable release still requires G7/G8.
-Published packages, asset masters and superseded experiment evidence are preserved;
-retired test/Java code is recoverable in the private cleanup quarantine, outside this repository.
+Release tools require requirements-tools.txt; Python is not a runtime dependency.
+Build-Workshop.ps1 prepares source/staging/ZIP provenance; Publish-Workshop.ps1
+-PrepareOnly checks canonical description/change-note paragraphs and existing ID/
+visibility without uploading. Deployment and publication require separate requests.

@@ -1,6 +1,6 @@
 # Lua API evidence
 
-Project Version: 0.9.0-dev.1
+Project Version: 0.10.0-dev.1
 Source inspection: 2026-10-14. Target Build 42.21.
 
 The installed Steam app108600 build25485521 uses the original JAR Core.class hash
@@ -89,3 +89,34 @@ IsoGameCharacter.addHoleFromZombieAttacks select damage layers from BloodLocatio
 coverage. The unbreakable item defines none, disallows holes, is cosmetic and has
 zero fall chance; Clothing.update has no condition decrement. No condition-restoring
 timer or hit callback is used. Actual native wear/damage remains a runtime gate.
+
+[VERIFIED: installed source, 0.10.0-dev.1] BloodClothingType.addHole's no-hole
+clothing branch applies Rand.NextBool(ConditionLowerChance) and subtracts exactly
+one native condition point. Its private setConditionAndSync returns on clients
+and calls Clothing.setCondition plus GameServer.sendItemStats on server/SP.
+Clothing.setCondition(0) uses native Unwear(true); Unwear emits OnClothingUpdated
+for any IsoPlayer, including a dedicated remote player. This differs from the
+local-player-only event after helmetFall. Native equipment removal and condition
+synchronization provide a safe authority path for the user-approved head/clothing
+wear alternative, not an exposed successful knock-off callback.
+
+InventoryItem's existing conditionMax scale is 10; condition is serialized as a
+byte, while dynamic per-instance maxima are not established as synchronized. The
+feature keeps that scale and configures Clothing.setConditionLowerChance on the
+server. Native setWornItem sends SyncClothing, and installed shared timed actions
+verify AddItem/sendAddItemToContainer and Remove/sendRemoveItemFromContainer.
+Actual items and scalar reciprocal IDs persist through vanilla serialization.
+Hook.WeaponHitCharacter can cancel the entire weapon hit, not one clothing drop;
+OnBeingHitByZombie has only its event registration string in this installed JAR,
+so it is not adopted as an invented server notification. See DURABILITY.md.
+
+[INFERRED / RUNTIME GATE] Native layering/order and synchronized item-ID links
+should preserve finite protection through ordinary equipment and save flows,
+but dedicated transfer/reconnect/restart and actual combat acceptance are not
+proven by source/bytecode inspection or Lua doubles. G7/stable G8 stay blocked.
+
+[VERIFIED: source] ZombieHitPlayerPacket.process delegates to Bite.process, whose
+GameServer.server branch calls BodyDamage.AddRandomDamageFromZombie. Its head
+clothing-damage paths call addHoleFromZombieAttacks, reaching the authoritative
+condition helper above. Both script Item and InventoryItem constructors default
+conditionMax to 10, confirming unchanged crafted-item condition resolution.

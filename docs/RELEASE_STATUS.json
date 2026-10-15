@@ -1,14 +1,15 @@
 {
-  "project_version": "0.9.0-dev.1",
+  "project_version": "0.10.0-dev.1",
   "source": "STATIC CHECKS ONLY",
   "sp": "NOT TESTED",
   "g7": "BLOCKED / NOT TESTED",
   "g8": "BLOCKED",
   "validated_commit": null,
   "dedicated_evidence": null,
-  "publication": "AUTHORIZED WORKSHOP DEVELOPMENT / MP TEST DISTRIBUTION; upload outcome in generated publication provenance",
-  "distribution": "MP testing build - dedicated multiplayer NOT TESTED; user publish authorization 2026-10-14",
+  "publication": "NOT AUTHORIZED FOR THIS ITERATION; SOURCE IMPLEMENTATION ONLY",
+  "distribution": "MP testing build - dedicated multiplayer NOT TESTED; separate publish request required",
+  "durability": "User-approved native head/clothing wear; exact hidden knock-off-roll counting is not the implemented rule",
   "blocked_features": [
-    "Exact -1 durability per successful native knock-off: no verified server-safe exposed Lua hook"
+    "Exact -1 durability per successful native knock-off remains unavailable through verified authoritative Lua hooks."
   ]
 }

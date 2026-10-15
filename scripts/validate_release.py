@@ -86,6 +86,8 @@ def validate_source(files):
             for outputs in re.findall(r'\boutputs\s*\{([^}]*)\}', script, re.S):
                 if 'B47ANCEDEyewear.UnbreakableRetainer' in outputs:
                     raise ValueError('Loot-only unbreakable retainer cannot be a crafting output')
+                if 'B47ANCEDEyewear.ImprovisedTie' in outputs:
+                    raise ValueError('Linked ties must be created only by the authoritative paid Tie transaction')
             for key in re.findall(r'\bTooltip\s*=\s*(\w+)\s*,', script):
                 if key not in english:
                     raise ValueError('Untranslated recipe instructions: ' + key)
@@ -98,6 +100,19 @@ def validate_source(files):
             for clothing in re.findall(r'\bClothingItem\s*=\s*(\w+)\s*,', script):
                 if 'media/clothing/clothingItems/' + clothing + '.xml' not in files:
                     raise ValueError('Missing clothing definition or incorrect path case: ' + clothing)
+            for item, body in re.findall(r'\bitem\s+(\w+)\s*\{([^}]*)\}', script, re.S):
+                if item in {'MakeshiftRetainer', 'EyewearRetainer', 'ImprovisedTieEyes', 'ImprovisedTieFace', 'ImprovisedTieHat'}:
+                    for field, expected in {'BloodLocation':'Head', 'CanHaveHoles':'false', 'RemoveOnBroken':'true',
+                                            'ConditionMax':'10', 'ChanceToFall':'0', 'Cosmetic':'true',
+                                            'ConditionLowerChance':str({'MakeshiftRetainer':2, 'EyewearRetainer':4}.get(item,1))}.items():
+                        if not re.search(r'\b' + field + r'\s*=\s*' + expected + r'\s*,', body):
+                            raise ValueError('Finite tie/retainer native-wear invariant failed: ' + item + '/' + field)
+                if item == 'UnbreakableRetainer':
+                    if re.search(r'\bBloodLocation\s*=', body):
+                        raise ValueError('Rare unbreakable retainer must not gain a damage layer')
+                    for field, expected in {'CanHaveHoles':'false', 'RemoveOnBroken':'false', 'ChanceToFall':'0'}.items():
+                        if not re.search(r'\b' + field + r'\s*=\s*' + expected + r'\s*,', body):
+                            raise ValueError('Rare unbreakable invariant failed: ' + field)
     for filename in ('WORKSHOP_DESCRIPTION.txt', 'WORKSHOP_CHANGE_NOTE.txt'):
         text = (ROOT / filename).read_text(encoding='utf-8').strip()
         if filename=='WORKSHOP_DESCRIPTION.txt' and len(text.encode('utf-8'))>8000:

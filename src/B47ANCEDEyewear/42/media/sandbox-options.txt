@@ -1,4 +1,19 @@
 VERSION = 1,
+option B47ANCEDEyewear.ImprovisedTieWearResistance
+{
+    type = integer, default = 1, min = 1, max = 100,
+    page = B47ANCEDEyewear, translation = B47ANCEDEyewear_ImprovisedTieWearResistance,
+}
+option B47ANCEDEyewear.ClothRetainerWearResistance
+{
+    type = integer, default = 2, min = 1, max = 100,
+    page = B47ANCEDEyewear, translation = B47ANCEDEyewear_ClothRetainerWearResistance,
+}
+option B47ANCEDEyewear.LeatherRetainerWearResistance
+{
+    type = integer, default = 4, min = 1, max = 100,
+    page = B47ANCEDEyewear, translation = B47ANCEDEyewear_LeatherRetainerWearResistance,
+}
 option B47ANCEDEyewear.RareRetainerLootChance
 {
     type = double, default = 0.25, min = 0, max = 5,

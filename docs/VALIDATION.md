@@ -1,6 +1,6 @@
 # Validation and release gates
 
-Project Version: 0.9.0-dev.1
+Project Version: 0.10.0-dev.1
 
 The user explicitly requested removal of all testing code. No test suites,
 gameplay doubles, item-grant/debug commands or Java harnesses remain in active source.
@@ -76,3 +76,40 @@ G7 BLOCKED / NOT TESTED; G8 BLOCKED. Stable release requires current-commit dedi
 this labelled test build before G7, after all source/authority/security/package checks.
 Preparation does not
 launch a game/server, deploy live mods, connect via SFTP or contact SteamCMD.
+
+## Current native durability source iteration
+
+[TESTED: offline, 2026-10-14, 0.10.0-dev.1] Production source/version checks
+passed for 169 runtime files, compiling all 14 Lua files without engine execution.
+JSON/XML, localization keys/placeholders, require case, icons, native finite-item
+properties, rare-item damage exemption and generated-item recipe exclusions pass.
+`git diff --check` is the separate whitespace gate. No current package exists.
+
+A disposable offline audit outside the repository executes the actual Core,
+Retention, TieDurability, WearableRetainers and RetainerPresentation modules with
+Lua doubles through bundled Python/Lupa lua51. Command from the project root:
+
+```powershell
+& 'C:/Users/willi/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -B "$env:TEMP/B47ANCEDEyewear-lua-durability-audit/durability_logic_audit.py"
+```
+
+92 assertions PASS: all six material payments, duplicate requests, unpaid rollback,
+paid notification failure, allocation notification failure, native-order break
+reconciliation (modeled only), concurrent Eyes/Face/Hat slots, occupied/full/dead
+rejection, one-time legacy migration, untouched historical data, missing-link
+non-recreation, both-item transfer, previous-owner rejection, reciprocal ID
+mismatch, stale worn-map/changed-owner rejection, dead-owner rejection, crafted break, live native condition projection, validated sandbox
+resistance without repair, unbreakable exemption and client mutation rejection.
+The injected failure messages are expected. The temporary audit is not shipped,
+installed in the mod or restored as a repository test suite. This is offline Lua
+logic evidence with doubles, NOT an actual native combat/save/network test.
+
+[VERIFIED: preserved artifact] Published 0.9 ZIP/checksum/provenance retain their
+SHA-256 hashes under dist/historical/0.9.0-dev.1-published; ZIP CRC is checked
+read-only. The preservation ledger records all three files; nothing was deleted.
+
+[RUNTIME GATE] Actual headwear layering, native damage eligibility/ordering and
+condition packets, migration through real saves, both-item transfer, join/rejoin,
+restart, UI and concurrency require SP/dedicated evidence. No game/server was
+launched. G7 BLOCKED / NOT TESTED; stable G8 BLOCKED. No 0.10 package, deployment
+or Workshop upload was performed or authorized. See DURABILITY.md.

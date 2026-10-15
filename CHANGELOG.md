@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.0-dev.1] — 2026-10-14
+
+- Add native head/clothing condition wear to crafted retainers and all six improvised material ties; the user approved this trigger in place of hidden knock-off rolls.
+- Keep the rare loot retainer unbreakable. Add server wear-resistance settings and live condition tooltips.
+- Represent direct ties with linked native clothing items; migrate paid legacy ties once when worn, without replacing eyewear or refunding material.
+- Preserve the 0.9 published package and evidence. Offline-only validation; SP/dedicated acceptance and stable G7/G8 remain blocked. No package, deployment or publication is authorized by this development request.
+
 ## [0.9.0-dev.1] — 2026-10-14
 
 - MINOR: add a loot-only Unbreakable Eyewear Retainer with no crafting output recipe and native no-hole/non-armor clothing properties.

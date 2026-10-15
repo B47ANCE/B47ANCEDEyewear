@@ -1,6 +1,6 @@
 # Reusable retainer items
 
-Project Version: 0.9.0-dev.1
+Project Version: 0.10.0-dev.1
 Source review: 2026-10-14; installed Project Zomboid 42.21, Steam build 25485521.
 
 ## Items and recipes
@@ -8,8 +8,8 @@ Source review: 2026-10-14; installed Project Zomboid 42.21, Steam build 25485521
 The previous expansion reserved EyewearRetainer and prepared artwork, but never
 shipped its permanent-item definition. This iteration supplies real clothing
 items with ordinary vanilla CraftRecipe outputs, implemented entirely in Lua and
-game data. The two crafted items are reusable material alternatives with identical
-protection. The third, UnbreakableRetainer, is rare loot only and has no crafting
+game data. Both crafted items use native head/clothing durability; leather has
+higher default wear resistance. Their fall protection is the same. The third, UnbreakableRetainer, is rare loot only and has no crafting
 recipe. Its native no-hole/non-armor properties prevent normal wear/catch loss;
 see RARE_RETAINER.md for loot rules and evidence.
 
@@ -33,7 +33,9 @@ WearableRetainersEnabled (default true) controls crafting and protection;
 WearableRetainerFallChance (integer 0–100, default 0) controls the protected pair's
 fall value. Disabled retainers remain real items and can always be taken off.
 Setting 0 suppresses native knock-off; nonzero values use vanilla impact rules.
-The two materials currently have no hidden quality or durability difference.
+Both use 10 native condition points. Server wear-resistance defaults are 2 for
+cloth and 4 for leather, adjustable 1–100. Damage eligibility/layering is vanilla;
+no fixed number of saved hits is promised. Tooltips show actual remaining condition.
 
 ## Authority and ownership
 
@@ -47,16 +49,16 @@ removed, serialized into ModData, reconstructed, refunded or created by retentio
 Clients display derived state; they submit only vanilla crafting/equipment intent.
 The server determines eligibility and fall values from its sandbox configuration.
 
-Persistence and transfer use vanilla clothing items and worn-item mappings. No
-new persistent retainer schema or historical-data migration is introduced. Older
+Persistence and transfer use vanilla clothing items and worn-item mappings. Direct ties add reciprocal item links and a one-time paid-legacy migration; see
+DURABILITY.md. Crafted-retainer native condition is preserved. Older
 schema 2 records retain their read-only inactive interpretation. Prior schema1
 ties and original artwork are preserved. Fitted worn meshes remain absent;
 the clothing XML follows the installed emptytexture convention. The rare item
 uses the original black icon; the crafted items use distinct cloth/leather icons.
 
-## Exact per-catch durability: BLOCKED
+## Original exact-catch rule: superseded by approved native wear
 
-Requested rule: spend one durability point only when vanilla's actual hit would
+Original rule (now superseded): spend one durability point only when vanilla's actual hit would
 knock the glasses off; preserve the glasses on that catch, including the final
 durability point. Counting arbitrary damage events would not implement that rule.
 
@@ -70,12 +72,11 @@ OnClothingUpdated afterward only for a local player, so this is not a dedicated
 server notification for remote players. OnPlayerGetDamage does not identify the
 successful native knock-off decision. A zero fall value skips that roll entirely.
 
-Consequently this iteration does not decrement a fictitious counter, damage
-retainers on unrelated hits, introduce another RNG roll, re-equip dropped copies,
-or require custom Java. The affected finite-durability implementation remains
-stopped. A verified exposed server/SP hook at the actual knock-off decision is
-needed to implement the requested rule safely. Inventory condition is not being
-advertised as per-catch durability.
+The user approved native head/clothing wear instead on 2026-10-14, including all
+six improvised material ties. That alternative is implemented through native
+clothing condition and synchronization. Exact per-catch interception stays absent;
+no additional Lua hit roll or post-drop re-equipping is used. See DURABILITY.md
+for actual behavior, item links, migration and native damage-order limitations.
 
 ## Validation limits
 

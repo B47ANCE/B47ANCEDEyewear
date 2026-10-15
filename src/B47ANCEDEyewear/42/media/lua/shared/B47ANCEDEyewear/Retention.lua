@@ -23,6 +23,9 @@ function R.options()
         wearable=raw.WearableRetainersEnabled~=false,
         retainerChance=math.floor(number('WearableRetainerFallChance',0,0,100)),
         rareLootChance=number('RareRetainerLootChance',0.25,0,5),
+        tieResistance=math.floor(number('ImprovisedTieWearResistance',1,1,100)),
+        clothResistance=math.floor(number('ClothRetainerWearResistance',2,1,100)),
+        leatherResistance=math.floor(number('LeatherRetainerWearResistance',4,1,100)),
         multiplier=number('EyewearFallMultiplier',1,0.25,5),
         headwear=math.floor(number('StrappedHeadwearFallChance',0,0,100))}
 end

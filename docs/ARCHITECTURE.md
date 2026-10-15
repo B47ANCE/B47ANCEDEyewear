@@ -14,7 +14,8 @@ in the player's main inventory. Input flags enforce worn/usable items and permit
 favorites. Both inputs use mode:keep, so vanilla never charges a second material
 use. OnCreate(recipeData, character) takes only the two selected input instances,
 rejects ambiguous inputs and calls S.tie on the server/SP side. It sends no custom
-client command and creates no output item. Completion rechecks current state and
+client command. The paid Tie transaction now creates one linked native tie item;
+vanilla crafting does not also produce it. Completion rechecks current state and
 server sandbox configuration. Invalidated work consumes nothing. Batch crafting
 is disabled; recipe time 16 matches the existing action duration 80 after vanilla's
 fivefold conversion. Recipe identifiers list installed Base types only; optional
@@ -32,17 +33,19 @@ is not treated as a valid tie. No real player saves are used by preparation tool
 RetainerState.lua is a read-only schema-2 compatibility reader. The tooltip shows
 stored historical values as inactive, or displays material/secured status for an
 actual legacy tie. It never changes gameplay state or initiates network actions.
-Finite-retainer transactions and all custom Java paths remain retired.
+Historical finite-catch transactions and all custom Java paths remain retired.
+Current native condition wear and reciprocal item links are described in DURABILITY.md.
 
 WearableRetainers.lua selects one actual worn item in the dedicated registered
 b47ancedeyewear:retainer slot. ModRegistries loads media/registries.lua before item
 scripts; shared initialization extends the vanilla Human body-location group.
-Both clothing types use the original inventory icon and an empty-texture clothing
-asset, with no fitted mesh. They occupy no existing eyewear or necklace slot.
+Crafted items use distinct cloth/leather icons; the rare item uses the original
+black icon. All use the empty-texture clothing asset, with no fitted mesh. They occupy no existing eyewear or necklace slot.
 Native item ownership, worn mappings, crafting and persistence remain vanilla.
-There is no item escrow, saved userdata, generated replacement or schema migration.
+There is no item escrow, saved userdata or reconstructed eyewear. Direct ties now
+add a linked native clothing item and an additive schema-1 migration; see below.
 
-The first compatible untied pair in worn-slot order receives the server-configured
+The first compatible pair without an active improvised tie in worn-slot order receives the server-configured
 retained fall value. Unequipping, disabling, breaking or transferring the retainer
 restores the ordinary profile on the next authoritative refresh. WearableActions.lua
 chains vanilla Wear/Take Off complete() and preserves its return value, then refreshes
@@ -82,3 +85,32 @@ cloth and leather craft outputs have distinct icon exports. Native cosmetic,
 no-hole and no-body-coverage properties avoid normal damage/condition loss. Its
 unbreakability is not implemented with infinite numeric durability, repair loops
 or prohibited catch interception. The separate finite-catch hook remains blocked.
+
+## Native head/clothing durability — 0.10
+
+TieDurability.lua creates one actual finite clothing item per paid Tie and validates
+reciprocal target/tie native IDs, material, main-inventory ownership and worn state.
+Eyes, Face and Hat slots permit supported concurrent ties without replacing gear.
+Allocation and target changes roll back before material consumption; once a use
+is observed consumed, notification failure does not grant a refund or duplicate.
+Untie discards only the owned matching item. Trading one half suspends protection;
+trading/wearing both preserves the same condition. Missing newer items never
+trigger reconstruction. Existing paid legacy ties get a one-time finite item only
+when worn with available space/slot; the legacy record itself stays preserved.
+
+All finite tie/retainer definitions use native Head coverage, cosmetic/no-hole
+properties and 10 condition points. Native BloodClothingType removes condition
+only server/SP and sends ordinary item stats. Vanilla break/Unwear handles worn
+removal, including a server OnClothingUpdated event for players. Core uses an
+active link for protection and a stable worn snapshot during legacy migration.
+Three server sandbox resistance denominators (defaults 1/2/4, integer 1–100)
+configure lifetime without refilling condition or changing per-instance maxima.
+Fixed condition scale preserves the existing native representation; IDs/schema,
+slot mappings and capacity constraints are implementation details. The rare
+retainer's no-coverage/no-wear definition is unchanged. No custom damage packet,
+hit polling, health heuristic, native method override or Lua combat roll is used.
+
+Native layering/damage order applies; this accepted alternative does not promise
+to save eyewear on every breaking blow. Exact hidden-roll interception remains
+unavailable. Tooltips show actual native condition, not guessed catches left.
+See DURABILITY.md for persistence, downgrade limits and dedicated acceptance gates.

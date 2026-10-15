@@ -1,8 +1,8 @@
 name=B47ANCE'd Eyewear
 id=B47ANCEDEyewear
 author=B47ANCE
-description=Lua-only development build. Craft cloth/leather retainers or find a rare non-craftable unbreakable retainer. Includes distinct inventory artwork and server loot settings. Finite per-catch durability and SP/dedicated validation remain pending.
-modversion=0.9.0-dev.1
+description=Lua-only development build. All improvised ties and crafted retainers wear through native head/clothing damage; inspect their live condition. The rare loot retainer remains unbreakable. SP/dedicated validation is pending.
+modversion=0.10.0-dev.1
 versionMin=42.21
 
 icon=media/ui/B47ANCEDEyewear_icon.png
