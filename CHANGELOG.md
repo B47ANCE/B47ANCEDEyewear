@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.11.0-dev.1] — 2026-10-14
+
+- MINOR: add original, distinct static ground meshes/textures for cloth, leather and unbreakable retainer items. Preserve existing black-cord sources, inventory artwork and gameplay.
+- Bind WorldStaticModel using installed Build 42 conventions. Preserve editable Blender source and export/preview provenance. Worn visuals stay invisible.
+- Offline asset/source validation only; PZ ground appearance and SP/dedicated acceptance remain NOT TESTED. No package, deployment or Workshop upload is part of this source iteration.
+
 ## [0.10.0-dev.1] — 2026-10-14
 
 - Add native head/clothing condition wear to crafted retainers and all six improvised material ties; the user approved this trigger in place of hidden knock-off rolls.

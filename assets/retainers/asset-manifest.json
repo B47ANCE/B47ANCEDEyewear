@@ -1,5 +1,5 @@
 {
-  "status": "Original black cord icon and model sources reserved for loot-only UnbreakableRetainer; fitted PZ model import/attachment/fit NOT TESTED",
+  "status": "Original editable OBJ/GLB and art preserved. A derived ground FBX and exact original atlas copy ship for UnbreakableRetainer; see ground/ground-models.json. Worn mesh remains authoring-only.",
   "model_vertices": 354,
   "model_triangles": 488,
   "parts": [

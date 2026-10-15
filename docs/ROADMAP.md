@@ -1,9 +1,10 @@
 # Roadmap
 
-Current development source is 0.10.0-dev.1: Lua-only context-menu and crafting
+Current development source is 0.11.0-dev.1: Lua-only context-menu and crafting
 retention, two craftable wearable items, a rare loot-only unbreakable retainer,
 distinct inventory icons, native head/clothing durability for all improvised ties
-and crafted retainers, live condition inspection and production source preflight.
+and crafted retainers, live condition inspection, three distinct 3D ground models
+and production source preflight.
 
 Before stable release, obtain actual SP and dedicated multiplayer evidence for
 Tie/Untie and crafting, cancellation, duplicates, one-use consumption, clothing-field sync,
@@ -13,7 +14,7 @@ Dedicated G7 must pass before release G8.
 Finite-retainer catches require a verified exposed Lua hook with server authority
 and the original engine fall decision. No Java extension or replacement RNG is permitted.
 Wearable reusable items now keep their actual inventory identity through vanilla
-wear/remove and save synchronization. Nested attachment/escrow, fitted 3D visuals
+wear/remove and save synchronization. Nested attachment/escrow, fitted worn 3D visuals
 remain outside this implementation. Rare-item loot uses a separate authoritative
 container-fill callback and current server sandbox settings. The user approved
 native head/clothing wear as the Lua-only finite alternative; see DURABILITY.md.

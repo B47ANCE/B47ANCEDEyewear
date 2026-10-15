@@ -19,6 +19,51 @@ VANILLA = {'TimedActions/ISBaseTimedAction', 'TimedActions/ISTimedActionQueue', 
 def digest(data):
     return hashlib.sha256(data).hexdigest()
 
+def validate_ground_models(files):
+    """Validate shipped asset identity and case-correct native model bindings."""
+    from PIL import Image
+    import io
+    directory = ROOT / 'assets/retainers/ground'
+    manifest = json.loads((directory / 'ground-models.json').read_text(encoding='utf-8'))
+    if manifest['version'] != (ROOT / 'VERSION').read_text(encoding='utf-8').strip():
+        raise ValueError('Ground asset manifest version differs from canonical version')
+    if digest((ROOT / 'scripts/build_retainer_ground_models.py').read_bytes()) != manifest['generator_sha256']:
+        raise ValueError('Ground asset generator differs from recorded export')
+    for name, expected in manifest['authoring_files'].items():
+        if Path(name).name != name or digest((directory / name).read_bytes()) != expected:
+            raise ValueError('Ground authoring asset provenance mismatch: ' + name)
+    script = files['media/scripts/B47ANCEDEyewear_Models.txt'].decode('utf-8')
+    models = dict(re.findall(r'\bmodel\s+(\w+)\s*\{([^{}]*)\}', script, re.S))
+    items = dict(re.findall(r'\bitem\s+(\w+)\s*\{([^{}]*)\}', files['media/scripts/B47ANCEDEyewear_Items.txt'].decode('utf-8'), re.S))
+    expected_items = {'B47ANCEDEyewear.MakeshiftRetainer', 'B47ANCEDEyewear.EyewearRetainer', 'B47ANCEDEyewear.UnbreakableRetainer'}
+    entries = manifest['entries']
+    if len(entries) != 3 or {e['item'] for e in entries} != expected_items or len(models) != 3:
+        raise ValueError('Ground retainer item/model inventory mismatch')
+    for entry in entries:
+        for key in ('mesh', 'texture'):
+            path = PurePosixPath(entry[key])
+            if path.is_absolute() or '..' in path.parts or ':' in str(path) or '\\' in str(path):
+                raise ValueError('Unsafe ground asset path')
+            if entry[key] not in files or digest(files[entry[key]]) != entry[key + '_sha256']:
+                raise ValueError('Ground asset hash or path-case mismatch: ' + entry[key])
+        if not files[entry['mesh']].startswith(b'Kaydara FBX Binary  \x00\x1a\x00'):
+            raise ValueError('Ground mesh is not binary FBX')
+        with Image.open(io.BytesIO(files[entry['texture']])) as image:
+            image.verify()
+        body = models[entry['model'].split('.')[1]]
+        for field, path, prefix, suffix in [('mesh', entry['mesh'], 'media/models_X/', '.fbx'),
+                                            ('texture', entry['texture'], 'media/textures/', '.png')]:
+            value = path.removeprefix(prefix).removesuffix(suffix)
+            if not path.startswith(prefix) or not path.endswith(suffix) or not re.search(r'\b' + field + r'\s*=\s*' + re.escape(value) + r'\s*,', body):
+                raise ValueError('Ground model script asset lookup mismatch')
+        if not re.search(r'\bstatic\s*=\s*true\s*,', body) or not re.search(r'\bscale\s*=\s*0\.6\s*,', body):
+            raise ValueError('Ground model static/scale contract changed without asset review')
+        if not re.search(r'\bWorldStaticModel\s*=\s*' + re.escape(entry['model']) + r'\s*,', items[entry['item'].split('.')[1]]):
+            raise ValueError('Retainer WorldStaticModel binding mismatch')
+        if entry['fbx_roundtrip'] != 'PASS' or not 0 < entry['triangles'] <= 3000 or not entry['uv_layers']:
+            raise ValueError('Ground export lacks recorded Blender geometry validation')
+    print('Three ground FBX/texture bindings and authoring/export provenance PASS')
+
 def inventory():
     files = {}
     folded = set()
@@ -39,6 +84,7 @@ def inventory():
     return files
 
 def validate_source(files):
+    validate_ground_models(files)
     from lupa.lua51 import LuaRuntime
     lua = LuaRuntime()
     compile_only = lua.eval('function(code,name) local f,e=loadstring(code,name); if not f then error(e) end end')

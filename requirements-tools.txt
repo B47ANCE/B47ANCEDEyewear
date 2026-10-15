@@ -1,2 +1,4 @@
 # Development release-tool Lua syntax parser; not shipped with the runtime mod.
 lupa==2.6
+# Production PNG integrity validation; not shipped.
+Pillow==12.3.0

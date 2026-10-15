@@ -1,9 +1,16 @@
 # Cleanup and Workshop preparation
 
-Project Version: 0.10.0-dev.1
+Project Version: 0.11.0-dev.1
 Date: 2026-10-14
 
-Current 0.10 continuation implements the explicitly approved native head/clothing
+Current 0.11 adds ground FBX models/textures for the three retainers, native model
+bindings, an editable Blender master and an asset integrity validator. Prior
+inventory art and gameplay are preserved. The published 0.10 ZIP/checksum/
+provenance moved unchanged to dist/historical/0.10.0-dev.1-published; the bounded
+preservation ledger verifies all three hashes. Nothing was deleted. This request
+does not package, deploy, publish or launch the game/server.
+
+Earlier 0.10 source continuation implements the explicitly approved native head/clothing
 wear alternative for all six improvised material ties and both crafted retainers.
 Direct ties own native condition through linked clothing items, with paid-legacy
 migration and no free reconstruction. Rare-item art/definition remains unchanged.

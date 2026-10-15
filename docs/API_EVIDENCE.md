@@ -1,6 +1,6 @@
 # Lua API evidence
 
-Project Version: 0.10.0-dev.1
+Project Version: 0.11.0-dev.1
 Source inspection: 2026-10-14. Target Build 42.21.
 
 The installed Steam app108600 build25485521 uses the original JAR Core.class hash
@@ -120,3 +120,12 @@ GameServer.server branch calls BodyDamage.AddRandomDamageFromZombie. Its head
 clothing-damage paths call addHoleFromZombieAttacks, reaching the authoritative
 condition helper above. Both script Item and InventoryItem constructors default
 conditionMax to 10, confirming unchanged crafted-item condition resolution.
+
+## Ground presentation (0.11 source addition)
+
+[VERIFIED: source] Installed Build 42.21 generated item/model definitions and
+ItemModelRenderer.hasModel/init support WorldStaticModel -> qualified model
+script -> static FBX mesh/texture. See GROUND_MODELS.md for exact installed
+paths and acceptance limits. Blender 4.5.7 LTS roundtrip verifies export
+structure and dimensions only; PZ import/display remains NOT TESTED.
+No Lua gameplay, authority, persistence or synchronization paths changed.

@@ -1,0 +1,24 @@
+module B47ANCEDEyewear
+{
+    model ClothRetainerGround
+    {
+        mesh = WorldItems/B47ANCEDEyewearClothRetainerGround,
+        texture = WorldItems/B47ANCEDEyewearClothRetainerGround,
+        scale = 0.6,
+        static = true,
+    }
+    model LeatherRetainerGround
+    {
+        mesh = WorldItems/B47ANCEDEyewearLeatherRetainerGround,
+        texture = WorldItems/B47ANCEDEyewearLeatherRetainerGround,
+        scale = 0.6,
+        static = true,
+    }
+    model UnbreakableRetainerGround
+    {
+        mesh = WorldItems/B47ANCEDEyewearUnbreakableRetainerGround,
+        texture = WorldItems/B47ANCEDEyewearUnbreakableRetainerGround,
+        scale = 0.6,
+        static = true,
+    }
+}

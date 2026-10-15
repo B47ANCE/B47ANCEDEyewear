@@ -1,6 +1,6 @@
 # Validation and release gates
 
-Project Version: 0.10.0-dev.1
+Project Version: 0.11.0-dev.1
 
 The user explicitly requested removal of all testing code. No test suites,
 gameplay doubles, item-grant/debug commands or Java harnesses remain in active source.
@@ -125,3 +125,30 @@ commands, commit, package/text hashes, upload verification and Steam desktop
 restart outcome belong to generated publication-0.10.0-dev.1.json. Prior source
 audit results above are retained as offline evidence, not upgraded to runtime
 proof. This distribution remains MP testing only; G7/stable G8 remain blocked.
+
+## Ground model source milestone
+
+[TESTED: offline, 2026-10-14, 0.11.0-dev.1] Commands run from the project root:
+
+```powershell
+& 'C:/Users/willi/.cache/b47anced-tools/python311-blender/python.exe' scripts/build_retainer_ground_models.py
+& 'C:/Users/willi/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -B scripts/check_versions.py
+& 'C:/Users/willi/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -B scripts/validate_release.py
+git diff --check -- . ':!AGENTS.md'
+```
+
+Blender 4.5.7 LTS produced and re-imported three FBX 7400 meshes, each as one
+mesh with matching dimensions. The labelled offline preview was inspected.
+Editable .blend, packed textures and per-file/export hashes are preserved.
+Source preflight passes for 176 runtime files and compiles all 14 Lua files
+without executing gameplay; exact-case model/item/FBX/texture bindings, PNG
+integrity and original authoring hashes pass. Read-only comparison with the
+published 0.10 source confirms every Lua file is byte-identical and item scripts
+differ only by the three WorldStaticModel bindings. Prior gameplay audits remain
+historical 0.10 results; they were not rerun or relabeled.
+
+No package, live deployment, Workshop upload, game/server launch or in-game
+validation occurred. PZ orientation, placement, scale, lighting and dropped-item
+appearance remain NOT TESTED. G7 BLOCKED / NOT TESTED; stable G8 BLOCKED.
+The previous published 0.10 files were preserved by a bounded move with matching
+SHA-256 hashes, a preservation ledger and a read-only ZIP CRC check.

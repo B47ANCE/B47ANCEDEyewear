@@ -1,6 +1,6 @@
 # Reusable retainer items
 
-Project Version: 0.10.0-dev.1
+Project Version: 0.11.0-dev.1
 Source review: 2026-10-14; installed Project Zomboid 42.21, Steam build 25485521.
 
 ## Items and recipes
@@ -89,3 +89,10 @@ equipment visibility, authoritative refresh, synchronization, dropping/trading,
 existing-save reloads, reconnects and dedicated restarts remain NOT TESTED.
 G7 BLOCKED / NOT TESTED; stable G8 BLOCKED. No package, deployment or Workshop
 upload is authorized by this implementation request.
+
+## Ground presentation
+
+All three retainer items now bind distinct static FBX/texture pairs through
+WorldStaticModel. See GROUND_MODELS.md for authoring, exact native evidence and
+offline validation. Worn visuals and all gameplay properties remain unchanged.
+PZ import, placement, scale and lighting remain NOT TESTED.

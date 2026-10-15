@@ -1,6 +1,6 @@
 # B47ANCE'd Eyewear
 
-Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.10.0-dev.1.
+Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.11.0-dev.1.
 
 Lua-only development build targeting Project Zomboid 42.21. No custom Java/JAR,
 test suite or debugger grants are shipped. SP/dedicated gameplay is NOT TESTED.
@@ -44,7 +44,9 @@ optical-store containers and pharmacy cabinets. Its original black-cord artwork
 and no-coverage/no-wear definition remain unchanged. RareRetainerLootChance is
 0.25% per eligible new fill by default (0–5%; zero disables spawns). Existing
 filled containers remain unchanged. Crafted cloth and leather keep distinct icons;
-improvised ties reuse the cloth icon. No fitted worn mesh is included.
+improvised ties reuse the cloth icon. All three retainer items have distinct 3D
+ground models: cloth loops, stitched leather and black cord with rubber sleeves.
+No fitted worn mesh is included. See [ground assets](docs/GROUND_MODELS.md).
 
 Server sandbox settings also control new tying, untied-eyewear retention,
 strapped-headwear fall value, wearable crafting/protection and retained-eyewear
@@ -56,11 +58,10 @@ Authoritative source: `src/B47ANCEDEyewear/42/`.
 Workshop item: https://steamcommunity.com/sharedfiles/filedetails/?id=3799754736
 Public source: https://github.com/B47ANCE/B47ANCEDEyewear
 
-Workshop development / MP test distribution was explicitly requested for this
-iteration. Release commit, package hashes, offline checks and upload outcome are
-recorded in generated publication provenance. The previous 0.9 package and
-provenance are preserved. No game/server was launched; G7 BLOCKED / NOT TESTED
-and stable G8 BLOCKED. Publication does not imply local deployment.
+Current 0.11.0-dev.1 is a source-only ground-model iteration, not packaged,
+deployed or published. The published 0.10.0-dev.1 package and provenance are
+preserved with verified hashes. No game/server was launched; G7 BLOCKED / NOT
+TESTED and stable G8 BLOCKED. The existing Workshop item still has 0.10.0-dev.1.
 
 See [architecture](docs/ARCHITECTURE.md), [retainer items](docs/RETAINER_ITEMS.md),
 [validation](docs/VALIDATION.md) and [version policy](docs/VERSION_POLICY.md).

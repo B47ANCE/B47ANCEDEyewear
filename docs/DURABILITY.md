@@ -1,6 +1,6 @@
 # Lua-only native durability
 
-Project Version: 0.10.0-dev.1
+Project Version: 0.11.0-dev.1
 Design and source audit: 2026-10-14; installed Build 42.21 / Steam build 25485521.
 
 ## Accepted rule

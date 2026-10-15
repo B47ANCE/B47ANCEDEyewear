@@ -53,6 +53,14 @@
     {
       "path": "docs/DURABILITY.md",
       "pattern": "^Project Version: (?P<version>\\S+)$"
+    },
+    {
+      "path": "docs/GROUND_MODELS.md",
+      "pattern": "^Project Version: (?P<version>\\S+)$"
+    },
+    {
+      "path": "assets/retainers/ground/ground-models.json",
+      "pattern": "^  \"version\": \"(?P<version>[^\\\"]+)\""
     }
   ],
   "changelog": {
@@ -160,6 +168,10 @@
     {
       "reference": "dist/historical/0.9.0-dev.1-published; dist/workshop-publish/publication-0.9.0-dev.1.json; assets/retainers/ART_PROVENANCE.md: crafted icon creation",
       "reason": "Actual published 0.9.0-dev.1 package, hashes, provenance and icon-generation evidence are preserved; not current durability validation."
+    },
+    {
+      "reference": "dist/historical/0.10.0-dev.1-published; dist/workshop-publish/publication-0.10.0-dev.1.json",
+      "reason": "Actual published durability package and provenance preserved unchanged; never relabeled as ground-model validation."
     }
   ]
 }

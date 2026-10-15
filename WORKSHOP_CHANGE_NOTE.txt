@@ -1,11 +1,8 @@
-[b]Version 0.10.0-dev.1[/b]
+[b]Version 0.11.0-dev.1[/b]
 [b]MP testing build - dedicated multiplayer NOT TESTED[/b]
 
-[h2]Lua-only native durability[/h2]
-• Add head/clothing condition wear to all six improvised material ties and both crafted retainers. The rare unbreakable loot item remains exempt.
-• Direct Tie creates one actual condition-bearing attachment linked to the original glasses or hat. Paid legacy ties upgrade once when worn; missing newer ties are not replaced. Wear and transfer both linked items together.
-• Add server wear-resistance settings, default 1 for improvised ties, 2 for cloth and 4 for leather. Each native eligible damage attempt has a one-in-N chance to remove one condition point; settings do not refill existing condition.
-• Display live condition values, status and durability bars. Broken finite items stop providing protection through vanilla equipment handling.
-• Use native damage and synchronization. No custom Java, Lua knock-off reroll, post-drop re-equipping or fake catch counter.
-• Native layering/damage ordering applies; a breaking blow can also dislodge eyewear. Back up saves before upgrading; package-only rollback is not a validated save downgrade.
-• Offline source and package preflight checks only. SP and dedicated gameplay remain NOT TESTED; G7 and stable G8 remain blocked.
+[h2]Retainer ground models[/h2]
+• Add separate 3D ground models for the cloth, leather and rare unbreakable retainers, including original textures and native WorldStaticModel bindings.
+• Cloth has tied loops; leather has stitching and rubber loops; the rare item uses the original black cord and hollow rubber sleeves.
+• Preserve inventory artwork, recipes, loot, durability, item identity and worn appearance. No Java or new gameplay/networking code.
+• Blender export/re-import and offline asset/source checks only. PZ placement, scale and lighting remain NOT TESTED. SP and dedicated gameplay remain NOT TESTED; G7 and stable G8 remain blocked.
