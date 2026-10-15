@@ -1,6 +1,6 @@
 # Rare unbreakable retainer
 
-Project Version: 0.11.1-dev.1
+Project Version: 0.12.0-dev.1
 Source audit: 2026-10-14; installed Project Zomboid 42.21 / Steam build 25485521.
 
 ## Item and artwork
@@ -8,7 +8,7 @@ Source audit: 2026-10-14; installed Project Zomboid 42.21 / Steam build 25485521
 B47ANCEDEyewear.UnbreakableRetainer is a separate, loot-only Unbreakable Eyewear
 Retainer. No recipe produces it. The two existing crafted items remain distinct.
 It uses the original black adjustable-cord icon unchanged; the original mesh and
-model texture now also supply its static ground asset. No fitted worn model is included.
+model texture now also supply its static ground asset. A distinct male/female head-attached worn mesh is now included; actual fit is untested.
 Crafted cloth and leather items now have separate original generated icons.
 
 The item uses the existing retainer equipment slot and actual vanilla item
@@ -77,5 +77,6 @@ G7 BLOCKED / NOT TESTED; stable G8 BLOCKED.
 
 All three retainer items now bind distinct static FBX/texture pairs through
 WorldStaticModel. See GROUND_MODELS.md for authoring, exact native evidence and
-offline validation. Worn visuals and all gameplay properties remain unchanged.
+offline validation. Ground assets and gameplay properties remain unchanged.
+Worn presentation is added separately; see WORN_MODELS.md.
 PZ import, placement, scale and lighting remain NOT TESTED.

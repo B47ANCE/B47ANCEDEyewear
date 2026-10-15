@@ -1,6 +1,6 @@
 # Lua API evidence
 
-Project Version: 0.11.1-dev.1
+Project Version: 0.12.0-dev.1
 Source inspection: 2026-10-14. Target Build 42.21.
 
 The installed Steam app108600 build25485521 uses the original JAR Core.class hash
@@ -129,3 +129,15 @@ script -> static FBX mesh/texture. See GROUND_MODELS.md for exact installed
 paths and acceptance limits. Blender 4.5.7 LTS roundtrip verifies export
 structure and dimensions only; PZ import/display remains NOT TESTED.
 No Lua gameplay, authority, persistence or synchronization paths changed.
+
+## Worn retainer source addition
+
+0.12.0-dev.1 adds original head-attached static clothing meshes through the
+existing native worn slot, three new XML definitions and six male/female files.
+See WORN_MODELS.md for installed 42.21 source evidence, authoring provenance,
+authority/configuration assessment and remaining fit/MP gates. Existing items
+resolve current clothing definitions through native ItemVisual.getClothingItem.
+No Lua gameplay, persistence, IDs or custom synchronization changed. No package,
+deployment, publication or PZ/server launch is part of this source iteration.
+Published 0.11.1 ZIP/checksum/provenance were preserved unchanged with hashes,
+a preservation ledger and a read-only ZIP CRC check. No artifacts were deleted.

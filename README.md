@@ -1,6 +1,6 @@
 # B47ANCE'd Eyewear
 
-Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.11.1-dev.1.
+Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.12.0-dev.1.
 
 Lua-only development build targeting Project Zomboid 42.21. No custom Java/JAR,
 test suite or debugger grants are shipped. SP/dedicated gameplay is NOT TESTED.
@@ -46,7 +46,9 @@ and no-coverage/no-wear definition remain unchanged. RareRetainerLootChance is
 filled containers remain unchanged. Crafted cloth and leather keep distinct icons;
 improvised ties reuse the cloth icon. All three retainer items have distinct 3D
 ground models: cloth loops, stitched leather and black cord with rubber sleeves.
-No fitted worn mesh is included. See [ground assets](docs/GROUND_MODELS.md).
+All three also have head-attached worn models with male/female variants.
+In-game fit and clipping are untested. See [worn assets](docs/WORN_MODELS.md) and
+[ground assets](docs/GROUND_MODELS.md).
 
 Server sandbox settings also control new tying, untied-eyewear retention,
 strapped-headwear fall value, wearable crafting/protection and retained-eyewear
@@ -58,12 +60,10 @@ Authoritative source: `src/B47ANCEDEyewear/42/`.
 Workshop item: https://steamcommunity.com/sharedfiles/filedetails/?id=3799754736
 Public source: https://github.com/B47ANCE/B47ANCEDEyewear
 
-Workshop development / MP test distribution of 0.11.1-dev.1 was explicitly
-requested after the ground-model sizing fix. Exact release commit, package
-hashes, offline checks, upload verification and Steam restart outcome are recorded
-in generated publication provenance. Published 0.10.0-dev.1 files remain preserved
-with verified hashes. No game/server was launched; G7 BLOCKED / NOT TESTED and
-stable G8 BLOCKED. Workshop publication does not imply local deployment.
+Current 0.12.0-dev.1 adds worn models in source only; it is not packaged,
+deployed or published. Workshop still serves 0.11.1-dev.1, whose published
+package/provenance are preserved with verified hashes. No game/server was
+launched. G7 BLOCKED / NOT TESTED and stable G8 BLOCKED remain unchanged.
 
 See [architecture](docs/ARCHITECTURE.md), [retainer items](docs/RETAINER_ITEMS.md),
 [validation](docs/VALIDATION.md) and [version policy](docs/VERSION_POLICY.md).

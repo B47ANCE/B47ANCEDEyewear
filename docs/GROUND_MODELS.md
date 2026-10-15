@@ -1,6 +1,6 @@
 # Retainer ground models
 
-Project Version: 0.11.1-dev.1
+Project Version: 0.12.0-dev.1
 
 All three existing retainer items now have original static ground assets:
 
@@ -21,9 +21,10 @@ all runtime textures remain byte-identical to the preceding iteration.
 Module B47ANCEDEyewear qualifies every item/model name. The model script is
 media/scripts/B47ANCEDEyewear_Models.txt. Each mesh lives in media/models_X/
 WorldItems and its texture in media/textures/WorldItems, with exact matching
-case. Ground models bind through WorldStaticModel; the invisible worn clothing
-XML is unchanged. No Lua, recipes, loot, durability, sandbox settings, item/save
-IDs or gameplay networking changed. Scale 0.6 follows the nearby vanilla rubber
+case. Ground models bind through WorldStaticModel. The ground assets remain unchanged
+in the later worn-model iteration; the three retainer types now use independent
+head-attached clothing XMLs (see WORN_MODELS.md). No Lua, recipes, loot, durability,
+sandbox settings, item/save IDs or gameplay networking changed. Scale 0.6 follows the nearby vanilla rubber
 band reference and is a presentation calibration value, not shared gameplay
 configuration. Final PZ size and placement remain a runtime gate.
 

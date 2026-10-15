@@ -29,8 +29,10 @@ byte-identical because Blender serializes timestamps/IDs; refresh the manifest
 and review exports together after deliberate authoring changes.
 
 See ../../docs/GROUND_MODELS.md for verified game bindings and remaining runtime
-gates. This is a Blender preview, not PZ evidence. The worn clothing definition
-still has empty models/textures. The older export_retainer_fbx.py describes a
+gates. This is a Blender preview, not PZ evidence. The original shared clothing definition
+still has empty models/textures for improvised ties. The three retainer items
+now use separate worn definitions and original body-specific meshes; see worn/
+and ../../docs/WORN_MODELS.md. The older export_retainer_fbx.py describes a
 provisional worn export only; it is not the current ground asset pipeline.
 
 For a cord-only adjustment, run the generator with --only-unbreakable to preserve

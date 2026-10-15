@@ -1,6 +1,6 @@
 # Validation and release gates
 
-Project Version: 0.11.1-dev.1
+Project Version: 0.12.0-dev.1
 
 The user explicitly requested removal of all testing code. No test suites,
 gameplay doubles, item-grant/debug commands or Java harnesses remain in active source.
@@ -187,3 +187,27 @@ commands, SteamCMD/API verification and the Steam desktop restart outcome.
 Preserve public visibility, original artwork and prior published provenance.
 No game/server launch or local SP deployment is authorized. G7 BLOCKED / NOT
 TESTED and stable G8 BLOCKED remain unchanged; distribution is not runtime proof.
+
+## Worn retainer source milestone
+
+[TESTED: offline, 2026-10-14, 0.12.0-dev.1] Commands from the project root:
+
+```powershell
+& 'C:/Users/willi/.cache/b47anced-tools/python311-blender/python.exe' scripts/build_retainer_worn_models.py
+& 'C:/Users/willi/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -B scripts/check_versions.py
+& 'C:/Users/willi/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -B scripts/validate_release.py
+git diff --cached --check
+```
+
+Blender 4.5.7 LTS produced six original DirectX text meshes plus editable source,
+packed original atlases and a schematic preview (visually inspected). Independent
+Assimp import (assimp-py 1.1.0) accepts every file with one mesh, expected triangle/
+vertex counts, finite coordinates, normals, UVs and appropriate head-local scale.
+Production preflight passes for 185 runtime files, compiling the unchanged 14 Lua
+files and verifying exact item/XML/head-bone/texture/path-case/hash contracts.
+Original ground assets/textures, inventory art, all gameplay Lua and improvised
+appearance definitions are unchanged. Item changes only select three new clothing
+XMLs. Prior validation retains its actual version and environment.
+No package, deployment, Workshop upload, test/debug runtime code or PZ/server
+launch. Actual wear/display, fit, old-save refresh, animation, hair/hat/frame
+clipping and remote visuals remain NOT TESTED. G7/stable G8 remain BLOCKED.

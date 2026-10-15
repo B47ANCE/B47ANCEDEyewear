@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.12.0-dev.1] — 2026-10-14
+
+- MINOR: add distinct cloth, leather and black-cord worn models, with male/female variants attached to the existing retainer slot through native head-attached clothing definitions.
+- Preserve ground assets, original source art, inventory icons, item IDs and all Lua gameplay, crafting, loot and durability. Improvised tie visuals remain unchanged.
+- Preserve editable Blender source, authoring/export provenance and offline previews. Actual PZ fit, hair/hat/frame clipping and network visuals remain NOT TESTED; no packaging, deployment or publication.
+
 ## [0.11.1-dev.1] — 2026-10-14
 
 - PATCH: resize the rare black-cord ground mesh to the mean crafted-retainer footprint (14.34 x 9.98 cm), replacing the oversized 16.56 x 18.82 cm footprint.

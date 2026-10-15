@@ -61,6 +61,14 @@
     {
       "path": "assets/retainers/ground/ground-models.json",
       "pattern": "^  \"version\": \"(?P<version>[^\\\"]+)\""
+    },
+    {
+      "path": "docs/WORN_MODELS.md",
+      "pattern": "^Project Version: (?P<version>\\S+)$"
+    },
+    {
+      "path": "assets/retainers/worn/worn-models.json",
+      "pattern": "^  \"version\": \"(?P<version>[^\\\"]+)\""
     }
   ],
   "changelog": {
@@ -176,6 +184,10 @@
     {
       "reference": "docs/VALIDATION.md: Ground model source milestone; docs/API_EVIDENCE.md: Ground presentation (0.11 source addition); CHANGELOG.md: 0.11.0-dev.1",
       "reason": "Prior 0.11.0-dev.1 asset implementation and offline evidence retain their actual version; not relabeled as the later sizing correction."
+    },
+    {
+      "reference": "dist/historical/0.11.1-dev.1-published; dist/workshop-publish/publication-0.11.1-dev.1.json; docs/VALIDATION.md: authorized ground-model distribution",
+      "reason": "Actual published ground-model package/provenance and prior offline records retain their original versions; not worn-model runtime evidence."
     }
   ]
 }

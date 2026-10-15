@@ -1,8 +1,7 @@
-[b]Version 0.11.1-dev.1[/b]
+[b]Version 0.12.0-dev.1[/b]
 [b]MP testing build - dedicated multiplayer NOT TESTED[/b]
 
-[h2]Retainer ground models and sizing fix[/h2]
-• Add distinct 3D ground models for cloth, stitched leather and rare black-cord retainers.
-• Resize the rare unbreakable retainer to match the width/depth of the cloth and leather ground models, approximately 14.3 x 10 cm.
-• Preserve the original source artwork, inventory icons, cloth/leather models, all textures, crafting, loot, durability and worn appearance.
-• Blender export/re-import and offline source checks only. PZ placement, scale and lighting remain NOT TESTED; G7 and stable G8 remain blocked.
+[h2]Visible worn retainers[/h2]
+• Add distinct cloth, stitched leather and rare black-cord worn meshes, with separate male/female variants on the existing retainer slot.
+• Use vanilla head-attached clothing visuals alongside glasses. Preserve ground models, icons, item IDs, crafting, loot, durability and server-owned gameplay. Improvised ties retain their existing appearance.
+• Offline Blender/Assimp and source checks only. Actual worn fit, hair/hat/frame clipping, animations and remote visuals remain NOT TESTED. G7 and stable G8 remain blocked.

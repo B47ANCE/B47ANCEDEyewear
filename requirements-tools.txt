@@ -2,3 +2,5 @@
 lupa==2.6
 # Production PNG integrity validation; not shipped.
 Pillow==12.3.0
+# Independent static clothing-model import validation; not shipped.
+assimp-py==1.1.0

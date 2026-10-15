@@ -19,6 +19,73 @@ VANILLA = {'TimedActions/ISBaseTimedAction', 'TimedActions/ISTimedActionQueue', 
 def digest(data):
     return hashlib.sha256(data).hexdigest()
 
+def validate_worn_models(files):
+    import assimp_py
+    import math
+    import uuid
+    directory = ROOT / 'assets/retainers/worn'
+    manifest = json.loads((directory / 'worn-models.json').read_text(encoding='utf-8'))
+    if manifest['version'] != (ROOT / 'VERSION').read_text(encoding='utf-8').strip():
+        raise ValueError('Worn asset manifest version differs from canonical version')
+    for name, expected in manifest['authoring_files'].items():
+        if Path(name).name != name or digest((directory / name).read_bytes()) != expected:
+            raise ValueError('Worn authoring provenance mismatch: ' + name)
+    for filename, key in [('build_retainer_worn_models.py', 'generator_sha256'), ('build_retainer_ground_models.py', 'helper_sha256')]:
+        if digest((ROOT / 'scripts' / filename).read_bytes()) != manifest[key]:
+            raise ValueError('Worn asset generator/helper changed without export review')
+    entries = manifest['entries']
+    expected_pairs = {(kind, body) for kind in ('Cloth', 'Leather', 'Unbreakable') for body in ('M', 'F')}
+    if len(entries) != 6 or {(e['kind'], e['body']) for e in entries} != expected_pairs:
+        raise ValueError('Worn male/female retainer inventory mismatch')
+    items = dict(re.findall(r'\bitem\s+(\w+)\s*\{([^{}]*)\}', files['media/scripts/B47ANCEDEyewear_Items.txt'].decode('utf-8'), re.S))
+    guids = set()
+    for kind, item in [('Cloth', 'MakeshiftRetainer'), ('Leather', 'EyewearRetainer'), ('Unbreakable', 'UnbreakableRetainer')]:
+        clothing = 'B47ANCEDEyewear' + kind + 'RetainerWorn'
+        if not re.search(r'\bClothingItem\s*=\s*' + clothing + r'\s*,', items[item]):
+            raise ValueError('Retainer worn clothing binding mismatch')
+        xml = ET.fromstring(files['media/clothing/clothingItems/' + clothing + '.xml'])
+        guid = str(uuid.UUID(xml.findtext('m_GUID')))
+        if guid in guids:
+            raise ValueError('Duplicate worn clothing GUID')
+        guids.add(guid)
+        for field, value in {'m_Static':'true', 'm_AttachBone':'Bip01_Head', 'm_MasksFolder':'none',
+                             'm_AllowRandomHue':'false', 'm_AllowRandomTint':'false'}.items():
+            if xml.findtext(field) != value:
+                raise ValueError('Worn head attachment invariant failed: ' + field)
+        for entry in (e for e in entries if e['kind'] == kind):
+            model = xml.findtext('m_MaleModel' if entry['body'] == 'M' else 'm_FemaleModel')
+            if 'media/models_X/' + model + '.x' != entry['mesh']:
+                raise ValueError('Worn XML/model case mismatch')
+            if 'media/textures/' + xml.findtext('textureChoices') + '.png' != entry['texture']:
+                raise ValueError('Worn XML/texture case mismatch')
+            for key in ('mesh', 'texture'):
+                path = PurePosixPath(entry[key])
+                if path.is_absolute() or '..' in path.parts or ':' in str(path) or '\\' in str(path):
+                    raise ValueError('Unsafe worn asset path')
+                if entry[key] not in files or digest(files[entry[key]]) != entry[key + '_sha256']:
+                    raise ValueError('Worn asset path/hash mismatch')
+            data = files[entry['mesh']]
+            if not data.startswith(b'xof 0303txt 0032\n') or b'SkinWeights' in data or b'AnimationSet' in data:
+                raise ValueError('Worn mesh must be static DirectX text')
+            scene = assimp_py.import_file(str(SOURCE / entry['mesh']), assimp_py.Process_Triangulate | assimp_py.Process_ValidateDataStructure)
+            if len(scene.meshes) != 1:
+                raise ValueError('Worn export must import as one static mesh')
+            mesh = scene.meshes[0]
+            if mesh.num_faces != entry['triangles'] or mesh.num_vertices != entry['vertices'] or not 0 < mesh.num_faces <= 3000:
+                raise ValueError('Worn import geometry inventory mismatch')
+            if mesh.num_uv_components != [2] or mesh.normals is None or len(mesh.normals) != mesh.num_vertices * 3:
+                raise ValueError('Worn import lacks UVs/normals')
+            coords = list(mesh.vertices)
+            if not all(math.isfinite(v) for v in coords + list(mesh.normals) + list(mesh.texcoords[0])):
+                raise ValueError('Nonfinite worn geometry')
+            bounds = [max(coords[axis::3]) - min(coords[axis::3]) for axis in (0, 1, 2)]
+            if not all(0.005 < size < 0.25 for size in bounds):
+                raise ValueError('Worn import dimensions outside authored head-local scale')
+    for item in ('ImprovisedTieEyes', 'ImprovisedTieFace', 'ImprovisedTieHat'):
+        if not re.search(r'\bClothingItem\s*=\s*B47ANCEDEyewearRetainer\s*,', items[item]):
+            raise ValueError('Improvised tie appearance changed outside retainer scope')
+    print('Six worn meshes: Assimp import/geometry/UV/normals, XML/head attachments and provenance PASS')
+
 def validate_ground_models(files):
     """Validate shipped asset identity and case-correct native model bindings."""
     from PIL import Image
@@ -82,7 +149,7 @@ def inventory():
         if name.lower() in folded:
             raise ValueError('Runtime filename case collision: ' + name)
         folded.add(name.lower())
-        if path.suffix.lower() not in {'.lua', '.json', '.txt', '.info', '.png', '.dds', '.xml', '.fbx'}:
+        if path.suffix.lower() not in {'.lua', '.json', '.txt', '.info', '.png', '.dds', '.xml', '.fbx', '.x'}:
             raise ValueError('Unexpected runtime file: ' + name)
         if re.search(r'(?i)(?:testkit|fixture|(?:^|[/_])(?:test|debug)(?:[/_.]|$))', name):
             raise ValueError('Development-only runtime file: ' + name)
@@ -91,6 +158,7 @@ def inventory():
 
 def validate_source(files):
     validate_ground_models(files)
+    validate_worn_models(files)
     from lupa.lua51 import LuaRuntime
     lua = LuaRuntime()
     compile_only = lua.eval('function(code,name) local f,e=loadstring(code,name); if not f then error(e) end end')

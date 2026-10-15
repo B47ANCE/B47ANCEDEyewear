@@ -1,6 +1,6 @@
 # Reusable retainer items
 
-Project Version: 0.11.1-dev.1
+Project Version: 0.12.0-dev.1
 Source review: 2026-10-14; installed Project Zomboid 42.21, Steam build 25485521.
 
 ## Items and recipes
@@ -52,8 +52,9 @@ The server determines eligibility and fall values from its sandbox configuration
 Persistence and transfer use vanilla clothing items and worn-item mappings. Direct ties add reciprocal item links and a one-time paid-legacy migration; see
 DURABILITY.md. Crafted-retainer native condition is preserved. Older
 schema 2 records retain their read-only inactive interpretation. Prior schema1
-ties and original artwork are preserved. Fitted worn meshes remain absent;
-the clothing XML follows the installed emptytexture convention. The rare item
+ties and original artwork are preserved. The three retainer types now have distinct
+head-attached male/female worn meshes; actual fit remains NOT TESTED. Improvised
+ties retain the original invisible clothing XML. See WORN_MODELS.md. The rare item
 uses the original black icon; the crafted items use distinct cloth/leather icons.
 
 ## Original exact-catch rule: superseded by approved native wear
@@ -94,5 +95,6 @@ upload is authorized by this implementation request.
 
 All three retainer items now bind distinct static FBX/texture pairs through
 WorldStaticModel. See GROUND_MODELS.md for authoring, exact native evidence and
-offline validation. Worn visuals and all gameplay properties remain unchanged.
+offline validation. Ground assets and gameplay properties remain unchanged.
+Worn presentation is added separately; see WORN_MODELS.md.
 PZ import, placement, scale and lighting remain NOT TESTED.
