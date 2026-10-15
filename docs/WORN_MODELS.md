@@ -66,7 +66,9 @@ and stable attachment contracts. No tests/debug runtime code was introduced.
 [TESTED: offline] Assimp import and production preflight PASS for all six meshes;
 185 runtime files include the same 14 Lua files compiled without gameplay execution.
 The Blender preview was inspected; original artwork, all ground FBX/textures and
-Lua behavior remain unchanged. Source-only development version, not published.
+Lua behavior remain unchanged. A subsequent explicit publish request authorizes
+Workshop development / MP test distribution; exact outcome is recorded in
+generated publication provenance, not inferred from these offline checks.
 
 [RUNTIME GATE] No in-game testing was requested. Final head fit, male/female
 alignment, attachment orientation, motion, hair/hat/frame clipping, take-off,
@@ -74,4 +76,5 @@ old-save refresh, remote-player rendering, join/rejoin and restart behavior are
 NOT TESTED. A rigid head attachment does not simulate cord physics. Other
 headwear/hair can intersect; this iteration does not hide them. G7 BLOCKED /
 NOT TESTED and stable G8 BLOCKED remain in force for the underlying gameplay.
-Workshop still serves the previously published 0.11.1-dev.1.
+The prior published 0.11.1 package is preserved. The requested 0.12.0 development
+upload uses the existing item and preflight gates; it does not prove runtime fit.

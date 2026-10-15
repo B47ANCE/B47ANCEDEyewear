@@ -60,10 +60,12 @@ Authoritative source: `src/B47ANCEDEyewear/42/`.
 Workshop item: https://steamcommunity.com/sharedfiles/filedetails/?id=3799754736
 Public source: https://github.com/B47ANCE/B47ANCEDEyewear
 
-Current 0.12.0-dev.1 adds worn models in source only; it is not packaged,
-deployed or published. Workshop still serves 0.11.1-dev.1, whose published
-package/provenance are preserved with verified hashes. No game/server was
-launched. G7 BLOCKED / NOT TESTED and stable G8 BLOCKED remain unchanged.
+Workshop development / MP test distribution of 0.12.0-dev.1 was explicitly
+requested after worn-model implementation. Exact release commit, package/text
+hashes, offline checks, upload verification and Steam restart outcome are recorded
+in generated publication provenance. Published 0.11.1 files remain preserved.
+No game/server was launched; G7 BLOCKED / NOT TESTED and stable G8 BLOCKED
+remain unchanged. Publication does not imply local SP deployment.
 
 See [architecture](docs/ARCHITECTURE.md), [retainer items](docs/RETAINER_ITEMS.md),
 [validation](docs/VALIDATION.md) and [version policy](docs/VERSION_POLICY.md).

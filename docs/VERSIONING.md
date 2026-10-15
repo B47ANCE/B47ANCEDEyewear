@@ -28,7 +28,9 @@ The actual published 0.9 ZIP/checksum/provenance moved unchanged to
 dist/historical/0.9.0-dev.1-published with verified hashes and a preservation ledger.
 The published 0.10 ZIP/checksum/provenance are preserved byte-for-byte in
 dist/historical/0.10.0-dev.1-published with a preservation ledger.
-No current 0.12 package exists; release checks defer packaging until separately requested.
+Packaging and Workshop development distribution of 0.12.0-dev.1 are now explicitly
+authorized. Generated package/publication provenance records their actual outcome;
+version/package checks do not prove runtime behavior.
 
 Published 0.11.1 package/checksum/provenance are preserved with verified hashes
 and ZIP CRC under dist/historical/0.11.1-dev.1-published; no deletion occurred.

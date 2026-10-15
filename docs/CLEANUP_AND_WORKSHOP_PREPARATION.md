@@ -102,3 +102,16 @@ No Lua gameplay, persistence, IDs or custom synchronization changed. No package,
 deployment, publication or PZ/server launch is part of this source iteration.
 Published 0.11.1 ZIP/checksum/provenance were preserved unchanged with hashes,
 a preservation ledger and a read-only ZIP CRC check. No artifacts were deleted.
+
+## Authorized worn-model Workshop development distribution
+
+The user subsequently requested 0.12.0-dev.1 publication as a development build
+on 2026-10-14. This authorizes packaging and the existing public Workshop item
+upload; source-only statements above describe their original milestones. Run
+check_versions.py, validate_release.py, Build-Workshop.ps1, check_versions.py
+--release and Publish-Workshop.ps1 preflight against the exact committed source.
+Generated publication-0.12.0-dev.1.json records source commit, package/text hashes,
+exact commands, SteamCMD/API verification and graceful Steam restart outcome.
+Preserve prior package/provenance, item identity, visibility and custom artwork.
+No game/server launch or local SP deployment. Worn fit/clipping/remote visuals
+remain NOT TESTED; G7 BLOCKED / NOT TESTED and stable G8 BLOCKED remain unchanged.
