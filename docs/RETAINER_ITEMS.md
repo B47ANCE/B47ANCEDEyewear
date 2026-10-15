@@ -1,6 +1,6 @@
 # Reusable retainer items
 
-Project Version: 0.12.0-dev.1
+Project Version: 0.13.0-dev.1
 Source review: 2026-10-14; installed Project Zomboid 42.21, Steam build 25485521.
 
 ## Items and recipes
@@ -54,7 +54,8 @@ DURABILITY.md. Crafted-retainer native condition is preserved. Older
 schema 2 records retain their read-only inactive interpretation. Prior schema1
 ties and original artwork are preserved. The three retainer types now have distinct
 head-attached male/female worn meshes; actual fit remains NOT TESTED. Improvised
-ties retain the original invisible clothing XML. See WORN_MODELS.md. The rare item
+ties now have their own head-attached neutral cord definitions; see
+IMPROVISED_TIE_MODELS.md. See WORN_MODELS.md for the retainers. The rare item
 uses the original black icon; the crafted items use distinct cloth/leather icons.
 
 ## Original exact-catch rule: superseded by approved native wear

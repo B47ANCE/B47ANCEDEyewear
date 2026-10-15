@@ -4,11 +4,12 @@ Root VERSION is the only canonical project version. docs/VERSION_POLICY.md is th
 authoritative inherited policy; version-inventory.json declares current mirrors,
 package selectors, schema/game distinctions and historical evidence.
 
-Current development iteration: 0.12.0-dev.1. Pre-1.0 MINOR adds visible worn
-retainers through three clothing definitions and six body-specific static meshes.
-Existing item IDs, save schema, ground models, gameplay, recipes, durability and
-networking are preserved. Native worn synchronization owns the existing items;
-no new persistence or authority path is introduced. Worn fit remains NOT TESTED.
+Current development iteration: 0.13.0-dev.1. Pre-1.0 MINOR adds worn improvised-
+tie visuals through three clothing definitions and six body-specific static
+meshes. All six existing materials use a common neutral cord. Existing gameplay
+Lua, IDs, slots, recipes, saves, durability, networking, retainers and ground
+assets remain unchanged. Native worn synchronization owns the existing items.
+Actual PZ fit, clipping and remote visuals remain NOT TESTED.
 
 Source mod.info, README, canonical Workshop texts, current validation/preparation/
 API records and RELEASE_STATUS.json are current mirrors. Build reads VERSION and
@@ -28,9 +29,10 @@ The actual published 0.9 ZIP/checksum/provenance moved unchanged to
 dist/historical/0.9.0-dev.1-published with verified hashes and a preservation ledger.
 The published 0.10 ZIP/checksum/provenance are preserved byte-for-byte in
 dist/historical/0.10.0-dev.1-published with a preservation ledger.
-Packaging and Workshop development distribution of 0.12.0-dev.1 are now explicitly
-authorized. Generated package/publication provenance records their actual outcome;
-version/package checks do not prove runtime behavior.
+The actual 0.12.0-dev.1 package/checksum/provenance are preserved under
+dist/historical/0.12.0-dev.1-published with verified SHA-256, ZIP CRC and a
+preservation ledger. No 0.13 package exists; packaging/publication require a
+separate request. Version checks do not prove runtime behavior.
 
 Published 0.11.1 package/checksum/provenance are preserved with verified hashes
 and ZIP CRC under dist/historical/0.11.1-dev.1-published; no deletion occurred.

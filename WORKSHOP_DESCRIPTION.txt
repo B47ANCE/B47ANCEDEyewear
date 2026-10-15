@@ -1,6 +1,6 @@
 [h1]B47ANCE'd Eyewear — Development Build[/h1]
 
-[b]Version 0.12.0-dev.1[/b]
+[b]Version 0.13.0-dev.1[/b]
 [b]MP testing build - dedicated multiplayer NOT TESTED[/b]
 [b]Development build for Project Zomboid 42.21. In-game validation remains pending.[/b]
 
@@ -15,6 +15,7 @@ Secure compatible glasses and supported hats with Lua-only retainers and finite 
 • Craft Cloth Eyewear Retainer or Eyewear Retainer in Tailoring and wear it in the separate retainer slot. Both now wear from native head/clothing damage; leather lasts longer on average by default. Take Off preserves the actual remaining item and condition.
 • Find the non-craftable Unbreakable Eyewear Retainer in school lockers, optical-store containers and pharmacy cabinets. It remains unbreakable in ordinary use.
 • Inspect remaining native durability, condition status and a live bar. Original black-cord, cloth and leather inventory icons and distinct 3D ground models are included. Distinct head-attached worn models have male/female variants. Worn fit, hair/hat/frame clipping and ground-model placement, scale and lighting remain NOT TESTED in PZ.
+• All six improvised materials share a visible neutral knotted-cord appearance, with separate male/female Eyes/Face rear cords and an under-chin Hat cord. The actual worn tie item owns its appearance; linked-target protection rules are unchanged. Actual fit/clipping and remote visuals remain NOT TESTED.
 • Individual untied-eyewear retention profiles, supported straw/summer hat ties and optional Authentic Z eyewear support remain available.
 
 [h2]Compatibility & Requirements[/h2]

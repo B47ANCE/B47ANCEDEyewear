@@ -1,17 +1,18 @@
 {
-  "project_version": "0.12.0-dev.1",
+  "project_version": "0.13.0-dev.1",
   "source": "STATIC CHECKS ONLY",
   "sp": "NOT TESTED",
   "g7": "BLOCKED / NOT TESTED",
   "g8": "BLOCKED",
   "validated_commit": null,
   "dedicated_evidence": null,
-  "publication": "AUTHORIZED WORKSHOP DEVELOPMENT / MP TEST DISTRIBUTION; exact upload outcome in generated publication provenance",
-  "distribution": "MP testing build - dedicated multiplayer NOT TESTED; user publish authorization 2026-10-14",
+  "publication": "SOURCE ONLY; 0.13.0-dev.1 not packaged, deployed or published",
+  "distribution": "Future upload requires an explicit request; MP testing build - dedicated multiplayer NOT TESTED",
   "durability": "User-approved native head/clothing wear; exact hidden knock-off-roll counting is not the implemented rule",
   "blocked_features": [
     "Exact -1 durability per successful native knock-off remains unavailable through verified authoritative Lua hooks."
   ],
   "ground_models": "Blender FBX roundtrip and source bindings checked offline; PZ importer placement/scale/lighting NOT TESTED",
-  "worn_models": "Six original head-attached male/female static meshes; offline Assimp import checked; PZ fit, clipping, animation and remote visuals NOT TESTED"
+  "worn_models": "Six original head-attached male/female static meshes; offline Assimp import checked; PZ fit, clipping, animation and remote visuals NOT TESTED",
+  "improvised_tie_models": "Six original male/female Eyes/Face/Hat static meshes; common neutral cord for all materials; offline Assimp checked, PZ fit/clipping/concurrency and remote visuals NOT TESTED"
 }

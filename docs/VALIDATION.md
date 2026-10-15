@@ -1,6 +1,6 @@
 # Validation and release gates
 
-Project Version: 0.12.0-dev.1
+Project Version: 0.13.0-dev.1
 
 The user explicitly requested removal of all testing code. No test suites,
 gameplay doubles, item-grant/debug commands or Java harnesses remain in active source.
@@ -224,3 +224,30 @@ exact commands, SteamCMD/API verification and graceful Steam restart outcome.
 Preserve prior package/provenance, item identity, visibility and custom artwork.
 No game/server launch or local SP deployment. Worn fit/clipping/remote visuals
 remain NOT TESTED; G7 BLOCKED / NOT TESTED and stable G8 BLOCKED remain unchanged.
+
+## Improvised tie visual source milestone
+
+[TESTED: offline, 2026-10-14, 0.13.0-dev.1] Commands from the project root:
+
+```powershell
+& 'C:/Users/willi/.cache/b47anced-tools/python311-blender/python.exe' scripts/build_improvised_tie_models.py
+& 'C:/Users/willi/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -B scripts/check_versions.py
+& 'C:/Users/willi/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -B scripts/validate_release.py
+git diff --cached --check
+```
+
+Blender 4.5.7 LTS exports six original Eyes/Face/Hat models plus editable source,
+packed original cloth atlas, a schematic preview and per-file/helper provenance.
+The preview was inspected; it shows male examples, eyewear rear and hat front.
+Assimp import (assimp-py 1.1.0) accepts all six as one mesh each with finite
+coordinates/normals, UVs, matching counts and head-local dimensions. Production
+preflight passes for 194 runtime files; all 14 Lua files compile without gameplay
+execution. It checks item/XML/head-bone/texture/slot/hash/case contracts, native
+finite/rare invariants, retained ground/worn assets and localization/require case.
+Read-only comparison confirms gameplay Lua, original retainer/XML/ground/icon
+bytes are unchanged; item definitions only select the three new clothing XMLs.
+Old validations retain their original versions; no gameplay audit was rerun.
+Published 0.12 package/checksum/provenance remain hash-preserved, with ZIP CRC.
+No testing/debug runtime code, package, deployment, Workshop upload or game/server
+launch. PZ fit, simultaneous layers, clipping, old-save refresh, take-off/break
+visuals and dedicated remote rendering remain NOT TESTED; G7/stable G8 BLOCKED.

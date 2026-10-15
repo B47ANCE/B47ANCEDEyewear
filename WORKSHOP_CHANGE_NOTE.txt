@@ -1,7 +1,8 @@
-[b]Version 0.12.0-dev.1[/b]
+[b]Version 0.13.0-dev.1[/b]
 [b]MP testing build - dedicated multiplayer NOT TESTED[/b]
 
-[h2]Visible worn retainers[/h2]
-• Add distinct cloth, stitched leather and rare black-cord worn meshes, with separate male/female variants on the existing retainer slot.
-• Use vanilla head-attached clothing visuals alongside glasses. Preserve ground models, icons, item IDs, crafting, loot, durability and server-owned gameplay. Improvised ties retain their existing appearance.
-• Offline Blender/Assimp and source checks only. Actual worn fit, hair/hat/frame clipping, animations and remote visuals remain NOT TESTED. G7 and stable G8 remain blocked.
+[h2]Visible worn improvised ties[/h2]
+• Add a shared neutral knotted-cord visual for all six existing improvised materials, using male/female Eyes, Face and Hat models.
+• Eyes/Face use distinct rear-cord fits; supported hats use a chin cord. Keep the three existing native slots and vanilla worn-item synchronization.
+• Preserve all Lua gameplay, payment/linking, item IDs, condition, breaking, saves, existing retainers, ground models and icons. No Java, new networking or item grants.
+• Offline Blender/Assimp and source checks only. Actual PZ fit, hair/hat/frame clipping, simultaneous ties, old-save refresh and remote visuals remain NOT TESTED. G7/stable G8 remain blocked.

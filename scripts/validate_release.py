@@ -19,30 +19,37 @@ VANILLA = {'TimedActions/ISBaseTimedAction', 'TimedActions/ISTimedActionQueue', 
 def digest(data):
     return hashlib.sha256(data).hexdigest()
 
-def validate_worn_models(files):
+def validate_worn_models(files, improvised=False):
     import assimp_py
     import math
     import uuid
-    directory = ROOT / 'assets/retainers/worn'
-    manifest = json.loads((directory / 'worn-models.json').read_text(encoding='utf-8'))
+    directory = ROOT / ('assets/retainers/improvised' if improvised else 'assets/retainers/worn')
+    manifest = json.loads((directory / ('improvised-models.json' if improvised else 'worn-models.json')).read_text(encoding='utf-8'))
     if manifest['version'] != (ROOT / 'VERSION').read_text(encoding='utf-8').strip():
         raise ValueError('Worn asset manifest version differs from canonical version')
     for name, expected in manifest['authoring_files'].items():
         if Path(name).name != name or digest((directory / name).read_bytes()) != expected:
             raise ValueError('Worn authoring provenance mismatch: ' + name)
-    for filename, key in [('build_retainer_worn_models.py', 'generator_sha256'), ('build_retainer_ground_models.py', 'helper_sha256')]:
-        if digest((ROOT / 'scripts' / filename).read_bytes()) != manifest[key]:
+    generator = 'build_improvised_tie_models.py' if improvised else 'build_retainer_worn_models.py'
+    helpers = manifest['helper_sha256'] if improvised else {'build_retainer_ground_models.py': manifest['helper_sha256']}
+    for filename, expected in {generator: manifest['generator_sha256'], **helpers}.items():
+        if Path(filename).name != filename or digest((ROOT / 'scripts' / filename).read_bytes()) != expected:
             raise ValueError('Worn asset generator/helper changed without export review')
     entries = manifest['entries']
-    expected_pairs = {(kind, body) for kind in ('Cloth', 'Leather', 'Unbreakable') for body in ('M', 'F')}
-    if len(entries) != 6 or {(e['kind'], e['body']) for e in entries} != expected_pairs:
+    kinds = ('Eyes', 'Face', 'Hat') if improvised else ('Cloth', 'Leather', 'Unbreakable')
+    kind_key = 'slot' if improvised else 'kind'
+    expected_pairs = {(kind, body) for kind in kinds for body in ('M', 'F')}
+    if len(entries) != 6 or {(e[kind_key], e['body']) for e in entries} != expected_pairs:
         raise ValueError('Worn male/female retainer inventory mismatch')
     items = dict(re.findall(r'\bitem\s+(\w+)\s*\{([^{}]*)\}', files['media/scripts/B47ANCEDEyewear_Items.txt'].decode('utf-8'), re.S))
     guids = set()
-    for kind, item in [('Cloth', 'MakeshiftRetainer'), ('Leather', 'EyewearRetainer'), ('Unbreakable', 'UnbreakableRetainer')]:
-        clothing = 'B47ANCEDEyewear' + kind + 'RetainerWorn'
+    bindings = [(kind, 'ImprovisedTie' + kind) for kind in kinds] if improvised else [('Cloth', 'MakeshiftRetainer'), ('Leather', 'EyewearRetainer'), ('Unbreakable', 'UnbreakableRetainer')]
+    for kind, item in bindings:
+        clothing = 'B47ANCEDEyewearImprovisedTie' + kind + 'Worn' if improvised else 'B47ANCEDEyewear' + kind + 'RetainerWorn'
         if not re.search(r'\bClothingItem\s*=\s*' + clothing + r'\s*,', items[item]):
             raise ValueError('Retainer worn clothing binding mismatch')
+        if improvised and not re.search(r'\bBodyLocation\s*=\s*b47ancedeyewear:tie' + kind.lower() + r'\s*,', items[item]):
+            raise ValueError('Improvised tie native worn slot changed')
         xml = ET.fromstring(files['media/clothing/clothingItems/' + clothing + '.xml'])
         guid = str(uuid.UUID(xml.findtext('m_GUID')))
         if guid in guids:
@@ -52,7 +59,7 @@ def validate_worn_models(files):
                              'm_AllowRandomHue':'false', 'm_AllowRandomTint':'false'}.items():
             if xml.findtext(field) != value:
                 raise ValueError('Worn head attachment invariant failed: ' + field)
-        for entry in (e for e in entries if e['kind'] == kind):
+        for entry in (e for e in entries if e[kind_key] == kind):
             model = xml.findtext('m_MaleModel' if entry['body'] == 'M' else 'm_FemaleModel')
             if 'media/models_X/' + model + '.x' != entry['mesh']:
                 raise ValueError('Worn XML/model case mismatch')
@@ -81,10 +88,7 @@ def validate_worn_models(files):
             bounds = [max(coords[axis::3]) - min(coords[axis::3]) for axis in (0, 1, 2)]
             if not all(0.005 < size < 0.25 for size in bounds):
                 raise ValueError('Worn import dimensions outside authored head-local scale')
-    for item in ('ImprovisedTieEyes', 'ImprovisedTieFace', 'ImprovisedTieHat'):
-        if not re.search(r'\bClothingItem\s*=\s*B47ANCEDEyewearRetainer\s*,', items[item]):
-            raise ValueError('Improvised tie appearance changed outside retainer scope')
-    print('Six worn meshes: Assimp import/geometry/UV/normals, XML/head attachments and provenance PASS')
+    print(('Improvised ties' if improvised else 'Retainers') + ': six worn meshes, Assimp import/geometry/UV/normals, XML/head attachments and provenance PASS')
 
 def validate_ground_models(files):
     """Validate shipped asset identity and case-correct native model bindings."""
@@ -159,6 +163,7 @@ def inventory():
 def validate_source(files):
     validate_ground_models(files)
     validate_worn_models(files)
+    validate_worn_models(files, improvised=True)
     from lupa.lua51 import LuaRuntime
     lua = LuaRuntime()
     compile_only = lua.eval('function(code,name) local f,e=loadstring(code,name); if not f then error(e) end end')

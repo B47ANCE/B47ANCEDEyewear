@@ -1,6 +1,6 @@
 # B47ANCE'd Eyewear
 
-Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.12.0-dev.1.
+Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.13.0-dev.1.
 
 Lua-only development build targeting Project Zomboid 42.21. No custom Java/JAR,
 test suite or debugger grants are shipped. SP/dedicated gameplay is NOT TESTED.
@@ -44,7 +44,10 @@ optical-store containers and pharmacy cabinets. Its original black-cord artwork
 and no-coverage/no-wear definition remain unchanged. RareRetainerLootChance is
 0.25% per eligible new fill by default (0–5%; zero disables spawns). Existing
 filled containers remain unchanged. Crafted cloth and leather keep distinct icons;
-improvised ties reuse the cloth icon. All three retainer items have distinct 3D
+improvised ties reuse the cloth icon and now have a shared neutral knotted-cord
+worn appearance, with separate male/female Eyes/Face rear cords and a Hat chin
+cord. See [improvised visuals](docs/IMPROVISED_TIE_MODELS.md).
+All three retainer items have distinct 3D
 ground models: cloth loops, stitched leather and black cord with rubber sleeves.
 All three also have head-attached worn models with male/female variants.
 In-game fit and clipping are untested. See [worn assets](docs/WORN_MODELS.md) and
@@ -60,12 +63,11 @@ Authoritative source: `src/B47ANCEDEyewear/42/`.
 Workshop item: https://steamcommunity.com/sharedfiles/filedetails/?id=3799754736
 Public source: https://github.com/B47ANCE/B47ANCEDEyewear
 
-Workshop development / MP test distribution of 0.12.0-dev.1 was explicitly
-requested after worn-model implementation. Exact release commit, package/text
-hashes, offline checks, upload verification and Steam restart outcome are recorded
-in generated publication provenance. Published 0.11.1 files remain preserved.
-No game/server was launched; G7 BLOCKED / NOT TESTED and stable G8 BLOCKED
-remain unchanged. Publication does not imply local SP deployment.
+Current 0.13.0-dev.1 adds worn improvised-tie visuals in source only. It is not
+packaged, deployed or published. Workshop still serves 0.12.0-dev.1; its actual
+published package/checksum/provenance are preserved with verified hashes and
+ZIP CRC. No game/server was launched. G7 BLOCKED / NOT TESTED and stable G8
+BLOCKED remain unchanged.
 
 See [architecture](docs/ARCHITECTURE.md), [retainer items](docs/RETAINER_ITEMS.md),
 [validation](docs/VALIDATION.md) and [version policy](docs/VERSION_POLICY.md).

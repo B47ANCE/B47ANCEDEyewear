@@ -1,0 +1,142 @@
+{
+  "schema": 1,
+  "version": "0.13.0-dev.1",
+  "tool": "Blender 4.5.7 LTS",
+  "format": "DirectX text xof 0303txt 0032; static, no skin/animation",
+  "attachment": "Bip01_Head",
+  "axes": "Native X up/Y lateral/Z forward; Blender Z up/X lateral/-Y forward",
+  "appearance": "Shared neutral knotted cord for all six existing materials; Eyes/Face rear cords and Hat chin cord.",
+  "provenance": "Original procedural meshes; existing original cloth atlas. Preview shows male examples; female meshes are retained in the master with render visibility off. Original schematic heads/hats are preview helpers only.",
+  "runtime": "NOT TESTED in PZ; actual fit, clipping, old-save refresh and remote visuals remain runtime gates.",
+  "entries": [
+    {
+      "slot": "Eyes",
+      "body": "M",
+      "mesh": "media/models_X/static/clothes/b47ancedeyewear_improvised_eyes_m.x",
+      "mesh_sha256": "e92af752d9b415c80545d88bbad68bbfa75d542c319e170dbefc4945b8e3fc00",
+      "texture": "media/textures/WorldItems/B47ANCEDEyewearClothRetainerGround.png",
+      "texture_sha256": "a643945e4826833c2054e73ca52b69f515e31822f703c0310c6f32f08c6f855f",
+      "vertices": 5784,
+      "triangles": 1928,
+      "native_min": [
+        0.051750000566244125,
+        -0.0668063834309578,
+        -0.08684295415878296
+      ],
+      "native_max": [
+        0.07824999839067459,
+        0.0668063834309578,
+        -0.017157047986984253
+      ]
+    },
+    {
+      "slot": "Face",
+      "body": "M",
+      "mesh": "media/models_X/static/clothes/b47ancedeyewear_improvised_face_m.x",
+      "mesh_sha256": "6a361e1503833a289a1b8e1c3979360108bddca662f26e9d37b8a7b672a31347",
+      "texture": "media/textures/WorldItems/B47ANCEDEyewearClothRetainerGround.png",
+      "texture_sha256": "a643945e4826833c2054e73ca52b69f515e31822f703c0310c6f32f08c6f855f",
+      "vertices": 5784,
+      "triangles": 1928,
+      "native_min": [
+        0.04374999925494194,
+        -0.06980638206005096,
+        -0.09084295481443405
+      ],
+      "native_max": [
+        0.0702499970793724,
+        0.06980638206005096,
+        -0.017157047986984253
+      ]
+    },
+    {
+      "slot": "Hat",
+      "body": "M",
+      "mesh": "media/models_X/static/clothes/b47ancedeyewear_improvised_hat_m.x",
+      "mesh_sha256": "135b07503a24ce59c258670942e8303a4d404ea471985bd62d60268d932f6749",
+      "texture": "media/textures/WorldItems/B47ANCEDEyewearClothRetainerGround.png",
+      "texture_sha256": "a643945e4826833c2054e73ca52b69f515e31822f703c0310c6f32f08c6f855f",
+      "vertices": 3408,
+      "triangles": 1136,
+      "native_min": [
+        -0.05434615537524223,
+        -0.07209829241037369,
+        0.003979363478720188
+      ],
+      "native_max": [
+        0.09640627354383469,
+        0.07209829241037369,
+        0.057894494384527206
+      ]
+    },
+    {
+      "slot": "Eyes",
+      "body": "F",
+      "mesh": "media/models_X/static/clothes/b47ancedeyewear_improvised_eyes_f.x",
+      "mesh_sha256": "c5e27a580a0000c2e188d1b48730e4aa824be84c14f696d01696b63a489b3b5b",
+      "texture": "media/textures/WorldItems/B47ANCEDEyewearClothRetainerGround.png",
+      "texture_sha256": "a643945e4826833c2054e73ca52b69f515e31822f703c0310c6f32f08c6f855f",
+      "vertices": 5784,
+      "triangles": 1928,
+      "native_min": [
+        0.04675000160932541,
+        -0.06180638074874878,
+        -0.08684295415878296
+      ],
+      "native_max": [
+        0.07325000315904617,
+        0.06180638074874878,
+        -0.017157047986984253
+      ]
+    },
+    {
+      "slot": "Face",
+      "body": "F",
+      "mesh": "media/models_X/static/clothes/b47ancedeyewear_improvised_face_f.x",
+      "mesh_sha256": "25c31d6d3214f409cbc0f37bcd5c09a9c3bdabe151672ec57af06bb871cc5053",
+      "texture": "media/textures/WorldItems/B47ANCEDEyewearClothRetainerGround.png",
+      "texture_sha256": "a643945e4826833c2054e73ca52b69f515e31822f703c0310c6f32f08c6f855f",
+      "vertices": 5784,
+      "triangles": 1928,
+      "native_min": [
+        0.038750000298023224,
+        -0.06480638682842255,
+        -0.09084295481443405
+      ],
+      "native_max": [
+        0.06525000184774399,
+        0.06480638682842255,
+        -0.017157047986984253
+      ]
+    },
+    {
+      "slot": "Hat",
+      "body": "F",
+      "mesh": "media/models_X/static/clothes/b47ancedeyewear_improvised_hat_f.x",
+      "mesh_sha256": "33817fd5a6c0b128ebdcc31608bf9782f9cccab82c78121e35e06989f2240851",
+      "texture": "media/textures/WorldItems/B47ANCEDEyewearClothRetainerGround.png",
+      "texture_sha256": "a643945e4826833c2054e73ca52b69f515e31822f703c0310c6f32f08c6f855f",
+      "vertices": 3408,
+      "triangles": 1136,
+      "native_min": [
+        -0.05934615433216095,
+        -0.06709852069616318,
+        0.003979119006544352
+      ],
+      "native_max": [
+        0.0914061963558197,
+        0.06709852069616318,
+        0.057894494384527206
+      ]
+    }
+  ],
+  "authoring_files": {
+    "ImprovisedTieWornModels.blend": "39a6bd4a716a33fabccdfd2bb95b642492e5e4748919c4841224b3e68de0b735",
+    "ImprovisedTies_Preview.png": "1d05d0c9d956b824ba34f12a8402b80e87e0596f33c37b2bcbb41184ea83fdc8"
+  },
+  "generator_sha256": "7e3de83bee4e848c3dcc3682995ae0dca9f0aa462b54240775f5614cd4be4e31",
+  "helper_sha256": {
+    "build_retainer_worn_models.py": "251379d8375107d9d68fd8912b03f96738599904265c11f365695dda1ce96a58",
+    "build_retainer_ground_models.py": "2c94cd569a03aa4603372b356dab122378fb383f98c18704d7ac059e746e7896"
+  }
+}

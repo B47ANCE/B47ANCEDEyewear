@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.13.0-dev.1] — 2026-10-14
+
+- MINOR: add visible worn improvised ties through three native clothing definitions and six original male/female Eyes/Face/Hat meshes. All six existing materials share a neutral knotted-cord look; hats use an under-chin fit, eyewear uses rear cords.
+- Preserve all Lua gameplay, material/payment links, durability, IDs, slots, saves, existing retainers, ground assets and icons. Distinct Eyes/Face paths offset simultaneous cord layers; no hiding rules added.
+- Preserve editable Blender source, original preview helpers, mesh provenance and independent Assimp import checks. Actual PZ fit/clipping, old-save refresh and remote visuals remain NOT TESTED. No package, deployment or Workshop upload.
+
 ## [0.12.0-dev.1] — 2026-10-14
 
 - MINOR: add distinct cloth, leather and black-cord worn models, with male/female variants attached to the existing retainer slot through native head-attached clothing definitions.

@@ -1,6 +1,6 @@
 # Lua API evidence
 
-Project Version: 0.12.0-dev.1
+Project Version: 0.13.0-dev.1
 Source inspection: 2026-10-14. Target Build 42.21.
 
 The installed Steam app108600 build25485521 uses the original JAR Core.class hash
@@ -141,3 +141,17 @@ No Lua gameplay, persistence, IDs or custom synchronization changed. No package,
 deployment, publication or PZ/server launch is part of this source iteration.
 Published 0.11.1 ZIP/checksum/provenance were preserved unchanged with hashes,
 a preservation ledger and a read-only ZIP CRC check. No artifacts were deleted.
+
+## Improvised-tie worn presentation source addition
+
+0.13.0-dev.1 uses the existing native head-attachment route for the three existing
+improvised tie item types. Separate Eyes/Face/Hat XMLs and six original body-
+specific meshes share the original cloth atlas for all six materials. Source
+inspection confirms the slots, linked-item authority and native SyncClothing
+already exist; all gameplay Lua remains unchanged. See IMPROVISED_TIE_MODELS.md
+for current installed 42.21 evidence, asset provenance, configuration assessment,
+independent import checks and explicit runtime gates. No client-owned gameplay,
+new state, item types, schema or networking was introduced. Current iteration is
+source only; no packaging, deployment, upload or game/server launch. Published
+0.12.0 ZIP/checksum/provenance were preserved with matching hashes, a bounded
+preservation ledger and ZIP CRC. No artifact deletion occurred.

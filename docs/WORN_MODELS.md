@@ -1,6 +1,6 @@
 # Worn retainer presentation
 
-Project Version: 0.12.0-dev.1
+Project Version: 0.13.0-dev.1
 
 All three retainer items now bind visible, original head-attached static clothing
 meshes. Cloth has a beige strap and tied loops; leather has stitching and dark
@@ -16,7 +16,9 @@ XMLs. Each has a unique stable GUID, m_Static=true, m_AttachBone=Bip01_Head,
 m_MasksFolder=none, fixed color and two body-model paths. textureChoices reuses
 the corresponding original WorldItems atlas. Model files use lowercase paths
 under media/models_X/static/clothes, matching XML lookups exactly for Linux.
-The existing B47ANCEDEyewearRetainer invisible XML is retained for improvised ties.
+The existing B47ANCEDEyewearRetainer invisible XML remains as a compatibility
+asset. Improvised ties now use separate native worn definitions; see
+IMPROVISED_TIE_MODELS.md. The six retainer meshes and XMLs remain unchanged.
 
 The independent retainer body slot already coexists with glasses; no exclusion
 or hide-model rules were added. Clothing appearance follows the actual native
@@ -63,8 +65,10 @@ through Assimp (assimp-py 1.1.0), checks one mesh each, finite coordinates/norma
 UVs, triangle counts and head-local scale, and verifies item/XML/texture/path-case
 and stable attachment contracts. No tests/debug runtime code was introduced.
 
-[TESTED: offline] Assimp import and production preflight PASS for all six meshes;
-185 runtime files include the same 14 Lua files compiled without gameplay execution.
+[TESTED: offline, 0.12.0-dev.1] Assimp import and source preflight passed for all
+six retainer meshes and 185 runtime files, including the same 14 Lua files.
+The current preflight rechecks those unchanged assets alongside the new ties,
+for 194 runtime files. Lua is compiled without gameplay execution.
 The Blender preview was inspected; original artwork, all ground FBX/textures and
 Lua behavior remain unchanged. A subsequent explicit publish request authorizes
 Workshop development / MP test distribution; exact outcome is recorded in
