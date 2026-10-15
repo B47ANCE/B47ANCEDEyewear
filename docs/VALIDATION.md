@@ -1,6 +1,6 @@
 # Validation and release gates
 
-Project Version: 0.7.0-dev.2
+Project Version: 0.8.0-dev.1
 
 The user explicitly requested removal of all testing code. No test suites,
 gameplay doubles, item-grant/debug commands or Java harnesses remain in active source.
@@ -39,6 +39,24 @@ key/instruction coverage. A read-only identity audit matched all 47 recipe input
 IDs against the installed generated item definitions. `git diff --check` passed.
 Package results, source hashes and commit are recorded in generated provenance;
 they do not replace the untested gameplay gates below.
+
+[TESTED: offline, 2026-10-14, 0.8.0-dev.1] Run from the project root using the
+bundled Python with Lupa 2.6:
+
+```powershell
+& 'C:/Users/willi/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -B scripts/check_versions.py
+& 'C:/Users/willi/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -B scripts/validate_release.py
+git diff --check
+```
+
+All passed: 165 runtime files; all 12 Lua files compile without execution; JSON,
+XML, localization and exact original icon checks pass. A separate read-only
+source audit matched all 49 referenced vanilla types and both defined custom
+outputs. Native registry and clothing/equipment source paths were inspected, not
+executed in PZ. No test suite was restored. No current 0.8 package was generated;
+the prior provenance in dist/current remains a historical 0.7.0-dev.1 record.
+See RETAINER_ITEMS.md for the exact durability hook blocker and current manual
+runtime scenarios. Dedicated G7 and stable G8 remain blocked.
 
 [RUNTIME GATE] SP behavior and dedicated MP have not been validated for this iteration.
 G7 BLOCKED / NOT TESTED; G8 BLOCKED. Stable release requires current-commit dedicated evidence and gates. Under the

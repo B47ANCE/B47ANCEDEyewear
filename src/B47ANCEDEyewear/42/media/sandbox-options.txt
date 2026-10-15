@@ -1,4 +1,14 @@
 VERSION = 1,
+option B47ANCEDEyewear.WearableRetainersEnabled
+{
+    type = boolean, default = true,
+    page = B47ANCEDEyewear, translation = B47ANCEDEyewear_WearableRetainersEnabled,
+}
+option B47ANCEDEyewear.WearableRetainerFallChance
+{
+    type = integer, default = 0, min = 0, max = 100,
+    page = B47ANCEDEyewear, translation = B47ANCEDEyewear_WearableRetainerFallChance,
+}
 option B47ANCEDEyewear.TyingEnabled
 {
     type = boolean, default = true,

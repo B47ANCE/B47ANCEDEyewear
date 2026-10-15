@@ -1,4 +1,10 @@
 local S = require 'B47ANCEDEyewear/Core'
+local R = require 'B47ANCEDEyewear/Retention'
+
+-- Ordinary output recipes delegate matching, payment and creation to vanilla.
+function S.canCraftRetainer(item, character)
+    return R.options().wearable
+end
 
 -- Vanilla CraftRecipe OnTest is a production input-eligibility hook. It runs
 -- for each candidate item on both sides; no state is changed here.

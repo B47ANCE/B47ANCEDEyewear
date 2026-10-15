@@ -1,9 +1,14 @@
 # Cleanup and Workshop preparation
 
-Project Version: 0.7.0-dev.2
+Project Version: 0.8.0-dev.1
 Date: 2026-10-14
 
-Current continuation: 0.7.0-dev.1 adds a production crafting recipe by explicit
+Current 0.8 continuation: add real Lua-only wearable items and ordinary output
+recipes by explicit request. No retired tests, Java paths or finite catches are
+restored. Item artwork is copied byte-for-byte from the retained original source.
+This is source implementation only; packaging/deployment/publication are separate.
+
+Earlier continuation: 0.7.0-dev.1 adds a production crafting recipe by explicit
 request. Both inputs are kept during vanilla processing; the existing authoritative
 tie transaction validates and consumes one material use. The new recipe replaces
 the unsafe retired definition without restoring test/debug code or Java paths.

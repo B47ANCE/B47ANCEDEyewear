@@ -1,6 +1,6 @@
 # Lua API evidence
 
-Project Version: 0.7.0-dev.2
+Project Version: 0.8.0-dev.1
 Source inspection: 2026-10-14. Target Build 42.21.
 
 The installed Steam app108600 build25485521 uses the original JAR Core.class hash
@@ -45,6 +45,28 @@ remain vanilla synchronization, not a replacement networking implementation.
 
 The inventory tooltip delegates to item:DoTooltip. The companion renderer chains
 ISToolTipInv.render without replacing its vanilla measurement/drawing logic.
+
+[VERIFIED: source, rechecked 2026-10-14] Original-JAR ModRegistries.init loads
+<version-dir>/media/registries.lua (common fallback) through LuaManager.RunLua.
+Both GameWindow and dedicated GameServer call ModRegistries.init before
+ScriptManager.Load, so the custom location exists before item definitions resolve.
+ItemBodyLocation exposes get(ResourceLocation) and register(String); the custom
+namespace is accepted by RegistryReset.createLocation. BodyLocationGroup accepts
+the resulting registered object in getOrCreateLocation. Installed NPCs/BodyLocations
+uses this API, and ISWearClothing.complete / ISUnequipAction.complete mutate the
+actual worn item on authoritative completion. Existing emptytexture clothing XML
+(e.g. AthleticCup.xml) supplies a no-model convention. ItemName.json uses bare
+FullType keys; custom slot labels use UI_ClothingType_ plus translation name.
+InventoryItem.getEquipParent supports read-only tooltip selection.
+
+The installed IsoGameCharacter.class SHA-256 is still
+29040e19c3e420499f73bc0ea0d5b86d7f7d38655acdc13d0107df736eb54c0b,
+byte-identical to the privately retained, previously audited native method.
+helmetFallFromWornItems performs native RNG and immediate inventory/worn removal
+and falling-item creation with no intervening Lua callback. Public helmetFall
+emits OnClothingUpdated only afterward for a local player. OnPlayerGetDamage is
+not evidence of that native successful roll. Exact -1-per-knock-off durability
+remains BLOCKED in Lua under the current exposed API; no approximation is enabled.
 
 [UNKNOWN / RUNTIME GATE] Actual MP timed-action acknowledgement, command arrival,
 derived ChanceToFall ownership/synchronization, save/reconnect behavior, material

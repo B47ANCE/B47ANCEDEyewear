@@ -8,11 +8,13 @@ import sys
 import stat
 import subprocess
 import zipfile
+import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / 'src/B47ANCEDEyewear/42'
 LANGUAGES = 'AR CA CH CN CS DA DE EN ES ES_CL ES_MX FI FR HU ID IT JP KO NL NO PL PT PTBR RO RU STREW TH TR UA'.split()
-VANILLA = {'TimedActions/ISBaseTimedAction', 'TimedActions/ISTimedActionQueue', 'ISUI/ISToolTipInv', 'ISUI/ISPanel'}
+VANILLA = {'TimedActions/ISBaseTimedAction', 'TimedActions/ISTimedActionQueue', 'ISUI/ISToolTipInv', 'ISUI/ISPanel',
+           'NPCs/BodyLocations', 'TimedActions/ISWearClothing', 'TimedActions/ISUnequipAction'}
 
 def digest(data):
     return hashlib.sha256(data).hexdigest()
@@ -40,7 +42,7 @@ def validate_source(files):
     from lupa.lua51 import LuaRuntime
     lua = LuaRuntime()
     compile_only = lua.eval('function(code,name) local f,e=loadstring(code,name); if not f then error(e) end end')
-    modules = {name.split('/lua/', 1)[1].split('/', 1)[1][:-4] for name in files if name.endswith('.lua')}
+    modules = {name.split('/lua/', 1)[1].split('/', 1)[1][:-4] for name in files if name.endswith('.lua') and '/lua/' in name}
     for name, data in files.items():
         if name.endswith('.lua'):
             source = data.decode('utf-8')
@@ -52,12 +54,14 @@ def validate_source(files):
                     raise ValueError('Missing or case-incorrect Lua require: ' + module)
         if name.endswith('.json'):
             json.loads(data)
+        if name.endswith('.xml'):
+            ET.fromstring(data)
     translated = SOURCE / 'media/lua/shared/Translate'
     actual = {p.name for p in translated.iterdir() if p.is_dir()}
     if actual != set(LANGUAGES):
         raise ValueError('Translation language inventory mismatch')
     english = {}
-    for category in ('UI', 'ContextMenu', 'Sandbox', 'Recipes'):
+    for category in ('UI', 'ContextMenu', 'Sandbox', 'Recipes', 'ItemName'):
         reference = json.loads((translated / 'EN' / (category + '.json')).read_text(encoding='utf-8'))
         english.update(reference)
         for language in LANGUAGES:
@@ -82,6 +86,15 @@ def validate_source(files):
             for key in re.findall(r'\bTooltip\s*=\s*(\w+)\s*,', script):
                 if key not in english:
                     raise ValueError('Untranslated recipe instructions: ' + key)
+            for item in re.findall(r'\bitem\s+(\w+)\s*\{', script):
+                if 'B47ANCEDEyewear.' + item not in english:
+                    raise ValueError('Untranslated item: ' + item)
+            for icon in re.findall(r'\bIcon\s*=\s*(\w+)\s*,', script):
+                if 'media/textures/Item_' + icon + '.png' not in files:
+                    raise ValueError('Missing item icon or incorrect path case: ' + icon)
+            for clothing in re.findall(r'\bClothingItem\s*=\s*(\w+)\s*,', script):
+                if 'media/clothing/clothingItems/' + clothing + '.xml' not in files:
+                    raise ValueError('Missing clothing definition or incorrect path case: ' + clothing)
     for filename in ('WORKSHOP_DESCRIPTION.txt', 'WORKSHOP_CHANGE_NOTE.txt'):
         text = (ROOT / filename).read_text(encoding='utf-8').strip()
         if filename=='WORKSHOP_DESCRIPTION.txt' and len(text.encode('utf-8'))>8000:
@@ -95,6 +108,9 @@ def validate_source(files):
     for name, expected in asset_manifest['files'].items():
         if digest((assets / name).read_bytes()) != expected:
             raise ValueError('Editable asset provenance mismatch: ' + name)
+    icon = 'media/textures/Item_B47ANCEDEyewearRetainer.png'
+    if digest(files[icon]) != asset_manifest['files']['Item_B47ANCEDEyewearRetainer.png']:
+        raise ValueError('Runtime retainer icon differs from original authoring asset')
     description = (ROOT / 'WORKSHOP_DESCRIPTION.txt').read_text(encoding='utf-8')
     origin = subprocess.check_output(['git', '-C', str(ROOT), 'remote', 'get-url', 'origin'], text=True).strip()
     match = re.fullmatch(r'(?:https://github\.com/|git@github\.com:)([^/]+)/([^/]+?)(?:\.git)?', origin)

@@ -18,4 +18,43 @@ module B47ANCEDEyewear
         }
         outputs { }
     }
+    craftRecipe MakeClothEyewearRetainer
+    {
+        timedAction = Making,
+        time = 16,
+        Tags = InHandCraft,
+        category = Tailoring,
+        OnTest = B47ANCEDEyewear.canCraftRetainer,
+        Tooltip = UI_B47ANCEDEyewear_CraftClothRetainer,
+        inputs
+        {
+            item 2 [Base.RippedSheets],
+            item 2 [Base.Twine;Base.Thread;Base.Thread_Sinew;Base.Thread_Aramid],
+        }
+        outputs
+        {
+            item 1 B47ANCEDEyewear.MakeshiftRetainer,
+        }
+    }
+    craftRecipe MakeEyewearRetainer
+    {
+        timedAction = Making,
+        time = 24,
+        Tags = InHandCraft,
+        category = Tailoring,
+        OnTest = B47ANCEDEyewear.canCraftRetainer,
+        Tooltip = UI_B47ANCEDEyewear_CraftLeatherRetainer,
+        inputs
+        {
+            item 2 [Base.LeatherStrips],
+            item 4 [Base.Thread;Base.Thread_Sinew;Base.Thread_Aramid],
+            item 2 [Base.RubberBand],
+            item 1 tags[base:sewingneedle] mode:keep,
+            item 1 tags[base:scissors] mode:keep flags[IsNotDull],
+        }
+        outputs
+        {
+            item 1 B47ANCEDEyewear.EyewearRetainer,
+        }
+    }
 }

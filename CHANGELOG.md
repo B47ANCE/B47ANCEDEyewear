@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.8.0-dev.1] — 2026-10-14
+
+- MINOR: add craftable reusable cloth and leather eyewear retainers with a dedicated vanilla equipment slot.
+- Keep actual inventory items through Wear/Take Off, vanilla crafting, transfers and saves; protect one compatible worn pair through server-owned derived fall values.
+- Add server sandbox settings, item/recipe instructions, original inventory artwork and production asset/localization checks.
+- Exact minus-one durability on successful native knock-off remains blocked: the installed engine exposes no server-safe Lua callback at that decision. No substitute damage or Java code is installed.
+- Static/offline checks only; SP/dedicated validation NOT TESTED and G7/G8 blocked. No packaging, deployment or publication in this iteration.
+
 ## [0.7.0-dev.2]
 - Add user-supplied fallback icon/thumbnail; preserve manually supplied artwork. Asset-only iteration; gameplay unchanged.
 - Offline branding/version checks only; earlier validation remains historical at 0.7.0-dev.1. No new SP/dedicated MP evidence.

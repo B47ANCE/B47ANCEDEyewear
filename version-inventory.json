@@ -41,6 +41,10 @@
     {
       "path": "docs/ROADMAP.md",
       "pattern": "^Current development source is (?P<version>[^:\\s]+):"
+    },
+    {
+      "path": "docs/RETAINER_ITEMS.md",
+      "pattern": "^Project Version: (?P<version>\\S+)$"
     }
   ],
   "changelog": {
@@ -136,6 +140,10 @@
     {
       "reference": "dist/historical/0.6.0-dev.1-prepared; docs/CLEANUP_AND_WORKSHOP_PREPARATION.md historical cleanup decision",
       "reason": "Prepared 0.6.0-dev.1 ZIP/checksum/provenance and historical cleanup are preserved without relabeling as current crafting validation."
+    },
+    {
+      "reference": "dist/current/release-provenance.json",
+      "reason": "Last-prepared 0.7.0-dev.1 publication provenance, retained unchanged; no 0.8 package exists and future packaging must preserve/reclassify it before replacing."
     }
   ]
 }

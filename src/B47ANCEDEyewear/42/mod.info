@@ -1,8 +1,8 @@
 name=B47ANCE'd Eyewear
 id=B47ANCEDEyewear
 author=B47ANCE
-description=Lua-only development build. Tie or untie compatible worn glasses and supported hats through inventory context menus. In-game and dedicated multiplayer validation remain pending.
-modversion=0.7.0-dev.2
+description=Lua-only development build with reusable wearable retainer items, Tailoring recipes and compatible eyewear Tie/Untie. Per-catch durability is not implemented. SP and dedicated multiplayer validation remain pending.
+modversion=0.8.0-dev.1
 versionMin=42.21
 
 icon=media/ui/B47ANCEDEyewear_icon.png

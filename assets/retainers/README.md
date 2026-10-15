@@ -1,6 +1,8 @@
 # Permanent eyewear retainer — original source assets
 
-These files are outside src/ and are not distributed or enabled in-game.
+These editable sources remain outside src/. The exact 64x64 inventory icon is
+now copied into the runtime texture folder for the two wearable retainer items.
+The mesh and model texture remain authoring-only and are not distributed.
 Source geometry/texture validation is distinct from PZ import, head fit and networking.
 
 - Item_B47ANCEDEyewearRetainer.png: 64×64 RGBA inventory icon, real transparency.
@@ -12,7 +14,8 @@ Source geometry/texture validation is distinct from PZ import, head fit and netw
 - B47ANCEDEyewearRetainer_Texture.png: original 128×32 power-of-two dark material atlas.
 - asset-manifest.json: dimensions, part counts, status and SHA-256 hashes.
 
-No final PZ FBX, clothing XML, item script or live model attachment is claimed.
+Item scripts and an invisible empty-texture clothing XML now support vanilla
+Wear/Take Off. No final PZ FBX or fitted live model attachment is claimed.
 The source mesh is metre-scaled, Y-up, with provisional head-local origin/axes and
 human-scale proportions. Its dimensions are author-created, not extracted from
 vanilla geometry. Vanilla XML independently verifies static Bip01_Head attachment;
@@ -57,8 +60,9 @@ media/textures/B47ANCEDEyewearRetainer_Texture.png
 media/clothing/clothingItems/B47ANCEDEyewearRetainer.xml
 ```
 
-These paths are RESERVED, not created under src/. Verify exact filename case,
-FBX import and the model/texture lookup conventions before activating references.
+The icon path and clothing XML now exist under src/; the XML currently uses an
+empty texture and has no model. Mesh and model-texture paths remain RESERVED.
+Verify exact filename case, FBX import and lookup conventions before enabling them.
 An XML using m_Static=true and m_AttachBone=Bip01_Head follows the audited vanilla
 convention, but must accompany a verified way to render alongside the existing
 eyewear without owning shared gameplay state or leaving orphaned visuals.

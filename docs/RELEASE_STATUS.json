@@ -1,11 +1,14 @@
 {
-  "project_version": "0.7.0-dev.2",
+  "project_version": "0.8.0-dev.1",
   "source": "STATIC CHECKS ONLY",
   "sp": "NOT TESTED",
   "g7": "BLOCKED / NOT TESTED",
   "g8": "BLOCKED",
   "validated_commit": null,
   "dedicated_evidence": null,
-  "publication": "NOT AUTHORIZED; PREPARATION ONLY",
-  "distribution": "MP testing build - dedicated multiplayer NOT TESTED; explicit publish request required"
+  "publication": "NOT AUTHORIZED; SOURCE IMPLEMENTATION ONLY",
+  "distribution": "MP testing build - dedicated multiplayer NOT TESTED; explicit publish request required",
+  "blocked_features": [
+    "Exact -1 durability per successful native knock-off: no verified server-safe exposed Lua hook"
+  ]
 }

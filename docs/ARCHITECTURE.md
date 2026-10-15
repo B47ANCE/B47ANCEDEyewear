@@ -16,7 +16,7 @@ use. OnCreate(recipeData, character) takes only the two selected input instances
 rejects ambiguous inputs and calls S.tie on the server/SP side. It sends no custom
 client command and creates no output item. Completion rechecks current state and
 server sandbox configuration. Invalidated work consumes nothing. Batch crafting
-is disabled; recipe time16 matches the existing action duration80 after vanilla's
+is disabled; recipe time 16 matches the existing action duration 80 after vanilla's
 fivefold conversion. Recipe identifiers list installed Base types only; optional
 modded eyewear retains context-menu support without a recipe dependency.
 
@@ -32,7 +32,26 @@ is not treated as a valid tie. No real player saves are used by preparation tool
 RetainerState.lua is a read-only schema-2 compatibility reader. The tooltip shows
 stored historical values as inactive, or displays material/secured status for an
 actual legacy tie. It never changes gameplay state or initiates network actions.
-Unavailable finite-retainer transactions and all custom Java paths have been retired.
+Finite-retainer transactions and all custom Java paths remain retired.
+
+WearableRetainers.lua selects one actual worn item in the dedicated registered
+b47ancedeyewear:retainer slot. ModRegistries loads media/registries.lua before item
+scripts; shared initialization extends the vanilla Human body-location group.
+Both clothing types use the original inventory icon and an empty-texture clothing
+asset, with no fitted mesh. They occupy no existing eyewear or necklace slot.
+Native item ownership, worn mappings, crafting and persistence remain vanilla.
+There is no item escrow, saved userdata, generated replacement or schema migration.
+
+The first compatible untied pair in worn-slot order receives the server-configured
+retained fall value. Unequipping, disabling, breaking or transferring the retainer
+restores the ordinary profile on the next authoritative refresh. WearableActions.lua
+chains vanilla Wear/Take Off complete() and preserves its return value, then refreshes
+on server/SP. A dedicated OnTick fallback runs every 30 ticks for connected players;
+it scans worn slots only, uses direct container ownership, and never traverses world
+or inventory contents. OnPlayerUpdate remains presentation/reconciliation coverage.
+Changed fields reuse vanilla synchronization; no catch/damage client command exists.
+The two ordinary output recipes let vanilla validate, consume inputs and create one
+retainer. Needles/scissors are kept; material use is not repeated in Lua callbacks.
 
 Sandbox defaults: TyingEnabled=true, EyewearFallMultiplier=1 (0.25–5),
 StrappedHeadwearFallChance=0 (0–100). Server configuration is shared gameplay authority.

@@ -20,6 +20,8 @@ function R.options()
         return type(n)=='number' and n==n and n>=low and n<=high and n or default
     end
     return {tying=raw.TyingEnabled~=false,
+        wearable=raw.WearableRetainersEnabled~=false,
+        retainerChance=math.floor(number('WearableRetainerFallChance',0,0,100)),
         multiplier=number('EyewearFallMultiplier',1,0.25,5),
         headwear=math.floor(number('StrappedHeadwearFallChance',0,0,100))}
 end

@@ -6,8 +6,20 @@ local function finite(n) return type(n)=='number' and n==n and n>-math.huge and 
 local function whole(n,lo,hi) return finite(n) and n==math.floor(n) and n>=lo and n<=hi end
 local function unknown() return {unavailable=true,lines={text('RetainerTitle'),text('Unavailable')}} end
 function P.model(item)
-    if not item or not item:hasModData() then return nil end
+    if not item then return nil end
     local S=B47ANCEDEyewear
+    local T=S and S.RetainerItems
+    if T and T.isItem(item) then
+        return {lines={text('RetainerTitle'),getItemNameFromFullType(item:getFullType()),
+            text('WearableInstructions'),text('WearableDurability')}}
+    end
+    if T then
+        local owner=item:getEquipParent()
+        if owner and T.target(owner,S)==item then
+            return {lines={text('RetainerTitle'),text('WearableProtection'),text('WearableDurability')}}
+        end
+    end
+    if not item:hasModData() then return nil end
     local tied=S and S.state and S.state(item)
     if tied and tied.tied then
         if type(tied.material)~='string' then return unknown() end

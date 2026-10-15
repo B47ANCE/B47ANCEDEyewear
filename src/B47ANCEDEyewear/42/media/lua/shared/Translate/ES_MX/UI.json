@@ -24,5 +24,11 @@
   "UI_B47ANCEDEyewear_Headwear": "Headwear",
   "UI_B47ANCEDEyewear_TiedAttachment": "Tied attachment — no durability system",
   "UI_B47ANCEDEyewear_InactiveProtection": "Historical retainer record — protection inactive",
-  "UI_B47ANCEDEyewear_CraftingTieInstructions": "Wear compatible glasses, a straw hat or a summer hat. Keep one supported tying material in your main inventory. Consumes one material use and keeps the original item."
+  "UI_B47ANCEDEyewear_CraftingTieInstructions": "Wear compatible glasses, a straw hat or a summer hat. Keep one supported tying material in your main inventory. Consumes one material use and keeps the original item.",
+  "UI_B47ANCEDEyewear_WearableInstructions": "Wear in the retainer slot alongside glasses. Protects one compatible untied pair; take off to reuse. Monocles and hats are excluded.",
+  "UI_B47ANCEDEyewear_WearableDurability": "Reusable wearable; per-catch durability is not implemented.",
+  "UI_B47ANCEDEyewear_WearableProtection": "Worn eyewear retainer is applying the server retention setting.",
+  "UI_B47ANCEDEyewear_CraftClothRetainer": "Makes one reusable cloth retainer from two ripped sheets and two uses of twine or thread. Wear with compatible glasses.",
+  "UI_B47ANCEDEyewear_CraftLeatherRetainer": "Makes one reusable leather retainer from two leather strips, four thread uses and two rubber bands. A sewing needle and scissors are kept.",
+  "UI_ClothingType_b47ancedeyewear:retainer": "Eyewear Retainer"
 }

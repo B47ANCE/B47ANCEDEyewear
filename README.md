@@ -1,6 +1,6 @@
 # B47ANCE'd Eyewear
 
-Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.7.0-dev.2.
+Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.8.0-dev.1.
 
 Lua-only development build targeting Project Zomboid 42.21. No Java agent, bridge,
 JAR dependency, test suite or debugger item-grant command is part of the project.
@@ -18,18 +18,36 @@ craft. Already tied, broken or unworn items are rejected. No skill, magazine or
 workbench is required. Modded eyewear can continue using the inventory context menu.
 Monocles remain incompatible with tying.
 
+Crafting → Tailoring now also provides two real wearable items:
+
+- **Make cloth eyewear retainer:** 2 ripped sheets + 2 uses of twine or thread.
+- **Make eyewear retainer:** 2 leather strips + 4 thread uses + 2 rubber bands;
+  a sewing needle and usable scissors are kept.
+
+Wear either in its dedicated Eyewear Retainer slot alongside compatible glasses.
+One retainer protects one untied, unbroken, non-monocle pair in vanilla worn-slot
+order. Take Off preserves the same retainer for reuse and restores the glasses'
+normal retention. Both materials currently have the same configurable protection;
+there is no hidden durability or quality difference. Hats still use Tie/Untie.
+No magazine, skill level or workbench is required for either output recipe.
+
 Tied attachments use the existing zero-fall retention behavior. Untied eyewear
 uses item-specific profiles. Strapped protective headwear defaults to zero fall
 value, while loose hats retain vanilla behavior. Vanilla impact calculation remains in control.
 Server sandbox options control new tying, the untied-eyewear multiplier and the
-strapped-headwear fall value. Existing ties remain valid when new tying is disabled.
+strapped-headwear fall value, wearable-retainer enable switch and retained-eyewear
+fall value (default 0). Disabling wearable retainers stops their crafting/protection
+but preserves the actual items. Existing ties remain valid when new tying is disabled.
 
 Hovering tied eyewear shows its material and secured state beside the normal
 inventory tooltip, without a fabricated durability bar. Historical finite or
 permanent retainer records are preserved for inspection and clearly marked inactive.
-Finite-retainer catches, permanent reusable-item gameplay, rare loot and worn
-retainer models are not included. Their Lua-only implementation requires a verified
-engine capability and authority design; no substitute catch calculation is installed.
+Reusable wearable retainer items and their original inventory icon are included.
+Their clothing definition is deliberately invisible: no fitted 3D worn model or
+rare loot registration is claimed. Exact -1 durability per successful vanilla
+knock-off remains blocked by the engine's missing server-safe Lua callback.
+Ordinary hits never charge durability; no second fall roll, post-drop re-equipping
+or Java dependency is installed. See [retainer behavior and blocker](docs/RETAINER_ITEMS.md).
 
 Authoritative runtime source: `src/B47ANCEDEyewear/42/`.
 Workshop item: https://steamcommunity.com/sharedfiles/filedetails/?id=3799754736

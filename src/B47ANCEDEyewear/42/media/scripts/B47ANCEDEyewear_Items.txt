@@ -1,0 +1,29 @@
+module B47ANCEDEyewear
+{
+    item MakeshiftRetainer
+    {
+        DisplayName = Cloth Eyewear Retainer,
+        DisplayCategory = Accessory,
+        ItemType = base:clothing,
+        Weight = 0.05,
+        Icon = B47ANCEDEyewearRetainer,
+        BodyLocation = b47ancedeyewear:retainer,
+        ClothingItem = B47ANCEDEyewearRetainer,
+        Cosmetic = true,
+        ChanceToFall = 0,
+        Tooltip = UI_B47ANCEDEyewear_WearableInstructions,
+    }
+    item EyewearRetainer
+    {
+        DisplayName = Eyewear Retainer,
+        DisplayCategory = Accessory,
+        ItemType = base:clothing,
+        Weight = 0.05,
+        Icon = B47ANCEDEyewearRetainer,
+        BodyLocation = b47ancedeyewear:retainer,
+        ClothingItem = B47ANCEDEyewearRetainer,
+        Cosmetic = true,
+        ChanceToFall = 0,
+        Tooltip = UI_B47ANCEDEyewear_WearableInstructions,
+    }
+}

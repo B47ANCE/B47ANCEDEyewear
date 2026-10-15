@@ -1,6 +1,8 @@
 B47ANCEDEyewear = B47ANCEDEyewear or {}
 local S = B47ANCEDEyewear
 local R = require 'B47ANCEDEyewear/Retention'
+local T = require 'B47ANCEDEyewear/WearableRetainers'
+S.RetainerItems = T
 S.materials = { ['Base.Twine'] = true, ['Base.RubberBand'] = true,
     ['Base.DentalFloss'] = true, ['Base.Thread'] = true,
     ['Base.Thread_Aramid'] = true, ['Base.Thread_Sinew'] = true }
@@ -241,15 +243,18 @@ end
 
 -- Apply the retention-derived ChanceToFall to one worn item. `chance = nil`
 -- means "leave vanilla unchanged".
-function S.applyChance(item, character)
+function S.applyChance(item, character, retained)
     if not item or not instanceof(item, 'Clothing') then return end
     S.migrateState(character, item)
     clearLegacyMonocleState(character, item)
     local data = S.state(item)
     local tied = data ~= nil and data.tied or false
     local chance = R.chanceFor(item, tied, data and data.original)
+    if retained == nil then retained = T.target(character, S) == item end
+    if retained and not tied then chance = R.options().retainerChance end
     if chance ~= nil and item:getChanceToFall() ~= chance then
         item:setChanceToFall(chance)
+        if not isClient() and character then syncChangedItem(character,item) end
     end
 end
 
@@ -257,8 +262,10 @@ function S.refresh(character)
     if not character then return end
     local worn = character:getWornItems()
     if not worn then return end
+    local retained = T.target(character, S)
     for i = 0, worn:size() - 1 do
-        S.applyChance(worn:get(i):getItem(), character)
+        local item = worn:get(i):getItem()
+        S.applyChance(item, character, item == retained)
     end
 end
 
