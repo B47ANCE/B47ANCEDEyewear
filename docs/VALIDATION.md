@@ -77,13 +77,13 @@ this labelled test build before G7, after all source/authority/security/package 
 Preparation does not
 launch a game/server, deploy live mods, connect via SFTP or contact SteamCMD.
 
-## Current native durability source iteration
+## Native durability source milestone, before authorized packaging
 
 [TESTED: offline, 2026-10-14, 0.10.0-dev.1] Production source/version checks
 passed for 169 runtime files, compiling all 14 Lua files without engine execution.
 JSON/XML, localization keys/placeholders, require case, icons, native finite-item
 properties, rare-item damage exemption and generated-item recipe exclusions pass.
-`git diff --check` is the separate whitespace gate. No current package exists.
+`git diff --check` is the separate whitespace gate. No package existed at this source milestone.
 
 A disposable offline audit outside the repository executes the actual Core,
 Retention, TieDurability, WearableRetainers and RetainerPresentation modules with
@@ -111,5 +111,17 @@ read-only. The preservation ledger records all three files; nothing was deleted.
 [RUNTIME GATE] Actual headwear layering, native damage eligibility/ordering and
 condition packets, migration through real saves, both-item transfer, join/rejoin,
 restart, UI and concurrency require SP/dedicated evidence. No game/server was
-launched. G7 BLOCKED / NOT TESTED; stable G8 BLOCKED. No 0.10 package, deployment
-or Workshop upload was performed or authorized. See DURABILITY.md.
+launched. G7 BLOCKED / NOT TESTED; stable G8 BLOCKED. This source milestone did
+not package, deploy or upload. See DURABILITY.md.
+
+## Authorized Workshop development distribution
+
+The user subsequently requested publication of 0.10.0-dev.1 as a development
+build on 2026-10-14. Source/version checks run again before packaging; the
+established Build-Workshop.ps1 and Publish-Workshop.ps1 preflights check ZIP CRC,
+inventory, path/case safety, source/staging parity, commit/version provenance,
+VDF identity/public visibility and canonical paragraph preservation. Exact
+commands, commit, package/text hashes, upload verification and Steam desktop
+restart outcome belong to generated publication-0.10.0-dev.1.json. Prior source
+audit results above are retained as offline evidence, not upgraded to runtime
+proof. This distribution remains MP testing only; G7/stable G8 remain blocked.

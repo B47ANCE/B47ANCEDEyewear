@@ -119,4 +119,5 @@ native caller in this installed JAR; it is not used as an invented damage hook.
 last-condition-point ordering, paid migration, simultaneous gear changes, both-
 item transfers, loss recovery, save/restart, join/rejoin and UI/controller behavior
 need actual validation. Offline Lua/structural checks cannot prove these. G7
-BLOCKED / NOT TESTED; stable G8 BLOCKED. This request authorizes source work only.
+BLOCKED / NOT TESTED; stable G8 BLOCKED. Deployment/publication requires an explicit request;
+distribution evidence does not establish runtime acceptance.

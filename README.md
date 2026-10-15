@@ -56,9 +56,11 @@ Authoritative source: `src/B47ANCEDEyewear/42/`.
 Workshop item: https://steamcommunity.com/sharedfiles/filedetails/?id=3799754736
 Public source: https://github.com/B47ANCE/B47ANCEDEyewear
 
-This source iteration is not packaged, deployed or published. The previous 0.9
-Workshop development package and provenance are preserved. No game/server was
-launched; G7 BLOCKED / NOT TESTED and stable G8 BLOCKED.
+Workshop development / MP test distribution was explicitly requested for this
+iteration. Release commit, package hashes, offline checks and upload outcome are
+recorded in generated publication provenance. The previous 0.9 package and
+provenance are preserved. No game/server was launched; G7 BLOCKED / NOT TESTED
+and stable G8 BLOCKED. Publication does not imply local deployment.
 
 See [architecture](docs/ARCHITECTURE.md), [retainer items](docs/RETAINER_ITEMS.md),
 [validation](docs/VALIDATION.md) and [version policy](docs/VERSION_POLICY.md).

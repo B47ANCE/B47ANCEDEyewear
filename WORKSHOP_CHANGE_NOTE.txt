@@ -8,4 +8,4 @@
 • Display live condition values, status and durability bars. Broken finite items stop providing protection through vanilla equipment handling.
 • Use native damage and synchronization. No custom Java, Lua knock-off reroll, post-drop re-equipping or fake catch counter.
 • Native layering/damage ordering applies; a breaking blow can also dislodge eyewear. Back up saves before upgrading; package-only rollback is not a validated save downgrade.
-• Source/offline validation only. SP and dedicated gameplay remain NOT TESTED; G7 and stable G8 remain blocked.
+• Offline source and package preflight checks only. SP and dedicated gameplay remain NOT TESTED; G7 and stable G8 remain blocked.
