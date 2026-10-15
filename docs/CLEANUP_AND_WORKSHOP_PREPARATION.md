@@ -77,3 +77,16 @@ behavior. SP and dedicated MP are NOT TESTED; gameplay G7/G8 remain BLOCKED.
 Actual publication requires a separate request and all applicable preflight checks.
 Missing dedicated evidence alone permits only labelled MP test distribution, never
 G7 PASS or stable G8 approval. Both canonical texts carry the mandatory MP-testing notice.
+
+## Authorized ground-model Workshop distribution
+
+The user subsequently requested 0.11.1-dev.1 publication as a development build
+on 2026-10-14. This authorizes packaging and the existing Workshop item upload;
+prior source-only statements above describe their original milestones. Run the
+production source/version checks, Build-Workshop.ps1, check_versions.py --release
+and Publish-Workshop.ps1 preflight against the exact committed source. Generated
+publication-0.11.1-dev.1.json records package/text hashes, release commit, exact
+commands, SteamCMD/API verification and the Steam desktop restart outcome.
+Preserve public visibility, original artwork and prior published provenance.
+No game/server launch or local SP deployment is authorized. G7 BLOCKED / NOT
+TESTED and stable G8 BLOCKED remain unchanged; distribution is not runtime proof.

@@ -69,5 +69,8 @@ presentation introduces no new authority or persistence state; existing vanilla
 item synchronization owns item identity. The underlying gameplay still lacks
 required dedicated evidence: G7 BLOCKED / NOT TESTED, stable G8 BLOCKED.
 
-0.11.1-dev.1 is source only. No package, local deployment or Workshop upload was
-requested or performed in this iteration; Workshop still serves 0.10.0-dev.1.
+The source-only sizing milestone was followed by an explicit request to publish
+0.11.1-dev.1 as a Workshop development / MP testing build. The established
+packager/uploader validates the exact committed payload; upload and restart
+outcomes are recorded in generated publication provenance. Local deployment
+and a game/server launch remain outside this publication request.

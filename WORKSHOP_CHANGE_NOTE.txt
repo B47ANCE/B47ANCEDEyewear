@@ -1,7 +1,8 @@
 [b]Version 0.11.1-dev.1[/b]
 [b]MP testing build - dedicated multiplayer NOT TESTED[/b]
 
-[h2]Black-cord ground model sizing fix[/h2]
+[h2]Retainer ground models and sizing fix[/h2]
+• Add distinct 3D ground models for cloth, stitched leather and rare black-cord retainers.
 • Resize the rare unbreakable retainer to match the width/depth of the cloth and leather ground models, approximately 14.3 x 10 cm.
 • Preserve the original source artwork, inventory icons, cloth/leather models, all textures, crafting, loot, durability and worn appearance.
 • Blender export/re-import and offline source checks only. PZ placement, scale and lighting remain NOT TESTED; G7 and stable G8 remain blocked.

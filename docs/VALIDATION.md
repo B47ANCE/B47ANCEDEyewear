@@ -174,3 +174,16 @@ bindings and all Lua gameplay files are unchanged from commit abc82a4.
 Prior evidence remains tied to its actual version; no gameplay audit was rerun.
 No test suite, package, deployment, upload or PZ/server launch. In-game importer,
 placement, lighting and display remain NOT TESTED; G7/stable G8 remain BLOCKED.
+
+## Authorized ground-model Workshop distribution
+
+The user subsequently requested 0.11.1-dev.1 publication as a development build
+on 2026-10-14. This authorizes packaging and the existing Workshop item upload;
+prior source-only statements above describe their original milestones. Run the
+production source/version checks, Build-Workshop.ps1, check_versions.py --release
+and Publish-Workshop.ps1 preflight against the exact committed source. Generated
+publication-0.11.1-dev.1.json records package/text hashes, release commit, exact
+commands, SteamCMD/API verification and the Steam desktop restart outcome.
+Preserve public visibility, original artwork and prior published provenance.
+No game/server launch or local SP deployment is authorized. G7 BLOCKED / NOT
+TESTED and stable G8 BLOCKED remain unchanged; distribution is not runtime proof.

@@ -6,8 +6,8 @@
   "g8": "BLOCKED",
   "validated_commit": null,
   "dedicated_evidence": null,
-  "publication": "SOURCE ONLY; 0.11.1-dev.1 not packaged, deployed or published",
-  "distribution": "Future publication requires an explicit request; MP testing build - dedicated multiplayer NOT TESTED",
+  "publication": "AUTHORIZED WORKSHOP DEVELOPMENT / MP TEST DISTRIBUTION; exact upload outcome in generated publication provenance",
+  "distribution": "MP testing build - dedicated multiplayer NOT TESTED; user publish authorization 2026-10-14",
   "durability": "User-approved native head/clothing wear; exact hidden knock-off-roll counting is not the implemented rule",
   "blocked_features": [
     "Exact -1 durability per successful native knock-off remains unavailable through verified authoritative Lua hooks."

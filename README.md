@@ -58,10 +58,12 @@ Authoritative source: `src/B47ANCEDEyewear/42/`.
 Workshop item: https://steamcommunity.com/sharedfiles/filedetails/?id=3799754736
 Public source: https://github.com/B47ANCE/B47ANCEDEyewear
 
-Current 0.11.1-dev.1 is a source-only ground-model sizing fix, not packaged,
-deployed or published. The published 0.10.0-dev.1 package and provenance are
-preserved with verified hashes. No game/server was launched; G7 BLOCKED / NOT
-TESTED and stable G8 BLOCKED. The existing Workshop item still has 0.10.0-dev.1.
+Workshop development / MP test distribution of 0.11.1-dev.1 was explicitly
+requested after the ground-model sizing fix. Exact release commit, package
+hashes, offline checks, upload verification and Steam restart outcome are recorded
+in generated publication provenance. Published 0.10.0-dev.1 files remain preserved
+with verified hashes. No game/server was launched; G7 BLOCKED / NOT TESTED and
+stable G8 BLOCKED. Workshop publication does not imply local deployment.
 
 See [architecture](docs/ARCHITECTURE.md), [retainer items](docs/RETAINER_ITEMS.md),
 [validation](docs/VALIDATION.md) and [version policy](docs/VERSION_POLICY.md).
