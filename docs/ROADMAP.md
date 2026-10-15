@@ -1,11 +1,14 @@
 # Roadmap
 
-Current development source is 0.13.0-dev.1: Lua-only context-menu and crafting
+Current development source is 0.13.1-dev.1: Lua-only context-menu and crafting
 retention, two craftable wearable items, a rare loot-only unbreakable retainer,
 distinct inventory icons, native head/clothing durability for all improvised ties
 and crafted retainers, live condition inspection, three distinct 3D ground models
 and production source preflight. Improvised ties also have a common knotted-cord
 worn visual with male/female Eyes, Face and Hat fits; see IMPROVISED_TIE_MODELS.md.
+The current patch registers all clothing XMLs in the native GUID table and
+rejects unready new tie visuals before publication/equip/payment; see
+CLOTHING_SYNC_FIX.md. Native/SP and dedicated acceptance remain pending.
 
 Before stable release, obtain actual SP and dedicated multiplayer evidence for
 Tie/Untie and crafting, cancellation, duplicates, one-use consumption, clothing-field sync,

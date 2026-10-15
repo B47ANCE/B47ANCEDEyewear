@@ -19,6 +19,39 @@ VANILLA = {'TimedActions/ISBaseTimedAction', 'TimedActions/ISTimedActionQueue', 
 def digest(data):
     return hashlib.sha256(data).hexdigest()
 
+def validate_clothing_registry(files):
+    """Native OutfitManager resolves clothing through the file GUID table."""
+    import uuid
+    table_path = 'media/fileGuidTable.xml'
+    if table_path not in files:
+        raise ValueError('Missing native clothing file GUID table')
+    table = ET.fromstring(files[table_path])
+    if table.tag != 'fileGuidTable':
+        raise ValueError('Invalid file GUID table root')
+    registered = {}
+    guids = set()
+    for entry in table:
+        path, guid = entry.findtext('path'), entry.findtext('guid')
+        if entry.tag != 'files' or path not in files or not guid:
+            raise ValueError('Invalid or case-incorrect clothing GUID entry')
+        canonical_guid = str(uuid.UUID(guid))
+        if path in registered or canonical_guid in guids:
+            raise ValueError('Duplicate clothing GUID or path')
+        registered[path] = canonical_guid
+        guids.add(canonical_guid)
+    expected = {name: str(uuid.UUID(ET.fromstring(data).findtext('m_GUID')))
+                for name, data in files.items()
+                if name.startswith('media/clothing/clothingItems/') and name.endswith('.xml')}
+    if registered != expected:
+        raise ValueError('Clothing XML GUID registrations are incomplete or mismatched')
+    for name, data in files.items():
+        if name.startswith('media/scripts/') and name.endswith('.txt'):
+            for clothing in re.findall(r'\bClothingItem\s*=\s*([^,\s]+)\s*,', data.decode('utf-8')):
+                if 'media/clothing/clothingItems/' + clothing + '.xml' not in registered:
+                    raise ValueError('Unregistered or case-incorrect ClothingItem: ' + clothing)
+    print('Native clothing GUID registry, unique identities and case-correct bindings PASS:', len(expected))
+
+
 def validate_worn_models(files, improvised=False):
     import assimp_py
     import math
@@ -161,6 +194,7 @@ def inventory():
     return files
 
 def validate_source(files):
+    validate_clothing_registry(files)
     validate_ground_models(files)
     validate_worn_models(files)
     validate_worn_models(files, improvised=True)

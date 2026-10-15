@@ -69,6 +69,14 @@ function D.install(character, target, data, S)
     local ok, err = pcall(function()
         tie = inventory:AddItem(kind)
         assert(tie, 'Improvised tie item definition is unavailable')
+        -- Native clothing assets load asynchronously. SyncClothing dereferences
+        -- getVisual() for every worn item; never publish/equip an unresolved tie.
+        -- Nothing has been linked or sent yet, so this is a local-only rollback.
+        if not tie:getVisual() then
+            inventory:Remove(tie)
+            tie = nil
+            return
+        end
         tie:getModData()[D.key] = {schema=1, targetId=target:getID(), material=data.material}
         tie:setName(getText('UI_B47ANCEDEyewear_ImprovisedTieName', getItemNameFromFullType(data.material)))
         tie:setCustomName(true)

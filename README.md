@@ -1,6 +1,6 @@
 # B47ANCE'd Eyewear
 
-Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.13.0-dev.1.
+Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.13.1-dev.1.
 
 Lua-only development build targeting Project Zomboid 42.21. No custom Java/JAR,
 test suite or debugger grants are shipped. SP/dedicated gameplay is NOT TESTED.
@@ -63,8 +63,10 @@ Authoritative source: `src/B47ANCEDEyewear/42/`.
 Workshop item: https://steamcommunity.com/sharedfiles/filedetails/?id=3799754736
 Public source: https://github.com/B47ANCE/B47ANCEDEyewear
 
-Current 0.13.0-dev.1 adds worn improvised-tie visuals in source only. It is not
-packaged, deployed or published. Workshop still serves 0.12.0-dev.1; its actual
+Current 0.13.1-dev.1 fixes missing native clothing GUID registrations and rejects
+unresolved tie visuals before publication/equip/payment. It includes the prior
+worn improvised-tie visuals. See [clothing sync fix](docs/CLOTHING_SYNC_FIX.md).
+It is not packaged, deployed or published. Workshop still serves 0.12.0-dev.1; its actual
 published package/checksum/provenance are preserved with verified hashes and
 ZIP CRC. No game/server was launched. G7 BLOCKED / NOT TESTED and stable G8
 BLOCKED remain unchanged.

@@ -1,12 +1,12 @@
 {
-  "project_version": "0.13.0-dev.1",
+  "project_version": "0.13.1-dev.1",
   "source": "STATIC CHECKS ONLY",
   "sp": "NOT TESTED",
   "g7": "BLOCKED / NOT TESTED",
   "g8": "BLOCKED",
   "validated_commit": null,
   "dedicated_evidence": null,
-  "publication": "SOURCE ONLY; 0.13.0-dev.1 not packaged, deployed or published",
+  "publication": "SOURCE ONLY; 0.13.1-dev.1 not packaged, deployed or published",
   "distribution": "Future upload requires an explicit request; MP testing build - dedicated multiplayer NOT TESTED",
   "durability": "User-approved native head/clothing wear; exact hidden knock-off-roll counting is not the implemented rule",
   "blocked_features": [
@@ -14,5 +14,6 @@
   ],
   "ground_models": "Blender FBX roundtrip and source bindings checked offline; PZ importer placement/scale/lighting NOT TESTED",
   "worn_models": "Six original head-attached male/female static meshes; offline Assimp import checked; PZ fit, clipping, animation and remote visuals NOT TESTED",
-  "improvised_tie_models": "Six original male/female Eyes/Face/Hat static meshes; common neutral cord for all materials; offline Assimp checked, PZ fit/clipping/concurrency and remote visuals NOT TESTED"
+  "improvised_tie_models": "Six original male/female Eyes/Face/Hat static meshes; common neutral cord for all materials; offline Assimp checked, PZ fit/clipping/concurrency and remote visuals NOT TESTED",
+  "clothing_sync": "Native GUID registration fixed and unready tie guard checked offline; actual dedicated acceptance NOT TESTED"
 }

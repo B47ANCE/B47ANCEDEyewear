@@ -1,6 +1,19 @@
 # Validation and release gates
 
-Project Version: 0.13.0-dev.1
+Project Version: 0.13.1-dev.1
+
+## Current clothing synchronization patch
+
+[TESTED: offline, 2026-10-15, 0.13.1-dev.1] `python -B scripts/check_versions.py`,
+`python -B scripts/validate_release.py` and `git diff --check` pass. The production
+preflight covers 195 runtime files, all 14 Lua syntax compilations, seven native
+clothing GUID registrations, retained art provenance, localization and path case.
+Disposable `python -B "$env:TEMP/B47ANCEDEyewear-lua-durability-audit/clothing_sync_regression.py"`
+passes 126 assertions against actual modules with doubles. The same scenario fails
+against the old module. This audit stays outside source; no test suite/debug code
+was restored. CLOTHING_SYNC_FIX.md records root cause, mutation probes and exact
+remaining native acceptance. G6 native/SP NOT TESTED; G7 BLOCKED / NOT TESTED;
+stable G8 BLOCKED. No packaging, deployment or publication.
 
 The user explicitly requested removal of all testing code. No test suites,
 gameplay doubles, item-grant/debug commands or Java harnesses remain in active source.

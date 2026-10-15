@@ -4,12 +4,11 @@ Root VERSION is the only canonical project version. docs/VERSION_POLICY.md is th
 authoritative inherited policy; version-inventory.json declares current mirrors,
 package selectors, schema/game distinctions and historical evidence.
 
-Current development iteration: 0.13.0-dev.1. Pre-1.0 MINOR adds worn improvised-
-tie visuals through three clothing definitions and six body-specific static
-meshes. All six existing materials use a common neutral cord. Existing gameplay
-Lua, IDs, slots, recipes, saves, durability, networking, retainers and ground
-assets remain unchanged. Native worn synchronization owns the existing items.
-Actual PZ fit, clipping and remote visuals remain NOT TESTED.
+Current development iteration: 0.13.1-dev.1. Pre-1.0 PATCH fixes missing native
+clothing GUID registrations and rejects unresolved visuals before a tie is
+linked, published, equipped or paid for. It preserves IDs, slots, recipes, saves,
+durability, existing native networking and all art bytes. Prior 0.13.0 worn
+visuals remain included. Native/SP and dedicated acceptance remain NOT TESTED.
 
 Source mod.info, README, canonical Workshop texts, current validation/preparation/
 API records and RELEASE_STATUS.json are current mirrors. Build reads VERSION and
@@ -31,7 +30,7 @@ The published 0.10 ZIP/checksum/provenance are preserved byte-for-byte in
 dist/historical/0.10.0-dev.1-published with a preservation ledger.
 The actual 0.12.0-dev.1 package/checksum/provenance are preserved under
 dist/historical/0.12.0-dev.1-published with verified SHA-256, ZIP CRC and a
-preservation ledger. No 0.13 package exists; packaging/publication require a
+preservation ledger. No current package exists; packaging/publication require a
 separate request. Version checks do not prove runtime behavior.
 
 Published 0.11.1 package/checksum/provenance are preserved with verified hashes

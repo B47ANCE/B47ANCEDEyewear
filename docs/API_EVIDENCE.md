@@ -1,7 +1,12 @@
 # Lua API evidence
 
-Project Version: 0.13.0-dev.1
+Project Version: 0.13.1-dev.1
 Source inspection: 2026-10-14. Target Build 42.21.
+
+Current patch audit (2026-10-15): CLOTHING_SYNC_FIX.md records the missing native
+file GUID table cause, original installed class fingerprints, verified vanilla
+getVisual call form, unready-asset rejection and remaining dedicated gate. Older
+milestones below retain their observed versions and evidence.
 
 The installed Steam app108600 build25485521 uses the original JAR Core.class hash
 8f5c69740c8bf2181123a831ab68d1dfb047453687cca6dc62c77816d76ab360,

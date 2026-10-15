@@ -209,7 +209,7 @@ function S.tie(character, item, material)
         modData.B47ANCEDEyewear=data
         S.applyTiedName(item,data)
         tie = D.install(character, item, data, S)
-        assert(tie, 'The improvised tie slot is unavailable')
+        assert(tie, 'The improvised tie slot or clothing visual is unavailable')
         item:setChanceToFall(0)
     end)
     if not changed then

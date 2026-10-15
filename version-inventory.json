@@ -77,6 +77,10 @@
     {
       "path": "assets/retainers/improvised/improvised-models.json",
       "pattern": "^  \"version\": \"(?P<version>[^\\\"]+)\""
+    },
+    {
+      "path": "docs/CLOTHING_SYNC_FIX.md",
+      "pattern": "^Project Version: (?P<version>\\S+)$"
     }
   ],
   "changelog": {

@@ -1,6 +1,6 @@
 # Visible worn improvised ties
 
-Project Version: 0.13.0-dev.1
+Project Version: 0.13.1-dev.1
 
 All six existing improvised materials now share a thin neutral knotted-cord
 appearance. The three existing physical item types select different fittings:

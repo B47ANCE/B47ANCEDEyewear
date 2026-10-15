@@ -1,7 +1,12 @@
 # Lua-only native durability
 
-Project Version: 0.13.0-dev.1
+Project Version: 0.13.1-dev.1
 Design and source audit: 2026-10-14; installed Build 42.21 / Steam build 25485521.
+
+0.13.1 patch: all existing clothing XMLs are registered with native file GUIDs.
+New ties with an unresolved visual are rejected before link/equip/publication or
+material consumption; paid legacy migration can retry without duplicates.
+Condition and native damage rules below remain unchanged. See CLOTHING_SYNC_FIX.md.
 
 ## Accepted rule
 

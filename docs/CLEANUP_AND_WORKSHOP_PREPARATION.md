@@ -1,9 +1,14 @@
 # Cleanup and Workshop preparation
 
-Project Version: 0.13.0-dev.1
-Date: 2026-10-14
+Project Version: 0.13.1-dev.1
+Date: 2026-10-15
 
-Current 0.11.1 corrects only the black-cord ground mesh size. The authoring
+Current 0.13.1 fixes native clothing GUID registration and rejects unready tie
+visuals before shared publication or equip. See CLOTHING_SYNC_FIX.md for cause,
+offline regression and native/MP gates. No artifacts were moved or deleted;
+no packaging, deployment, publication or game/server launch was performed.
+
+Earlier 0.11.1 corrects only the black-cord ground mesh size. The authoring
 script, derived rare FBX, Blender master/preview/provenance and version records
 are updated. Cloth/leather FBX, all textures, original source art, bindings and
 gameplay remain unchanged. No artifact move/deletion, package, deployment,

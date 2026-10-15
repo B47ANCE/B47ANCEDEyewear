@@ -1,6 +1,6 @@
 [h1]B47ANCE'd Eyewear — Development Build[/h1]
 
-[b]Version 0.13.0-dev.1[/b]
+[b]Version 0.13.1-dev.1[/b]
 [b]MP testing build - dedicated multiplayer NOT TESTED[/b]
 [b]Development build for Project Zomboid 42.21. In-game validation remains pending.[/b]
 
@@ -8,6 +8,7 @@
 Secure compatible glasses and supported hats with Lua-only retainers and finite improvised ties. No custom Java or JAR dependency.
 
 [h2]Features[/h2]
+• Native clothing GUID registrations resolve all tie and retainer definitions; unresolved new tie visuals are rejected before equip or material payment.
 • All twine, rubber-band, dental-floss, ordinary-thread, sinew-thread and aramid-thread ties now use native head/clothing durability.
 • Right-click → Tie or Crafting → Tailoring → Tie worn eyewear consumes one material use and equips a condition-bearing tie linked to the same original eyewear. Its identity, condition, prescription and model are preserved. Monocles are excluded.
 • Wear the eyewear and its matching tie together. Taking off either suspends protection; transfer both items together. Untie restores the original name and discards the matching tie, without refunding material.

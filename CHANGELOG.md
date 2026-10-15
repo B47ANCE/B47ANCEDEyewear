@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.13.1-dev.1] — 2026-10-15
+
+- PATCH: register all seven existing clothing XML definitions in the native file GUID table, fixing unresolved tie/retainer visuals and the resulting dedicated-server SyncClothing null-visual failure.
+- Reject a tie installation before linking, publishing, equipping or consuming material if its native visual is not ready. Paid legacy migration can retry without creating a duplicate or changing the original saved record.
+- Add production preflight checks for complete, unique, case-correct clothing GUID registrations and document the native lookup evidence. Preserve IDs, slots, condition, payment, server authority and existing art.
+- Offline checks only; native/SP and dedicated multiplayer acceptance remain NOT TESTED. No package, deployment or Workshop upload.
+
 ## [0.13.0-dev.1] — 2026-10-14
 
 - MINOR: add visible worn improvised ties through three native clothing definitions and six original male/female Eyes/Face/Hat meshes. All six existing materials share a neutral knotted-cord look; hats use an under-chin fit, eyewear uses rear cords.
