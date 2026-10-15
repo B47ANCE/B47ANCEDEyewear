@@ -6,8 +6,8 @@
   "g8": "BLOCKED",
   "validated_commit": null,
   "dedicated_evidence": null,
-  "publication": "NOT AUTHORIZED; SOURCE IMPLEMENTATION ONLY",
-  "distribution": "MP testing build - dedicated multiplayer NOT TESTED; explicit publish request required",
+  "publication": "AUTHORIZED WORKSHOP DEVELOPMENT / MP TEST DISTRIBUTION; upload outcome in generated publication provenance",
+  "distribution": "MP testing build - dedicated multiplayer NOT TESTED; user publish authorization 2026-10-14",
   "blocked_features": [
     "Exact -1 durability per successful native knock-off: no verified server-safe exposed Lua hook"
   ]

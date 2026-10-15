@@ -24,14 +24,14 @@ Mod ID: B47ANCEDEyewear. Target: Build 42.21. Monocles cannot be tied. Existing 
 Client requests are validated by the server. Single-player and dedicated multiplayer acceptance are pending; this build is not multiplayer-certified.
 
 [h2]Configuration[/h2]
-Server sandbox settings control new tying, the untied-eyewear fall multiplier, and the strapped-headwear fall value. Defaults preserve the previous retention behavior. Disabling new ties does not remove existing ties or prevent untying. Wearable-retainer settings separately control crafting/protection and the retained fall value (default 0); disabling preserves existing retainer items. RareRetainerLootChance defaults to0.25% per eligible new fill, range 0–5%; zero disables new spawns. Already filled containers remain unchanged.
+Server sandbox settings control new tying, the untied-eyewear fall multiplier, and the strapped-headwear fall value. Defaults preserve the previous retention behavior. Disabling new ties does not remove existing ties or prevent untying. Wearable-retainer settings separately control crafting/protection and the retained fall value (default 0); disabling preserves existing retainer items. RareRetainerLootChance defaults to 0.25% per eligible new fill, range 0–5%; zero disables new spawns. Already filled containers remain unchanged.
 
 [h2]Source Code & Development[/h2]
 [url=https://github.com/B47ANCE/B47ANCEDEyewear]GitHub — Source Code & Issues[/url]
 
 [h2]Known Issues[/h2]
 Exact -1 durability per successful vanilla knock-off is blocked by the missing server-safe Lua hook. No durability decrement or substitute fall roll is enabled. Fitted worn models are not included; all three items have inventory icons and an invisible clothing definition.
-This source iteration has offline source preflight checks only; no package was generated. Actual UI, combat, save/reconnect and dedicated multiplayer behavior remain unverified.
+This development build has offline source and package preflight checks only. Actual UI, combat, save/reconnect and dedicated multiplayer behavior remain unverified.
 
 [h2]Credits & Permissions[/h2]
 Created by B47ANCE. Original mod implementation and artwork; optional third-party mods are not bundled.

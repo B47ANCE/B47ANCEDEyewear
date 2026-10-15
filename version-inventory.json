@@ -146,8 +146,8 @@
       "reason": "Prepared 0.6.0-dev.1 ZIP/checksum/provenance and historical cleanup are preserved without relabeling as current crafting validation."
     },
     {
-      "reference": "dist/current/release-provenance.json",
-      "reason": "Last-prepared 0.7.0-dev.1 publication provenance, retained unchanged; no 0.8 package exists and future packaging must preserve/reclassify it before replacing."
+      "reference": "dist/historical/0.7.0-dev.1-published/release-provenance.json; dist/workshop-publish/publication-0.7.0-dev.1.json",
+      "reason": "Published 0.7.0-dev.1 provenance preserved byte-for-byte before authorized 0.9 packaging; never relabeled as current evidence. No 0.8 package was produced."
     },
     {
       "reference": "assets/retainers/ART_PROVENANCE.md: crafted retainer icons 0.9.0-dev.1 generation record",

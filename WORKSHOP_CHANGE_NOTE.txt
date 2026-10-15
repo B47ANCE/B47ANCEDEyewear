@@ -6,4 +6,5 @@
 • Keep the original black adjustable-cord artwork for the unbreakable retainer. Add distinct original cloth and stitched-leather icons for the craftable retainers.
 • Add server/SP-only loot generation with a sandbox chance of 0.25% per eligible new fill by default (0–5%; zero disables). Already filled containers remain unchanged.
 • Native cosmetic/no-hole/non-armor properties prevent ordinary wear/catch durability loss. No repair timer, Java code or finite-catch approximation is added.
-• Source/offline checks only. Actual SP and dedicated behavior remain NOT TESTED; G7 and stable G8 remain blocked.
+• Includes the two craftable reusable retainer items and Tailoring recipes introduced since the previous Workshop build.
+• Offline source and package preflight checks only. Actual SP and dedicated behavior remain NOT TESTED; G7 and stable G8 remain blocked.
