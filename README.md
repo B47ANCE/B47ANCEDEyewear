@@ -1,6 +1,6 @@
 # B47ANCE'd Eyewear
 
-Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.11.0-dev.1.
+Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.11.1-dev.1.
 
 Lua-only development build targeting Project Zomboid 42.21. No custom Java/JAR,
 test suite or debugger grants are shipped. SP/dedicated gameplay is NOT TESTED.
@@ -58,7 +58,7 @@ Authoritative source: `src/B47ANCEDEyewear/42/`.
 Workshop item: https://steamcommunity.com/sharedfiles/filedetails/?id=3799754736
 Public source: https://github.com/B47ANCE/B47ANCEDEyewear
 
-Current 0.11.0-dev.1 is a source-only ground-model iteration, not packaged,
+Current 0.11.1-dev.1 is a source-only ground-model sizing fix, not packaged,
 deployed or published. The published 0.10.0-dev.1 package and provenance are
 preserved with verified hashes. No game/server was launched; G7 BLOCKED / NOT
 TESTED and stable G8 BLOCKED. The existing Workshop item still has 0.10.0-dev.1.

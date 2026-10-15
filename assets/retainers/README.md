@@ -32,3 +32,9 @@ See ../../docs/GROUND_MODELS.md for verified game bindings and remaining runtime
 gates. This is a Blender preview, not PZ evidence. The worn clothing definition
 still has empty models/textures. The older export_retainer_fbx.py describes a
 provisional worn export only; it is not the current ground asset pipeline.
+
+For a cord-only adjustment, run the generator with --only-unbreakable to preserve
+the existing cloth/leather FBX bytes while checking all three roundtrip sizes.
+The derived cord is resized to the crafted meshes' mean X/Y footprint; original
+OBJ/GLB and atlas bytes are preserved. Rebuild the preview/master and manifest
+with the same command so the authoring source and shipped export agree.

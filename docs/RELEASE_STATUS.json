@@ -1,12 +1,12 @@
 {
-  "project_version": "0.11.0-dev.1",
+  "project_version": "0.11.1-dev.1",
   "source": "STATIC CHECKS ONLY",
   "sp": "NOT TESTED",
   "g7": "BLOCKED / NOT TESTED",
   "g8": "BLOCKED",
   "validated_commit": null,
   "dedicated_evidence": null,
-  "publication": "SOURCE ONLY; 0.11.0-dev.1 not packaged, deployed or published",
+  "publication": "SOURCE ONLY; 0.11.1-dev.1 not packaged, deployed or published",
   "distribution": "Future publication requires an explicit request; MP testing build - dedicated multiplayer NOT TESTED",
   "durability": "User-approved native head/clothing wear; exact hidden knock-off-roll counting is not the implemented rule",
   "blocked_features": [

@@ -1,6 +1,6 @@
 # Validation and release gates
 
-Project Version: 0.11.0-dev.1
+Project Version: 0.11.1-dev.1
 
 The user explicitly requested removal of all testing code. No test suites,
 gameplay doubles, item-grant/debug commands or Java harnesses remain in active source.
@@ -152,3 +152,25 @@ validation occurred. PZ orientation, placement, scale, lighting and dropped-item
 appearance remain NOT TESTED. G7 BLOCKED / NOT TESTED; stable G8 BLOCKED.
 The previous published 0.10 files were preserved by a bounded move with matching
 SHA-256 hashes, a preservation ledger and a read-only ZIP CRC check.
+
+## Black-cord sizing correction
+
+[TESTED: offline, 2026-10-14, 0.11.1-dev.1] Commands from the project root:
+
+```powershell
+& 'C:/Users/willi/.cache/b47anced-tools/python311-blender/python.exe' scripts/build_retainer_ground_models.py --only-unbreakable
+& 'C:/Users/willi/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -B scripts/check_versions.py
+& 'C:/Users/willi/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -B scripts/validate_release.py
+git diff --cached --check
+```
+
+Blender 4.5.7 LTS re-import dimensions match all three source meshes. Rare cord
+footprint is 0.1434 x 0.099825 m, matching the crafted mean to within 0.00001 m;
+its original footprint was 0.1656 x 0.1882 m. The updated labelled Blender preview
+was inspected. Production preflight checks this footprint contract, all asset
+hashes/bindings and 176 runtime files, including syntax compilation of 14 Lua files.
+A read-only comparison confirms cloth/leather FBX, runtime textures, item/model
+bindings and all Lua gameplay files are unchanged from commit abc82a4.
+Prior evidence remains tied to its actual version; no gameplay audit was rerun.
+No test suite, package, deployment, upload or PZ/server launch. In-game importer,
+placement, lighting and display remain NOT TESTED; G7/stable G8 remain BLOCKED.

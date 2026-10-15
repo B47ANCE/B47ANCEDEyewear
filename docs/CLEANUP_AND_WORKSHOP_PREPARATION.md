@@ -1,9 +1,15 @@
 # Cleanup and Workshop preparation
 
-Project Version: 0.11.0-dev.1
+Project Version: 0.11.1-dev.1
 Date: 2026-10-14
 
-Current 0.11 adds ground FBX models/textures for the three retainers, native model
+Current 0.11.1 corrects only the black-cord ground mesh size. The authoring
+script, derived rare FBX, Blender master/preview/provenance and version records
+are updated. Cloth/leather FBX, all textures, original source art, bindings and
+gameplay remain unchanged. No artifact move/deletion, package, deployment,
+publication or game/server launch is part of this sizing request.
+
+Earlier 0.11.0 adds ground FBX models/textures for the three retainers, native model
 bindings, an editable Blender master and an asset integrity validator. Prior
 inventory art and gameplay are preserved. The published 0.10 ZIP/checksum/
 provenance moved unchanged to dist/historical/0.10.0-dev.1-published; the bounded

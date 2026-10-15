@@ -5,6 +5,7 @@ Exports selected meshes only, preserves the earlier OBJ/icon sources, and saves
 an editable .blend plus an offline preview outside the runtime source tree.
 """
 from pathlib import Path
+import argparse
 import hashlib
 import json
 import math
@@ -138,6 +139,10 @@ def aim(obj, target):
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--only-unbreakable', action='store_true',
+                        help='Preserve existing cloth/leather FBX exports while rebuilding the cord and preview')
+    args = parser.parse_args()
     AUTHOR.mkdir(parents=True, exist_ok=True)
     for directory in ('media/models_X/WorldItems', 'media/textures/WorldItems'):
         (RUNTIME / directory).mkdir(parents=True, exist_ok=True)
@@ -176,6 +181,17 @@ def main():
     rare_path = RUNTIME / 'media/textures/WorldItems/B47ANCEDEyewearUnbreakableRetainerGround.png'
     shutil.copyfile(ROOT / 'assets/retainers/B47ANCEDEyewearRetainer_Texture.png', rare_path)
     rare = finish(parts, 'B47ANCEDEyewearUnbreakableRetainerGround', use_image(bpy.data.images.load(str(rare_path)), 'Unbreakable'))
+    bpy.context.view_layer.update()
+    # Match the crafted retainers' footprint, rather than the old worn-source size.
+    # Bake the resize into the derived mesh; preserve the original OBJ and atlas.
+    target_width = sum(obj.dimensions.x for obj, _, _ in models) / len(models)
+    target_depth = sum(obj.dimensions.y for obj, _, _ in models) / len(models)
+    scale_x, scale_y = target_width / rare.dimensions.x, target_depth / rare.dimensions.y
+    for vertex in rare.data.vertices:
+        vertex.co.x *= scale_x
+        vertex.co.y *= scale_y
+        vertex.co.z = (vertex.co.z - 0.001) * min(scale_x, scale_y) + 0.001
+    rare.data.update()
     models.append((rare, 'UnbreakableRetainer', 'UnbreakableRetainerGround'))
     entries = []
     for obj, item, model in models:
@@ -183,10 +199,13 @@ def main():
         obj.select_set(True)
         bpy.context.view_layer.objects.active = obj
         destination = RUNTIME / ('media/models_X/WorldItems/' + obj.name + '.fbx')
-        bpy.ops.export_scene.fbx(filepath=str(destination), use_selection=True, object_types={'MESH'},
-                                axis_forward='-Z', axis_up='Y', global_scale=1.0, apply_unit_scale=True,
-                                apply_scale_options='FBX_SCALE_ALL', bake_space_transform=False,
-                                bake_anim=False, add_leaf_bones=False, path_mode='STRIP', embed_textures=False)
+        if not args.only_unbreakable or item == 'UnbreakableRetainer':
+            bpy.ops.export_scene.fbx(filepath=str(destination), use_selection=True, object_types={'MESH'},
+                                    axis_forward='-Z', axis_up='Y', global_scale=1.0, apply_unit_scale=True,
+                                    apply_scale_options='FBX_SCALE_ALL', bake_space_transform=False,
+                                    bake_anim=False, add_leaf_bones=False, path_mode='STRIP', embed_textures=False)
+        elif not destination.is_file():
+            raise ValueError('Missing preserved crafted FBX: ' + str(destination))
         bpy.context.view_layer.update()
         original = tuple(obj.dimensions)
         bpy.ops.object.select_all(action='DESELECT')
@@ -255,6 +274,9 @@ def main():
                 'fbx': 'Binary, -Z forward / Y up, FBX_SCALE_ALL, standard axis transform, no bones/animation',
                 'provenance': 'Original cloth/leather procedural geometry and atlases; rare mesh/atlas derived from existing original authoring assets. No vanilla/third-party geometry copied.',
                 'runtime': 'NOT TESTED in Project Zomboid; final importer orientation, scale and lighting remain runtime gates.',
+                'cord_resize': {'target_footprint_metres': [target_width, target_depth],
+                                'axes_scale': [scale_x, scale_y, min(scale_x, scale_y)],
+                                'reason': 'Match mean crafted-retainer width/depth; preserve original source and runtime texture'},
                 'entries': entries, 'authoring_files': {blend.name: sha(blend), preview.name: sha(preview)},
                 'generator_sha256': sha(Path(__file__))}
     (AUTHOR / 'ground-models.json').write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8', newline='\n')

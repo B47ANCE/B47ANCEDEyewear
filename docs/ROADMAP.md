@@ -1,6 +1,6 @@
 # Roadmap
 
-Current development source is 0.11.0-dev.1: Lua-only context-menu and crafting
+Current development source is 0.11.1-dev.1: Lua-only context-menu and crafting
 retention, two craftable wearable items, a rare loot-only unbreakable retainer,
 distinct inventory icons, native head/clothing durability for all improvised ties
 and crafted retainers, live condition inspection, three distinct 3D ground models

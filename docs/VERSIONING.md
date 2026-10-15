@@ -4,8 +4,9 @@ Root VERSION is the only canonical project version. docs/VERSION_POLICY.md is th
 authoritative inherited policy; version-inventory.json declares current mirrors,
 package selectors, schema/game distinctions and historical evidence.
 
-Current development iteration: 0.11.0-dev.1. Pre-1.0 MINOR adds distinct static
-ground models for the three existing retainer items. Existing item IDs, recipes,
+Current development iteration: 0.11.1-dev.1. Pre-1.0 PATCH corrects the oversized black-cord
+ground model to match the crafted retainers' mean width/depth. The three distinct
+static ground models were introduced in 0.11.0-dev.1. Existing item IDs, recipes,
 loot, durability, save schema, networking and worn appearance remain unchanged.
 The prior 0.10.0-dev.1 native head/clothing durability and paid-legacy migration
 remain supported; this iteration does not change their untested runtime status.
@@ -28,4 +29,4 @@ The actual published 0.9 ZIP/checksum/provenance moved unchanged to
 dist/historical/0.9.0-dev.1-published with verified hashes and a preservation ledger.
 The published 0.10 ZIP/checksum/provenance are preserved byte-for-byte in
 dist/historical/0.10.0-dev.1-published with a preservation ledger.
-No current 0.11 package exists; release checks defer packaging until separately requested.
+No current 0.11.1 package exists; release checks defer packaging until separately requested.

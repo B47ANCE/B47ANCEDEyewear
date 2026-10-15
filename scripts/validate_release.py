@@ -39,6 +39,12 @@ def validate_ground_models(files):
     entries = manifest['entries']
     if len(entries) != 3 or {e['item'] for e in entries} != expected_items or len(models) != 3:
         raise ValueError('Ground retainer item/model inventory mismatch')
+    crafted = [e for e in entries if e['item'] != 'B47ANCEDEyewear.UnbreakableRetainer']
+    rare = next(e for e in entries if e['item'] == 'B47ANCEDEyewear.UnbreakableRetainer')
+    for axis in (0, 1):
+        target = sum(e['roundtrip_dimensions_metres'][axis] for e in crafted) / len(crafted)
+        if abs(rare['roundtrip_dimensions_metres'][axis] - target) > 0.00001:
+            raise ValueError('Black-cord footprint differs from the crafted retainer mean')
     for entry in entries:
         for key in ('mesh', 'texture'):
             path = PurePosixPath(entry[key])

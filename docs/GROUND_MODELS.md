@@ -1,6 +1,6 @@
 # Retainer ground models
 
-Project Version: 0.11.0-dev.1
+Project Version: 0.11.1-dev.1
 
 All three existing retainer items now have original static ground assets:
 
@@ -9,6 +9,14 @@ All three existing retainer items now have original static ground assets:
 | MakeshiftRetainer | ClothRetainerGround | Beige cloth strap, knotted loops | 1412 |
 | EyewearRetainer | LeatherRetainerGround | Brown stitched strap, rubber loops | 1220 |
 | UnbreakableRetainer | UnbreakableRetainerGround | Original black cord, hollow rubber sleeves, slider | 488 |
+
+The 0.11.1-dev.1 PATCH fixes the rare cord's oversized footprint. Its derived
+mesh now measures 14.34 x 9.9825 cm in the Blender ground plane, matching the
+crafted models' mean width/depth (cloth 14.34 x 10.07 cm; leather 14.34 x 9.895 cm).
+The former rare mesh measured 16.56 x 18.82 cm. X/Y are resized independently;
+height uses the smaller factor and retains the 1 mm authored ground clearance.
+The original OBJ/GLB and atlas are unchanged. The cloth/leather FBX exports and
+all runtime textures remain byte-identical to the preceding iteration.
 
 Module B47ANCEDEyewear qualifies every item/model name. The model script is
 media/scripts/B47ANCEDEyewear_Models.txt. Each mesh lives in media/models_X/
@@ -61,5 +69,5 @@ presentation introduces no new authority or persistence state; existing vanilla
 item synchronization owns item identity. The underlying gameplay still lacks
 required dedicated evidence: G7 BLOCKED / NOT TESTED, stable G8 BLOCKED.
 
-0.11.0-dev.1 is source only. No package, local deployment or Workshop upload was
+0.11.1-dev.1 is source only. No package, local deployment or Workshop upload was
 requested or performed in this iteration; Workshop still serves 0.10.0-dev.1.

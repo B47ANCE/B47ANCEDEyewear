@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.11.1-dev.1] — 2026-10-14
+
+- PATCH: resize the rare black-cord ground mesh to the mean crafted-retainer footprint (14.34 x 9.98 cm), replacing the oversized 16.56 x 18.82 cm footprint.
+- Regenerate the derived rare FBX, editable Blender master, preview and provenance. Preserve original source art, cloth/leather exports, texture bytes, bindings and all gameplay.
+- Blender roundtrip and production checks only; PZ appearance remains NOT TESTED. No packaging, deployment or Workshop publication.
+
 ## [0.11.0-dev.1] — 2026-10-14
 
 - MINOR: add original, distinct static ground meshes/textures for cloth, leather and unbreakable retainer items. Preserve existing black-cord sources, inventory artwork and gameplay.

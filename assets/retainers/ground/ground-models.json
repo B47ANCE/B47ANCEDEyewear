@@ -1,11 +1,23 @@
 {
   "schema": 1,
-  "version": "0.11.0-dev.1",
+  "version": "0.11.1-dev.1",
   "tool": "Blender 4.5.7 LTS",
   "units": "metres; XY ground plane; Z up in editable source",
   "fbx": "Binary, -Z forward / Y up, FBX_SCALE_ALL, standard axis transform, no bones/animation",
   "provenance": "Original cloth/leather procedural geometry and atlases; rare mesh/atlas derived from existing original authoring assets. No vanilla/third-party geometry copied.",
   "runtime": "NOT TESTED in Project Zomboid; final importer orientation, scale and lighting remain runtime gates.",
+  "cord_resize": {
+    "target_footprint_metres": [
+      0.14339999854564667,
+      0.09982500597834587
+    ],
+    "axes_scale": [
+      0.865942010728116,
+      0.5304198065731066,
+      0.5304198065731066
+    ],
+    "reason": "Match mean crafted-retainer width/depth; preserve original source and runtime texture"
+  },
   "entries": [
     {
       "item": "B47ANCEDEyewear.MakeshiftRetainer",
@@ -55,28 +67,28 @@
       "item": "B47ANCEDEyewear.UnbreakableRetainer",
       "model": "B47ANCEDEyewear.UnbreakableRetainerGround",
       "mesh": "media/models_X/WorldItems/B47ANCEDEyewearUnbreakableRetainerGround.fbx",
-      "mesh_sha256": "7efb8d261f39a8655dbfd1b23439a4048d64f9eafcafe1972d636efd5a8c6553",
+      "mesh_sha256": "d396157c7ff1f09f8bcf94dbe4bc1d08447360c5b227336059e8583c1b6ab386",
       "texture": "media/textures/WorldItems/B47ANCEDEyewearUnbreakableRetainerGround.png",
       "texture_sha256": "1d2ebf89cae60852e4378754ebf189c4dd813eed892ccfe04ceaba3013296741",
       "vertices": 354,
       "triangles": 488,
       "dimensions_metres": [
-        0.1656000018119812,
-        0.1881999969482422,
-        0.02700001560151577
+        0.14339999854564667,
+        0.09982500970363617,
+        0.014321343041956425
       ],
       "roundtrip_dimensions_metres": [
-        0.1656000018119812,
-        0.1881999969482422,
-        0.02700001560151577
+        0.14339999854564667,
+        0.09982500970363617,
+        0.014321343041956425
       ],
       "uv_layers": 1,
       "fbx_roundtrip": "PASS"
     }
   ],
   "authoring_files": {
-    "RetainerGroundModels.blend": "cb7492a3c62a177e17eceed6fea70394b8ece4ef656d49913f14a3d9ed791d16",
-    "GroundRetainers_Preview.png": "71ba8577d1ccdae3ccdbfd3e83ffe2137e6dde5ebe1a2f5e8a58d12811f52c22"
+    "RetainerGroundModels.blend": "c0e33ddc16b7db3879b199fb20e8c3fc7382180676b25b5548c6daec68e02f29",
+    "GroundRetainers_Preview.png": "2b7d7cda3627e8e2770a9168c5e0b1ab0d3fe5e660c216bdd506b65c60f84b26"
   },
-  "generator_sha256": "1bba669b48079e4e01dde6bca8f4d061b8baae93a44c5eef46a5963aea915563"
+  "generator_sha256": "2c94cd569a03aa4603372b356dab122378fb383f98c18704d7ac059e746e7896"
 }

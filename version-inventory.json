@@ -172,6 +172,10 @@
     {
       "reference": "dist/historical/0.10.0-dev.1-published; dist/workshop-publish/publication-0.10.0-dev.1.json",
       "reason": "Actual published durability package and provenance preserved unchanged; never relabeled as ground-model validation."
+    },
+    {
+      "reference": "docs/VALIDATION.md: Ground model source milestone; docs/API_EVIDENCE.md: Ground presentation (0.11 source addition); CHANGELOG.md: 0.11.0-dev.1",
+      "reason": "Prior 0.11.0-dev.1 asset implementation and offline evidence retain their actual version; not relabeled as the later sizing correction."
     }
   ]
 }

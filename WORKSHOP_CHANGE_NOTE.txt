@@ -1,8 +1,7 @@
-[b]Version 0.11.0-dev.1[/b]
+[b]Version 0.11.1-dev.1[/b]
 [b]MP testing build - dedicated multiplayer NOT TESTED[/b]
 
-[h2]Retainer ground models[/h2]
-• Add separate 3D ground models for the cloth, leather and rare unbreakable retainers, including original textures and native WorldStaticModel bindings.
-• Cloth has tied loops; leather has stitching and rubber loops; the rare item uses the original black cord and hollow rubber sleeves.
-• Preserve inventory artwork, recipes, loot, durability, item identity and worn appearance. No Java or new gameplay/networking code.
-• Blender export/re-import and offline asset/source checks only. PZ placement, scale and lighting remain NOT TESTED. SP and dedicated gameplay remain NOT TESTED; G7 and stable G8 remain blocked.
+[h2]Black-cord ground model sizing fix[/h2]
+• Resize the rare unbreakable retainer to match the width/depth of the cloth and leather ground models, approximately 14.3 x 10 cm.
+• Preserve the original source artwork, inventory icons, cloth/leather models, all textures, crafting, loot, durability and worn appearance.
+• Blender export/re-import and offline source checks only. PZ placement, scale and lighting remain NOT TESTED; G7 and stable G8 remain blocked.

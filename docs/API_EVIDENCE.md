@@ -1,6 +1,6 @@
 # Lua API evidence
 
-Project Version: 0.11.0-dev.1
+Project Version: 0.11.1-dev.1
 Source inspection: 2026-10-14. Target Build 42.21.
 
 The installed Steam app108600 build25485521 uses the original JAR Core.class hash
