@@ -66,10 +66,11 @@ Public source: https://github.com/B47ANCE/B47ANCEDEyewear
 Current 0.13.1-dev.1 fixes missing native clothing GUID registrations and rejects
 unresolved tie visuals before publication/equip/payment. It includes the prior
 worn improvised-tie visuals. See [clothing sync fix](docs/CLOTHING_SYNC_FIX.md).
-It is not packaged, deployed or published. Workshop still serves 0.12.0-dev.1; its actual
-published package/checksum/provenance are preserved with verified hashes and
-ZIP CRC. No game/server was launched. G7 BLOCKED / NOT TESTED and stable G8
-BLOCKED remain unchanged.
+The user authorized Workshop MP testing distribution on 2026-10-15. The uploader
+records the actual outcome and exact package/source hashes in the generated
+publication record. The prior 0.12.0-dev.1 package/checksum/provenance remain
+preserved with verified hashes and ZIP CRC. No local deployment or game/server
+launch is authorized. G7 BLOCKED / NOT TESTED and stable G8 BLOCKED remain unchanged.
 
 See [architecture](docs/ARCHITECTURE.md), [retainer items](docs/RETAINER_ITEMS.md),
 [validation](docs/VALIDATION.md) and [version policy](docs/VERSION_POLICY.md).

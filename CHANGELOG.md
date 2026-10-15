@@ -2,6 +2,8 @@
 
 ## [0.13.1-dev.1] — 2026-10-15
 
+- Distribution follow-up: authorized Workshop MP testing upload; preserve previous published package/provenance. Actual upload/API and Steam restart results are recorded separately. G7/stable G8 remain blocked.
+
 - PATCH: register all seven existing clothing XML definitions in the native file GUID table, fixing unresolved tie/retainer visuals and the resulting dedicated-server SyncClothing null-visual failure.
 - Reject a tie installation before linking, publishing, equipping or consuming material if its native visual is not ready. Paid legacy migration can retry without creating a duplicate or changing the original saved record.
 - Add production preflight checks for complete, unique, case-correct clothing GUID registrations and document the native lookup evidence. Preserve IDs, slots, condition, payment, server authority and existing art.

@@ -264,3 +264,14 @@ Published 0.12 package/checksum/provenance remain hash-preserved, with ZIP CRC.
 No testing/debug runtime code, package, deployment, Workshop upload or game/server
 launch. PZ fit, simultaneous layers, clipping, old-save refresh, take-off/break
 visuals and dedicated remote rendering remain NOT TESTED; G7/stable G8 BLOCKED.
+
+## Authorized clothing-sync Workshop MP test distribution
+
+The user requested publication of 0.13.1-dev.1 on 2026-10-15. Canonical inputs
+remain WORKSHOP_DESCRIPTION.txt and WORKSHOP_CHANGE_NOTE.txt. Build-Workshop.ps1
+and Publish-Workshop.ps1 prepare and validate the existing public item 3799754736
+for App ID 108600. The generated publication-0.13.1-dev.1.json binds actual
+SteamCMD/API results, source commit, package/text hashes and Steam restart outcome.
+Previous source-only statements describe their original milestones. Runtime
+acceptance remains NOT TESTED; G7 and stable G8 remain BLOCKED. No local SP
+deployment, game/server launch or server modification is authorized.
