@@ -1,6 +1,6 @@
 # Validation and release gates
 
-Project Version: 0.7.0-dev.1
+Project Version: 0.7.0-dev.2
 
 The user explicitly requested removal of all testing code. No test suites,
 gameplay doubles, item-grant/debug commands or Java harnesses remain in active source.

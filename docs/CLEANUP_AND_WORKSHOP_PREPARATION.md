@@ -1,6 +1,6 @@
 # Cleanup and Workshop preparation
 
-Project Version: 0.7.0-dev.1
+Project Version: 0.7.0-dev.2
 Date: 2026-10-14
 
 Current continuation: 0.7.0-dev.1 adds a production crafting recipe by explicit

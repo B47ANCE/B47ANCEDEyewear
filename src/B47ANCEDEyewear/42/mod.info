@@ -2,5 +2,8 @@ name=B47ANCE'd Eyewear
 id=B47ANCEDEyewear
 author=B47ANCE
 description=Lua-only development build. Tie or untie compatible worn glasses and supported hats through inventory context menus. In-game and dedicated multiplayer validation remain pending.
-modversion=0.7.0-dev.1
+modversion=0.7.0-dev.2
 versionMin=42.21
+
+icon=media/ui/B47ANCEDEyewear_icon.png
+poster=poster.png

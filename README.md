@@ -1,6 +1,6 @@
 # B47ANCE'd Eyewear
 
-Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.7.0-dev.1.
+Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.7.0-dev.2.
 
 Lua-only development build targeting Project Zomboid 42.21. No Java agent, bridge,
 JAR dependency, test suite or debugger item-grant command is part of the project.
