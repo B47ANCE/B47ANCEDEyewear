@@ -1,6 +1,6 @@
 # Worn retainer presentation
 
-Project Version: 0.13.1-dev.1
+Project Version: 0.13.2-dev.1
 
 All three retainer items now bind visible, original head-attached static clothing
 meshes. Cloth has a beige strap and tied loops; leather has stitching and dark

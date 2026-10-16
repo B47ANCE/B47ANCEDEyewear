@@ -1,6 +1,6 @@
 # Clothing visual registration and synchronization
 
-Project Version: 0.13.1-dev.1
+Project Version: 0.13.2-dev.1
 Audit: 2026-10-15; installed Project Zomboid 42.21 / Steam build 25485521.
 
 ## Cause and evidence
@@ -99,3 +99,6 @@ condition/IDs, one-use payment, no duplicate migration and no new SyncClothing o
 missing-visual removal messages. A Lua guard cannot fix unrelated mods' invalid
 worn entries. No deployment, publication, game/server launch or remote write was
 performed for this request.
+
+The 0.13.2 thumbnail-only iteration preserves this implementation. All evidence
+above retains its original version/package; no clothing behavior changed.

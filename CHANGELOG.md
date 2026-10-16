@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.13.2-dev.1] — 2026-10-15
+
+- PATCH: select the user-supplied 1254x1254 Eyewear artwork as the canonical project/Workshop thumbnail source, preserving its original PNG bytes.
+- Preserve the previous custom thumbnail with provenance. Existing packaging reads the new source for its 256x256 preview; poster, icon, item/model art and gameplay are unchanged.
+- PNG integrity/dimensions/SHA-256 and offline source/version checks only. No package, deployment, Workshop upload or new runtime acceptance evidence.
+
 ## [0.13.1-dev.1] — 2026-10-15
 
 - Distribution follow-up: authorized Workshop MP testing upload; preserve previous published package/provenance. Actual upload/API and Steam restart results are recorded separately. G7/stable G8 remain blocked.

@@ -1,0 +1,23 @@
+{
+  "project_version": "0.13.2-dev.1",
+  "selected": "thumbnail.png",
+  "source": "User-supplied image explicitly selected 2026-10-15",
+  "source_filename": "exec-ff0e04c8-2b45-4a58-897f-3037afcf5a13.png",
+  "sha256": "10ac7ba24b2b0f784a3a0eb294b915088311d8a3924d7aad4af3de2cf9d86758",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGB",
+  "format": "PNG",
+  "processing": "Exact original bytes; no redraw, crop or resampling of the canonical source. Existing packaging derives a 256x256 Workshop preview.",
+  "previous": {
+    "path": "assets/branding/Eyewear_Thumbnail_Previous.png",
+    "sha256": "a4bf0ffbbe869d3c592964cb1f24e4deea6927b5dd1e36a02a3043c7eaea3333",
+    "dimensions": [
+      1024,
+      1024
+    ]
+  },
+  "scope": "Project thumbnail only; mod icon, poster, item artwork and runtime behavior preserved."
+}

@@ -1,8 +1,7 @@
-[b]Version 0.13.1-dev.1[/b]
+[b]Version 0.13.2-dev.1[/b]
 [b]MP testing build - dedicated multiplayer NOT TESTED[/b]
 
-[h2]Clothing synchronization fix[/h2]
-• Register all seven existing clothing definitions so the native engine can resolve tie and retainer visuals. Fix the missing registration behind the server SyncClothing null-visual failure.
-• If a new tie visual is not ready, leave no tie item/link, charge no material and avoid publishing or equipping it. Paid legacy migration may retry safely.
-• Include the prior neutral knotted-cord worn models, with male/female Eyes, Face and Hat fits. Preserve item IDs, slots, condition, saves, material rules, native synchronization and original art.
-• Production registration/source checks and a disposable offline Lua regression pass. Native/SP and dedicated acceptance, old-save refresh, fit/clipping and remote rendering remain NOT TESTED. G7/stable G8 remain blocked.
+[h2]Updated project thumbnail[/h2]
+• Select the supplied Eyewear artwork as the project and Workshop preview source.
+• Preserve the previous custom artwork, mod icon/poster, item/model art and all gameplay, clothing registrations, tie linking and durability.
+• Artwork integrity and offline source/version checks only. Runtime evidence retains its original package/version; no new SP or dedicated validation is claimed. Stable G8 remains blocked.

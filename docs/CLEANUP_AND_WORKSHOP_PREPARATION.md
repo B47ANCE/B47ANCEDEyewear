@@ -1,6 +1,6 @@
 # Cleanup and Workshop preparation
 
-Project Version: 0.13.1-dev.1
+Project Version: 0.13.2-dev.1
 Date: 2026-10-15
 
 Current 0.13.1 fixes native clothing GUID registration and rejects unready tie
@@ -145,3 +145,10 @@ SteamCMD/API results, source commit, package/text hashes and Steam restart outco
 Previous source-only statements describe their original milestones. Runtime
 acceptance remains NOT TESTED; G7 and stable G8 remain BLOCKED. No local SP
 deployment, game/server launch or server modification is authorized.
+
+## Thumbnail source update
+
+0.13.2-dev.1 uses the user-selected PNG as canonical thumbnail source; the previous
+artwork and published 0.13.1 package/checksum/provenance are preserved with hashes
+and ZIP CRC. No deletion, packaging, staging replacement, deployment, upload or
+PZ/server launch is part of this request. See THUMBNAIL.md.

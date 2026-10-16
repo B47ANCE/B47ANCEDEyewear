@@ -1,6 +1,6 @@
 # Roadmap
 
-Current development source is 0.13.1-dev.1: Lua-only context-menu and crafting
+Current development source is 0.13.2-dev.1: Lua-only context-menu and crafting
 retention, two craftable wearable items, a rare loot-only unbreakable retainer,
 distinct inventory icons, native head/clothing durability for all improvised ties
 and crafted retainers, live condition inspection, three distinct 3D ground models
@@ -28,3 +28,6 @@ Exact hidden-roll counting remains unsupported and is not the current wear rule.
 Earlier validation/publication documents describe their own versions only; they
 are not current readiness evidence. Stable tags, live deployment and Steam Workshop
 upload require separate authorization and applicable gates.
+
+The current 0.13.2 artwork-only patch selects the supplied project thumbnail.
+No new gameplay or runtime acceptance is claimed; see THUMBNAIL.md.

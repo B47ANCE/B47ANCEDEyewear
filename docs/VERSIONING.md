@@ -4,11 +4,11 @@ Root VERSION is the only canonical project version. docs/VERSION_POLICY.md is th
 authoritative inherited policy; version-inventory.json declares current mirrors,
 package selectors, schema/game distinctions and historical evidence.
 
-Current development iteration: 0.13.1-dev.1. Pre-1.0 PATCH fixes missing native
-clothing GUID registrations and rejects unresolved visuals before a tie is
-linked, published, equipped or paid for. It preserves IDs, slots, recipes, saves,
-durability, existing native networking and all art bytes. Prior 0.13.0 worn
-visuals remain included. Native/SP and dedicated acceptance remain NOT TESTED.
+Current development iteration: 0.13.2-dev.1. Pre-1.0 PATCH replaces the project
+thumbnail with explicitly supplied original artwork. Only artwork and version/
+release documentation change. All gameplay, persistence, configurations, native
+clothing registrations, models and item art retain their previous behavior.
+No runtime evidence is relabeled; prior observations remain version-bound.
 
 Source mod.info, README, canonical Workshop texts, current validation/preparation/
 API records and RELEASE_STATUS.json are current mirrors. Build reads VERSION and
@@ -35,3 +35,7 @@ separate request. Version checks do not prove runtime behavior.
 
 Published 0.11.1 package/checksum/provenance are preserved with verified hashes
 and ZIP CRC under dist/historical/0.11.1-dev.1-published; no deletion occurred.
+
+The published 0.13.1 ZIP/checksum/provenance are preserved with verified SHA-256
+and ZIP CRC in dist/historical/0.13.1-dev.1-published. No current 0.13.2 package
+exists; this artwork request does not authorize packaging or publication.

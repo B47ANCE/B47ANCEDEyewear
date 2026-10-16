@@ -1,6 +1,6 @@
 # B47ANCE'd Eyewear
 
-Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.13.1-dev.1.
+Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.13.2-dev.1.
 
 Lua-only development build targeting Project Zomboid 42.21. No custom Java/JAR,
 test suite or debugger grants are shipped. SP/dedicated gameplay is NOT TESTED.
@@ -63,7 +63,7 @@ Authoritative source: `src/B47ANCEDEyewear/42/`.
 Workshop item: https://steamcommunity.com/sharedfiles/filedetails/?id=3799754736
 Public source: https://github.com/B47ANCE/B47ANCEDEyewear
 
-Current 0.13.1-dev.1 fixes missing native clothing GUID registrations and rejects
+Published 0.13.1-dev.1 fixes missing native clothing GUID registrations and rejects
 unresolved tie visuals before publication/equip/payment. It includes the prior
 worn improvised-tie visuals. See [clothing sync fix](docs/CLOTHING_SYNC_FIX.md).
 The user authorized Workshop MP testing distribution on 2026-10-15. The uploader
@@ -89,3 +89,14 @@ Release tools require requirements-tools.txt; Python is not a runtime dependency
 Build-Workshop.ps1 prepares source/staging/ZIP provenance; Publish-Workshop.ps1
 -PrepareOnly checks canonical description/change-note paragraphs and existing ID/
 visibility without uploading. Deployment and publication require separate requests.
+
+## Project thumbnail
+
+The user-selected artwork is the canonical [thumbnail.png](thumbnail.png), kept
+as the exact original 1254x1254 PNG. [Thumbnail provenance](docs/THUMBNAIL.md)
+records its hash and the preserved previous artwork. The existing packager derives
+its 256x256 Workshop preview from this source when packaging is requested.
+
+Current 0.13.2-dev.1 is a thumbnail-only source iteration, not packaged, deployed
+or published. Workshop still serves 0.13.1-dev.1. Runtime evidence remains bound
+to its originally reported version/package; no test result was relabeled here.

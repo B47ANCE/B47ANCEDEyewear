@@ -1,6 +1,6 @@
 # Lua API evidence
 
-Project Version: 0.13.1-dev.1
+Project Version: 0.13.2-dev.1
 Source inspection: 2026-10-14. Target Build 42.21.
 
 Current patch audit (2026-10-15): CLOTHING_SYNC_FIX.md records the missing native

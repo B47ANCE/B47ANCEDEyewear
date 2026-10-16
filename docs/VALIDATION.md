@@ -1,6 +1,6 @@
 # Validation and release gates
 
-Project Version: 0.13.1-dev.1
+Project Version: 0.13.2-dev.1
 
 ## Current clothing synchronization patch
 
@@ -275,3 +275,23 @@ SteamCMD/API results, source commit, package/text hashes and Steam restart outco
 Previous source-only statements describe their original milestones. Runtime
 acceptance remains NOT TESTED; G7 and stable G8 remain BLOCKED. No local SP
 deployment, game/server launch or server modification is authorized.
+
+## Thumbnail artwork source milestone
+
+[TESTED: offline, 2026-10-15, 0.13.2-dev.1] Root thumbnail.png is an exact copy
+of the user-selected PNG: 1254x1254 RGB, SHA-256
+10ac7ba24b2b0f784a3a0eb294b915088311d8a3924d7aad4af3de2cf9d86758.
+Pillow image.verify/load and hash/dimension comparison pass. The previous custom
+1024x1024 PNG is preserved with its original hash in assets/branding. Commands:
+
+```powershell
+python -B scripts/check_versions.py
+python -B scripts/validate_release.py
+git diff --cached --check
+```
+
+All runtime source/model/icon/registration bytes are unchanged except modversion;
+all 14 Lua files compile without gameplay execution. No package or deployment,
+Workshop upload or PZ/server launch. Prior runtime evidence keeps its original
+version/package; pending user-owned test documentation is excluded from this
+thumbnail commit. See THUMBNAIL.md for artwork/export provenance and limits.
