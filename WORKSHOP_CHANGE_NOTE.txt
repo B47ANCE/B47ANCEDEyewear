@@ -5,4 +5,4 @@ Adds one tape reinforcement to crafted cloth/leather retainers through their inv
 
 The server validates target/tape ownership, state/revision, settings and one payment. Broken, already taped and unbreakable items cannot receive tape. New bonuses use a server sandbox multiplier. Improvised-tie reinforcement keeps its existing capacity rules.
 
-Source-only; no upload or deployment performed. Current SP/dedicated gameplay NOT TESTED; G7 and stable G8 BLOCKED. Native head/clothing wear applies; no hidden knock-off counter or custom Java.
+Development MP test distribution; no local mod deployment. Current SP/dedicated gameplay NOT TESTED; G7 and stable G8 BLOCKED. Native head/clothing wear applies; no hidden knock-off counter or custom Java.

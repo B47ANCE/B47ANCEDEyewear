@@ -2,7 +2,7 @@
 
 ## [0.15.0-dev.1] - 2026-10-16
 
-MINOR: allow one adhesive/duct-tape application to owned crafted cloth/leather retainers. Tape increases native wear resistance (defaults +1/+2), preserving the actual item and its existing ten-point condition. Server validates inventory ownership, setting, revision and one material payment. Adds context action, live tooltip and sandbox multiplier; rare unbreakable retainers are excluded. Source-only; SP/current dedicated NOT TESTED, G7/G8 blocked. No deployment/publication.
+MINOR: allow one adhesive/duct-tape application to owned crafted cloth/leather retainers. Tape increases native wear resistance (defaults +1/+2), preserving the actual item and its existing ten-point condition. Server validates inventory ownership, setting, revision and one material payment. Adds context action, live tooltip and sandbox multiplier; rare unbreakable retainers are excluded. SP/current dedicated NOT TESTED, G7/G8 blocked. The user separately authorized Workshop MP test distribution; actual upload evidence is recorded in generated publication provenance.
 
 ## [0.14.0-dev.1] - 2026-10-16
 

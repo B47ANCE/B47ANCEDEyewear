@@ -9,8 +9,9 @@ cloth/leather retainer, worn or unworn in the main inventory. Tape increases nat
 wear resistance by default +1/+2, without repairing condition or replacing the
 item. A server sandbox multiplier snapshots new bonuses. Right-click the retainer
 itself; already taped, broken, unavailable and unbreakable targets have no action.
-See [crafted-retainer tape](docs/CRAFTED_RETAINER_TAPE.md). Source-only; current
-SP/dedicated gameplay NOT TESTED. Workshop remains 0.14.0-dev.1.
+See [crafted-retainer tape](docs/CRAFTED_RETAINER_TAPE.md). Current SP/dedicated
+gameplay NOT TESTED. The user authorized 0.15 Workshop MP test distribution on
+2026-10-16; generated publication provenance records the actual outcome.
 
 ## Improvised-material reinforcement (0.14 milestone)
 
@@ -20,7 +21,7 @@ condition budgets and server-validated zip-tie cutting. See
 [Tie materials and reinforcement](docs/TIE_REINFORCEMENT.md). Current gameplay is
 NOT TESTED in SP or dedicated MP. Historical 0.13.1 acceptance does not verify
 that gameplay. The authorized 0.14 Workshop distribution and its generated record
-remain historical; the new 0.15 feature has no publish authorization.
+remain historical; the authorized 0.15 upload records its own exact provenance.
 
 Lua-only development build targeting Project Zomboid 42.21. No custom Java/JAR,
 test suite or debugger grants are shipped. SP/dedicated gameplay is NOT TESTED.
@@ -127,3 +128,14 @@ The generated dist/workshop-publish/publication-0.14.0-dev.1.json records actual
 upload/API verification, package/source hashes and the Steam client restart.
 SP/current dedicated gameplay remain NOT TESTED; stable G8 remains BLOCKED.
 Runtime evidence stays tied to its original version/package.
+
+## Authorized 0.15 development publication
+
+The user requested Workshop publication on 2026-10-16. Canonical inputs remain
+WORKSHOP_DESCRIPTION.txt, WORKSHOP_CHANGE_NOTE.txt and thumbnail.png. Existing
+Build-Workshop.ps1 / Publish-Workshop.ps1 preserve item 3799754736, App 108600,
+development title and public visibility. Generated
+ dist/workshop-publish/publication-0.15.0-dev.1.json records actual SteamCMD/API
+verification, exact source/package/text hashes and graceful Steam restart.
+Preparation is not upload proof. Current SP/dedicated NOT TESTED and stable
+G8 BLOCKED; historical 0.14 upload and 0.13.1 runtime evidence retain their versions.

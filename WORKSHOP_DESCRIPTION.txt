@@ -44,5 +44,5 @@ Fourteen improvised materials, up to three matching thin strands, and one adhesi
 
 Current 0.15 gameplay: MP testing build - dedicated multiplayer NOT TESTED. SP, dedicated synchronization/persistence/restarts and detailed fit/UI acceptance remain untested. Stable release blocked.
 
-[b]Crafted-retainer tape (development source)[/b]
-Right-click an owned cloth/leather retainer in your main inventory to apply one adhesive or duct tape, worn or unworn. Defaults add +1/+2 native wear resistance without repairing its ten-point condition or replacing the actual item. A server sandbox multiplier snapshots new tape bonuses; the unbreakable retainer is excluded. Current 0.15 source is not published; existing Workshop distribution remains0.14 until separately authorized.
+[b]Crafted-retainer tape[/b]
+Right-click an owned cloth/leather retainer in your main inventory to apply one adhesive or duct tape, worn or unworn. Defaults add +1/+2 native wear resistance without repairing its ten-point condition or replacing the actual item. A server sandbox multiplier snapshots new tape bonuses; the unbreakable retainer is excluded. Development MP testing build; current SP and dedicated gameplay remain NOT TESTED.

@@ -354,7 +354,7 @@ The user requested publish on 2026-10-16. No version or gameplay change accompan
 publication preparation. Existing canonical WORKSHOP_DESCRIPTION.txt and
 WORKSHOP_CHANGE_NOTE.txt keep the required "MP testing build - dedicated multiplayer
 NOT TESTED" notice and known limitations. Root thumbnail.png is the supplied art;
-the established packager derives the Workshop preview. Item 3799754736 / App108600
+the established packager derives the Workshop preview. Item 3799754736 / App 108600
 and public visibility are preserved. Prior package/staging provenance is preserved.
 
 Required source/artifact commands: `python -B scripts/check_versions.py`,
@@ -366,3 +366,18 @@ ignored generated publication-0.14.0-dev.1.json records exact command outcomes,
 source commit, package/text hashes, SteamCMD/API results and graceful Steam restart.
 Preparation is not upload proof; current G7 stays BLOCKED / NOT TESTED and stable
 G8 BLOCKED. No local deployment or game/server launch is authorized here.
+
+## Authorized 0.15 Workshop test distribution
+
+The user requested publication as a development build on 2026-10-16. Gameplay and
+version are unchanged during publication preparation. Required commands:
+`python -B scripts/check_versions.py`, `python -B scripts/validate_release.py`,
+`./Build-Workshop.ps1 -PythonExe <verified-python> -Visibility preserve`,
+`python -B scripts/check_versions.py --release`, and
+`./Publish-Workshop.ps1 -PythonExe <verified-python> -PrepareOnly`, followed by
+the same existing uploader with verified cached SteamCMD authentication.
+Generated publication-0.15.0-dev.1.json binds release commit, package/text hashes,
+actual SteamCMD/API/public-page verification and graceful Steam restart outcome.
+G7 stays BLOCKED / NOT TESTED and stable G8 BLOCKED. Prior 0.14 package/checksum/
+provenance remain unchanged under historical storage. No local mod deployment,
+PZ/server launch or server mutation is authorized by this Workshop request.

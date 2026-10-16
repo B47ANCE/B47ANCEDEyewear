@@ -183,3 +183,15 @@ publication-0.14.0-dev.1.json binds exact release source commit, package/text ha
 offline checks, SteamCMD/API outcome and Steam client restart. Source preparation
 is not a claim of upload success. G7/current dedicated NOT TESTED and stable
 G8 BLOCKED; no local mod deployment, server changes or game launch.
+
+## Authorized 0.15 Workshop development publication
+
+The user requested 0.15.0-dev.1 publication on 2026-10-16. Existing canonical
+Workshop texts, supplied thumbnail and established builder/uploader target
+item 3799754736 / App 108600, preserving development title and public visibility.
+Prior 0.14 published ZIP/checksum/provenance are preserved unchanged with hashes,
+CRC and ledger; the builder archives prior staging before replacement, without
+deletion. Generated publication-0.15.0-dev.1.json records exact commit/package/text
+hashes, offline checks, SteamCMD/API/public-page verification and Steam restart.
+Preparation is not proof of upload or gameplay. Current SP/dedicated NOT TESTED;
+G7 and stable G8 blocked. No game/server launch or live mod deployment.

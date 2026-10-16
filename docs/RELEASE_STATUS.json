@@ -6,8 +6,8 @@
   "g8": "BLOCKED",
   "validated_commit": null,
   "dedicated_evidence": null,
-  "publication": "SOURCE ONLY; 0.15.0-dev.1 not packaged, deployed or published",
-  "distribution": "Workshop remains the historical published 0.14.0-dev.1 package; new publication requires explicit request",
+  "publication": "AUTHORIZED WORKSHOP MP TEST DISTRIBUTION; actual result in generated publication-0.15.0-dev.1.json",
+  "distribution": "Existing Workshop item3799754736; development build; preserve public visibility; G7/G8 remain blocked",
   "durability": "User-approved native head/clothing wear; exact hidden knock-off-roll counting is not the implemented rule",
   "blocked_features": [
     "Exact -1 durability per successful native knock-off remains unavailable through verified authoritative Lua hooks."
