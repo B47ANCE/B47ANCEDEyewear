@@ -2,7 +2,7 @@
 
 ## [0.14.0-dev.1] - 2026-10-16
 
-MINOR: add all fourteen audited improvised materials, same-material strands (up to three), one adhesive/duct-tape reinforcement, snapshotted material-specific native condition budgets and sharp-tool zip-tie removal. New layered tie item types preserve old ten-point item definitions and existing condition. Reinforcement preserves the exact existing condition deficit and validates item identity/revision/payment on the server. Original eyewear identity, native head/clothing wear and the unbreakable retainer remain unchanged. Current gameplay is offline-tested only; dedicated G7 NOT TESTED / BLOCKED and stable G8 BLOCKED. No deployment or publication.
+MINOR: add all fourteen audited improvised materials, same-material strands (up to three), one adhesive/duct-tape reinforcement, snapshotted material-specific native condition budgets and sharp-tool zip-tie removal. New layered tie item types preserve old ten-point item definitions and existing condition. Reinforcement preserves the exact existing condition deficit and validates item identity/revision/payment on the server. Original eyewear identity, native head/clothing wear and the unbreakable retainer remain unchanged. Current gameplay is offline-tested only; dedicated G7 NOT TESTED / BLOCKED and stable G8 BLOCKED. Workshop test distribution is authorized separately and its actual outcome is recorded in generated publication provenance.
 
 ## [0.13.2-dev.1] — 2026-10-15
 

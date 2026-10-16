@@ -39,7 +39,7 @@ Created by B47ANCE. Original mod implementation and artwork; optional third-part
 [h2]Upgrade Notice[/h2]
 Formerly Glasses Stay Put. Keep Workshop item 3799754736 and enable Mod ID B47ANCEDEyewear.
 
-[b]Materials and reinforcement (development source)[/b]
+[b]Materials and reinforcement[/b]
 Fourteen improvised materials, up to three matching thin strands, and one adhesive/duct-tape reinforcement. Existing damage is preserved. Zip ties require usable sharp scissors or a tagged knife to remove; tools are kept. New material capacities use native head/clothing wear, not knock-off counts. Original ten-point ties keep their condition: untie and retie to use reinforcement. Server sandbox durability multiplier controls newly installed contributions.
 
 Current 0.14 gameplay: MP testing build - dedicated multiplayer NOT TESTED. SP, dedicated synchronization/persistence/restarts and detailed fit/UI acceptance remain untested. Stable release blocked.

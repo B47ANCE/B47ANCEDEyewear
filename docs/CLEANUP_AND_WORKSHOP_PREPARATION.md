@@ -160,3 +160,15 @@ deployment, game/server launch or server modification is authorized.
 artwork and published 0.13.1 package/checksum/provenance are preserved with hashes
 and ZIP CRC. No deletion, packaging, staging replacement, deployment, upload or
 PZ/server launch is part of this request. See THUMBNAIL.md.
+
+## Authorized 0.14 Workshop test publication
+
+The user requested publication of 0.14.0-dev.1 on 2026-10-16. Reuse canonical
+Workshop text, selected thumbnail and existing packaging/uploader scripts.
+Workshop item 3799754736, App ID108600, development title and public visibility
+remain unchanged. Preserve the 0.13.1 published ZIP/checksum/provenance and archive
+prior staging before replacement; do not delete historical evidence. Generated
+publication-0.14.0-dev.1.json binds exact release source commit, package/text hashes,
+offline checks, SteamCMD/API outcome and Steam client restart. Source preparation
+is not a claim of upload success. G7/current dedicated NOT TESTED and stable
+G8 BLOCKED; no local mod deployment, server changes or game launch.

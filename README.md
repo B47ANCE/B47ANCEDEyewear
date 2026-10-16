@@ -9,7 +9,8 @@ reinforcement, one adhesive/duct-tape reinforcement, material-specific native
 condition budgets and server-validated zip-tie cutting. See
 [Tie materials and reinforcement](docs/TIE_REINFORCEMENT.md). Current gameplay is
 NOT TESTED in SP or dedicated MP. Historical 0.13.1 acceptance does not verify
-this new gameplay. No deployment or Workshop update occurred.
+this new gameplay. The user has authorized Workshop MP test distribution;
+the generated publication record captures the actual outcome.
 
 Lua-only development build targeting Project Zomboid 42.21. No custom Java/JAR,
 test suite or debugger grants are shipped. SP/dedicated gameplay is NOT TESTED.
@@ -108,7 +109,11 @@ as the exact original 1254x1254 PNG. [Thumbnail provenance](docs/THUMBNAIL.md)
 records its hash and the preserved previous artwork. The existing packager derives
 its 256x256 Workshop preview from this source when packaging is requested.
 
-The 0.13.2-dev.1 thumbnail-only iteration was followed by the current source-only
-0.14.0-dev.1 reinforcement iteration. Neither was packaged, deployed or published.
-Workshop still serves 0.13.1-dev.1. Runtime evidence remains bound
-to its originally reported version/package; no test result was relabeled here.
+The 0.13.2-dev.1 thumbnail-only iteration was followed by the current
+0.14.0-dev.1 reinforcement iteration. The user requested Workshop publication on
+2026-10-16. Build-Workshop.ps1 prepares the exact committed source and selected
+thumbnail; Publish-Workshop.ps1 preserves item 3799754736 and public visibility.
+The generated dist/workshop-publish/publication-0.14.0-dev.1.json records actual
+upload/API verification, package/source hashes and the Steam client restart.
+SP/current dedicated gameplay remain NOT TESTED; stable G8 remains BLOCKED.
+Runtime evidence stays tied to its original version/package.

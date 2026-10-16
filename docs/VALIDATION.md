@@ -320,3 +320,22 @@ all 14 Lua files compile without gameplay execution. No package or deployment,
 Workshop upload or PZ/server launch. Prior runtime evidence keeps its original
 version/package; pending user-owned test documentation is excluded from this
 thumbnail commit. See THUMBNAIL.md for artwork/export provenance and limits.
+
+## Authorized 0.14 Workshop test distribution
+
+The user requested publish on 2026-10-16. No version or gameplay change accompanies
+publication preparation. Existing canonical WORKSHOP_DESCRIPTION.txt and
+WORKSHOP_CHANGE_NOTE.txt keep the required "MP testing build - dedicated multiplayer
+NOT TESTED" notice and known limitations. Root thumbnail.png is the supplied art;
+the established packager derives the Workshop preview. Item 3799754736 / App108600
+and public visibility are preserved. Prior package/staging provenance is preserved.
+
+Required source/artifact commands: `python -B scripts/check_versions.py`,
+`python -B scripts/validate_release.py`, `./Build-Workshop.ps1 -PythonExe <verified-python>`,
+`python -B scripts/check_versions.py --release`, and
+`./Publish-Workshop.ps1 -PythonExe <verified-python> -PrepareOnly`. Upload then
+uses that same verified staging/VDF with cached SteamCMD authentication. The
+ignored generated publication-0.14.0-dev.1.json records exact command outcomes,
+source commit, package/text hashes, SteamCMD/API results and graceful Steam restart.
+Preparation is not upload proof; current G7 stays BLOCKED / NOT TESTED and stable
+G8 BLOCKED. No local deployment or game/server launch is authorized here.

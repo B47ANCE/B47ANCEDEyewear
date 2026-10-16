@@ -5,4 +5,4 @@ Adds all fourteen verified improvised materials, up to three matching thin stran
 
 Server validates ownership, worn links, item IDs/revision, sandbox settings, material payment and tool condition/sharpness. Whole fabric is consumed without dirty-fabric byproducts. Original ten-point ties keep their condition; untie and retie to opt into reinforcement. New source uses the supplied project thumbnail.
 
-SP and current dedicated gameplay NOT TESTED. Native head/clothing wear applies; exact hidden knock-off counts and final breaking-hit saves are not guaranteed. No upload is performed by this source iteration. Stable G8 BLOCKED.
+SP and current dedicated gameplay NOT TESTED. Native head/clothing wear applies; exact hidden knock-off counts and final breaking-hit saves are not guaranteed. Development MP test distribution. Stable G8 BLOCKED.
