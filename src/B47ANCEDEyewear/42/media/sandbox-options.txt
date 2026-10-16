@@ -50,3 +50,9 @@ option B47ANCEDEyewear.ImprovisedTieDurabilityMultiplier
     type = double, default = 1, min = 0.25, max = 5,
     page = B47ANCEDEyewear, translation = B47ANCEDEyewear_ImprovisedTieDurabilityMultiplier,
 }
+
+option B47ANCEDEyewear.RetainerTapeResistanceMultiplier
+{
+    type = double, default = 1, min = 0.25, max = 5,
+    page = B47ANCEDEyewear, translation = B47ANCEDEyewear_RetainerTapeResistanceMultiplier,
+}

@@ -41,5 +41,9 @@
   "UI_ClothingType_b47ancedeyewear:tieface": "Eyewear Tie (Face)",
   "UI_ClothingType_b47ancedeyewear:tiehat": "Headwear Tie",
   "UI_B47ANCEDEyewear_LegacyTie": "Legacy tie: original 10-point condition preserved. Untie and retie to use reinforcement.",
-  "UI_B47ANCEDEyewear_ZipCutting": "Removal requires a usable sharp knife or scissors in your main inventory. Tool is kept."
+  "UI_B47ANCEDEyewear_ZipCutting": "Removal requires a usable sharp knife or scissors in your main inventory. Tool is kept.",
+  "UI_B47ANCEDEyewear_RetainerTapeInstructions": "Right-click this cloth/leather retainer in your main inventory to reinforce once with adhesive or duct tape. Raises wear resistance without repairing condition.",
+  "UI_B47ANCEDEyewear_WearResistance": "Wear resistance: one-in-%1 chance to lose condition on eligible head/clothing damage.",
+  "UI_B47ANCEDEyewear_TapeWearModifier": "Reinforced with %1: wear resistance +%2",
+  "UI_B47ANCEDEyewear_TapeInstalled": "Reinforced with %1"
 }

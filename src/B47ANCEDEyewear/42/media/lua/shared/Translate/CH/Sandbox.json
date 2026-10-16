@@ -7,7 +7,7 @@
   "Sandbox_B47ANCEDEyewear_StrappedHeadwearFallChance": "Strapped headwear fall value",
   "Sandbox_B47ANCEDEyewear_StrappedHeadwearFallChance_tooltip": "Fall value for supported strapped protective headwear. Range 0–100; default 0. The vanilla impact calculation still applies. Server setting.",
   "Sandbox_B47ANCEDEyewear_WearableRetainersEnabled": "Enable wearable retainers",
-  "Sandbox_B47ANCEDEyewear_WearableRetainersEnabled_tooltip": "Allow crafting and protection from reusable wearable retainers. Disabling removes their protection; existing items can still be taken off and kept. Server setting.",
+  "Sandbox_B47ANCEDEyewear_WearableRetainersEnabled_tooltip": "Allow crafting, protection and new tape reinforcement for reusable wearable retainers. Disabling preserves actual items and existing tape; worn finite items can still wear. Server setting.",
   "Sandbox_B47ANCEDEyewear_WearableRetainerFallChance": "Retained eyewear fall value",
   "Sandbox_B47ANCEDEyewear_WearableRetainerFallChance_tooltip": "Fall value for the one compatible untied pair protected by a worn retainer. Range 0–100; default 0 prevents knock-off. Uses vanilla impact rules and has no per-catch durability. Server setting.",
   "Sandbox_B47ANCEDEyewear_RareRetainerLootChance": "Rare unbreakable retainer loot chance (%)",
@@ -19,5 +19,7 @@
   "Sandbox_B47ANCEDEyewear_LeatherRetainerWearResistance": "Leather retainer wear resistance",
   "Sandbox_B47ANCEDEyewear_LeatherRetainerWearResistance_tooltip": "Server setting: each eligible vanilla head/clothing damage attempt has a 1-in-N chance to remove one of 10 native condition points. Range 1–100, integer steps; default 4. Larger values last longer. Applies to existing worn items without repairing them. Not a knock-off counter; the rare unbreakable retainer is exempt.",
   "Sandbox_B47ANCEDEyewear_ImprovisedTieDurabilityMultiplier": "Improvised tie material durability multiplier",
-  "Sandbox_B47ANCEDEyewear_ImprovisedTieDurabilityMultiplier_tooltip": "Server setting, default 1, range 0.25–5. Scales the 14 material contributions and adhesive/duct tape at installation (rounded, minimum 1). Installed values persist; changing this setting never repairs existing ties. New layered ties only; old ten-point ties remain unchanged. Not a knock-off count."
+  "Sandbox_B47ANCEDEyewear_ImprovisedTieDurabilityMultiplier_tooltip": "Server setting, default 1, range 0.25–5. Scales the 14 material contributions and adhesive/duct tape at installation (rounded, minimum 1). Installed values persist; changing this setting never repairs existing ties. New layered ties only; old ten-point ties remain unchanged. Not a knock-off count.",
+  "Sandbox_B47ANCEDEyewear_RetainerTapeResistanceMultiplier": "Crafted-retainer tape resistance multiplier",
+  "Sandbox_B47ANCEDEyewear_RetainerTapeResistanceMultiplier_tooltip": "Server setting, default 1, range 0.25–5. Scales adhesive/duct-tape wear-resistance bonuses (base +1/+2, rounded, minimum 1) when applied once to a crafted cloth/leather retainer. Installed bonuses persist. Native wear resistance is capped at 100. Does not repair condition or affect improvised ties or the unbreakable retainer."
 }

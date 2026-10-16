@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "version": "0.14.0-dev.1",
+  "version": "0.15.0-dev.1",
   "tool": "Blender 4.5.7 LTS",
   "units": "metres; XY ground plane; Z up in editable source",
   "fbx": "Binary, -Z forward / Y up, FBX_SCALE_ALL, standard axis transform, no bones/animation",

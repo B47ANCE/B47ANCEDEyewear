@@ -93,6 +93,10 @@
     {
       "path": "docs/TIE_REINFORCEMENT.md",
       "pattern": "^Project Version: (?P<version>\\S+)$"
+    },
+    {
+      "path": "docs/CRAFTED_RETAINER_TAPE.md",
+      "pattern": "^Project Version: (?P<version>\\S+)$"
     }
   ],
   "changelog": {
@@ -220,6 +224,10 @@
     {
       "reference": "dist/historical/0.13.1-dev.1-published; dist/workshop-publish/publication-0.13.1-dev.1.json and repeat-upload records; assets/branding/Eyewear_Thumbnail_Previous.png",
       "reason": "Actual published source/package/provenance and previous artwork remain unchanged; prior runtime evidence is not relabeled as the artwork iteration."
+    },
+    {
+      "reference": "dist/historical/0.14.0-dev.1-published; dist/workshop-publish/publication-0.14.0-dev.1.json",
+      "reason": "Published ZIP/checksum/provenance preserved unchanged with hashes, ledger and ZIP CRC before the 0.15 source-only iteration. Never relabel as crafted-retainer tape evidence."
     }
   ]
 }

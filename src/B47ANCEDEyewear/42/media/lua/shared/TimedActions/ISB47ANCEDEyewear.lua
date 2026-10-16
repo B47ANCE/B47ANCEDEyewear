@@ -10,8 +10,12 @@ function ISB47ANCEDEyewear:isValid()
     -- The server can sync consumption/tie state before the client animation ends.
     -- Keep presentation alive; complete() always performs strict authority checks.
     if isClient() and self.started then
-        return self.character ~= nil and not self.character:isDead()
-            and self.glasses ~= nil and self.character:isEquippedClothing(self.glasses)
+        if not self.character or self.character:isDead() or not self.glasses then return false end
+        if self.operation=='RetainerTape' then
+            local inventory = self.character:getInventory()
+            return self.glasses:getContainer()==inventory and inventory:contains(self.glasses)
+        end
+        return self.character:isEquippedClothing(self.glasses)
     end
     return S.matchesRequest(self.character,self.glasses,expected(self))
         and S.validAction(self.character,self.glasses,self.material,self.operation,self.tool)
@@ -58,6 +62,9 @@ function ISB47ANCEDEyewear:complete()
     if isClient() or self.completed then return false end
     self.completed=true
     if not S.matchesRequest(self.character,self.glasses,expected(self)) then return false end
+    if self.operation=='RetainerTape' then
+        return S.RetainerItems.applyTape(self.character,self.glasses,self.material)
+    end
     if self.operation=='Untie' then return S.untie(self.character, self.glasses, self.tool) end
     if self.operation=='Reinforce' or self.operation=='Tape' then
         return S.reinforce(self.character,self.glasses,self.material,self.operation=='Tape')

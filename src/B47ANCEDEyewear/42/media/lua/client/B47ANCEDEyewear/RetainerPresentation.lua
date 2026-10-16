@@ -45,8 +45,21 @@ function P.model(item)
             return {lines={text('RetainerTitle'),getItemNameFromFullType(item:getFullType()),
                 text('UnbreakableInstructions'),text('UnbreakableCondition')}}
         end
-        return conditionModel(item,{text('RetainerTitle'),getItemNameFromFullType(item:getFullType()),
-            text('WearableInstructions'),text('WearableDurability')})
+        local tape = T.tapeState(item)
+        if item:hasModData() and item:getModData()[T.tapeKey]~=nil and not tape then return unknown() end
+        local lines = {text('RetainerTitle'),getItemNameFromFullType(item:getFullType()),
+            text('WearableInstructions'),text('WearableDurability'),text('RetainerTapeInstructions')}
+        local model = conditionModel(item,lines)
+        if model.unavailable then return model end
+        local resistance,base = T.resistance(item)
+        lines[#lines+1]=text('WearResistance',resistance)
+        if tape then
+            if resistance>base then
+                lines[#lines+1]=text('Modifiers')
+                lines[#lines+1]=text('TapeWearModifier',getItemNameFromFullType(tape.tape),resistance-base)
+            else lines[#lines+1]=text('TapeInstalled',getItemNameFromFullType(tape.tape)) end
+        end
+        return model
     end
     if T then
         local owner=item:getEquipParent()
@@ -55,7 +68,10 @@ function P.model(item)
             if T.isUnbreakable(retainer) then
                 return {lines={text('RetainerTitle'),text('WearableProtection'),text('UnbreakableCondition')}}
             end
-            return conditionModel(retainer,{text('RetainerTitle'),text('WearableProtection'),text('WearableDurability')})
+            local model = P.model(retainer)
+            if not model or model.unavailable then return unknown() end
+            model.lines[#model.lines+1]=text('WearableProtection')
+            return model
         end
     end
     if not item:hasModData() then return nil end

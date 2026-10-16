@@ -159,6 +159,10 @@ end
 -- Bind every queued command to this exact link/state, including removal and Tie.
 -- Native condition damage may occur while an action runs; it is read at commit.
 function S.snapshot(character, item)
+    if T.isCrafted(item) then
+        local tape = T.tapeState(item)
+        return {tieId=false,revision=tape and tape.revision or 0,tied=false}
+    end
     local data = S.state(item)
     local tie = data and D.item(character, item, data)
     local link = tie and D.state(tie)
@@ -188,6 +192,7 @@ function S.canReinforce(character, item, material, tape)
 end
 
 function S.validAction(character,item,material,operation,tool)
+    if operation=='RetainerTape' then return T.canTape(character,item,material) end
     if operation=='Tie' then return S.valid(character,item,material,false) end
     if operation=='Untie' then return S.valid(character,item,nil,true,tool) end
     if operation=='Reinforce' or operation=='Tape' then

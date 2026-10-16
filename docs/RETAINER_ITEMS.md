@@ -1,6 +1,17 @@
 # Reusable retainer items
 
-Project Version: 0.14.0-dev.1
+Project Version: 0.15.0-dev.1
+
+## Crafted-retainer tape — 0.15
+
+Crafted cloth/leather retainers now accept ONE tape in their main-inventory
+right-click menu, worn or unworn. Default native wear-resistance bonus is +1 for
+adhesive/+2 for duct tape. Condition, maximum, identity and worn mapping stay
+unchanged; no recraft is required. Server intent validation, observed-payment
+rollback boundaries, persistence, settings and runtime gates are detailed in
+CRAFTED_RETAINER_TAPE.md. Unbreakable retainers are excluded. This is source-only;
+current G7 NOT TESTED / BLOCKED and stable G8 BLOCKED.
+
 
 ## Current 0.14 materials and reinforcement
 
@@ -54,7 +65,8 @@ without changing their result. A server fallback every 30 ticks handles reconnec
 configuration changes and outside transfers. It checks native worn mappings and
 direct main-container ownership and scans only worn slots. No valuable item is
 removed, serialized into ModData, reconstructed, refunded or created by retention.
-Clients display derived state; they submit only vanilla crafting/equipment intent.
+Clients display derived state; crafting/equipment use vanilla intent and crafted
+tape uses the validated RetainerTape server command.
 The server determines eligibility and fall values from its sandbox configuration.
 
 Persistence and transfer use vanilla clothing items and worn-item mappings. Direct ties add reciprocal item links and a one-time paid-legacy migration; see

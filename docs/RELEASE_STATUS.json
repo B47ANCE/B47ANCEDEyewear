@@ -1,13 +1,13 @@
 {
-  "project_version": "0.14.0-dev.1",
+  "project_version": "0.15.0-dev.1",
   "source": "OFFLINE CHECKS ONLY; see VALIDATION.md",
   "sp": "NOT TESTED",
   "g7": "BLOCKED / NOT TESTED",
   "g8": "BLOCKED",
   "validated_commit": null,
   "dedicated_evidence": null,
-  "publication": "AUTHORIZED WORKSHOP MP TEST DISTRIBUTION; actual result in generated publication-0.14.0-dev.1.json",
-  "distribution": "Existing Workshop item 3799754736; development build; preserve public visibility; G7/G8 remain blocked",
+  "publication": "SOURCE ONLY; 0.15.0-dev.1 not packaged, deployed or published",
+  "distribution": "Workshop remains the historical published 0.14.0-dev.1 package; new publication requires explicit request",
   "durability": "User-approved native head/clothing wear; exact hidden knock-off-roll counting is not the implemented rule",
   "blocked_features": [
     "Exact -1 durability per successful native knock-off remains unavailable through verified authoritative Lua hooks."
@@ -18,5 +18,6 @@
   "clothing_sync": "Native GUID registration fixed and unready tie guard checked offline; actual dedicated acceptance NOT TESTED",
   "thumbnail": "User-supplied original PNG copied exactly; source SHA-256 and dimensions verified offline",
   "reinforcement": "Fourteen materials; native condition budgets, same-material strands, one tape, revision-bound server payment and tagged zip cutting; dedicated runtime NOT TESTED",
-  "legacy_ties": "Original ten-point item definitions preserved; retie to opt into new reinforcement"
+  "legacy_ties": "Original ten-point item definitions preserved; retie to opt into new reinforcement",
+  "crafted_retainer_tape": "One paid adhesive/duct tape, native resistance bonus without condition repair or item replacement; current SP/dedicated NOT TESTED"
 }

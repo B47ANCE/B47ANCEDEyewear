@@ -122,6 +122,33 @@ local function existingItemMenu(context, name)
     return option, nil
 end
 
+local function itemMenuFor(context,item)
+    local name = nameOf(item)
+    local option, submenu = existingItemMenu(context,name)
+    if not submenu then
+        option = option or context:addOption(name,item,nil)
+        submenu = ISContextMenu:getNew(context)
+        context:addSubMenu(option,submenu)
+    end
+    return submenu
+end
+
+local function addRetainerTape(player,context,item)
+    local available,seen = {},{}
+    for _,tape in ipairs(inventoryItems(player:getInventory())) do
+        if not seen[tape:getFullType()] and S.validAction(player,item,tape,'RetainerTape') then
+            available[#available+1]=tape
+            seen[tape:getFullType()]=true
+        end
+    end
+    if #available==0 then return end
+    local submenu = itemMenuFor(context,item)
+    for _,tape in ipairs(available) do
+        submenu:addOption(getText('ContextMenu_B47ANCEDEyewear_ApplyTape',nameOf(tape)),
+            player,queueReinforce,item,tape,'RetainerTape')
+    end
+end
+
 local function disabledTooltip(text)
     -- ISContextMenu later calls setVisible/addToUIManager on this object.
     -- A plain {description=...} table crashes vanilla's context-menu render.
@@ -138,17 +165,12 @@ function Menu.add(playerIndex, context, rawItems)
     local headwear
     for _, entry in ipairs(selectedItems(rawItems)) do
         local item = unwrap(entry)
+        if S.RetainerItems.isCrafted(item) then return addRetainerTape(player,context,item) end
         if canTie(player,item) or canUntie(player,item) then headwear=item; break end
     end
     if not headwear then return end
 
-    local name = nameOf(headwear)
-    local itemOption, itemMenu = existingItemMenu(context, name)
-    if not itemMenu then
-        itemOption = itemOption or context:addOption(name, headwear, nil)
-        itemMenu = ISContextMenu:getNew(context)
-        context:addSubMenu(itemOption, itemMenu)
-    end
+    local itemMenu = itemMenuFor(context,headwear)
 
     if canUntie(player,headwear) then
         local cutter

@@ -1,16 +1,26 @@
 # B47ANCE'd Eyewear
 
-Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.14.0-dev.1.
+Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.15.0-dev.1.
 
-## Current material/reinforcement iteration
+## Current crafted-retainer tape addition
+
+0.15.0-dev.1 adds one paid adhesive/duct-tape reinforcement to the actual crafted
+cloth/leather retainer, worn or unworn in the main inventory. Tape increases native
+wear resistance by default +1/+2, without repairing condition or replacing the
+item. A server sandbox multiplier snapshots new bonuses. Right-click the retainer
+itself; already taped, broken, unavailable and unbreakable targets have no action.
+See [crafted-retainer tape](docs/CRAFTED_RETAINER_TAPE.md). Source-only; current
+SP/dedicated gameplay NOT TESTED. Workshop remains 0.14.0-dev.1.
+
+## Improvised-material reinforcement (0.14 milestone)
 
 0.14.0-dev.1 adds fourteen direct-tie materials, three-strand thin-material
 reinforcement, one adhesive/duct-tape reinforcement, material-specific native
 condition budgets and server-validated zip-tie cutting. See
 [Tie materials and reinforcement](docs/TIE_REINFORCEMENT.md). Current gameplay is
 NOT TESTED in SP or dedicated MP. Historical 0.13.1 acceptance does not verify
-this new gameplay. The user has authorized Workshop MP test distribution;
-the generated publication record captures the actual outcome.
+that gameplay. The authorized 0.14 Workshop distribution and its generated record
+remain historical; the new 0.15 feature has no publish authorization.
 
 Lua-only development build targeting Project Zomboid 42.21. No custom Java/JAR,
 test suite or debugger grants are shipped. SP/dedicated gameplay is NOT TESTED.

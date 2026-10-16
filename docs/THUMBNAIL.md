@@ -1,6 +1,6 @@
 # Project thumbnail artwork
 
-Project Version: 0.14.0-dev.1
+Project Version: 0.15.0-dev.1
 
 The user explicitly selected the supplied Eyewear/glasses-and-cord PNG on
 2026-10-15. Canonical source: root thumbnail.png, 1254x1254 RGB PNG, exact bytes.

@@ -1,6 +1,6 @@
 # Roadmap
 
-Current development source is 0.14.0-dev.1: fourteen-material improvised ties,
+Current development source is 0.15.0-dev.1: crafted-retainer tape and fourteen-material improvised ties,
 strand/tape reinforcement and zip-tie cutting alongside Lua-only context-menu and crafting
 retention, two craftable wearable items, a rare loot-only unbreakable retainer,
 distinct inventory icons, native head/clothing durability for all improvised ties
@@ -40,3 +40,13 @@ specific installed native condition and zip-tie cutting are implemented in Lua.
 See TIE_REINFORCEMENT.md for balance, ownership/payment/replay checks, new item
 identity, existing-save policy and current runtime gates. G7 for THIS gameplay
 iteration is BLOCKED / NOT TESTED; earlier published acceptance remains historical.
+
+## Crafted-retainer tape — 0.15
+
+Crafted cloth/leather retainers now accept ONE tape in their main-inventory
+right-click menu, worn or unworn. Default native wear-resistance bonus is +1 for
+adhesive/+2 for duct tape. Condition, maximum, identity and worn mapping stay
+unchanged; no recraft is required. Server intent validation, observed-payment
+rollback boundaries, persistence, settings and runtime gates are detailed in
+CRAFTED_RETAINER_TAPE.md. Unbreakable retainers are excluded. This is source-only;
+current G7 NOT TESTED / BLOCKED and stable G8 BLOCKED.

@@ -4,12 +4,10 @@ Root VERSION is the only canonical project version. docs/VERSION_POLICY.md is th
 authoritative inherited policy; version-inventory.json declares current mirrors,
 package selectors, schema/game distinctions and historical evidence.
 
-Current development iteration: 0.14.0-dev.1. Pre-1.0 MINOR adds fourteen-material
-direct ties, strand/tape reinforcement, material-specific native condition budgets
-and zip-tie cutting. Existing tie item definitions and condition are preserved;
-new LayeredTie types opt into reinforcement. Meshes, native clothing registrations
-and selected thumbnail remain byte-identical.
-No runtime evidence is relabeled; prior observations remain version-bound.
+Current development iteration: 0.15.0-dev.1. Pre-1.0 MINOR adds paid tape
+reinforcement to existing cloth/leather retainers. Native condition maxima and
+actual item identity remain unchanged; additive schema 1 tape metadata owns the
+saved wear-resistance bonus. Runtime evidence is not relabeled.
 
 Source mod.info, README, canonical Workshop texts, current validation/preparation/
 API records and RELEASE_STATUS.json are current mirrors. Build reads VERSION and
@@ -46,3 +44,8 @@ strand/tape reinforcement and cutting. New LayeredTie definitions avoid changing
 legacy script maxima; old condition and item identity remain intact. New linked
 items add materialSchema=1 inside the existing tie link namespace. Retie is the
 explicit opt-in for existing ties. No stable tag, deployment or publication.
+
+Published 0.14 ZIP/checksum/provenance are preserved unchanged under
+ dist/historical/0.14.0-dev.1-published, with SHA-256/CRC checks and a ledger.
+No current 0.15 package, deploy or publish is authorized. All declared mirrors
+advance together; original art, model exports and historical reports are retained.

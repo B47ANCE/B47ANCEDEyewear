@@ -1,8 +1,8 @@
-[b]Version 0.14.0-dev.1[/b]
+[b]Version 0.15.0-dev.1[/b]
 MP testing build - dedicated multiplayer NOT TESTED
 
-Adds all fourteen verified improvised materials, up to three matching thin strands, one adhesive/duct-tape reinforcement and material-specific native condition budgets. Reinforcement adds current and maximum equally; old wear is preserved. Zip ties require a usable tagged cutting tool, kept on removal.
+Adds one tape reinforcement to crafted cloth/leather retainers through their inventory context menu. Adhesive tape adds +1 native wear resistance by default; duct tape adds +2. Current condition, its ten-point maximum, actual item identity and worn mapping are preserved. Existing retainers work without recrafting.
 
-Server validates ownership, worn links, item IDs/revision, sandbox settings, material payment and tool condition/sharpness. Whole fabric is consumed without dirty-fabric byproducts. Original ten-point ties keep their condition; untie and retie to opt into reinforcement. New source uses the supplied project thumbnail.
+The server validates target/tape ownership, state/revision, settings and one payment. Broken, already taped and unbreakable items cannot receive tape. New bonuses use a server sandbox multiplier. Improvised-tie reinforcement keeps its existing capacity rules.
 
-SP and current dedicated gameplay NOT TESTED. Native head/clothing wear applies; exact hidden knock-off counts and final breaking-hit saves are not guaranteed. Development MP test distribution. Stable G8 BLOCKED.
+Source-only; no upload or deployment performed. Current SP/dedicated gameplay NOT TESTED; G7 and stable G8 BLOCKED. Native head/clothing wear applies; no hidden knock-off counter or custom Java.

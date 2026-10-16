@@ -1,6 +1,17 @@
 # Lua API evidence
 
-Project Version: 0.14.0-dev.1
+Project Version: 0.15.0-dev.1
+
+## Crafted-retainer tape — 0.15
+
+Crafted cloth/leather retainers now accept ONE tape in their main-inventory
+right-click menu, worn or unworn. Default native wear-resistance bonus is +1 for
+adhesive/+2 for duct tape. Condition, maximum, identity and worn mapping stay
+unchanged; no recraft is required. Server intent validation, observed-payment
+rollback boundaries, persistence, settings and runtime gates are detailed in
+CRAFTED_RETAINER_TAPE.md. Unbreakable retainers are excluded. This is source-only;
+current G7 NOT TESTED / BLOCKED and stable G8 BLOCKED.
+
 
 ## Current 0.14 materials and reinforcement
 
@@ -10,7 +21,7 @@ See TIE_REINFORCEMENT.md for balance, ownership/payment/replay checks, new item
 identity, existing-save policy and current runtime gates. G7 for THIS gameplay
 iteration is BLOCKED / NOT TESTED; earlier published acceptance remains historical.
 
-[VERIFIED: source, 2026-10-16] Installed Steam app108600 build25485521, Core.class
+[VERIFIED: source, 2026-10-16] Installed Steam app108600 build 25485521, Core.class
 SHA-256 8f5c69740c8bf2181123a831ab68d1dfb047453687cca6dc62c77816d76ab360,
 InventoryItem.class 48f01be16d1ef1b76e37638fac6e25ca4eb285ad38ab2f462caa5597318c7f9d
 remain unchanged. All sixteen material/tape FullTypes were freshly read from
@@ -47,7 +58,7 @@ file GUID table cause, original installed class fingerprints, verified vanilla
 getVisual call form, unready-asset rejection and remaining dedicated gate. Older
 milestones below retain their observed versions and evidence.
 
-The installed Steam app108600 build25485521 uses the original JAR Core.class hash
+The installed Steam app108600 build 25485521 uses the original JAR Core.class hash
 8f5c69740c8bf2181123a831ab68d1dfb047453687cca6dc62c77816d76ab360,
 matching the prior42.21 audit. InventoryItem.class hash:
 48f01be16d1ef1b76e37638fac6e25ca4eb285ad38ab2f462caa5597318c7f9d.
@@ -199,3 +210,11 @@ new state, item types, schema or networking was introduced. Current iteration is
 source only; no packaging, deployment, upload or game/server launch. Published
 0.12.0 ZIP/checksum/provenance were preserved with matching hashes, a bounded
 preservation ledger and ZIP CRC. No artifact deletion occurred.
+
+[VERIFIED: source reuse, 0.15] Crafted tape reuses the previously inspected
+Clothing.get/setConditionLowerChance, InventoryItem ModData/ID/condition and
+syncItemModData/syncItemFields routes, plus exact whole-item Remove/sendRemove and
+drainable UseAndSync payment. No new native methods/events, condition maxima,
+serialized userdata or model bindings are introduced. Public Lua exposure/build
+fingerprints remain those documented for installed 42.21 / Steam 25485521. Actual
+packet arrival, native wear, persistence/rejoin/restart remain NOT TESTED.

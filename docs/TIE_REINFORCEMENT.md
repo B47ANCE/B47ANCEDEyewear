@@ -1,6 +1,6 @@
 # Improvised materials and reinforcement
 
-Project Version: 0.14.0-dev.1
+Project Version: 0.15.0-dev.1
 
 Implemented 2026-10-16, Lua-only, targeting installed PZ 42.21 / Steam build
 25485521. This is a MINOR capability addition, not a tested stable release.
@@ -44,8 +44,9 @@ Reinforcement raises current condition and installed capacity by exactly the
 same contribution. For example, thread 1/2 becomes 3/4 after a second strand,
 then 5/6 after duct tape. Existing wear is never erased. Broken, unworn, orphaned,
 foreign or invalid linked ties cannot be reinforced. Crafted reusable cloth and
-leather retainers retain their current ten-point wear rules; this feature targets
-improvised ties, not those separate wearable items or the unbreakable retainer.
+leather retainers retain their ten-point condition, and the 0.15 addition permits
+one tape that improves wear resistance instead of capacity. See
+CRAFTED_RETAINER_TAPE.md. The unbreakable retainer is excluded.
 
 Zip ties require a cutting-capable tool to remove. The server resolves the
 selected actual tool in the sender's main inventory, requires base:sharpknife

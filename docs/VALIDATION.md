@@ -1,6 +1,33 @@
 # Validation and release gates
 
-Project Version: 0.14.0-dev.1
+Project Version: 0.15.0-dev.1
+
+## Current 0.15 crafted-retainer tape
+
+[TESTED: offline Windows Python 3.12 / Lupa Lua 5.1, 2026-10-16] Commands from the
+project root: `python -B scripts/check_versions.py`,
+`python -B scripts/validate_release.py`, and
+`python -B "$env:TEMP/eyewear-015-work/retainer_tape_regression.py"`.
+The external audit passes 1,526 assertions against actual modules and doubles,
+including the existing improvised-tie suite and crafted tape: same native item
+and condition, worn/unworn use, one payment, whole/drainable consumption, stale/
+foreign/malformed requests, failure rollback and paid notification errors, bonus
+snapshots/cap/config, transfer/scalar fixture reload, live read-only tooltips,
+menus, cancellation and client/server/SP completion. No harness/debug code ships.
+Source preflight covers 196 files/15 Lua modules, existing seven clothing GUIDs,
+three ground/twelve worn models, asset provenance, localization and path case.
+
+Item definitions, recipes, icons, meshes, clothing XML/GUIDs and thumbnail remain
+byte-identical. The new feature uses existing server-side native wear resistance
+and vanilla metadata/field notifications. The published 0.14 ZIP/hash/provenance
+were moved unchanged into historical storage and verified with SHA-256/ZIP CRC.
+No source/runtime deployment or package build was performed.
+
+[RUNTIME GATE] Current SP NOT TESTED, G7 dedicated BLOCKED / NOT TESTED and stable
+G8 BLOCKED. Prior 0.13.1 user-reported acceptance and 0.14 upload success are tied to
+their original versions and do not verify 0.15. See CRAFTED_RETAINER_TAPE.md for
+required current dedicated save/rejoin/restart/payment/native-wear acceptance.
+
 
 ## Current 0.14 material/reinforcement iteration
 

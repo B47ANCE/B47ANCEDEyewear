@@ -1,6 +1,6 @@
 [h1]B47ANCE'd Eyewear — Development Build[/h1]
 
-[b]Version 0.14.0-dev.1[/b]
+[b]Version 0.15.0-dev.1[/b]
 [b]MP testing build - dedicated multiplayer NOT TESTED[/b]
 [b]Development build for Project Zomboid 42.21. In-game validation remains pending.[/b]
 
@@ -42,4 +42,7 @@ Formerly Glasses Stay Put. Keep Workshop item 3799754736 and enable Mod ID B47AN
 [b]Materials and reinforcement[/b]
 Fourteen improvised materials, up to three matching thin strands, and one adhesive/duct-tape reinforcement. Existing damage is preserved. Zip ties require usable sharp scissors or a tagged knife to remove; tools are kept. New material capacities use native head/clothing wear, not knock-off counts. Original ten-point ties keep their condition: untie and retie to use reinforcement. Server sandbox durability multiplier controls newly installed contributions.
 
-Current 0.14 gameplay: MP testing build - dedicated multiplayer NOT TESTED. SP, dedicated synchronization/persistence/restarts and detailed fit/UI acceptance remain untested. Stable release blocked.
+Current 0.15 gameplay: MP testing build - dedicated multiplayer NOT TESTED. SP, dedicated synchronization/persistence/restarts and detailed fit/UI acceptance remain untested. Stable release blocked.
+
+[b]Crafted-retainer tape (development source)[/b]
+Right-click an owned cloth/leather retainer in your main inventory to apply one adhesive or duct tape, worn or unworn. Defaults add +1/+2 native wear resistance without repairing its ten-point condition or replacing the actual item. A server sandbox multiplier snapshots new tape bonuses; the unbreakable retainer is excluded. Current 0.15 source is not published; existing Workshop distribution remains0.14 until separately authorized.

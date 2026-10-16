@@ -132,3 +132,19 @@ TieDurability.state validates installed scalar metadata and native condition.
 No dynamic ConditionMax, damage packet or client-owned gameplay counter exists.
 The prior "all finite definitions ten points" milestone above describes the
 retained old definitions. Current reusable retainers still have ten points.
+
+## Crafted-retainer tape — 0.15
+
+Crafted cloth/leather retainers now accept ONE tape in their main-inventory
+right-click menu, worn or unworn. Default native wear-resistance bonus is +1 for
+adhesive/+2 for duct tape. Condition, maximum, identity and worn mapping stay
+unchanged; no recraft is required. Server intent validation, observed-payment
+rollback boundaries, persistence, settings and runtime gates are detailed in
+CRAFTED_RETAINER_TAPE.md. Unbreakable retainers are excluded. This is source-only;
+current G7 NOT TESTED / BLOCKED and stable G8 BLOCKED.
+
+RetainerTape uses the existing actual item, with one scalar ModData record and
+native wear resistance. Core.snapshot recognizes crafted-item tape revision;
+Server resolves IDs and calls WearableRetainers.applyTape. The shared timed action
+allows main-inventory unworn targets only for this operation. Native damage and
+vanilla condition remain authoritative; no new condition counter or item type.

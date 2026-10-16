@@ -38,9 +38,9 @@ function M.consume(character, material)
     end
 end
 
-function M.contribution(points)
+function M.contribution(points, setting)
     local raw = SandboxVars and SandboxVars.B47ANCEDEyewear or {}
-    local multiplier = raw.ImprovisedTieDurabilityMultiplier
+    local multiplier = raw[setting or 'ImprovisedTieDurabilityMultiplier']
     if type(multiplier)~='number' or multiplier~=multiplier or multiplier<0.25 or multiplier>5 then
         multiplier = 1
     end

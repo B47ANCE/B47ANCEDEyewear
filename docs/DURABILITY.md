@@ -1,6 +1,17 @@
 # Lua-only native durability
 
-Project Version: 0.14.0-dev.1
+Project Version: 0.15.0-dev.1
+
+## Crafted-retainer tape — 0.15
+
+Crafted cloth/leather retainers now accept ONE tape in their main-inventory
+right-click menu, worn or unworn. Default native wear-resistance bonus is +1 for
+adhesive/+2 for duct tape. Condition, maximum, identity and worn mapping stay
+unchanged; no recraft is required. Server intent validation, observed-payment
+rollback boundaries, persistence, settings and runtime gates are detailed in
+CRAFTED_RETAINER_TAPE.md. Unbreakable retainers are excluded. This is source-only;
+current G7 NOT TESTED / BLOCKED and stable G8 BLOCKED.
+
 
 ## Current reinforcement rules
 
