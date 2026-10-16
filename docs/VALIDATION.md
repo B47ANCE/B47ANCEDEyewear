@@ -1,6 +1,31 @@
 # Validation and release gates
 
-Project Version: 0.13.2-dev.1
+Project Version: 0.14.0-dev.1
+
+## Current 0.14 material/reinforcement iteration
+
+[TESTED: offline Windows Python 3.12 / Lupa Lua 5.1, 2026-10-16]
+`python -B scripts/check_versions.py` and `python -B scripts/validate_release.py`
+pass. Production preflight covers 196 runtime files, 15 Lua syntax compilations,
+seven native clothing registrations, three ground models and twelve worn meshes,
+case-correct requires, localization and asset provenance. Original ten-point tie
+and crafted-retainer definitions remain intact; three LayeredTie types reuse the
+same clothing assets and declare a fixed 100 native condition ceiling.
+
+External regression command from the project root:
+`python -B "$env:TEMP/eyewear-014-work/reinforcement_regression.py"`
+passes 694 assertions against actual modules with offline doubles. It exercises
+all fourteen materials, exact whole/drainable payment, all reinforcement limits,
+condition-deficit conservation, stale/replayed/forged/foreign requests, tool
+validation/invalidation, rollback/notification failures, legacy paid migration,
+configuration snapshots, read-only live tooltips, menus, crafting and one-route
+timed actions. The harness stays outside Git and runtime source. Installed source
+inspection verifies the native APIs/FullTypes; no proprietary source is copied.
+
+[RUNTIME GATE] Current G6 SP NOT TESTED; G7 dedicated BLOCKED / NOT TESTED; stable
+G8 BLOCKED. Prior user-reported 0.13.1 acceptance applies only to that published
+package, not this new gameplay. See TIE_REINFORCEMENT.md for dedicated acceptance scenarios and
+save/downgrade limits. No game/server launch, package, deployment or upload.
 
 ## Current clothing synchronization patch
 

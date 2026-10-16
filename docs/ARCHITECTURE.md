@@ -114,3 +114,21 @@ Native layering/damage order applies; this accepted alternative does not promise
 to save eyewear on every breaking blow. Exact hidden-roll interception remains
 unavailable. Tooltips show actual native condition, not guessed catches left.
 See DURABILITY.md for persistence, downgrade limits and dedicated acceptance gates.
+
+## Current 0.14 materials and reinforcement
+
+Fourteen audited materials, same-material strands, adhesive/duct tape, material-
+specific installed native condition and zip-tie cutting are implemented in Lua.
+See TIE_REINFORCEMENT.md for balance, ownership/payment/replay checks, new item
+identity, existing-save policy and current runtime gates. G7 for THIS gameplay
+iteration is BLOCKED / NOT TESTED; earlier published acceptance remains historical.
+
+New direct Tie allocates LayeredTieEyes/Face/Hat. Legacy pre-link migration still
+allocates the original ten-point types. TieMaterials.lua centralizes verified
+materials, installation contribution snapshots, exact whole-item payment and
+cutting-tool checks. Core validates state snapshots for all command actions and
+implements paid reinforcement with rollback only before observed consumption.
+TieDurability.state validates installed scalar metadata and native condition.
+No dynamic ConditionMax, damage packet or client-owned gameplay counter exists.
+The prior "all finite definitions ten points" milestone above describes the
+retained old definitions. Current reusable retainers still have ten points.

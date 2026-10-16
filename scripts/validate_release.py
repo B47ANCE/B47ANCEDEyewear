@@ -194,6 +194,20 @@ def inventory():
     return files
 
 def validate_source(files):
+    script = files['media/scripts/B47ANCEDEyewear_Items.txt'].decode('utf-8')
+    definitions = dict(re.findall(r'\bitem\s+(\w+)\s*\{([^}]*)\}', script, re.S))
+    for suffix in ('Eyes', 'Face', 'Hat'):
+        old, new = 'ImprovisedTie' + suffix, 'LayeredTie' + suffix
+        if old not in definitions or new not in definitions:
+            raise ValueError('Missing legacy/layered tie item: ' + suffix)
+        if definitions[old].replace('ConditionMax = 10,', 'ConditionMax = 100,') != definitions[new]:
+            raise ValueError('Layered tie must preserve its legacy clothing/slot/wear properties: ' + new)
+    catalogue = files['media/lua/shared/B47ANCEDEyewear/TieMaterials.lua'].decode('utf-8')
+    materials = set(re.findall(r"\['(Base\.[^']+)'\]\s*=\s*\{durability=", catalogue))
+    recipe = files['media/scripts/B47ANCEDEyewear_Crafting.txt'].decode('utf-8')
+    selection = re.search(r'item 1 \[([^]]*Base\.Twine[^]]*)\] mode:keep', recipe)
+    if len(materials) != 14 or not selection or set(selection[1].split(';')) != materials:
+        raise ValueError('Direct Tie recipe and fourteen-material catalogue differ')
     validate_clothing_registry(files)
     validate_ground_models(files)
     validate_worn_models(files)
@@ -245,7 +259,7 @@ def validate_source(files):
             for outputs in re.findall(r'\boutputs\s*\{([^}]*)\}', script, re.S):
                 if 'B47ANCEDEyewear.UnbreakableRetainer' in outputs:
                     raise ValueError('Loot-only unbreakable retainer cannot be a crafting output')
-                if 'B47ANCEDEyewear.ImprovisedTie' in outputs:
+                if 'B47ANCEDEyewear.ImprovisedTie' in outputs or 'B47ANCEDEyewear.LayeredTie' in outputs:
                     raise ValueError('Linked ties must be created only by the authoritative paid Tie transaction')
             for key in re.findall(r'\bTooltip\s*=\s*(\w+)\s*,', script):
                 if key not in english:
@@ -260,9 +274,10 @@ def validate_source(files):
                 if 'media/clothing/clothingItems/' + clothing + '.xml' not in files:
                     raise ValueError('Missing clothing definition or incorrect path case: ' + clothing)
             for item, body in re.findall(r'\bitem\s+(\w+)\s*\{([^}]*)\}', script, re.S):
-                if item in {'MakeshiftRetainer', 'EyewearRetainer', 'ImprovisedTieEyes', 'ImprovisedTieFace', 'ImprovisedTieHat'}:
+                if item in {'MakeshiftRetainer', 'EyewearRetainer', 'ImprovisedTieEyes', 'ImprovisedTieFace', 'ImprovisedTieHat',
+                            'LayeredTieEyes', 'LayeredTieFace', 'LayeredTieHat'}:
                     for field, expected in {'BloodLocation':'Head', 'CanHaveHoles':'false', 'RemoveOnBroken':'true',
-                                            'ConditionMax':'10', 'ChanceToFall':'0', 'Cosmetic':'true',
+                                            'ConditionMax':'100' if item.startswith('LayeredTie') else '10', 'ChanceToFall':'0', 'Cosmetic':'true',
                                             'ConditionLowerChance':str({'MakeshiftRetainer':2, 'EyewearRetainer':4}.get(item,1))}.items():
                         if not re.search(r'\b' + field + r'\s*=\s*' + expected + r'\s*,', body):
                             raise ValueError('Finite tie/retainer native-wear invariant failed: ' + item + '/' + field)

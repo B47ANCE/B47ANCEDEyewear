@@ -10,9 +10,13 @@ local function itemById(player,id)
 end
 function Server.onClientCommand(module,command,player,args)
     if module~='B47ANCEDEyewear' or type(args)~='table' or not player then return false end
-    if command~='Tie' and command~='Untie' then return false end
+    if isClient() or (command~='Tie' and command~='Untie' and command~='Reinforce' and command~='Tape') then return false end
     local item=itemById(player,args.itemId)
-    if command=='Untie' then return S.untie(player,item) end
+    if not S.matchesRequest(player,item,args) then return false end
+    if command=='Untie' then return S.untie(player,item,itemById(player,args.toolId)) end
+    if command=='Reinforce' or command=='Tape' then
+        return S.reinforce(player,item,itemById(player,args.materialId),command=='Tape')
+    end
     return S.tie(player,item,itemById(player,args.materialId))
 end
 if Events and Events.OnClientCommand then Events.OnClientCommand.Add(Server.onClientCommand) end

@@ -1,7 +1,7 @@
 {
   "Sandbox_B47ANCEDEyewear": "B47ANCE'd Eyewear",
   "Sandbox_B47ANCEDEyewear_TyingEnabled": "Allow tying",
-  "Sandbox_B47ANCEDEyewear_TyingEnabled_tooltip": "Allow new eyewear and supported hat ties. Existing ties remain effective and can always be untied. Server setting.",
+  "Sandbox_B47ANCEDEyewear_TyingEnabled_tooltip": "Allow new ties and strand/tape reinforcement. Disabling preserves existing protection and permits removal, including zip-tie cutting. Server setting.",
   "Sandbox_B47ANCEDEyewear_EyewearFallMultiplier": "Untied eyewear fall multiplier",
   "Sandbox_B47ANCEDEyewear_EyewearFallMultiplier_tooltip": "Multiply the default fall values for untied eyewear, including monocles. Range 0.25–5; default 1. Updates worn eyewear without changing tied items. Server setting.",
   "Sandbox_B47ANCEDEyewear_StrappedHeadwearFallChance": "Strapped headwear fall value",
@@ -13,9 +13,11 @@
   "Sandbox_B47ANCEDEyewear_RareRetainerLootChance": "Rare unbreakable retainer loot chance (%)",
   "Sandbox_B47ANCEDEyewear_RareRetainerLootChance_tooltip": "Server/SP chance per eligible container fill with room for the item: default 0.25%, range 0–5%, precision 0.01%. Zero disables new spawns. School lockers, optical-store containers and pharmacy cabinets only. Existing filled containers and existing retainer items are unchanged. Wearable retainers must be enabled.",
   "Sandbox_B47ANCEDEyewear_ImprovisedTieWearResistance": "Improvised tie wear resistance",
-  "Sandbox_B47ANCEDEyewear_ImprovisedTieWearResistance_tooltip": "Server setting: each eligible vanilla head/clothing damage attempt has a 1-in-N chance to remove one of 10 native condition points. Range 1–100, integer steps; default 1. Larger values last longer. Applies to existing worn items without repairing them. Not a knock-off counter; the rare unbreakable retainer is exempt.",
+  "Sandbox_B47ANCEDEyewear_ImprovisedTieWearResistance_tooltip": "Server setting: each eligible native head/clothing damage attempt has a 1-in-N chance to remove ONE actual condition point. Range 1–100; default 1. New ties have material-specific installed capacities; old ties keep their 10 points. Larger N lasts longer. Applies without repairing condition; not a knock-off counter.",
   "Sandbox_B47ANCEDEyewear_ClothRetainerWearResistance": "Cloth retainer wear resistance",
   "Sandbox_B47ANCEDEyewear_ClothRetainerWearResistance_tooltip": "Server setting: each eligible vanilla head/clothing damage attempt has a 1-in-N chance to remove one of 10 native condition points. Range 1–100, integer steps; default 2. Larger values last longer. Applies to existing worn items without repairing them. Not a knock-off counter; the rare unbreakable retainer is exempt.",
   "Sandbox_B47ANCEDEyewear_LeatherRetainerWearResistance": "Leather retainer wear resistance",
-  "Sandbox_B47ANCEDEyewear_LeatherRetainerWearResistance_tooltip": "Server setting: each eligible vanilla head/clothing damage attempt has a 1-in-N chance to remove one of 10 native condition points. Range 1–100, integer steps; default 4. Larger values last longer. Applies to existing worn items without repairing them. Not a knock-off counter; the rare unbreakable retainer is exempt."
+  "Sandbox_B47ANCEDEyewear_LeatherRetainerWearResistance_tooltip": "Server setting: each eligible vanilla head/clothing damage attempt has a 1-in-N chance to remove one of 10 native condition points. Range 1–100, integer steps; default 4. Larger values last longer. Applies to existing worn items without repairing them. Not a knock-off counter; the rare unbreakable retainer is exempt.",
+  "Sandbox_B47ANCEDEyewear_ImprovisedTieDurabilityMultiplier": "Improvised tie material durability multiplier",
+  "Sandbox_B47ANCEDEyewear_ImprovisedTieDurabilityMultiplier_tooltip": "Server setting, default 1, range 0.25–5. Scales the 14 material contributions and adhesive/duct tape at installation (rounded, minimum 1). Installed values persist; changing this setting never repairs existing ties. New layered ties only; old ten-point ties remain unchanged. Not a knock-off count."
 }

@@ -4,10 +4,11 @@ Root VERSION is the only canonical project version. docs/VERSION_POLICY.md is th
 authoritative inherited policy; version-inventory.json declares current mirrors,
 package selectors, schema/game distinctions and historical evidence.
 
-Current development iteration: 0.13.2-dev.1. Pre-1.0 PATCH replaces the project
-thumbnail with explicitly supplied original artwork. Only artwork and version/
-release documentation change. All gameplay, persistence, configurations, native
-clothing registrations, models and item art retain their previous behavior.
+Current development iteration: 0.14.0-dev.1. Pre-1.0 MINOR adds fourteen-material
+direct ties, strand/tape reinforcement, material-specific native condition budgets
+and zip-tie cutting. Existing tie item definitions and condition are preserved;
+new LayeredTie types opt into reinforcement. Meshes, native clothing registrations
+and selected thumbnail remain byte-identical.
 No runtime evidence is relabeled; prior observations remain version-bound.
 
 Source mod.info, README, canonical Workshop texts, current validation/preparation/
@@ -39,3 +40,9 @@ and ZIP CRC under dist/historical/0.11.1-dev.1-published; no deletion occurred.
 The published 0.13.1 ZIP/checksum/provenance are preserved with verified SHA-256
 and ZIP CRC in dist/historical/0.13.1-dev.1-published. No current 0.13.2 package
 exists; this artwork request does not authorize packaging or publication.
+
+0.14.0-dev.1 is a MINOR capability addition for fourteen-material direct ties,
+strand/tape reinforcement and cutting. New LayeredTie definitions avoid changing
+legacy script maxima; old condition and item identity remain intact. New linked
+items add materialSchema=1 inside the existing tie link namespace. Retie is the
+explicit opt-in for existing ties. No stable tag, deployment or publication.

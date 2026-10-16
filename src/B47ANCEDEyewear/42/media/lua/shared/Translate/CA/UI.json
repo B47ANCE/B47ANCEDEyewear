@@ -33,11 +33,13 @@
   "UI_ClothingType_b47ancedeyewear:retainer": "Eyewear Retainer",
   "UI_B47ANCEDEyewear_UnbreakableInstructions": "Rare loot only: school lockers, optical-store containers and pharmacy cabinets. Cannot be crafted. Wear in the retainer slot to protect one compatible pair of glasses. Monocles and hats are excluded.",
   "UI_B47ANCEDEyewear_UnbreakableCondition": "Unbreakable — no wear or catch durability loss.",
-  "UI_B47ANCEDEyewear_ImprovisedTieInstructions": "Created by Tie for one specific pair of glasses or hat. Wear both linked items to secure it. Head/clothing damage wears the tie. Transfer both items together. Untie consumes the tie without a material refund.",
+  "UI_B47ANCEDEyewear_ImprovisedTieInstructions": "Created by Tie for specific glasses or a hat. Wear both linked items. Head/clothing damage wears native condition. Right-click the linked glasses/hat to reinforce or untie. Transfer both together. Zip ties require cutting; no material refund.",
   "UI_B47ANCEDEyewear_ImprovisedTieName": "Improvised tie (%1)",
   "UI_B47ANCEDEyewear_TieActive": "Linked tie is worn and securing this item.",
   "UI_B47ANCEDEyewear_TieInactive": "Tie inactive — wear the matching tie with this item. Legacy upgrade requires a free matching tie slot and inventory space on the server.",
   "UI_ClothingType_b47ancedeyewear:tieeyes": "Eyewear Tie (Eyes)",
   "UI_ClothingType_b47ancedeyewear:tieface": "Eyewear Tie (Face)",
-  "UI_ClothingType_b47ancedeyewear:tiehat": "Headwear Tie"
+  "UI_ClothingType_b47ancedeyewear:tiehat": "Headwear Tie",
+  "UI_B47ANCEDEyewear_LegacyTie": "Legacy tie: original 10-point condition preserved. Untie and retie to use reinforcement.",
+  "UI_B47ANCEDEyewear_ZipCutting": "Removal requires a usable sharp knife or scissors in your main inventory. Tool is kept."
 }

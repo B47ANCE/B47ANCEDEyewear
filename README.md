@@ -1,12 +1,21 @@
 # B47ANCE'd Eyewear
 
-Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.13.2-dev.1.
+Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.14.0-dev.1.
+
+## Current material/reinforcement iteration
+
+0.14.0-dev.1 adds fourteen direct-tie materials, three-strand thin-material
+reinforcement, one adhesive/duct-tape reinforcement, material-specific native
+condition budgets and server-validated zip-tie cutting. See
+[Tie materials and reinforcement](docs/TIE_REINFORCEMENT.md). Current gameplay is
+NOT TESTED in SP or dedicated MP. Historical 0.13.1 acceptance does not verify
+this new gameplay. No deployment or Workshop update occurred.
 
 Lua-only development build targeting Project Zomboid 42.21. No custom Java/JAR,
 test suite or debugger grants are shipped. SP/dedicated gameplay is NOT TESTED.
 
-Wear compatible glasses or a straw/summer hat, keep twine, a rubber band, dental
-floss, ordinary thread, sinew thread or aramid thread in your main inventory,
+Wear compatible glasses or a straw/summer hat and keep one of the fourteen
+[verified tying materials](docs/TIE_REINFORCEMENT.md) in your main inventory,
 and right-click → Tie. Crafting → Tailoring → Tie worn eyewear uses the same
 server transaction. One material use creates/equips a finite improvised tie;
 the original eyewear, condition, prescription, model, ID and custom name survive.
@@ -31,7 +40,9 @@ retainer and its remaining condition. No learning requirement or workbench appli
 **All improvised ties and both crafted retainers now have durability.** They lose
 native condition from eligible head/clothing damage. Defaults give a one-in-1
 condition-loss chance for improvised ties, one-in-2 for cloth and one-in-4 for
-leather, each on the existing 10-point native condition scale. Server sandbox
+leather. New improvised ties have material-specific condition budgets and paid
+strand/tape reinforcement; existing ties and reusable cloth/leather keep their
+original ten-point scales. Server sandbox
 settings adjust these wear-resistance values (integer 1–100). Larger values last
 longer; these are not guaranteed hit counts. The tooltip shows actual remaining
 condition, status and a live bar. Native headwear layering and damage ordering
@@ -97,6 +108,7 @@ as the exact original 1254x1254 PNG. [Thumbnail provenance](docs/THUMBNAIL.md)
 records its hash and the preserved previous artwork. The existing packager derives
 its 256x256 Workshop preview from this source when packaging is requested.
 
-Current 0.13.2-dev.1 is a thumbnail-only source iteration, not packaged, deployed
-or published. Workshop still serves 0.13.1-dev.1. Runtime evidence remains bound
+The 0.13.2-dev.1 thumbnail-only iteration was followed by the current source-only
+0.14.0-dev.1 reinforcement iteration. Neither was packaged, deployed or published.
+Workshop still serves 0.13.1-dev.1. Runtime evidence remains bound
 to its originally reported version/package; no test result was relabeled here.

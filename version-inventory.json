@@ -89,6 +89,10 @@
     {
       "path": "assets/branding/thumbnail.json",
       "pattern": "^  \"project_version\": \"(?P<version>[^\\\"]+)\""
+    },
+    {
+      "path": "docs/TIE_REINFORCEMENT.md",
+      "pattern": "^Project Version: (?P<version>\\S+)$"
     }
   ],
   "changelog": {

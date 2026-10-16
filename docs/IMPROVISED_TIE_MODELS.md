@@ -1,6 +1,6 @@
 # Visible worn improvised ties
 
-Project Version: 0.13.2-dev.1
+Project Version: 0.14.0-dev.1
 
 All six existing improvised materials now share a thin neutral knotted-cord
 appearance. The three existing physical item types select different fittings:
@@ -75,3 +75,8 @@ fallback, whose placement is also untested. Offline import is not game proof.
 G7 BLOCKED / NOT TESTED and stable G8 BLOCKED remain in force for the gameplay.
 No PZ/server launch, package, local deployment or Workshop upload was requested
 or performed in this source iteration. Workshop still serves 0.12.0-dev.1.
+
+0.14.0-dev.1 adds LayeredTieEyes/Face/Hat using these existing registered clothing
+XMLs. Old ten-point definitions and all six meshes/textures remain intact. All
+fourteen materials and reinforced ties retain this common cord appearance;
+strand/tape geometry variants were not part of this gameplay request.

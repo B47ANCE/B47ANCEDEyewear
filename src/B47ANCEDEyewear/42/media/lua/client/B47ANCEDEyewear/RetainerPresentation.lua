@@ -5,8 +5,8 @@ local function text(key,...) return getText('UI_B47ANCEDEyewear_'..key,...) end
 local function finite(n) return type(n)=='number' and n==n and n>-math.huge and n<math.huge end
 local function whole(n,lo,hi) return finite(n) and n==math.floor(n) and n>=lo and n<=hi end
 local function unknown() return {unavailable=true,lines={text('RetainerTitle'),text('Unavailable')}} end
-local function conditionModel(item, lines)
-    local current, maximum = item:getCondition(), item:getConditionMax()
+local function conditionModel(item, lines, installedMaximum)
+    local current, maximum = item:getCondition(), installedMaximum or item:getConditionMax()
     if not whole(maximum,1,127) or not whole(current,0,maximum) then return unknown() end
     lines[#lines+1] = text('Condition',text(current == 0 and 'Broken'
         or current / maximum <= 0.25 and 'AboutToBreak'
@@ -22,7 +22,23 @@ function P.model(item)
     local T=S and S.RetainerItems
     local D=S and S.TieDurability
     if D and D.isItem(item) then
-        return conditionModel(item,{text('RetainerTitle'),item:getName(),text('ImprovisedTieInstructions')})
+        local link = D.state(item)
+        if D.isLayered(item) and not link then return unknown() end
+        local lines = {text('RetainerTitle'),item:getName(),text('ImprovisedTieInstructions')}
+        if not link then lines[#lines+1]=text('LegacyTie') end
+        local model = conditionModel(item,lines,link and link.capacity)
+        if not link or model.unavailable then return model end
+        lines[#lines+1]=text('Material',getItemNameFromFullType(link.material))
+        lines[#lines+1]=text('Strands',link.strands)
+        if link.strands>1 or link.tape then
+            lines[#lines+1]=text('Modifiers')
+            if link.strands>1 then lines[#lines+1]=text('StrandModifier',link.strands,(link.strands-1)*link.base) end
+            if link.tape then lines[#lines+1]=text('TapeModifier',getItemNameFromFullType(link.tape),link.capacity-link.base*link.strands) end
+        end
+        lines[#lines+1]=text('BaseDurability',link.base)
+        lines[#lines+1]=text('MaximumDurability',link.capacity)
+        if link.material=='Base.Zipties' then lines[#lines+1]=text('ZipCutting') end
+        return model
     end
     if T and T.isItem(item) then
         if T.isUnbreakable(item) then
@@ -50,8 +66,10 @@ function P.model(item)
         local tie=D and D.item(owner,item,tied)
         local lines={text('RetainerTitle'),text('Material',getItemNameFromFullType(tied.material)),text('TiedAttachment')}
         if tie then
-            lines[#lines+1]=text(D.active(owner,item,tied) and 'TieActive' or 'TieInactive')
-            return conditionModel(tie,lines)
+            local model = P.model(tie)
+            if not model or model.unavailable then return unknown() end
+            model.lines[#model.lines+1]=text(D.active(owner,item,tied) and 'TieActive' or 'TieInactive')
+            return model
         end
         lines[#lines+1]=text('TieInactive')
         return {lines=lines}

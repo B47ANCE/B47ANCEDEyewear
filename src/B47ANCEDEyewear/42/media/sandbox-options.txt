@@ -44,3 +44,9 @@ option B47ANCEDEyewear.StrappedHeadwearFallChance
     type = integer, default = 0, min = 0, max = 100,
     page = B47ANCEDEyewear, translation = B47ANCEDEyewear_StrappedHeadwearFallChance,
 }
+
+option B47ANCEDEyewear.ImprovisedTieDurabilityMultiplier
+{
+    type = double, default = 1, min = 0.25, max = 5,
+    page = B47ANCEDEyewear, translation = B47ANCEDEyewear_ImprovisedTieDurabilityMultiplier,
+}

@@ -1,6 +1,6 @@
 # Project thumbnail artwork
 
-Project Version: 0.13.2-dev.1
+Project Version: 0.14.0-dev.1
 
 The user explicitly selected the supplied Eyewear/glasses-and-cord PNG on
 2026-10-15. Canonical source: root thumbnail.png, 1254x1254 RGB PNG, exact bytes.
@@ -28,3 +28,6 @@ Stable G8 remains blocked; no stable release is approved by an artwork update.
 
 No package, deployment, Steam Workshop upload, Steam restart or game/server
 launch occurred in this iteration. A future publish request will use this art.
+
+0.14.0-dev.1 adds gameplay independently of this artwork. The selected original
+thumbnail and preserved prior artwork remain byte-identical; no preview was built.

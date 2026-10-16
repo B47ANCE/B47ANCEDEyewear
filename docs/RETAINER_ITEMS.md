@@ -1,6 +1,14 @@
 # Reusable retainer items
 
-Project Version: 0.13.2-dev.1
+Project Version: 0.14.0-dev.1
+
+## Current 0.14 materials and reinforcement
+
+Fourteen audited materials, same-material strands, adhesive/duct tape, material-
+specific installed native condition and zip-tie cutting are implemented in Lua.
+See TIE_REINFORCEMENT.md for balance, ownership/payment/replay checks, new item
+identity, existing-save policy and current runtime gates. G7 for THIS gameplay
+iteration is BLOCKED / NOT TESTED; earlier published acceptance remains historical.
 Source review: 2026-10-14; installed Project Zomboid 42.21, Steam build 25485521.
 
 ## Items and recipes

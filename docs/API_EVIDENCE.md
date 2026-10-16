@@ -1,6 +1,45 @@
 # Lua API evidence
 
-Project Version: 0.13.2-dev.1
+Project Version: 0.14.0-dev.1
+
+## Current 0.14 materials and reinforcement
+
+Fourteen audited materials, same-material strands, adhesive/duct tape, material-
+specific installed native condition and zip-tie cutting are implemented in Lua.
+See TIE_REINFORCEMENT.md for balance, ownership/payment/replay checks, new item
+identity, existing-save policy and current runtime gates. G7 for THIS gameplay
+iteration is BLOCKED / NOT TESTED; earlier published acceptance remains historical.
+
+[VERIFIED: source, 2026-10-16] Installed Steam app108600 build25485521, Core.class
+SHA-256 8f5c69740c8bf2181123a831ab68d1dfb047453687cca6dc62c77816d76ab360,
+InventoryItem.class 48f01be16d1ef1b76e37638fac6e25ca4eb285ad38ab2f462caa5597318c7f9d
+remain unchanged. All sixteen material/tape FullTypes were freshly read from
+installed generated items. RippedSheets, DenimStrips and LeatherStrips have dirty
+ReplaceOnUse variants; whole-item native Remove/sendRemoveItemFromContainer avoids
+byproducts. Drainable inputs consume one UseAndSync script use. CraftRecipeData's
+kept ItemCount path passes forced use plus keep to ItemUser, preventing replacements
+and duplicate consumption after the Lua transaction.
+
+InventoryItem.setConditionNoSound(int), hasSharpness(), isDull(), hasHeadCondition()
+and getHeadCondition() are public and not HiddenFromLua. LuaManager.Exposer
+registers InventoryItem and LuaJavaClassExposer exposes its public non-hidden
+members. This establishes source exposure, not runtime invocation. Exposer.class
+SHA-256 9727656efbc06d7772661775f7a6885c7976b9e09472d7b128a3d5638ea68efa;
+LuaJavaClassExposer.class 4c8dc24c94de2cb814741f135d7d9baf8bc09062dd821d3c56cc4b09f322c0bd.
+InputScript.doesItemPassSharpnessStatusTests implements the native IsNotDull rule
+hasSharpness && isDull => reject. Additional positive tool general/head condition
+and vanilla sharpknife/scissors tags are validated on server-owned instances.
+InputScript.class SHA-256 4af3459b2358f5363825f6eb1efc8edfac6833779bb26011efa326050b913e9c.
+
+syncItemFields(IsoPlayer,InventoryItem) in GlobalObject routes server packets to
+the owning player; SyncItemFieldsPacket writes and applies actual condition. Its
+class SHA-256 is 957430c8397cf76728fe376435d70db84f756aa897d2e753f971e396cb1c1a5c.
+Native item ModData/condition serialization, inventory transfers and SyncClothing
+carry their established data. No all-peer or late-join acceptance is inferred
+from an owner notification. Packet arrival/order/rejoin still require dedicated
+runtime evidence. InventoryItem saves omit full condition; dynamic conditionMax
+is not established as serialized/synchronized. New fixed-max item types therefore
+preserve old script maxima and never convert full old saves to a larger default.
 Source inspection: 2026-10-14. Target Build 42.21.
 
 Current patch audit (2026-10-15): CLOTHING_SYNC_FIX.md records the missing native

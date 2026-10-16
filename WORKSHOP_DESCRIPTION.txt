@@ -1,6 +1,6 @@
 [h1]B47ANCE'd Eyewear — Development Build[/h1]
 
-[b]Version 0.13.2-dev.1[/b]
+[b]Version 0.14.0-dev.1[/b]
 [b]MP testing build - dedicated multiplayer NOT TESTED[/b]
 [b]Development build for Project Zomboid 42.21. In-game validation remains pending.[/b]
 
@@ -9,14 +9,14 @@ Secure compatible glasses and supported hats with Lua-only retainers and finite 
 
 [h2]Features[/h2]
 • Native clothing GUID registrations resolve all tie and retainer definitions; unresolved new tie visuals are rejected before equip or material payment.
-• All twine, rubber-band, dental-floss, ordinary-thread, sinew-thread and aramid-thread ties now use native head/clothing durability.
+• All fourteen improvised materials use native head/clothing durability, with material-specific installed capacity for new ties.
 • Right-click → Tie or Crafting → Tailoring → Tie worn eyewear consumes one material use and equips a condition-bearing tie linked to the same original eyewear. Its identity, condition, prescription and model are preserved. Monocles are excluded.
 • Wear the eyewear and its matching tie together. Taking off either suspends protection; transfer both items together. Untie restores the original name and discards the matching tie, without refunding material.
 • Paid legacy ties receive one finite tie item when worn. Lost or missing newer ties are not replaced automatically.
 • Craft Cloth Eyewear Retainer or Eyewear Retainer in Tailoring and wear it in the separate retainer slot. Both now wear from native head/clothing damage; leather lasts longer on average by default. Take Off preserves the actual remaining item and condition.
 • Find the non-craftable Unbreakable Eyewear Retainer in school lockers, optical-store containers and pharmacy cabinets. It remains unbreakable in ordinary use.
 • Inspect remaining native durability, condition status and a live bar. Original black-cord, cloth and leather inventory icons and distinct 3D ground models are included. Distinct head-attached worn models have male/female variants. Worn fit, hair/hat/frame clipping and ground-model placement, scale and lighting remain NOT TESTED in PZ.
-• All six improvised materials share a visible neutral knotted-cord appearance, with separate male/female Eyes/Face rear cords and an under-chin Hat cord. The actual worn tie item owns its appearance; linked-target protection rules are unchanged. Actual fit/clipping and remote visuals remain NOT TESTED.
+• All fourteen improvised materials share a visible neutral knotted-cord appearance, with separate male/female Eyes/Face rear cords and an under-chin Hat cord. The actual worn tie item owns its appearance; linked-target protection rules are unchanged. Actual fit/clipping and remote visuals remain NOT TESTED.
 • Individual untied-eyewear retention profiles, supported straw/summer hat ties and optional Authentic Z eyewear support remain available.
 
 [h2]Compatibility & Requirements[/h2]
@@ -24,7 +24,7 @@ Mod ID: B47ANCEDEyewear. Target: Build 42.21. SP, dedicated multiplayer and curr
 New ties use three physical item types and reciprocal item-ID links. Back up worlds/players before upgrading; older packages do not understand these items or finite links. Reverting only the mod is not a validated save downgrade.
 
 [h2]Configuration[/h2]
-Server wear resistance defaults: improvised ties 1, cloth retainers 2, leather retainers 4 (integer 1–100). Each eligible vanilla head/clothing damage attempt has a one-in-N chance to remove one native condition point. Larger N lasts longer; the 10-point native scale is not a promise of that many hits. Setting changes do not refill condition. The rare item is exempt.
+Server wear resistance defaults: improvised ties 1, cloth retainers 2, leather retainers 4 (integer 1–100). Each eligible vanilla head/clothing damage attempt has a one-in-N chance to remove one native condition point. Larger N lasts longer; material capacity is not a promise of that many hits; old ties and reusable retainers keep their ten-point scales. Setting changes do not refill condition. The rare item is exempt.
 Server settings also control new tying, untied-eyewear fall multiplier, strapped-headwear fall value, wearable crafting/protection and retained-eyewear fall value (default 0). Worn finite items can still wear while protection is disabled. RareRetainerLootChance defaults to 0.25% per eligible new fill, range 0–5%; zero disables new spawns. Existing filled containers are unchanged.
 
 [h2]Source Code & Development[/h2]
@@ -38,3 +38,8 @@ Created by B47ANCE. Original mod implementation and artwork; optional third-part
 
 [h2]Upgrade Notice[/h2]
 Formerly Glasses Stay Put. Keep Workshop item 3799754736 and enable Mod ID B47ANCEDEyewear.
+
+[b]Materials and reinforcement (development source)[/b]
+Fourteen improvised materials, up to three matching thin strands, and one adhesive/duct-tape reinforcement. Existing damage is preserved. Zip ties require usable sharp scissors or a tagged knife to remove; tools are kept. New material capacities use native head/clothing wear, not knock-off counts. Original ten-point ties keep their condition: untie and retie to use reinforcement. Server sandbox durability multiplier controls newly installed contributions.
+
+Current 0.14 gameplay: MP testing build - dedicated multiplayer NOT TESTED. SP, dedicated synchronization/persistence/restarts and detailed fit/UI acceptance remain untested. Stable release blocked.

@@ -1,5 +1,8 @@
 {
   "ContextMenu_B47ANCEDEyewear_Tie": "Tie",
   "ContextMenu_B47ANCEDEyewear_Untie": "Untie",
-  "ContextMenu_B47ANCEDEyewear_NoMaterials": "You do not have any materials to tie this with."
+  "ContextMenu_B47ANCEDEyewear_NoMaterials": "You do not have any materials to tie this with.",
+  "ContextMenu_B47ANCEDEyewear_Reinforce": "Reinforce retainer with %1",
+  "ContextMenu_B47ANCEDEyewear_ApplyTape": "Reinforce retainer with %1",
+  "ContextMenu_B47ANCEDEyewear_CutZipTie": "Cut zip tie"
 }

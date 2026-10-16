@@ -1,6 +1,14 @@
 # Cleanup and Workshop preparation
 
-Project Version: 0.13.2-dev.1
+Project Version: 0.14.0-dev.1
+
+## Current 0.14 materials and reinforcement
+
+Fourteen audited materials, same-material strands, adhesive/duct tape, material-
+specific installed native condition and zip-tie cutting are implemented in Lua.
+See TIE_REINFORCEMENT.md for balance, ownership/payment/replay checks, new item
+identity, existing-save policy and current runtime gates. G7 for THIS gameplay
+iteration is BLOCKED / NOT TESTED; earlier published acceptance remains historical.
 Date: 2026-10-15
 
 Current 0.13.1 fixes native clothing GUID registration and rejects unready tie

@@ -1,6 +1,18 @@
 # Lua-only native durability
 
-Project Version: 0.13.2-dev.1
+Project Version: 0.14.0-dev.1
+
+## Current reinforcement rules
+
+New 0.14 LayeredTieEyes/Face/Hat types have a fixed native 100-point ceiling and
+snapshotted material-specific installed capacities. All fourteen materials use
+native condition, not a parallel damage counter. Three thin-material strands and
+one tape reinforcement preserve existing wear; zip ties require a usable tagged
+cutter. Original ten-point tie definitions and paid legacy migration remain intact.
+See TIE_REINFORCEMENT.md for current balance, configuration, UI, server transactions
+and save/downgrade limits. The original ten-point details below describe retained
+legacy ties and reusable crafted retainers unless explicitly stated otherwise.
+No new SP/dedicated runtime proof exists; current G7 BLOCKED / NOT TESTED.
 Design and source audit: 2026-10-14; installed Build 42.21 / Steam build 25485521.
 
 0.13.1 patch: all existing clothing XMLs are registered with native file GUIDs.
@@ -19,7 +31,7 @@ is introduced. The native clothing-damage rule is not advertised as a catch coun
 
 ## Native wear and configuration
 
-Finite items cover Head, are cosmetic with no armor bonus, cannot develop holes,
+Existing finite items cover Head, are cosmetic with no armor bonus, cannot develop holes,
 have zero ChanceToFall and use the existing native 10-point condition scale.
 BloodClothingType.addHole's no-hole clothing branch uses Rand.NextBool with the
 item's ConditionLowerChance and removes ONE condition point when selected. The
@@ -33,7 +45,7 @@ eyewear, or while its protection setting is disabled, just like native clothing.
 
 | Server sandbox option | Default | Bounds/step | Meaning |
 | --- | ---: | --- | --- |
-| ImprovisedTieWearResistance | 1 | integers 1–100 / 1 | one-in-N native condition-loss chance for all six material ties |
+| ImprovisedTieWearResistance | 1 | integers 1–100 / 1 | one-in-N native condition-loss chance for all fourteen materials, old and new ties |
 | ClothRetainerWearResistance | 2 | integers 1–100 / 1 | one-in-N native condition-loss chance for cloth retainers |
 | LeatherRetainerWearResistance | 4 | integers 1–100 / 1 | one-in-N native condition-loss chance for leather retainers |
 
@@ -56,10 +68,10 @@ protection window is deliberately added.
 
 ## Direct Tie attachments
 
-Twine, RubberBand, DentalFloss, Thread, Thread_Sinew and Thread_Aramid are all
-finite. Tie still consumes one use once and keeps the original glasses/hat,
+The original six materials and eight added in 0.14 are all finite. New ties
+use material-specific native budgets; old ties retain ten points. Tie still consumes one use once and keeps the original glasses/hat,
 condition, prescription, model and ID. It now creates one real improvised tie,
-links it to that eyewear's native ID and equips it. Three registered slots/types
+links it to that eyewear's native ID and equips it. Three registered slots
 (Eyes, Face, Hat) let an eyewear tie and a supported hat tie coexist. Each slot
 holds one tie; occupied slots and insufficient space refuse new tying. A 0.01
 weight tie replaces the spent material use; it is a real player-visible item,

@@ -5,6 +5,7 @@ B47ANCEDEyewear = B47ANCEDEyewear or {}
 B47ANCEDEyewear.Menu = B47ANCEDEyewear.Menu or {}
 
 local S = require 'B47ANCEDEyewear/Core'
+local M = require 'B47ANCEDEyewear/TieMaterials'
 local Menu = B47ANCEDEyewear.Menu
 local NO_MATERIALS = 'ContextMenu_B47ANCEDEyewear_NoMaterials'
 
@@ -75,14 +76,24 @@ local function canTie(player, item)
 end
 
 local function canUntie(player,item)
-    return player and item and not player:isDead() and S.isTied(item)
-        and type(player.isEquippedClothing) == 'function' and player:isEquippedClothing(item)
+    if not player or not item or player:isDead() or not S.isTieable(item) or not S.isTied(item)
+        or not player:isEquippedClothing(item) then return false end
+    local inventory = player:getInventory()
+    if not inventory or item:getContainer()~=inventory or not inventory:contains(item) then return false end
+    if not S.needsCutter(item) then return true end
+    for _,tool in ipairs(inventoryItems(inventory)) do
+        if M.cutter(player,tool) then return true end
+    end
+    return false
 end
 
 local function materials(player)
-    local available = {}
+    local available, seen = {}, {}
     for _, item in ipairs(inventoryItems(player:getInventory())) do
-        if S.isMaterial(item) then available[#available + 1] = item end
+        if S.isMaterial(item) and not seen[item:getFullType()] then
+            available[#available + 1] = item
+            seen[item:getFullType()] = true
+        end
     end
     return available
 end
@@ -93,9 +104,15 @@ local function queueTie(player, headwear, material)
     return true
 end
 
-local function queueUntie(player,headwear)
-    if not S.valid(player,headwear,nil,true) then return false end
-    ISTimedActionQueue.add(ISB47ANCEDEyewear:new(player,headwear,nil,true))
+local function queueUntie(player,headwear,tool)
+    if not S.valid(player,headwear,nil,true,tool) then return false end
+    ISTimedActionQueue.add(ISB47ANCEDEyewear:new(player,headwear,nil,true,'Untie',tool))
+    return true
+end
+
+local function queueReinforce(player,headwear,material,operation)
+    if not S.validAction(player,headwear,material,operation) then return false end
+    ISTimedActionQueue.add(ISB47ANCEDEyewear:new(player,headwear,material,false,operation))
     return true
 end
 
@@ -134,6 +151,28 @@ function Menu.add(playerIndex, context, rawItems)
     end
 
     if canUntie(player,headwear) then
+        local cutter
+        local seen = {}
+        for _, material in ipairs(inventoryItems(player:getInventory())) do
+            if not cutter and M.cutter(player,material) then cutter=material end
+            local kind = material:getFullType()
+            if not seen[kind] and M.usable(material) then
+                seen[kind] = true
+                for _,operation in ipairs({'Reinforce','Tape'}) do
+                    local key = operation=='Tape' and 'ApplyTape' or 'Reinforce'
+                    if S.validAction(player,headwear,material,operation) then
+                        itemMenu:addOption(getText('ContextMenu_B47ANCEDEyewear_'..key,nameOf(material)),
+                            player,queueReinforce,headwear,material,operation)
+                    end
+                end
+            end
+        end
+        if S.needsCutter(headwear) then
+            if cutter then
+                return itemMenu:addOption(getText('ContextMenu_B47ANCEDEyewear_CutZipTie'),player,queueUntie,headwear,cutter)
+            end
+            return -- No cutting action without a usable owned tool.
+        end
         return itemMenu:addOption(getText('ContextMenu_B47ANCEDEyewear_Untie'),player,queueUntie,headwear)
     end
     local tie = itemMenu:addOption(getText('ContextMenu_B47ANCEDEyewear_Tie'), headwear, nil)

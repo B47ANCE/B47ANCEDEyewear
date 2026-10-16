@@ -1,7 +1,8 @@
-[b]Version 0.13.2-dev.1[/b]
-[b]MP testing build - dedicated multiplayer NOT TESTED[/b]
+[b]Version 0.14.0-dev.1[/b]
+MP testing build - dedicated multiplayer NOT TESTED
 
-[h2]Updated project thumbnail[/h2]
-• Select the supplied Eyewear artwork as the project and Workshop preview source.
-• Preserve the previous custom artwork, mod icon/poster, item/model art and all gameplay, clothing registrations, tie linking and durability.
-• Artwork integrity and offline source/version checks only. Runtime evidence retains its original package/version; no new SP or dedicated validation is claimed. Stable G8 remains blocked.
+Adds all fourteen verified improvised materials, up to three matching thin strands, one adhesive/duct-tape reinforcement and material-specific native condition budgets. Reinforcement adds current and maximum equally; old wear is preserved. Zip ties require a usable tagged cutting tool, kept on removal.
+
+Server validates ownership, worn links, item IDs/revision, sandbox settings, material payment and tool condition/sharpness. Whole fabric is consumed without dirty-fabric byproducts. Original ten-point ties keep their condition; untie and retie to opt into reinforcement. New source uses the supplied project thumbnail.
+
+SP and current dedicated gameplay NOT TESTED. Native head/clothing wear applies; exact hidden knock-off counts and final breaking-hit saves are not guaranteed. No upload is performed by this source iteration. Stable G8 BLOCKED.

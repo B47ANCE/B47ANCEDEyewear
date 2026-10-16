@@ -1,6 +1,6 @@
 # Clothing visual registration and synchronization
 
-Project Version: 0.13.2-dev.1
+Project Version: 0.14.0-dev.1
 Audit: 2026-10-15; installed Project Zomboid 42.21 / Steam build 25485521.
 
 ## Cause and evidence
@@ -102,3 +102,7 @@ performed for this request.
 
 The 0.13.2 thumbnail-only iteration preserves this implementation. All evidence
 above retains its original version/package; no clothing behavior changed.
+
+The 0.14.0-dev.1 material/reinforcement iteration reuses these same seven registered
+clothing assets for three new LayeredTie script types. No XML/GUID/mesh changes.
+Historical 0.13.1 acceptance does not establish the new gameplay's MP behavior.
