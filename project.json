@@ -1,0 +1,29 @@
+{
+  "canonical_version": "VERSION",
+  "mod_ids": [
+    "B47ANCEDEyewear"
+  ],
+  "workshop_ids": [
+    "3799754736"
+  ],
+  "source_roots": [
+    "src/B47ANCEDEyewear/42"
+  ],
+  "editable_asset_roots": [
+    "assets/retainers"
+  ],
+  "package_roots": [
+    "dist/current"
+  ],
+  "generated_outputs": [
+    "dist",
+    "Workshop staging outside repository"
+  ],
+  "source_url": "https://github.com/B47ANCE/B47ANCEDEyewear",
+  "validation_commands": [
+    "python -B scripts/check_versions.py",
+    "python -B scripts/validate_release.py"
+  ],
+  "runtime_policy": "Lua only",
+  "historical_evidence": "docs/historical; immutable archives; external private cleanup quarantine"
+}

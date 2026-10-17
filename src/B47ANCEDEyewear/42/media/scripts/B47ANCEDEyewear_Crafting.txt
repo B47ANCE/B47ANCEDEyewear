@@ -4,16 +4,57 @@ module B47ANCEDEyewear
     craftRecipe TieGlasses
     {
         timedAction = Making,
-        time = 80,
+        time = 16,
         Tags = InHandCraft,
         category = Tailoring,
-        OnCreate = B47ANCEDEyewear.onCraftCreate,
+        AllowBatchCraft = false,
+        Tooltip = UI_B47ANCEDEyewear_CraftingTieInstructions,
+        OnTest = B47ANCEDEyewear.canCraftTie,
+        OnCreate = B47ANCEDEyewear.craftTie,
         inputs
         {
-            item 1 [Base.Glasses;Base.Glasses_Prescription;Base.Glasses_Aviators;Base.Glasses_Prescription_Aviators;Base.Glasses_Normal;Base.Glasses_Cosmetic_Normal;Base.Glasses_Reading;Base.Glasses_SafetyGoggles;Base.Glasses_Shooting;Base.Glasses_Prescription_Shooting;Base.Glasses_SkiGoggles;Base.Glasses_Sun;Base.Glasses_Prescription_Sun;Base.Glasses_SwimmingGoggles;Base.Glasses_CatsEye;Base.Glasses_CatsEye_Sun;Base.Glasses_Cosmetic_CatsEye;Base.Glasses_Prescription_CatsEye_Sun;Base.Glasses_Normal_HornRimmed;Base.Glasses_Cosmetic_Normal_HornRimmed;Base.Glasses_JackieO;Base.Glasses_Prescription_JackieO;Base.Glasses_Macho;Base.Glasses_Round_Normal;Base.Glasses_Round_Shades;Base.Glasses_Cosmetic_Round_Normal;Base.Glasses_Prescription_Round_Shades;Base.Glasses_70s_Gold;Base.Glasses_Cosmetic_70s_Gold;Base.Glasses_Round_HoloSkulls;Base.Glasses_OldWeldingGoggles;Base.Glasses_HalfMoon;Base.Glasses_Cosmetic_HalfMoon;Base.Glasses_SunCheap;Base.Glasses_3dGlasses;Base.Glasses_Groucho;Base.Glasses_Venetian;Base.Glasses_NewWave;Base.Glasses_Novelty_Xray;AuthenticZClothing.Glasses_AviatorsSunset;AuthenticZClothing.Glasses_Cheese;AuthenticZClothing.Glasses_ReadingBlack;AuthenticZClothing.Glasses_Popeyes;AuthenticZClothing.Glasses_AZ_Sunglasses1;AuthenticZClothing.Glasses_AZ_Sunglasses2;Base.Hat_StrawHat;Base.Hat_SummerHat] mode:keep,
-            item 1 [Base.Twine;Base.RubberBand;Base.DentalFloss;Base.Thread;Base.Thread_Aramid;Base.Thread_Sinew],
+            item 1 [Base.Glasses;Base.Glasses_Prescription;Base.Glasses_Aviators;Base.Glasses_Prescription_Aviators;Base.Glasses_Normal;Base.Glasses_Cosmetic_Normal;Base.Glasses_Reading;Base.Glasses_SafetyGoggles;Base.Glasses_Shooting;Base.Glasses_Prescription_Shooting;Base.Glasses_SkiGoggles;Base.Glasses_Sun;Base.Glasses_Prescription_Sun;Base.Glasses_SwimmingGoggles;Base.Glasses_CatsEye;Base.Glasses_CatsEye_Sun;Base.Glasses_Cosmetic_CatsEye;Base.Glasses_Prescription_CatsEye_Sun;Base.Glasses_Normal_HornRimmed;Base.Glasses_Cosmetic_Normal_HornRimmed;Base.Glasses_JackieO;Base.Glasses_Prescription_JackieO;Base.Glasses_Macho;Base.Glasses_Round_Normal;Base.Glasses_Round_Shades;Base.Glasses_Cosmetic_Round_Normal;Base.Glasses_Prescription_Round_Shades;Base.Glasses_70s_Gold;Base.Glasses_Cosmetic_70s_Gold;Base.Glasses_Round_HoloSkulls;Base.Glasses_OldWeldingGoggles;Base.Glasses_HalfMoon;Base.Glasses_Cosmetic_HalfMoon;Base.Glasses_SunCheap;Base.Glasses_3dGlasses;Base.Glasses_Groucho;Base.Glasses_Venetian;Base.Glasses_NewWave;Base.Glasses_Novelty_Xray;Base.Hat_StrawHat;Base.Hat_SummerHat] mode:keep flags[AllowFavorite;ItemCount;IsWorn],
+            item 1 [Base.Twine;Base.RubberBand;Base.DentalFloss;Base.Thread;Base.Thread_Aramid;Base.Thread_Sinew;Base.RippedSheets;Base.DenimStrips;Base.LeatherStrips;Base.FishingLine;Base.PremiumFishingLine;Base.ElectricWire;Base.Wire;Base.Zipties] mode:keep flags[AllowFavorite;ItemCount;NotEmpty],
         }
         outputs { }
     }
-
+    craftRecipe MakeClothEyewearRetainer
+    {
+        timedAction = Making,
+        time = 16,
+        Tags = InHandCraft,
+        category = Tailoring,
+        OnTest = B47ANCEDEyewear.canCraftRetainer,
+        Tooltip = UI_B47ANCEDEyewear_CraftClothRetainer,
+        inputs
+        {
+            item 2 [Base.RippedSheets],
+            item 2 [Base.Twine;Base.Thread;Base.Thread_Sinew;Base.Thread_Aramid],
+        }
+        outputs
+        {
+            item 1 B47ANCEDEyewear.MakeshiftRetainer,
+        }
+    }
+    craftRecipe MakeEyewearRetainer
+    {
+        timedAction = Making,
+        time = 24,
+        Tags = InHandCraft,
+        category = Tailoring,
+        OnTest = B47ANCEDEyewear.canCraftRetainer,
+        Tooltip = UI_B47ANCEDEyewear_CraftLeatherRetainer,
+        inputs
+        {
+            item 2 [Base.LeatherStrips],
+            item 4 [Base.Thread;Base.Thread_Sinew;Base.Thread_Aramid],
+            item 2 [Base.RubberBand],
+            item 1 tags[base:sewingneedle] mode:keep,
+            item 1 tags[base:scissors] mode:keep flags[IsNotDull],
+        }
+        outputs
+        {
+            item 1 B47ANCEDEyewear.EyewearRetainer,
+        }
+    }
 }

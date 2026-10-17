@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fileGuidTable>
+    <files>
+        <path>media/clothing/clothingItems/B47ANCEDEyewearClothRetainerWorn.xml</path>
+        <guid>b954ef7b-6815-59ca-98bb-87a149ced124</guid>
+    </files>
+    <files>
+        <path>media/clothing/clothingItems/B47ANCEDEyewearImprovisedTieEyesWorn.xml</path>
+        <guid>b666b487-c9d4-569d-aa71-6657da94b7f2</guid>
+    </files>
+    <files>
+        <path>media/clothing/clothingItems/B47ANCEDEyewearImprovisedTieFaceWorn.xml</path>
+        <guid>842501d7-dbdb-5a8e-a0a1-5bf16cba3c8f</guid>
+    </files>
+    <files>
+        <path>media/clothing/clothingItems/B47ANCEDEyewearImprovisedTieHatWorn.xml</path>
+        <guid>027c083c-3205-523a-a444-157a00798f25</guid>
+    </files>
+    <files>
+        <path>media/clothing/clothingItems/B47ANCEDEyewearLeatherRetainerWorn.xml</path>
+        <guid>6847e63b-3061-5586-92a2-f75adbb83862</guid>
+    </files>
+    <files>
+        <path>media/clothing/clothingItems/B47ANCEDEyewearRetainer.xml</path>
+        <guid>c0b6d479-3836-43b4-a5fd-f3aba86bc8cf</guid>
+    </files>
+    <files>
+        <path>media/clothing/clothingItems/B47ANCEDEyewearUnbreakableRetainerWorn.xml</path>
+        <guid>54cfb583-7ee3-5d05-a71f-eb71baf0dabc</guid>
+    </files>
+</fileGuidTable>

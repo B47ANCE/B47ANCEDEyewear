@@ -1,97 +1,103 @@
 [CmdletBinding()]
-param([string]$WorkshopRoot = 'C:\Users\willi\Zomboid\Workshop',
-      [ValidateSet('preserve','public','friends','private')][string]$Visibility = 'preserve')
+param(
+    [string]$WorkshopRoot = (Join-Path $env:USERPROFILE 'Zomboid/Workshop'),
+    [ValidateSet('preserve','public','friends','private')][string]$Visibility = 'preserve',
+    [string]$PythonExe,
+    [string]$ArchiveRoot = (Join-Path $env:USERPROFILE '.codex/artifact-archives/B47ANCEDEyewear')
+)
 $ErrorActionPreference = 'Stop'
 $project = [IO.Path]::GetFullPath($PSScriptRoot)
-$source = Join-Path $project 'src/B47ANCEDEyewear'
+. (Join-Path $project 'scripts/Workshop-Tools.ps1')
+$python = Resolve-WorkshopPython $PythonExe
+$version = [IO.File]::ReadAllText((Join-Path $project 'VERSION')).Trim()
+$workshopId = [IO.File]::ReadAllText((Join-Path $project 'WORKSHOP_ID.txt')).Trim()
+if ($workshopId -ne '3799754736') { throw 'Expected existing Workshop item 3799754736.' }
+$source = Join-Path $project 'src/B47ANCEDEyewear/42'
 $dist = Join-Path $project 'dist/current'
-$stage = [IO.Path]::GetFullPath((Join-Path $WorkshopRoot 'B47ANCEDEyewear'))
+$archivePath = Join-Path $dist ('B47ANCEDEyewear_v' + $version + '.zip')
+if (Test-Path -LiteralPath $archivePath) { throw 'Current package exists; preserve it before rebuilding. Staging was not changed.' }
 $stageParent = [IO.Path]::GetFullPath($WorkshopRoot).TrimEnd('\')
-if ([IO.Path]::GetDirectoryName($stage) -ne $stageParent) { throw 'Invalid staging path' }
-$version = (Get-Content -LiteralPath (Join-Path $project 'VERSION') -Raw).Trim()
-$description = [IO.File]::ReadAllText((Join-Path $project 'WORKSHOP_DESCRIPTION.txt')).Trim()
-if ([Text.Encoding]::UTF8.GetByteCount($description) -gt 8000) { throw 'Description exceeds Workshop limit' }
-$python = & (Join-Path $project '../tools/Resolve-HostTestPython.ps1')
-& $python -B (Join-Path $project 'scripts/check_versions.py') --root $project
-if ($LASTEXITCODE -ne 0) { throw 'Version validation failed' }
-& $python -B -m unittest discover -s (Join-Path $project 'tests') -v
-if ($LASTEXITCODE -ne 0) { throw 'Host validation failed' }
-# Old artwork is archived, never shipped under the new identity. Fail before
-# changing staging or creating an archive until replacement artwork is supplied.
-if (-not (Test-Path -LiteralPath (Join-Path $project 'thumbnail.png') -PathType Leaf)) {
-    throw "Replacement B47ANCE'd Eyewear thumbnail.png is required; Workshop packaging is blocked."
+$stage = [IO.Path]::GetFullPath((Join-Path $stageParent 'B47ANCEDEyewear'))
+if ([IO.Path]::GetDirectoryName($stage) -ne $stageParent) { throw 'Invalid staging path.' }
+foreach ($path in @($stageParent,$stage)) {
+    if ((Test-Path -LiteralPath $path) -and ((Get-Item -LiteralPath $path).Attributes -band [IO.FileAttributes]::ReparsePoint)) { throw 'Reparse-point Workshop staging is not supported.' }
 }
-New-Item -ItemType Directory -Force -Path $dist | Out-Null
-$workshopId = (Get-Content -LiteralPath (Join-Path $project 'WORKSHOP_ID.txt') -Raw).Trim()
-$metadata = @("id=$workshopId", 'visibility=private')
-if (Test-Path -LiteralPath $stage) {
-    $oldInfo = Join-Path $stage 'workshop.txt'
-    if (Test-Path -LiteralPath $oldInfo) {
-        $oldMetadata = @(Get-Content -LiteralPath $oldInfo | Where-Object { $_ -match '^(id|visibility)=' })
-        $oldId = $oldMetadata | Where-Object { $_ -match '^id=\d{7,20}$' } | Select-Object -First 1
-        $oldVisibility = $oldMetadata | Where-Object { $_ -match '^visibility=(public|friends|private)$' } | Select-Object -First 1
-        if ($oldId) { $metadata[0] = $oldId }
-        if ($oldVisibility) { $metadata[1] = $oldVisibility }
-    }
-    $backupRoot = [IO.Path]::GetFullPath((Join-Path $project 'historical/artifacts'))
-    $backup = [IO.Path]::GetFullPath((Join-Path $backupRoot ('staging-backup-' + [guid]::NewGuid().ToString('N'))))
-    if ([IO.Path]::GetDirectoryName($backup) -ne $backupRoot) { throw 'Invalid backup path' }
-    Move-Item -LiteralPath $stage -Destination $backup
+$selectedVisibility = 'private'
+if (Test-Path -LiteralPath (Join-Path $stage 'workshop.txt')) {
+    $old = Read-WorkshopInfo (Join-Path $stage 'workshop.txt')
+    if ($old.id -ne $workshopId) { throw 'Existing staging belongs to another Workshop item.' }
+    if ($old.visibility -in @('public','friends','private')) { $selectedVisibility = $old.visibility }
 }
-if ($Visibility -ne 'preserve') { $metadata[1] = 'visibility=' + $Visibility }
-$content = Join-Path $stage 'Contents/mods/B47ANCEDEyewear'
+if ($Visibility -ne 'preserve') { $selectedVisibility = $Visibility }
+Invoke-WorkshopPreflight $python $project @()
+if (-not (Test-Path -LiteralPath (Join-Path $project 'thumbnail.png'))) { throw 'Workshop thumbnail is missing.' }
+$commit = (& git -C $project rev-parse HEAD | Out-String).Trim()
+if ($LASTEXITCODE -ne 0) { throw 'Git source commit is unavailable.' }
+$payloadChanges = & git -C $project status --porcelain -- src VERSION WORKSHOP_ID.txt WORKSHOP_DESCRIPTION.txt WORKSHOP_CHANGE_NOTE.txt thumbnail.png version-inventory.json Build-Workshop.ps1 Publish-Workshop.ps1 scripts requirements-tools.txt docs/RELEASE_STATUS.json
+if ($payloadChanges) { throw 'Commit the intended release source before generating provenance.' }
+$token = [guid]::NewGuid().ToString('N')
+$temporary = [IO.Path]::GetFullPath((Join-Path $stageParent ('B47ANCEDEyewear-preparation-' + $token)))
+if ([IO.Path]::GetDirectoryName($temporary) -ne $stageParent) { throw 'Invalid preparation path.' }
+$temporaryArchiveRoot = Join-Path $project 'dist/preparation'
+New-Item -ItemType Directory -Force -Path $temporaryArchiveRoot | Out-Null
+$temporaryArchive = Join-Path $temporaryArchiveRoot ('package-' + $token + '.zip')
+$content = Join-Path $temporary 'Contents/mods/B47ANCEDEyewear'
 New-Item -ItemType Directory -Force -Path (Join-Path $content 'common') | Out-Null
-Copy-Item -LiteralPath (Join-Path $source '42') -Destination $content -Recurse
-# Repository markers and all host tests stay outside Workshop content.
-$shipping = @(Get-ChildItem -LiteralPath (Join-Path $source '42') -Recurse -File)
-# TestKit.lua is an intentional player-facing runtime command. Host tests and
-# repository artifacts live outside 42/, so only reject executable test files
-# and debug artifacts that would be accidental Workshop content.
-if ($shipping | Where-Object { $_.Extension -in @('.py','.pyc') -or $_.Name -match '(?i)debug|test.*\.(py|pyc)$' }) {
-    throw 'Development files found in runtime source'
-}
+Copy-Item -LiteralPath $source -Destination $content -Recurse
 Add-Type -AssemblyName System.Drawing
 $original = [Drawing.Image]::FromFile((Join-Path $project 'thumbnail.png'))
 $preview = [Drawing.Bitmap]::new(256,256)
 $graphics = [Drawing.Graphics]::FromImage($preview)
 try {
-    $graphics.InterpolationMode = [Drawing.Drawing2D.InterpolationMode]::HighQualityBicubic
     $graphics.DrawImage($original,0,0,256,256)
-    $preview.Save((Join-Path $stage 'preview.png'),[Drawing.Imaging.ImageFormat]::Png)
+    $preview.Save((Join-Path $temporary 'preview.png'),[Drawing.Imaging.ImageFormat]::Png)
 } finally { $graphics.Dispose(); $preview.Dispose(); $original.Dispose() }
-$lines = @('version=1',"title=B47ANCE'd Eyewear [Development Build]") + $metadata
+$description = [IO.File]::ReadAllText((Join-Path $project 'WORKSHOP_DESCRIPTION.txt')).Trim()
+$lines = @('version=1',"title=B47ANCE'd Eyewear [Development Build]","id=$workshopId","visibility=$selectedVisibility")
 $lines += @($description -split '\r?\n' | ForEach-Object { 'description=' + $_ })
 $lines += 'tags=Build 42;Clothing/Armor;QoL'
-[IO.File]::WriteAllLines((Join-Path $stage 'workshop.txt'),$lines,[Text.UTF8Encoding]::new($false))
+[IO.File]::WriteAllLines((Join-Path $temporary 'workshop.txt'),$lines,[Text.UTF8Encoding]::new($false))
+$runtime = @(Get-ChildItem -LiteralPath $source -File -Recurse | ForEach-Object {
+    @{path=$_.FullName.Substring($source.Length + 1).Replace('\','/');sha256=(Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash.ToLowerInvariant()}
+})
+$manifest = @{version=$version;commit=$commit;workshop_id=$workshopId;mod_id='B47ANCEDEyewear';app_id=108600;
+    target_game='42.21';steam_build='25485521';source_root='src/B47ANCEDEyewear/42';files=$runtime;source_validation='STATIC PASS';
+    sp='NOT TESTED';g7='BLOCKED / NOT TESTED';g8='BLOCKED';publication='PREPARED ONLY';
+    preview_sha256=(Get-FileHash -LiteralPath (Join-Path $temporary 'preview.png')).Hash.ToLowerInvariant();
+    workshop_metadata_sha256=(Get-FileHash -LiteralPath (Join-Path $temporary 'workshop.txt')).Hash.ToLowerInvariant();
+    description_sha256=(Get-FileHash -LiteralPath (Join-Path $project 'WORKSHOP_DESCRIPTION.txt')).Hash.ToLowerInvariant();
+    changenote_sha256=(Get-FileHash -LiteralPath (Join-Path $project 'WORKSHOP_CHANGE_NOTE.txt')).Hash.ToLowerInvariant()}
+[IO.File]::WriteAllText((Join-Path $temporary 'release-manifest.json'),($manifest | ConvertTo-Json -Depth 8),[Text.UTF8Encoding]::new($false))
 Add-Type -AssemblyName System.IO.Compression.FileSystem
-$archivePath = Join-Path $dist ('B47ANCEDEyewear_v' + $version + '.zip')
-if (Test-Path -LiteralPath $archivePath) { throw 'Current archive already exists; preserve or archive it before rebuilding.' }
-[IO.Compression.ZipFile]::CreateFromDirectory($stage,$archivePath)
-$archive = [IO.Compression.ZipFile]::OpenRead($archivePath)
+[IO.Compression.ZipFile]::CreateFromDirectory($temporary,$temporaryArchive)
+Invoke-WorkshopPreflight $python $project @('--archive',$temporaryArchive,'--stage',$temporary)
+$backupRoot = [IO.Path]::GetFullPath($ArchiveRoot)
+$backup = [IO.Path]::GetFullPath((Join-Path $backupRoot ('staging-backup-' + $token)))
+if ([IO.Path]::GetDirectoryName($backup) -ne $backupRoot) { throw 'Invalid staging backup path.' }
+New-Item -ItemType Directory -Force -Path $backupRoot,$dist | Out-Null
+$replaced = $false
 try {
-    foreach ($file in $shipping) {
-        $relative = $file.FullName.Substring($source.Length + 1)
-        $staged = Join-Path $content $relative
-        $expected = (Get-FileHash -LiteralPath $file.FullName -Algorithm SHA256).Hash
-        if ((Get-FileHash -LiteralPath $staged -Algorithm SHA256).Hash -ne $expected) { throw "Staging mismatch: $relative" }
-            $lookup = 'Contents/mods/B47ANCEDEyewear/' + $relative.Replace('\', '/')
-            $entry = $null
-            foreach ($candidate in $archive.Entries) {
-                if ($candidate.FullName.Replace('\', '/') -eq $lookup) { $entry = $candidate; break }
-            }
-            if (!$entry) { throw "ZIP missing: $relative" }
-        $stream = $entry.Open(); $sha = [Security.Cryptography.SHA256]::Create()
-        try { $actual = [BitConverter]::ToString($sha.ComputeHash($stream)).Replace('-','') }
-        finally { $stream.Dispose(); $sha.Dispose() }
-        if ($actual -ne $expected) { throw "ZIP mismatch: $relative" }
-    }
-    $packagedFiles = @($archive.Entries | Where-Object { $_.Name -ne '' })
-    if ($packagedFiles.Count -ne $shipping.Count + 2) { throw 'Unexpected packaged files' }
-} finally { $archive.Dispose() }
-$hash = Get-FileHash -LiteralPath $archivePath -Algorithm SHA256
-[IO.File]::WriteAllText(($archivePath + '.sha256'),($hash.Hash + '  ' + [IO.Path]::GetFileName($archivePath) + "`n"))
+    if (Test-Path -LiteralPath $stage) { Move-Item -LiteralPath $stage -Destination $backup; $replaced = $true }
+    Move-Item -LiteralPath $temporary -Destination $stage
+    Move-Item -LiteralPath $temporaryArchive -Destination $archivePath
+$hash = (Get-FileHash -LiteralPath $archivePath -Algorithm SHA256).Hash.ToLowerInvariant()
+[IO.File]::WriteAllText(($archivePath + '.sha256'),($hash + '  ' + [IO.Path]::GetFileName($archivePath) + "`n"),[Text.UTF8Encoding]::new($false))
+$manifest.package_sha256 = $hash
+[IO.File]::WriteAllText((Join-Path $dist 'release-provenance.json'),($manifest | ConvertTo-Json -Depth 8),[Text.UTF8Encoding]::new($false))
 & $python -B (Join-Path $project 'scripts/check_versions.py') --root $project --release
-if ($LASTEXITCODE -ne 0) { throw 'Packaged version validation failed' }
-Write-Output "Verified $($shipping.Count) runtime files against source, staging, and ZIP."
+if ($LASTEXITCODE -ne 0) { throw 'Prepared artifact version consistency failed.' }
+} catch {
+    if (Test-Path -LiteralPath $archivePath) { Move-Item -LiteralPath $archivePath -Destination $temporaryArchive }
+    if (Test-Path -LiteralPath ($archivePath+'.sha256')) { Move-Item -LiteralPath ($archivePath+'.sha256') -Destination ($temporaryArchive+'.sha256') }
+    $provenancePath=Join-Path $dist 'release-provenance.json'
+    if (Test-Path -LiteralPath $provenancePath) { Move-Item -LiteralPath $provenancePath -Destination (Join-Path $temporaryArchiveRoot ('failed-provenance-'+$token+'.json')) }
+    if ($replaced -and (Test-Path -LiteralPath $backup)) {
+        if (Test-Path -LiteralPath $stage) { Move-Item -LiteralPath $stage -Destination $temporary }
+        Move-Item -LiteralPath $backup -Destination $stage
+    }
+    throw
+}
+Write-Output "Prepared $($runtime.Count) Lua-only runtime files. No test suite or debugger grant code is included."
 Write-Output "Workshop staging: $stage"
 Write-Output "Archive: $archivePath"
+Write-Output 'MP testing distribution needs an explicit publish request; stable G7/G8 remain blocked. SteamCMD was not invoked.'

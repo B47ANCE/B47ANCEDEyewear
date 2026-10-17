@@ -40,3 +40,27 @@ Reference: EyewearRetainer_Inventory_Source.png (the initial original generated 
 before it was replaced with the selected edit). Transparent background was requested
 for both calls. Generated images are original source assets; model fit and inventory
 appearance in PZ are not validated by generation or visual inspection here.
+
+## Crafted retainer icons — 0.9.0-dev.1, 2026-10-14
+
+Mode: built-in image_gen, one call per asset, transparent_background=true.
+No CLI/API-key fallback or third-party image/mesh reference was used. Both
+selected outputs are retained as unchanged project masters. Pillow 12.3.0 only
+performs a normal premultiplied-alpha resize to 60x60 plus 2px transparent padding
+inside 64x64; it does not redraw or remove a background. crafted-icons.json binds
+source/export/runtime hashes. The original black icon and model files retain
+all prior hashes and are reserved for the rare unbreakable item.
+
+### Cloth prompt (verbatim)
+
+Use case: stylized-concept. Create one finished Project Zomboid inventory item sprite, centered on a truly transparent square canvas. Subject: a homemade CLOTH EYEWEAR RETAINER, not glasses: a narrow off-white/ecru fabric cord bent into a relaxed upside-down U, with simple small tied cloth loops at both tips to slide over eyeglass temples. Show soft cloth weave and two modest knots; clearly handmade from ripped sheets and twine. Muted slightly weathered survival-game painted item art, crisp dark edging and restrained shading, readable as a small 64x64 inventory icon. Orthographic three-quarter/top-down catalog view, silhouette occupies about 85 percent of square, generous clear transparent margins, no drop shadow outside the item. Keep shape simple and strong enough to survive reduction to 64 pixels. No text, letters, logos, glasses, person, borders, tile, checkerboard, background, or extra objects. This will become an in-game icon; produce actual alpha transparency.
+
+### Leather prompt (verbatim)
+
+Use case: stylized-concept. Create one finished Project Zomboid inventory item sprite, centered on a truly transparent square canvas. Subject: a handmade LEATHER EYEWEAR RETAINER, not glasses: a slim medium-brown leather strap bent into a relaxed upside-down U, with modest beige stitched edges and a small dark rubber loop at each tip to slide over eyeglass temples. Clearly a practical small leather eyeglasses retaining strap, not a belt, bracelet, lanyard clip or spectacle frame. Muted slightly weathered survival-game painted item art, crisp dark edging and restrained shading, readable as a small 64x64 inventory icon. Orthographic three-quarter/top-down catalog view, silhouette occupies about 85 percent of square, generous clear transparent margins, no drop shadow outside the item. Keep stitching broad and silhouette simple enough to survive reduction to 64 pixels. No text, letters, logos, glasses, person, borders, tile, checkerboard, background, metal buckle or extra objects. This will become an in-game icon; produce actual alpha transparency.
+
+Selected masters: ClothRetainer_Inventory_Source.png and
+LeatherRetainer_Inventory_Source.png (both 1254x1254 RGBA with real alpha).
+Runtime exports: Item_B47ANCEDEyewearClothRetainer.png and
+Item_B47ANCEDEyewearLeatherRetainer.png (both 64x64 RGBA).
+These are inventory assets, not fitted on-character meshes.

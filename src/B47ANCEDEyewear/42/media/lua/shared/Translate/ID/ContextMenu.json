@@ -2,10 +2,7 @@
   "ContextMenu_B47ANCEDEyewear_Tie": "Tie",
   "ContextMenu_B47ANCEDEyewear_Untie": "Untie",
   "ContextMenu_B47ANCEDEyewear_NoMaterials": "You do not have any materials to tie this with.",
-  "ContextMenu_B47ANCEDEyewear_Retainer": "Retainer",
-  "ContextMenu_B47ANCEDEyewear_MakeRetainer": "Make makeshift retainer",
-  "ContextMenu_B47ANCEDEyewear_ReinforceRetainer": "Add matching strand",
-  "ContextMenu_B47ANCEDEyewear_TapeRetainer": "Apply tape reinforcement",
-  "ContextMenu_B47ANCEDEyewear_RemoveRetainer": "Remove makeshift retainer",
-  "ContextMenu_B47ANCEDEyewear_CutRetainer": "Cut zip-tie retainer"
+  "ContextMenu_B47ANCEDEyewear_Reinforce": "Reinforce retainer with %1",
+  "ContextMenu_B47ANCEDEyewear_ApplyTape": "Reinforce retainer with %1",
+  "ContextMenu_B47ANCEDEyewear_CutZipTie": "Cut zip tie"
 }

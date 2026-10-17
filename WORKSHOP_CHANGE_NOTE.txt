@@ -1,9 +1,8 @@
-[b]Version 0.5.0-dev.1[/b]
+[b]Version 0.15.0-dev.1[/b]
+MP testing build - dedicated multiplayer NOT TESTED
 
-[h2]Development build: retainer inspection[/h2]
-• Preserve vanilla inventory tooltip information and add retainer material, condition, durability bar/percentage and installed strand/tape contributions.
-• Read authoritative item metadata without changing gameplay state. Complete English fallback across all 29 languages.
-• Include the finite makeshift-retainer Lua development candidate: 14 materials, layering, tape reinforcement and server-validated actions.
-• Finite catches require the separately loaded exact-build native bridge. No Java bridge is shipped or automatically installed by this Workshop package.
-• Permanent reusable-item gameplay, rare loot and worn visuals remain blocked and excluded.
-• 63 offline tests pass; actual UI, native combat and dedicated multiplayer validation remain pending. This is an unfinished development build.
+Adds one tape reinforcement to crafted cloth/leather retainers through their inventory context menu. Adhesive tape adds +1 native wear resistance by default; duct tape adds +2. Current condition, its ten-point maximum, actual item identity and worn mapping are preserved. Existing retainers work without recrafting.
+
+The server validates target/tape ownership, state/revision, settings and one payment. Broken, already taped and unbreakable items cannot receive tape. New bonuses use a server sandbox multiplier. Improvised-tie reinforcement keeps its existing capacity rules.
+
+Development MP test distribution; no local mod deployment. Current SP/dedicated gameplay NOT TESTED; G7 and stable G8 BLOCKED. Native head/clothing wear applies; no hidden knock-off counter or custom Java.

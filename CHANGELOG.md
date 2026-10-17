@@ -1,5 +1,95 @@
 # Changelog
 
+## [0.15.0-dev.1] - 2026-10-16
+
+MINOR: allow one adhesive/duct-tape application to owned crafted cloth/leather retainers. Tape increases native wear resistance (defaults +1/+2), preserving the actual item and its existing ten-point condition. Server validates inventory ownership, setting, revision and one material payment. Adds context action, live tooltip and sandbox multiplier; rare unbreakable retainers are excluded. SP/current dedicated NOT TESTED, G7/G8 blocked. The user separately authorized Workshop MP test distribution; actual upload evidence is recorded in generated publication provenance.
+
+## [0.14.0-dev.1] - 2026-10-16
+
+MINOR: add all fourteen audited improvised materials, same-material strands (up to three), one adhesive/duct-tape reinforcement, snapshotted material-specific native condition budgets and sharp-tool zip-tie removal. New layered tie item types preserve old ten-point item definitions and existing condition. Reinforcement preserves the exact existing condition deficit and validates item identity/revision/payment on the server. Original eyewear identity, native head/clothing wear and the unbreakable retainer remain unchanged. Current gameplay is offline-tested only; dedicated G7 NOT TESTED / BLOCKED and stable G8 BLOCKED. Workshop test distribution is authorized separately and its actual outcome is recorded in generated publication provenance.
+
+## [0.13.2-dev.1] — 2026-10-15
+
+- PATCH: select the user-supplied 1254x1254 Eyewear artwork as the canonical project/Workshop thumbnail source, preserving its original PNG bytes.
+- Preserve the previous custom thumbnail with provenance. Existing packaging reads the new source for its 256x256 preview; poster, icon, item/model art and gameplay are unchanged.
+- PNG integrity/dimensions/SHA-256 and offline source/version checks only. No package, deployment, Workshop upload or new runtime acceptance evidence.
+
+## [0.13.1-dev.1] — 2026-10-15
+
+- Distribution follow-up: authorized Workshop MP testing upload; preserve previous published package/provenance. Actual upload/API and Steam restart results are recorded separately. G7/stable G8 remain blocked.
+
+- PATCH: register all seven existing clothing XML definitions in the native file GUID table, fixing unresolved tie/retainer visuals and the resulting dedicated-server SyncClothing null-visual failure.
+- Reject a tie installation before linking, publishing, equipping or consuming material if its native visual is not ready. Paid legacy migration can retry without creating a duplicate or changing the original saved record.
+- Add production preflight checks for complete, unique, case-correct clothing GUID registrations and document the native lookup evidence. Preserve IDs, slots, condition, payment, server authority and existing art.
+- Offline checks only; native/SP and dedicated multiplayer acceptance remain NOT TESTED. No package, deployment or Workshop upload.
+
+## [0.13.0-dev.1] — 2026-10-14
+
+- MINOR: add visible worn improvised ties through three native clothing definitions and six original male/female Eyes/Face/Hat meshes. All six existing materials share a neutral knotted-cord look; hats use an under-chin fit, eyewear uses rear cords.
+- Preserve all Lua gameplay, material/payment links, durability, IDs, slots, saves, existing retainers, ground assets and icons. Distinct Eyes/Face paths offset simultaneous cord layers; no hiding rules added.
+- Preserve editable Blender source, original preview helpers, mesh provenance and independent Assimp import checks. Actual PZ fit/clipping, old-save refresh and remote visuals remain NOT TESTED. No package, deployment or Workshop upload.
+
+## [0.12.0-dev.1] — 2026-10-14
+
+- MINOR: add distinct cloth, leather and black-cord worn models, with male/female variants attached to the existing retainer slot through native head-attached clothing definitions.
+- Preserve ground assets, original source art, inventory icons, item IDs and all Lua gameplay, crafting, loot and durability. Improvised tie visuals remain unchanged.
+- Preserve editable Blender source, authoring/export provenance and offline previews. Actual PZ fit, hair/hat/frame clipping and network visuals remain NOT TESTED; no packaging, deployment or publication.
+
+## [0.11.1-dev.1] — 2026-10-14
+
+- PATCH: resize the rare black-cord ground mesh to the mean crafted-retainer footprint (14.34 x 9.98 cm), replacing the oversized 16.56 x 18.82 cm footprint.
+- Regenerate the derived rare FBX, editable Blender master, preview and provenance. Preserve original source art, cloth/leather exports, texture bytes, bindings and all gameplay.
+- Blender roundtrip and production checks only; PZ appearance remains NOT TESTED. No packaging, deployment or Workshop publication.
+
+## [0.11.0-dev.1] — 2026-10-14
+
+- MINOR: add original, distinct static ground meshes/textures for cloth, leather and unbreakable retainer items. Preserve existing black-cord sources, inventory artwork and gameplay.
+- Bind WorldStaticModel using installed Build 42 conventions. Preserve editable Blender source and export/preview provenance. Worn visuals stay invisible.
+- Offline asset/source validation only; PZ ground appearance and SP/dedicated acceptance remain NOT TESTED. No package, deployment or Workshop upload is part of this source iteration.
+
+## [0.10.0-dev.1] — 2026-10-14
+
+- Add native head/clothing condition wear to crafted retainers and all six improvised material ties; the user approved this trigger in place of hidden knock-off rolls.
+- Keep the rare loot retainer unbreakable. Add server wear-resistance settings and live condition tooltips.
+- Represent direct ties with linked native clothing items; migrate paid legacy ties once when worn, without replacing eyewear or refunding material.
+- Preserve the 0.9 published package and evidence. Offline-only validation; SP/dedicated acceptance and stable G7/G8 remain blocked. No package, deployment or publication is authorized by this development request.
+
+## [0.9.0-dev.1] — 2026-10-14
+
+- MINOR: add a loot-only Unbreakable Eyewear Retainer with no crafting output recipe and native no-hole/non-armor clothing properties.
+- Add a server/SP-only rare loot roll for verified school lockers, optical stores and pharmacy containers; sandbox chance defaults to0.25% per eligible fill, range 0–5%.
+- Reserve original black cord artwork/model source for the unbreakable item; generate distinct cloth and stitched-leather inventory icons for the craftable items.
+- Preserve existing items, recipes and historical save data. No repair timer, Java dependency or per-catch durability approximation is added.
+- Offline/source checks only; game/server NOT TESTED, G7/G8 blocked. No packaging, deployment or publication.
+
+## [0.8.0-dev.1] — 2026-10-14
+
+- MINOR: add craftable reusable cloth and leather eyewear retainers with a dedicated vanilla equipment slot.
+- Keep actual inventory items through Wear/Take Off, vanilla crafting, transfers and saves; protect one compatible worn pair through server-owned derived fall values.
+- Add server sandbox settings, item/recipe instructions, original inventory artwork and production asset/localization checks.
+- Exact minus-one durability on successful native knock-off remains blocked: the installed engine exposes no server-safe Lua callback at that decision. No substitute damage or Java code is installed.
+- Static/offline checks only; SP/dedicated validation NOT TESTED and G7/G8 blocked. No packaging, deployment or publication in this iteration.
+
+## [0.7.0-dev.2]
+- Add user-supplied fallback icon/thumbnail; preserve manually supplied artwork. Asset-only iteration; gameplay unchanged.
+- Offline branding/version checks only; earlier validation remains historical at 0.7.0-dev.1. No new SP/dedicated MP evidence.
+
+## [0.7.0-dev.1] — 2026-10-14
+
+- MINOR: add Tie worn eyewear to Crafting → Tailoring using verified Build42 recipe hooks and the existing server-owned tie transaction.
+- Keep both selected inputs in vanilla processing; consume exactly one material use in successful authoritative completion without replacing the eyewear.
+- Reject worn-state, ownership, broken/tied-state or sandbox failures; disable batch crafting and preserve context-menu support for optional modded eyewear.
+- Add recipe labels/instructions and production localization checks. Preserve the prepared0.6 candidate with hashes; no testing/debug or Java code is restored.
+- Source inspection and offline syntax/integrity checks only. Actual SP/dedicated crafting remains NOT TESTED; G7/G8 stay blocked.
+
+## [0.6.0-dev.1] — 2026-10-14
+
+- Lua-only cleanup: remove testing/debug code and retire Java-dependent finite-retainer actions and the unsafe crafting recipe.
+- Keep server-validated item context-menu tying/untying and read-only historical retainer inspection; preserve existing item data and released artifacts.
+- Fix tie transaction failures, tighten inventory commands, localize item labels and bound tooltip placement.
+- Prepare Workshop content using production-only version/content checks. No game/server or dedicated MP validation; G7/G8 remain blocked.
+- Pre-1.0 MINOR compatibility decision: withdraw experimental retainer action APIs, debugger grants and TieGlasses recipe. Existing legacy tie data remains supported; finite records are retained read-only and do not provide protection.
+
 ## [0.5.0-dev.1] — 2026-10-10
 
 - Add read-only inventory retainer inspection, condition bar and reinforcement breakdown.

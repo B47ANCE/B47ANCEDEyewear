@@ -1,0 +1,94 @@
+{
+  "schema": 1,
+  "version": "0.15.0-dev.1",
+  "tool": "Blender 4.5.7 LTS",
+  "units": "metres; XY ground plane; Z up in editable source",
+  "fbx": "Binary, -Z forward / Y up, FBX_SCALE_ALL, standard axis transform, no bones/animation",
+  "provenance": "Original cloth/leather procedural geometry and atlases; rare mesh/atlas derived from existing original authoring assets. No vanilla/third-party geometry copied.",
+  "runtime": "NOT TESTED in Project Zomboid; final importer orientation, scale and lighting remain runtime gates.",
+  "cord_resize": {
+    "target_footprint_metres": [
+      0.14339999854564667,
+      0.09982500597834587
+    ],
+    "axes_scale": [
+      0.865942010728116,
+      0.5304198065731066,
+      0.5304198065731066
+    ],
+    "reason": "Match mean crafted-retainer width/depth; preserve original source and runtime texture"
+  },
+  "entries": [
+    {
+      "item": "B47ANCEDEyewear.MakeshiftRetainer",
+      "model": "B47ANCEDEyewear.ClothRetainerGround",
+      "mesh": "media/models_X/WorldItems/B47ANCEDEyewearClothRetainerGround.fbx",
+      "mesh_sha256": "836831438b31e55670c3181e9fc4191405585cc1b8b82bdb72cd74c691e5c458",
+      "texture": "media/textures/WorldItems/B47ANCEDEyewearClothRetainerGround.png",
+      "texture_sha256": "a643945e4826833c2054e73ca52b69f515e31822f703c0310c6f32f08c6f855f",
+      "vertices": 708,
+      "triangles": 1412,
+      "dimensions_metres": [
+        0.14339999854564667,
+        0.1007000058889389,
+        0.004985787905752659
+      ],
+      "roundtrip_dimensions_metres": [
+        0.14339999854564667,
+        0.1007000058889389,
+        0.004985787905752659
+      ],
+      "uv_layers": 1,
+      "fbx_roundtrip": "PASS"
+    },
+    {
+      "item": "B47ANCEDEyewear.EyewearRetainer",
+      "model": "B47ANCEDEyewear.LeatherRetainerGround",
+      "mesh": "media/models_X/WorldItems/B47ANCEDEyewearLeatherRetainerGround.fbx",
+      "mesh_sha256": "769b957ec064e58f4a586393933b2fa5efa993694097fbb11023749672e30291",
+      "texture": "media/textures/WorldItems/B47ANCEDEyewearLeatherRetainerGround.png",
+      "texture_sha256": "9dfe39be5922603aba4e4314710e6c39b3289b281279355075ea324346210d2d",
+      "vertices": 676,
+      "triangles": 1220,
+      "dimensions_metres": [
+        0.14339999854564667,
+        0.09895000606775284,
+        0.0029722433537244797
+      ],
+      "roundtrip_dimensions_metres": [
+        0.14339999854564667,
+        0.09895000606775284,
+        0.0029722433537244797
+      ],
+      "uv_layers": 1,
+      "fbx_roundtrip": "PASS"
+    },
+    {
+      "item": "B47ANCEDEyewear.UnbreakableRetainer",
+      "model": "B47ANCEDEyewear.UnbreakableRetainerGround",
+      "mesh": "media/models_X/WorldItems/B47ANCEDEyewearUnbreakableRetainerGround.fbx",
+      "mesh_sha256": "d396157c7ff1f09f8bcf94dbe4bc1d08447360c5b227336059e8583c1b6ab386",
+      "texture": "media/textures/WorldItems/B47ANCEDEyewearUnbreakableRetainerGround.png",
+      "texture_sha256": "1d2ebf89cae60852e4378754ebf189c4dd813eed892ccfe04ceaba3013296741",
+      "vertices": 354,
+      "triangles": 488,
+      "dimensions_metres": [
+        0.14339999854564667,
+        0.09982500970363617,
+        0.014321343041956425
+      ],
+      "roundtrip_dimensions_metres": [
+        0.14339999854564667,
+        0.09982500970363617,
+        0.014321343041956425
+      ],
+      "uv_layers": 1,
+      "fbx_roundtrip": "PASS"
+    }
+  ],
+  "authoring_files": {
+    "RetainerGroundModels.blend": "c0e33ddc16b7db3879b199fb20e8c3fc7382180676b25b5548c6daec68e02f29",
+    "GroundRetainers_Preview.png": "2b7d7cda3627e8e2770a9168c5e0b1ab0d3fe5e660c216bdd506b65c60f84b26"
+  },
+  "generator_sha256": "2c94cd569a03aa4603372b356dab122378fb383f98c18704d7ac059e746e7896"
+}

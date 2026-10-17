@@ -1,0 +1,9 @@
+* text=auto eol=lf
+*.png binary
+*.glb binary
+# Editable assets have byte-exact provenance; preserve original line endings.
+*.obj -text
+*.mtl -text
+
+# Preserve historical evidence bytes rather than silently normalizing old records.
+docs/historical/** -text

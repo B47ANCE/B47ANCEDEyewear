@@ -1,0 +1,138 @@
+{
+  "schema": 1,
+  "version": "0.15.0-dev.1",
+  "tool": "Blender 4.5.7 LTS",
+  "format": "DirectX text xof 0303txt 0032; static, no skin or animation",
+  "attachment": "Bip01_Head",
+  "axes": "Native X up, Y lateral, Z forward; editable Blender Z up, X lateral, -Y forward",
+  "provenance": "Original procedural meshes using original project atlases. Schematic heads are original preview helpers and never shipped.",
+  "runtime": "NOT TESTED in PZ; head coordinates estimated from read-only vanilla accessory bounds; clipping/fit are runtime gates.",
+  "entries": [
+    {
+      "kind": "Cloth",
+      "body": "M",
+      "mesh": "media/models_X/static/clothes/b47ancedeyewear_cloth_m.x",
+      "mesh_sha256": "6ed89e083e3112104c2b3fad906ac76cab8fff12055975b62ef674ff0ca07de4",
+      "texture": "media/textures/WorldItems/B47ANCEDEyewearClothRetainerGround.png",
+      "texture_sha256": "a643945e4826833c2054e73ca52b69f515e31822f703c0310c6f32f08c6f855f",
+      "vertices": 2676,
+      "triangles": 892,
+      "native_min": [
+        0.05250000208616257,
+        -0.06749999523162842,
+        -0.08275000005960464
+      ],
+      "native_max": [
+        0.08250000327825546,
+        0.06749999523162842,
+        -0.01670096069574356
+      ]
+    },
+    {
+      "kind": "Leather",
+      "body": "M",
+      "mesh": "media/models_X/static/clothes/b47ancedeyewear_leather_m.x",
+      "mesh_sha256": "ca574e302e07bb495f0f710837950ff6d416486b5dcad4aa7225de4929ad97a8",
+      "texture": "media/textures/WorldItems/B47ANCEDEyewearLeatherRetainerGround.png",
+      "texture_sha256": "9dfe39be5922603aba4e4314710e6c39b3289b281279355075ea324346210d2d",
+      "vertices": 5196,
+      "triangles": 1732,
+      "native_min": [
+        0.05400000140070915,
+        -0.06749999523162842,
+        -0.08289182931184769
+      ],
+      "native_max": [
+        0.08250000327825546,
+        0.06749999523162842,
+        -0.01670096069574356
+      ]
+    },
+    {
+      "kind": "Unbreakable",
+      "body": "M",
+      "mesh": "media/models_X/static/clothes/b47ancedeyewear_unbreakable_m.x",
+      "mesh_sha256": "08afeb050feb85c4547ca7f563a6c58aae0ea69e695a34b4f76f840411e94b64",
+      "texture": "media/textures/WorldItems/B47ANCEDEyewearUnbreakableRetainerGround.png",
+      "texture_sha256": "1d2ebf89cae60852e4378754ebf189c4dd813eed892ccfe04ceaba3013296741",
+      "vertices": 2040,
+      "triangles": 680,
+      "native_min": [
+        0.05339999869465828,
+        -0.06599999964237213,
+        -0.08560000360012054
+      ],
+      "native_max": [
+        0.07900000363588333,
+        0.06599999964237213,
+        -0.006000000052154064
+      ]
+    },
+    {
+      "kind": "Cloth",
+      "body": "F",
+      "mesh": "media/models_X/static/clothes/b47ancedeyewear_cloth_f.x",
+      "mesh_sha256": "e72e7a079cc969618c1ca6998b468481bd6818067ceb2a3c9291c368ce333317",
+      "texture": "media/textures/WorldItems/B47ANCEDEyewearClothRetainerGround.png",
+      "texture_sha256": "a643945e4826833c2054e73ca52b69f515e31822f703c0310c6f32f08c6f855f",
+      "vertices": 2676,
+      "triangles": 892,
+      "native_min": [
+        0.04749999940395355,
+        -0.0625,
+        -0.08275000005960464
+      ],
+      "native_max": [
+        0.07750000059604645,
+        0.0625,
+        -0.01670096069574356
+      ]
+    },
+    {
+      "kind": "Leather",
+      "body": "F",
+      "mesh": "media/models_X/static/clothes/b47ancedeyewear_leather_f.x",
+      "mesh_sha256": "952590b5811d516e7c16f15e800c4129b04f50c950822dc03c362cd2b6b8093f",
+      "texture": "media/textures/WorldItems/B47ANCEDEyewearLeatherRetainerGround.png",
+      "texture_sha256": "9dfe39be5922603aba4e4314710e6c39b3289b281279355075ea324346210d2d",
+      "vertices": 5196,
+      "triangles": 1732,
+      "native_min": [
+        0.049000002443790436,
+        -0.0625,
+        -0.08289182931184769
+      ],
+      "native_max": [
+        0.07750000059604645,
+        0.0625,
+        -0.01670096069574356
+      ]
+    },
+    {
+      "kind": "Unbreakable",
+      "body": "F",
+      "mesh": "media/models_X/static/clothes/b47ancedeyewear_unbreakable_f.x",
+      "mesh_sha256": "8d60a6c2b32062810ac22f1eb4d415c286e5415cc78f63f450afb4fc3862db56",
+      "texture": "media/textures/WorldItems/B47ANCEDEyewearUnbreakableRetainerGround.png",
+      "texture_sha256": "1d2ebf89cae60852e4378754ebf189c4dd813eed892ccfe04ceaba3013296741",
+      "vertices": 2040,
+      "triangles": 680,
+      "native_min": [
+        0.04839999973773956,
+        -0.061000000685453415,
+        -0.08560000360012054
+      ],
+      "native_max": [
+        0.07400000095367432,
+        0.061000000685453415,
+        -0.006000000052154064
+      ]
+    }
+  ],
+  "authoring_files": {
+    "RetainerWornModels.blend": "a504acc8b074fca10a74089822c5f7fb4a9a45b9a9bb75b1a546ae4465c8b9b1",
+    "WornRetainers_Preview.png": "8a2fe91896fa3dda37029859f36aaf6c28dd815274677e368c77d2da0ebe62ab"
+  },
+  "generator_sha256": "251379d8375107d9d68fd8912b03f96738599904265c11f365695dda1ce96a58",
+  "helper_sha256": "2c94cd569a03aa4603372b356dab122378fb383f98c18704d7ac059e746e7896"
+}

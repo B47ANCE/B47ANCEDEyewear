@@ -1,142 +1,141 @@
-> **Lua-only policy (2026-10-12):** Custom Java code, agents, bridges and JAR mod dependencies are prohibited. Older bridge documentation is historical and superseded. The current snapshot has disabled bridge-dependent retainer paths awaiting Lua-only redesign; it does not supply functioning finite-retainer catches. Offline tests do not prove in-game or dedicated multiplayer behavior. Workshop publication remains a separate operation.
 # B47ANCE'd Eyewear
 
-
-
-Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.5.0-dev.1.
-
-Current source adds a finite makeshift-retainer development candidate: 14 materials,
-same-material layering, tape reinforcement, durability display and server-validated
-installation/removal. It requires the separately loaded, exact-build native bridge
-to intercept the original post-roll fall. The bridge is not automatically installed
-by subscribing to the Workshop item. Permanent reusable retainers, loot and worn
-visuals remain blocked on safe actual-item ownership/persistence.
-
-See [current implementation and validation](docs/RETAINER_EXPANSION_IMPLEMENTATION.md).
-Workshop remains on 0.3.0-dev.1. The legacy behavior described below remains the
-fallback when the bridge is unavailable. No in-game or dedicated MP readiness is claimed.
-
-
-Wear glasses, carry twine, a rubber band, dental floss, or thread in your main
-
-inventory, then use the **Tie glasses** crafting recipe and select the worn pair
-
-and a material. One use is consumed (one whole rubber band). The attached tie
-
-stays with the original glasses until it is untied from that item's right-click
-
-menu; untying does not refund material.
-
-
-
-You can also right-click a worn supported pair or hat. An untied item submenu
-
-contains **Tie**, followed by only the tying materials currently in your
-
-inventory. A tied item submenu contains **Untie** only. If no materials are
-
-available, Tie is disabled with an explanation. Multiplayer requests are
-
-validated and applied by the server.
-
-No skills, tools, dependencies, new loot, or prescription changes.
-
-
-
-Supports vanilla glasses, including Face-slot Reading Glasses, original
-
-Authentic Z and Faded's Authentic Z 42.20.2.1 glasses. The recipes enumerate
-
-all tieable current vanilla glasses definitions and the six shared Authentic Z
-
-definitions, so only actual eyewear is selectable. Eyepatches, masks, clown
-
-noses, monocles, and non-clothing props remain excluded. Vanilla eyewear uses
-
-item-specific untied knock-off profiles; see `docs/RETENTION_PROFILES.md`.
-
-Monocles use a 70 ChanceToFall profile and cannot be tied. Frockin uses vanilla eyewear and
-
-has no distinct eyewear item definition requiring an adapter. Compatibility is
-
-host-tested; native validation is pending.
-
-
-
-Source: `src/B47ANCEDEyewear/42/`. Development candidate; native and multiplayer
-
-validation remain UNVERIFIED. See `docs/TESTING.md`.
-
-
-
-For single-player testing, enter `B47ANCEDEyewearTestKit()` in the Lua debugger.
-
-It gives every supported vanilla and Authentic Z pair, both supported hats, and
-
-two of every supported material. Compatibility items that are unavailable are
-
-listed in the console. The kit is granted once per character; use
-
-`B47ANCEDEyewearTestKit(true)` to grant another.
-
-
-
-Workshop staging is generated with `./Build-Workshop.ps1`. It runs host checks,
-
-packages only runtime content, creates a 256x256 Workshop preview, preserves
-
-existing Workshop identity/visibility on rebuild, and verifies source/staging/ZIP
-
-hashes. Tests, documentation, build scripts, and caches stay outside the upload.
-
-Default staging: `C:/Users/willi/Zomboid/Workshop/B47ANCEDEyewear`.
-
-
-
-Identity migration: see `docs/IDENTITY_MIGRATION.md`. Existing servers must use
-
-`Mods=B47ANCEDEyewear`; Workshop ID `3799754736` is preserved. Legacy item state
-
-is read compatibly and migrated by authority; existing-save runtime acceptance
-
-is pending. No SandboxVars existed in the baseline.
-
-
-
-Canonical version: root `VERSION`; policy and inventory: `docs/VERSION_POLICY.md`,
-
-`version-inventory.json`. Current validation: `docs/RENAME_VALIDATION.md`.
-
-Workshop development build was published on 2026-10-04 with replacement preview
-artwork; see docs/WORKSHOP_DEVELOPMENT_DEPLOYMENT.md. Native and dedicated gates
-remain open.
-
-Historical packages and artwork are preserved under `historical/`, excluded from
-
-active distribution. Earlier preparation records describe their original
-no-publication state; the later development upload is documented separately.
-
-
-
-Retainer expansion is currently BLOCKED at the native post-knock-off-roll hook
-
-and reusable permanent-item storage. Source audits, original inventory art and
-
-3D model sources are prepared outside runtime source; no retainer gameplay or
-
-loot is enabled. See `docs/RETAINER_SOURCE_AUDIT.md`,
-
-`docs/RETAINER_IMPLEMENTATION_HANDOFF.md`, and `assets/retainers/README.md`.
-
-
-
-Native catch bridge development spike: build and offline loading are verified
-
-separately in `docs/NATIVE_BRIDGE_REPORT.md`. Recommendation REVISE; real PZ
-
-combat, dedicated multiplayer and Linux loading remain untested. The bridge and
-
-fixture stay outside runtime source and are not automatically deployed.
-
-
-Current read-only inventory tooltip implementation and validation: docs/RETAINER_TOOLTIP_INTEGRATION.md (from docs, use RETAINER_TOOLTIP_INTEGRATION.md). Vanilla tooltip remains intact; companion panel displays finite condition and actual reinforcement contributions. Runtime UI and gameplay synchronization remain untested.
+Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.15.0-dev.1.
+
+## Current crafted-retainer tape addition
+
+0.15.0-dev.1 adds one paid adhesive/duct-tape reinforcement to the actual crafted
+cloth/leather retainer, worn or unworn in the main inventory. Tape increases native
+wear resistance by default +1/+2, without repairing condition or replacing the
+item. A server sandbox multiplier snapshots new bonuses. Right-click the retainer
+itself; already taped, broken, unavailable and unbreakable targets have no action.
+See [crafted-retainer tape](docs/CRAFTED_RETAINER_TAPE.md). Current SP/dedicated
+gameplay NOT TESTED. The user authorized 0.15 Workshop MP test distribution on
+2026-10-16; generated publication provenance records the actual outcome.
+
+## Improvised-material reinforcement (0.14 milestone)
+
+0.14.0-dev.1 adds fourteen direct-tie materials, three-strand thin-material
+reinforcement, one adhesive/duct-tape reinforcement, material-specific native
+condition budgets and server-validated zip-tie cutting. See
+[Tie materials and reinforcement](docs/TIE_REINFORCEMENT.md). Current gameplay is
+NOT TESTED in SP or dedicated MP. Historical 0.13.1 acceptance does not verify
+that gameplay. The authorized 0.14 Workshop distribution and its generated record
+remain historical; the authorized 0.15 upload records its own exact provenance.
+
+Lua-only development build targeting Project Zomboid 42.21. No custom Java/JAR,
+test suite or debugger grants are shipped. SP/dedicated gameplay is NOT TESTED.
+
+Wear compatible glasses or a straw/summer hat and keep one of the fourteen
+[verified tying materials](docs/TIE_REINFORCEMENT.md) in your main inventory,
+and right-click → Tie. Crafting → Tailoring → Tie worn eyewear uses the same
+server transaction. One material use creates/equips a finite improvised tie;
+the original eyewear, condition, prescription, model, ID and custom name survive.
+Monocles remain incompatible. Untie restores the name and consumes the matching
+tie without refunding material. The matching tie slot and a little inventory
+space must be free. Transfer the eyewear and its linked tie together; wearing
+both activates protection. Taking off either suspends protection. Paid legacy
+ties upgrade once when worn, without a second payment; missing newer tie items
+never receive free replacements.
+
+Crafting → Tailoring also provides:
+
+- **Make cloth eyewear retainer:** 2 ripped sheets + 2 uses of twine or thread.
+- **Make eyewear retainer:** 2 leather strips + 4 thread uses + 2 rubber bands;
+  a sewing needle and usable scissors are kept.
+
+Wear these actual items in the separate Eyewear Retainer slot. One unbroken
+retainer protects one compatible pair without an active improvised tie, selected
+in worn-slot order. Hats keep the direct Tie flow. Take Off preserves the same
+retainer and its remaining condition. No learning requirement or workbench applies.
+
+**All improvised ties and both crafted retainers now have durability.** They lose
+native condition from eligible head/clothing damage. Defaults give a one-in-1
+condition-loss chance for improvised ties, one-in-2 for cloth and one-in-4 for
+leather. New improvised ties have material-specific condition budgets and paid
+strand/tape reinforcement; existing ties and reusable cloth/leather keep their
+original ten-point scales. Server sandbox
+settings adjust these wear-resistance values (integer 1–100). Larger values last
+longer; these are not guaranteed hit counts. The tooltip shows actual remaining
+condition, status and a live bar. Native headwear layering and damage ordering
+apply; a breaking blow can also dislodge the eyewear. No hidden knock-off roll is
+counted and no Java bridge, second Lua hit roll or post-drop re-equipping is used.
+See [durability and migration](docs/DURABILITY.md).
+
+**Unbreakable Eyewear Retainer** is rare, non-craftable loot in school lockers,
+optical-store containers and pharmacy cabinets. Its original black-cord artwork
+and no-coverage/no-wear definition remain unchanged. RareRetainerLootChance is
+0.25% per eligible new fill by default (0–5%; zero disables spawns). Existing
+filled containers remain unchanged. Crafted cloth and leather keep distinct icons;
+improvised ties reuse the cloth icon and now have a shared neutral knotted-cord
+worn appearance, with separate male/female Eyes/Face rear cords and a Hat chin
+cord. See [improvised visuals](docs/IMPROVISED_TIE_MODELS.md).
+All three retainer items have distinct 3D
+ground models: cloth loops, stitched leather and black cord with rubber sleeves.
+All three also have head-attached worn models with male/female variants.
+In-game fit and clipping are untested. See [worn assets](docs/WORN_MODELS.md) and
+[ground assets](docs/GROUND_MODELS.md).
+
+Server sandbox settings also control new tying, untied-eyewear retention,
+strapped-headwear fall value, wearable crafting/protection and retained-eyewear
+fall value (default 0). Disabling new tying does not erase existing ties. Disabling
+wearable protection does not repair or delete actual items; worn finite clothing
+can still wear. Historical schema-2 records remain read-only and inactive.
+
+Authoritative source: `src/B47ANCEDEyewear/42/`.
+Workshop item: https://steamcommunity.com/sharedfiles/filedetails/?id=3799754736
+Public source: https://github.com/B47ANCE/B47ANCEDEyewear
+
+Published 0.13.1-dev.1 fixes missing native clothing GUID registrations and rejects
+unresolved tie visuals before publication/equip/payment. It includes the prior
+worn improvised-tie visuals. See [clothing sync fix](docs/CLOTHING_SYNC_FIX.md).
+The user authorized Workshop MP testing distribution on 2026-10-15. The uploader
+records the actual outcome and exact package/source hashes in the generated
+publication record. The prior 0.12.0-dev.1 package/checksum/provenance remain
+preserved with verified hashes and ZIP CRC. No local deployment or game/server
+launch is authorized. G7 BLOCKED / NOT TESTED and stable G8 BLOCKED remain unchanged.
+
+See [architecture](docs/ARCHITECTURE.md), [retainer items](docs/RETAINER_ITEMS.md),
+[validation](docs/VALIDATION.md) and [version policy](docs/VERSION_POLICY.md).
+Historical evidence retains its actual version and environment.
+
+## Development tools
+
+Production preflight compiles Lua and checks source/assets without running gameplay:
+
+```powershell
+python -B scripts/check_versions.py
+python -B scripts/validate_release.py
+```
+
+Release tools require requirements-tools.txt; Python is not a runtime dependency.
+Build-Workshop.ps1 prepares source/staging/ZIP provenance; Publish-Workshop.ps1
+-PrepareOnly checks canonical description/change-note paragraphs and existing ID/
+visibility without uploading. Deployment and publication require separate requests.
+
+## Project thumbnail
+
+The user-selected artwork is the canonical [thumbnail.png](thumbnail.png), kept
+as the exact original 1254x1254 PNG. [Thumbnail provenance](docs/THUMBNAIL.md)
+records its hash and the preserved previous artwork. The existing packager derives
+its 256x256 Workshop preview from this source when packaging is requested.
+
+The 0.13.2-dev.1 thumbnail-only iteration was followed by the current
+0.14.0-dev.1 reinforcement iteration. The user requested Workshop publication on
+2026-10-16. Build-Workshop.ps1 prepares the exact committed source and selected
+thumbnail; Publish-Workshop.ps1 preserves item 3799754736 and public visibility.
+The generated dist/workshop-publish/publication-0.14.0-dev.1.json records actual
+upload/API verification, package/source hashes and the Steam client restart.
+SP/current dedicated gameplay remain NOT TESTED; stable G8 remains BLOCKED.
+Runtime evidence stays tied to its original version/package.
+
+## Authorized 0.15 development publication
+
+The user requested Workshop publication on 2026-10-16. Canonical inputs remain
+WORKSHOP_DESCRIPTION.txt, WORKSHOP_CHANGE_NOTE.txt and thumbnail.png. Existing
+Build-Workshop.ps1 / Publish-Workshop.ps1 preserve item 3799754736, App 108600,
+development title and public visibility. Generated
+ dist/workshop-publish/publication-0.15.0-dev.1.json records actual SteamCMD/API
+verification, exact source/package/text hashes and graceful Steam restart.
+Preparation is not upload proof. Current SP/dedicated NOT TESTED and stable
+G8 BLOCKED; historical 0.14 upload and 0.13.1 runtime evidence retain their versions.

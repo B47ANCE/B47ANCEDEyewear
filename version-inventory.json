@@ -19,15 +19,83 @@
       "pattern": "^\\[b\\]Version (?P<version>[^\\s\\[]+)\\[/b\\]$"
     },
     {
-      "path": "native/README.md",
+      "path": "docs/VALIDATION.md",
       "pattern": "^Project Version: (?P<version>\\S+)$"
     },
     {
-      "path": "docs/RETAINER_TOOLTIP_INTEGRATION.md",
+      "path": "docs/CLEANUP_AND_WORKSHOP_PREPARATION.md",
       "pattern": "^Project Version: (?P<version>\\S+)$"
     },
     {
-      "path": "docs/WORKSHOP_DEPLOYMENT_0_5.md",
+      "path": "docs/RELEASE_STATUS.json",
+      "pattern": "^  \"project_version\": \"(?P<version>[^\\\"]+)\""
+    },
+    {
+      "path": "docs/API_EVIDENCE.md",
+      "pattern": "^Project Version: (?P<version>\\S+)$"
+    },
+    {
+      "path": "docs/VERSIONING.md",
+      "pattern": "^Current development iteration: (?P<version>\\S+)\\. Pre-1\\.0"
+    },
+    {
+      "path": "docs/ROADMAP.md",
+      "pattern": "^Current development source is (?P<version>[^:\\s]+):"
+    },
+    {
+      "path": "docs/RETAINER_ITEMS.md",
+      "pattern": "^Project Version: (?P<version>\\S+)$"
+    },
+    {
+      "path": "docs/RARE_RETAINER.md",
+      "pattern": "^Project Version: (?P<version>\\S+)$"
+    },
+    {
+      "path": "docs/DURABILITY.md",
+      "pattern": "^Project Version: (?P<version>\\S+)$"
+    },
+    {
+      "path": "docs/GROUND_MODELS.md",
+      "pattern": "^Project Version: (?P<version>\\S+)$"
+    },
+    {
+      "path": "assets/retainers/ground/ground-models.json",
+      "pattern": "^  \"version\": \"(?P<version>[^\\\"]+)\""
+    },
+    {
+      "path": "docs/WORN_MODELS.md",
+      "pattern": "^Project Version: (?P<version>\\S+)$"
+    },
+    {
+      "path": "assets/retainers/worn/worn-models.json",
+      "pattern": "^  \"version\": \"(?P<version>[^\\\"]+)\""
+    },
+    {
+      "path": "docs/IMPROVISED_TIE_MODELS.md",
+      "pattern": "^Project Version: (?P<version>\\S+)$"
+    },
+    {
+      "path": "assets/retainers/improvised/improvised-models.json",
+      "pattern": "^  \"version\": \"(?P<version>[^\\\"]+)\""
+    },
+    {
+      "path": "docs/CLOTHING_SYNC_FIX.md",
+      "pattern": "^Project Version: (?P<version>\\S+)$"
+    },
+    {
+      "path": "docs/THUMBNAIL.md",
+      "pattern": "^Project Version: (?P<version>\\S+)$"
+    },
+    {
+      "path": "assets/branding/thumbnail.json",
+      "pattern": "^  \"project_version\": \"(?P<version>[^\\\"]+)\""
+    },
+    {
+      "path": "docs/TIE_REINFORCEMENT.md",
+      "pattern": "^Project Version: (?P<version>\\S+)$"
+    },
+    {
+      "path": "docs/CRAFTED_RETAINER_TAPE.md",
       "pattern": "^Project Version: (?P<version>\\S+)$"
     }
   ],
@@ -66,8 +134,8 @@
     },
     {
       "category": "compatibility",
-      "reference": "Core.lua: data.version=1; TestKit.lua: VERSION=1; Build-Workshop.ps1: version=1",
-      "reason": "Persistence schema, kit-grant schema and Workshop format"
+      "reference": "Core.lua: data.version=1; Build-Workshop.ps1: version=1",
+      "reason": "Persistence schema, Workshop format"
     },
     {
       "category": "framework",
@@ -78,16 +146,11 @@
       "category": "inventory-schema",
       "reference": "version-inventory.json: schema",
       "reason": "Inventory format"
-    },
-    {
-      "category": "compatibility",
-      "reference": "native/src/b47ance/bridge/Patch.java: SHA-256 build pins; native/build/Version.java and MANIFEST.MF",
-      "reason": "Build-specific class hashes are independent of Project Version; generated Java constant/manifest read root VERSION and are checked by the native offline harness; development build outputs are excluded from mod release packages."
     }
   ],
   "historical": [
     {
-      "reference": "docs/RETAINER_IMPLEMENTATION_HANDOFF.md and docs/ROADMAP.md: planned 0.4.0-dev.1; CHANGELOG.md preparation record",
+      "reference": "docs/historical/RETAINER_IMPLEMENTATION_HANDOFF.md and docs/ROADMAP.md: planned 0.4.0-dev.1; CHANGELOG.md preparation record",
       "reason": "Future feature version decision; not enabled runtime and not a current version mirror"
     },
     {
@@ -103,16 +166,68 @@
       "reason": "Version history and compatibility decision"
     },
     {
-      "reference": "docs/IDENTITY_MIGRATION.md; docs/RENAME_VALIDATION.md; docs/RETAINER_SOURCE_AUDIT.md; docs/RETAINER_IMPLEMENTATION_HANDOFF.md; docs/RETAINER_VALIDATION.md; docs/NATIVE_BRIDGE_REPORT.md; docs/NATIVE_RUNTIME_VALIDATION.md; docs/WORKSHOP_DEVELOPMENT_DEPLOYMENT.md",
+      "reference": "docs/historical/IDENTITY_MIGRATION.md; docs/historical/RENAME_VALIDATION.md; docs/historical/RETAINER_SOURCE_AUDIT.md; docs/historical/RETAINER_IMPLEMENTATION_HANDOFF.md; docs/historical/RETAINER_VALIDATION.md; docs/historical/NATIVE_BRIDGE_REPORT.md; docs/historical/NATIVE_RUNTIME_VALIDATION.md; docs/historical/WORKSHOP_DEVELOPMENT_DEPLOYMENT.md",
       "reason": "Retained exact 0.3.0-dev.1 source audits, validation and publication evidence; not relabeled as 0.4.0 results."
     },
     {
-      "reference": "docs/RETAINER_EXPANSION_IMPLEMENTATION.md",
+      "reference": "docs/historical/RETAINER_EXPANSION_IMPLEMENTATION.md",
       "reason": "Historical 0.4.0-dev.1 offline gameplay evidence."
     },
     {
       "reference": "native/build (0.4.0-dev.1 compiled bridge and prior test logs)",
       "reason": "Previous native experiment outputs; no current UI release artifact or rebuilt bridge."
+    },
+    {
+      "reference": "native/README.md; docs/historical/RETAINER_TOOLTIP_INTEGRATION.md; docs/historical/WORKSHOP_DEPLOYMENT_0_5.md",
+      "reason": "0.5.0-dev.1 UI/publication evidence; native experiments quarantined outside active repository under cleanup ledger."
+    },
+    {
+      "reference": "Retired native/test/research sources and former docs/TESTING.md",
+      "reason": "Recoverable private external quarantine; removed from current development and release tooling by explicit user request."
+    },
+    {
+      "reference": "docs/historical/VERSIONING_BASELINE.md",
+      "reason": "Preserved original 0.3 version-adoption record; not current development guidance."
+    },
+    {
+      "reference": "dist/historical/0.6.0-dev.1-prepared; docs/CLEANUP_AND_WORKSHOP_PREPARATION.md historical cleanup decision",
+      "reason": "Prepared 0.6.0-dev.1 ZIP/checksum/provenance and historical cleanup are preserved without relabeling as current crafting validation."
+    },
+    {
+      "reference": "dist/historical/0.7.0-dev.1-published/release-provenance.json; dist/workshop-publish/publication-0.7.0-dev.1.json",
+      "reason": "Published 0.7.0-dev.1 provenance preserved byte-for-byte before authorized 0.9 packaging; never relabeled as current evidence. No 0.8 package was produced."
+    },
+    {
+      "reference": "assets/retainers/ART_PROVENANCE.md: crafted retainer icons 0.9.0-dev.1 generation record",
+      "reason": "Original generated art provenance remains tied to its creation iteration; do not relabel prompts or image generation as future validation."
+    },
+    {
+      "reference": "dist/historical/0.9.0-dev.1-published; dist/workshop-publish/publication-0.9.0-dev.1.json; assets/retainers/ART_PROVENANCE.md: crafted icon creation",
+      "reason": "Actual published 0.9.0-dev.1 package, hashes, provenance and icon-generation evidence are preserved; not current durability validation."
+    },
+    {
+      "reference": "dist/historical/0.10.0-dev.1-published; dist/workshop-publish/publication-0.10.0-dev.1.json",
+      "reason": "Actual published durability package and provenance preserved unchanged; never relabeled as ground-model validation."
+    },
+    {
+      "reference": "docs/VALIDATION.md: Ground model source milestone; docs/API_EVIDENCE.md: Ground presentation (0.11 source addition); CHANGELOG.md: 0.11.0-dev.1",
+      "reason": "Prior 0.11.0-dev.1 asset implementation and offline evidence retain their actual version; not relabeled as the later sizing correction."
+    },
+    {
+      "reference": "dist/historical/0.11.1-dev.1-published; dist/workshop-publish/publication-0.11.1-dev.1.json; docs/VALIDATION.md: authorized ground-model distribution",
+      "reason": "Actual published ground-model package/provenance and prior offline records retain their original versions; not worn-model runtime evidence."
+    },
+    {
+      "reference": "dist/historical/0.12.0-dev.1-published; dist/workshop-publish/publication-0.12.0-dev.1.json; docs/VALIDATION.md: authorized worn-model distribution",
+      "reason": "Actual published retainer worn-model package and prior evidence preserve their observed version; not improvised-tie runtime proof."
+    },
+    {
+      "reference": "dist/historical/0.13.1-dev.1-published; dist/workshop-publish/publication-0.13.1-dev.1.json and repeat-upload records; assets/branding/Eyewear_Thumbnail_Previous.png",
+      "reason": "Actual published source/package/provenance and previous artwork remain unchanged; prior runtime evidence is not relabeled as the artwork iteration."
+    },
+    {
+      "reference": "dist/historical/0.14.0-dev.1-published; dist/workshop-publish/publication-0.14.0-dev.1.json",
+      "reason": "Published ZIP/checksum/provenance preserved unchanged with hashes, ledger and ZIP CRC before the 0.15 source-only iteration. Never relabel as crafted-retainer tape evidence."
     }
   ]
 }

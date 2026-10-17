@@ -1,10 +1,13 @@
 B47ANCEDEyewear = B47ANCEDEyewear or {}
 local S = B47ANCEDEyewear
 local R = require 'B47ANCEDEyewear/Retention'
-local F = require 'B47ANCEDEyewear/Retainers'
-S.materials = { ['Base.Twine'] = true, ['Base.RubberBand'] = true,
-    ['Base.DentalFloss'] = true, ['Base.Thread'] = true,
-    ['Base.Thread_Aramid'] = true, ['Base.Thread_Sinew'] = true }
+local T = require 'B47ANCEDEyewear/WearableRetainers'
+local D = require 'B47ANCEDEyewear/TieDurability'
+local M = require 'B47ANCEDEyewear/TieMaterials'
+S.RetainerItems = T
+S.TieDurability = D
+S.materials = {}
+for kind in pairs(M.materials) do S.materials[kind] = true end
 
 -- Hats that share the string/tether mechanic. Begin with the straw hat and the
 -- summer sun hat; compatibility can extend this through the same list.
@@ -81,9 +84,14 @@ function S.isTied(item)
     return data ~= nil and data.tied
 end
 
+function S.hasActiveTie(character, item)
+    local data = S.state(item)
+    return data ~= nil and data.tied and D.active(character, item, data)
+end
+
 function S.isMaterial(item)
     return item ~= nil and S.materials[item:getFullType()] == true
-        and (not instanceof(item, 'DrainableComboItem') or item:getCurrentUses() >= 1)
+        and M.usable(item)
 end
 
 -- Keep the existing item, model, texture and instance ID.  Only its displayed
@@ -102,7 +110,7 @@ end
 
 function S.applyTiedName(item,data)
     if not item or not data or type(data.name) ~= "string" or not item.setName then return end
-    item:setName(data.name .. " (Tied)")
+    item:setName(getText('UI_B47ANCEDEyewear_TiedName', data.name))
     if item.setCustomName then item:setCustomName(true) end
 end
 
@@ -112,23 +120,96 @@ function S.restoreName(item,data)
     if item.setCustomName then item:setCustomName(data.customName == true) end
 end
 
-function S.valid(character, item, material, untie)
+local function ownsWornItem(character, item)
     if not character or character:isDead() or not S.isTieable(item) then return false end
     local inventory = character:getInventory()
-    if not inventory:contains(item) or not character:isEquippedClothing(item) then return false end
-    -- Finite eyewear uses revisioned retainer intents, never the legacy unlimited-tie recipe.
-    if S.isGlasses(item) and (F.available() or F.state(item)) then return false end
-    if untie then return S.isTied(item) end
-    return not item:isBroken() and not S.isTied(item)
-        and item:getChanceToFall() > 0 and item:getChanceToFall() <= 100
-        and S.isMaterial(material) and inventory:contains(material)
+    return inventory ~= nil and item:getContainer() == inventory and inventory:contains(item)
+        and character:isEquippedClothing(item)
 end
 
+-- Item-only eligibility also supports vanilla crafting previews without a player.
+function S.isReadyToTie(item)
+    return S.isTieable(item) and R.options().tying
+        and not item:isBroken() and not S.isTied(item)
+        and item:getChanceToFall() > 0 and item:getChanceToFall() <= 100
+end
+
+function S.canTie(character, item)
+    return ownsWornItem(character, item) and S.isReadyToTie(item) and D.canInstall(character, item, S)
+end
+
+function S.canUseMaterial(character, material)
+    if not character or character:isDead() or not S.isMaterial(material) then return false end
+    local inventory = character:getInventory()
+    return inventory ~= nil and material:getContainer() == inventory and inventory:contains(material)
+end
+
+function S.needsCutter(item)
+    local data = S.state(item)
+    local material = data and M.materials[data.material]
+    return data ~= nil and data.tied and material ~= nil and material.cutting == true
+end
+
+function S.valid(character, item, material, untie, tool)
+    if untie then return ownsWornItem(character, item) and S.isTied(item)
+        and (not S.needsCutter(item) or M.cutter(character, tool)) end
+    return S.canTie(character, item) and S.canUseMaterial(character, material)
+end
+
+-- Bind every queued command to this exact link/state, including removal and Tie.
+-- Native condition damage may occur while an action runs; it is read at commit.
+function S.snapshot(character, item)
+    if T.isCrafted(item) then
+        local tape = T.tapeState(item)
+        return {tieId=false,revision=tape and tape.revision or 0,tied=false}
+    end
+    local data = S.state(item)
+    local tie = data and D.item(character, item, data)
+    local link = tie and D.state(tie)
+    return {tieId=data and data.tieId or false, revision=link and link.revision or 0,
+        tied=data ~= nil and data.tied == true}
+end
+
+function S.matchesRequest(character, item, args)
+    if not item or type(args)~='table' then return false end
+    local expected = S.snapshot(character,item)
+    return args.tieId==expected.tieId and args.revision==expected.revision and args.tied==expected.tied
+end
+
+function S.canReinforce(character, item, material, tape)
+    if not ownsWornItem(character,item) or not R.options().tying or not S.isTied(item)
+        or not material or not M.usable(material) then return false end
+    local inventory = character:getInventory()
+    if material:getContainer()~=inventory or not inventory:contains(material) then return false end
+    local tie = D.item(character,item,S.state(item))
+    local link = D.state(tie)
+    if not link or not D.active(character,item,S.state(item)) or link.revision>=2147483646 then return false end
+    if tape then
+        return M.tapes[material:getFullType()] ~= nil and not link.tape
+            and not M.materials[link.material].cutting
+    end
+    return material:getFullType()==link.material and link.strands<M.materials[link.material].layers
+end
+
+function S.validAction(character,item,material,operation,tool)
+    if operation=='RetainerTape' then return T.canTape(character,item,material) end
+    if operation=='Tie' then return S.valid(character,item,material,false) end
+    if operation=='Untie' then return S.valid(character,item,nil,true,tool) end
+    if operation=='Reinforce' or operation=='Tape' then
+        return S.canReinforce(character,item,material,operation=='Tape')
+    end
+    return false
+end
+
+local syncFailureReported = false
 local function syncChangedItem(character,item)
-    syncItemModData(character,item)
-    -- ModData sync alone does not include display name or clothing fields.
-    -- Build 42 exposes syncItemFields for those changes in multiplayer.
-    if type(syncItemFields) == "function" then syncItemFields(character,item) end
+    local metadata,err=pcall(syncItemModData,character,item)
+    local fields,fieldError=pcall(syncItemFields,character,item)
+    if (not metadata or not fields) and not syncFailureReported then
+        syncFailureReported=true
+        print('[B47ANCEDEyewear] Item synchronization failed: '..tostring(err or fieldError))
+    end
+    return metadata and fields
 end
 
 function S.migrateState(character, item)
@@ -162,82 +243,152 @@ end
 function S.tie(character, item, material)
     if isClient() or not S.valid(character, item, material, false) then return false end
     local name,customName=S.captureName(item)
-    local data={version=1,tied=true,original=item:getChanceToFall(),material=material:getFullType(),name=name,customName=customName}
-    -- Complete the retained item mutation before consuming the material. This
-    -- prevents a later item-update failure from charging the material without
-    -- leaving the glasses tied.
-    item:getModData().B47ANCEDEyewear=data
-    S.applyTiedName(item,data)
-    item:setChanceToFall(0)
+    local modData=item:getModData()
+    local previous=modData.B47ANCEDEyewear
+    local original=item:getChanceToFall()
+    local container,uses=material:getContainer(),material:getCurrentUses()
+    local data={version=1,tied=true,original=original,material=material:getFullType(),name=name,customName=customName}
+    local tie
+    local function rollback()
+        modData.B47ANCEDEyewear=previous
+        if name then item:setName(name);item:setCustomName(customName) end
+        item:setChanceToFall(original)
+        D.discard(character, tie)
+    end
+    local changed,changeError=pcall(function()
+        modData.B47ANCEDEyewear=data
+        S.applyTiedName(item,data)
+        tie = D.install(character, item, data, S)
+        assert(tie, 'The improvised tie slot or clothing visual is unavailable')
+        item:setChanceToFall(0)
+    end)
+    if not changed then
+        rollback()
+        print('[B47ANCEDEyewear] Tie failed: '..tostring(changeError))
+        return false
+    end
+    -- UseAndSync can consume successfully before its network notification throws.
+    local paid,useError=pcall(M.consume,character,material)
+    local consumed=material:getContainer()~=container or not container:contains(material) or material:getCurrentUses()<uses
+    if not consumed then
+        rollback()
+        print('[B47ANCEDEyewear] Material use did not consume a use: '..tostring(useError))
+        return false
+    end
+    if not paid then print('[B47ANCEDEyewear] Material consumed; use notification failed: '..tostring(useError)) end
     syncChangedItem(character,item)
-    material:UseAndSync()
     return true
 end
 
-function S.untie(character, item)
-    if isClient() or not S.valid(character, item, nil, true) then return false end
-    S.migrateState(character, item)
+function S.reinforce(character,item,material,tape)
+    if isClient() or not S.canReinforce(character,item,material,tape) then return false end
+    local tie = D.item(character,item,S.state(item))
+    local previous = D.state(tie)
+    local nextState = {}
+    for key,value in pairs(previous) do nextState[key]=value end
+    local addition = previous.base
+    if tape then
+        nextState.tape = material:getFullType()
+        addition = nextState.tape=='Base.DuctTape' and previous.duct or previous.adhesive
+    else
+        nextState.strands = previous.strands+1
+    end
+    nextState.capacity, nextState.revision = previous.capacity+addition, previous.revision+1
+    if nextState.capacity>M.limit then return false end
+    local condition = tie:getCondition()
+    local container,uses = material:getContainer(),material:getCurrentUses()
+    local function rollback()
+        tie:getModData()[D.key]=previous
+        tie:setConditionNoSound(condition)
+    end
+    local changed,err = pcall(function()
+        tie:getModData()[D.key]=nextState
+        -- Both rise by the same amount: capacity-condition (spent wear) is unchanged.
+        tie:setConditionNoSound(condition+addition)
+    end)
+    if not changed then
+        rollback()
+        print('[B47ANCEDEyewear] Reinforcement failed: '..tostring(err))
+        return false
+    end
+    local paid,useError = pcall(M.consume,character,material)
+    local consumed = material:getContainer()~=container or not container:contains(material) or material:getCurrentUses()<uses
+    if not consumed then
+        rollback()
+        print('[B47ANCEDEyewear] Reinforcement material was not consumed: '..tostring(useError))
+        return false
+    end
+    if not paid then print('[B47ANCEDEyewear] Reinforcement paid; use notification failed: '..tostring(useError)) end
+    -- Paid state is never rolled back because a later notification fails.
+    syncChangedItem(character,tie)
+    return true
+end
+
+function S.untie(character, item, tool)
+    if isClient() or not S.valid(character, item, nil, true, tool) then return false end
+    S.migrateState(character,item)
     local data=S.state(item)
-    data.tied=false
-    S.restoreName(item,data)
-    S.applyChance(item, character)
+    local name,customName=S.captureName(item)
+    local previousChance=item:getChanceToFall()
+    local ok,err=pcall(function()
+        data.tied=false
+        S.restoreName(item,data)
+        S.applyChance(item,character)
+    end)
+    if not ok then
+        data.tied=true
+        if name then item:setName(name);item:setCustomName(customName) end
+        item:setChanceToFall(previousChance)
+        print('[B47ANCEDEyewear] Untie failed: '..tostring(err))
+        return false
+    end
+    D.discard(character, D.item(character, item, data))
     syncChangedItem(character,item)
     return true
 end
 
 -- Apply the retention-derived ChanceToFall to one worn item. `chance = nil`
 -- means "leave vanilla unchanged".
-function S.applyChance(item, character)
+function S.applyChance(item, character, retained)
     if not item or not instanceof(item, 'Clothing') then return end
     S.migrateState(character, item)
     clearLegacyMonocleState(character, item)
-    F.migrateLegacy(character,item)
     local data = S.state(item)
-    local tied = data ~= nil and data.tied or false
+    if data and data.tied and not isClient() then
+        if data.wearSchema == nil and ownsWornItem(character, item) then
+            -- Paid legacy ties migrate only once; missing newer links never grant a replacement.
+            local tie = D.install(character, item, data, S, true)
+            if tie then syncChangedItem(character, item) end
+        end
+        local tie = D.item(character, item, data)
+        if tie and tie:isBroken() then
+            data.tied = false
+            S.restoreName(item, data)
+            syncChangedItem(character, item)
+        end
+    end
+    local tied = data ~= nil and data.tied and D.active(character, item, data) or false
     local chance = R.chanceFor(item, tied, data and data.original)
+    if retained == nil then retained = T.target(character, S) == item end
+    if retained and not tied then chance = R.options().retainerChance end
     if chance ~= nil and item:getChanceToFall() ~= chance then
         item:setChanceToFall(chance)
+        if not isClient() and character then syncChangedItem(character,item) end
     end
-end
-
-local function craftTieable(data)
-    if not data or not data.getAllInputItems then return nil end
-    local ok,items=pcall(data.getAllInputItems,data)
-    if not ok or not items then return nil end
-    for i=0,items:size()-1 do
-        local item=items:get(i)
-        if S.isTieable(item) then return item end
-    end
-end
-
-local function craftMaterial(data)
-    if not data or not data.getAllConsumedItems then return nil end
-    local ok,items=pcall(data.getAllConsumedItems,data)
-    if not ok or not items then return nil end
-    for i=0,items:size()-1 do
-        local item=items:get(i)
-        if S.isMaterial(item) then return item end
-    end
-end
-
-function S.onCraftTest(data)
-    local character=data and data.getCharacter and data:getCharacter()
-    return S.valid(character,craftTieable(data),craftMaterial(data),false)
-end
-
-function S.onCraftCreate(data)
-    if isClient() then return end
-    local character=data and data.getCharacter and data:getCharacter()
-    local item,material=craftTieable(data),craftMaterial(data)
-    S.tie(character,item,material)
 end
 
 function S.refresh(character)
     if not character then return end
+    T.configure(character)
+    D.configure(character)
     local worn = character:getWornItems()
     if not worn then return end
-    for i = 0, worn:size() - 1 do
-        S.applyChance(worn:get(i):getItem(), character)
+    local retained = T.target(character, S)
+    -- A legacy migration can append a worn tie; iterate a stable snapshot.
+    local items = {}
+    for i = 0, worn:size() - 1 do items[#items + 1] = worn:get(i):getItem() end
+    for _, item in ipairs(items) do
+        S.applyChance(item, character, item == retained)
     end
 end
 
