@@ -1,6 +1,6 @@
 # Improvised materials and reinforcement
 
-Project Version: 0.15.0-dev.1
+Project Version: 0.15.1-dev.1
 
 Implemented 2026-10-16, Lua-only, targeting installed PZ 42.21 / Steam build
 25485521. This is a MINOR capability addition, not a tested stable release.

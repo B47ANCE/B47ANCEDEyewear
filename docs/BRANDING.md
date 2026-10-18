@@ -9,3 +9,11 @@ User-provided art on 2026-10-14. SHA-256 small: 60e2a193a6c1e1190941e6c342ec23c6
 This is asset-only work. Current version headers/mirrors identify this authoring iteration; all prior gameplay/API/runtime evidence remains historical at 0.7.0-dev.1 and its original source commits. No prior PASS is promoted to current evidence. No new game/dedicated tests, packages, deployment or publication. Projects without production mod.info retain these as authoring assets, not a fabricated runtime package.
 
 Workshop thumbnail correction: B47_THUMBNAIL.png is a direct 512x512 resize of the user-supplied B47.png. Its SHA-256 is f775bff1783d59af91f331652740d5279fd5603f66d431c6349f38cbd2d9915b. Preserve custom thumbnails; the mod icon remains 64x64 and poster remains 128x128.
+
+## Selected transparent mod icon - 2026-10-18
+
+0.15.1-dev.1 replaces only the runtime mod icon with the user-selected glasses/cord
+cutout, exported to the established 64x64 RGBA size. This custom choice takes
+precedence over the preserved fallback icon. The existing poster and thumbnail
+are unchanged. See MOD_ICON.md and assets/branding/mod-icon.json for provenance.
+Prior fallback statements above describe their original 0.7 milestone.

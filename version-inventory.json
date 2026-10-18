@@ -97,6 +97,18 @@
     {
       "path": "docs/CRAFTED_RETAINER_TAPE.md",
       "pattern": "^Project Version: (?P<version>\\S+)$"
+    },
+    {
+      "path": "assets/branding/mod-icon.json",
+      "pattern": "^  \"project_version\": \"(?P<version>[^\\\"]+)\""
+    },
+    {
+      "path": "docs/MOD_ICON.md",
+      "pattern": "^Project Version: (?P<version>\\S+)$"
+    },
+    {
+      "path": "docs/MOD_OVERVIEW.json",
+      "pattern": "^  \"version\": \"(?P<version>[^\\\"]+)\""
     }
   ],
   "changelog": {
@@ -228,6 +240,10 @@
     {
       "reference": "dist/historical/0.14.0-dev.1-published; dist/workshop-publish/publication-0.14.0-dev.1.json",
       "reason": "Published ZIP/checksum/provenance preserved unchanged with hashes, ledger and ZIP CRC before the 0.15 source-only iteration. Never relabel as crafted-retainer tape evidence."
+    },
+    {
+      "reference": "dist/historical/0.15.0-dev.1-published; original release/provenance; docs/VALIDATION.md: 0.15 tape audit",
+      "reason": "Preserved published package, SHA-256/CRC and original gameplay evidence; icon-only PATCH does not create current runtime proof."
     }
   ]
 }

@@ -1,12 +1,12 @@
 {
-  "project_version": "0.15.0-dev.1",
+  "project_version": "0.15.1-dev.1",
   "source": "OFFLINE CHECKS ONLY; see VALIDATION.md",
   "sp": "NOT TESTED",
   "g7": "BLOCKED / NOT TESTED",
   "g8": "BLOCKED",
   "validated_commit": null,
   "dedicated_evidence": null,
-  "publication": "AUTHORIZED WORKSHOP MP TEST DISTRIBUTION; actual result in generated publication-0.15.0-dev.1.json",
+  "publication": "AUTHORIZED WORKSHOP MP TEST DISTRIBUTION; actual result in generated publication-0.15.1-dev.1.json",
   "distribution": "Existing Workshop item3799754736; development build; preserve public visibility; G7/G8 remain blocked",
   "durability": "User-approved native head/clothing wear; exact hidden knock-off-roll counting is not the implemented rule",
   "blocked_features": [
@@ -19,5 +19,6 @@
   "thumbnail": "User-supplied original PNG copied exactly; source SHA-256 and dimensions verified offline",
   "reinforcement": "Fourteen materials; native condition budgets, same-material strands, one tape, revision-bound server payment and tagged zip cutting; dedicated runtime NOT TESTED",
   "legacy_ties": "Original ten-point item definitions preserved; retie to opt into new reinforcement",
-  "crafted_retainer_tape": "One paid adhesive/duct tape, native resistance bonus without condition repair or item replacement; current SP/dedicated NOT TESTED"
+  "crafted_retainer_tape": "One paid adhesive/duct tape, native resistance bonus without condition repair or item replacement; current SP/dedicated NOT TESTED",
+  "mod_icon": "Selected transparent glasses/cord master; 64px RGBA deterministic export and binding checked offline; native mod-list appearance NOT TESTED"
 }

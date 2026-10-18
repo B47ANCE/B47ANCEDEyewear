@@ -2,7 +2,7 @@ name=B47ANCE'd Eyewear
 id=B47ANCEDEyewear
 author=B47ANCE
 description=Lua-only development build. All improvised ties and crafted retainers wear through native head/clothing damage; inspect their live condition. The rare loot retainer remains unbreakable. SP/dedicated validation is pending.
-modversion=0.15.0-dev.1
+modversion=0.15.1-dev.1
 versionMin=42.21
 
 icon=media/ui/B47ANCEDEyewear_icon.png

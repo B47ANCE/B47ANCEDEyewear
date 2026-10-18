@@ -1,8 +1,17 @@
 # B47ANCE'd Eyewear
 
-Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.15.0-dev.1.
+Standalone Build 42 mod, ID `B47ANCEDEyewear`, version 0.15.1-dev.1.
 
-## Current crafted-retainer tape addition
+## Transparent mod icon (0.15.1)
+
+The user-selected glasses-and-cord cutout is the 64x64 transparent mod-list icon.
+The original thumbnail and poster remain byte-identical. Editable/master art,
+prompt, export hashes and validation are recorded in [mod icon](docs/MOD_ICON.md).
+This PATCH changes presentation only; the underlying 0.15 gameplay retains its
+NOT TESTED SP/dedicated status. Publication is authorized as a development MP
+testing build; generated publication provenance records the actual upload result.
+
+## Crafted-retainer tape (0.15 milestone)
 
 0.15.0-dev.1 adds one paid adhesive/duct-tape reinforcement to the actual crafted
 cloth/leather retainer, worn or unworn in the main inventory. Tape increases native

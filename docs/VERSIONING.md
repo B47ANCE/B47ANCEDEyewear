@@ -4,10 +4,10 @@ Root VERSION is the only canonical project version. docs/VERSION_POLICY.md is th
 authoritative inherited policy; version-inventory.json declares current mirrors,
 package selectors, schema/game distinctions and historical evidence.
 
-Current development iteration: 0.15.0-dev.1. Pre-1.0 MINOR adds paid tape
-reinforcement to existing cloth/leather retainers. Native condition maxima and
-actual item identity remain unchanged; additive schema 1 tape metadata owns the
-saved wear-resistance bonus. Runtime evidence is not relabeled.
+Current development iteration: 0.15.1-dev.1. Pre-1.0 PATCH replaces only the
+mod-list icon with selected transparent artwork. Thumbnail, poster, gameplay,
+configuration, APIs, item identity and saves are unchanged. Historical runtime
+evidence keeps its original version; current SP/dedicated NOT TESTED.
 
 Source mod.info, README, canonical Workshop texts, current validation/preparation/
 API records and RELEASE_STATUS.json are current mirrors. Build reads VERSION and

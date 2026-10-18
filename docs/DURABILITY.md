@@ -1,6 +1,6 @@
 # Lua-only native durability
 
-Project Version: 0.15.0-dev.1
+Project Version: 0.15.1-dev.1
 
 ## Crafted-retainer tape — 0.15
 

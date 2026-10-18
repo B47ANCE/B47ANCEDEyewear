@@ -1,6 +1,6 @@
 # Cleanup and Workshop preparation
 
-Project Version: 0.15.0-dev.1
+Project Version: 0.15.1-dev.1
 
 ## Crafted-retainer tape — 0.15
 
@@ -195,3 +195,13 @@ deletion. Generated publication-0.15.0-dev.1.json records exact commit/package/t
 hashes, offline checks, SteamCMD/API/public-page verification and Steam restart.
 Preparation is not proof of upload or gameplay. Current SP/dedicated NOT TESTED;
 G7 and stable G8 blocked. No game/server launch or live mod deployment.
+
+## Authorized 0.15.1 icon distribution
+
+The user requested the transparent mod icon, unchanged thumbnail, merge of all
+open project PRs and publication after checks on 2026-10-18. PR #1 was already
+merged before work; the icon branch starts at that current main. Preserve prior
+published package/provenance. Existing builder archives prior staging; uploader
+keeps item 3799754736, App 108600, public visibility and development title. Actual
+results are recorded in generated publication-0.15.1-dev.1.json. Current G7/stable
+G8 remain blocked; no automatic Steam desktop restart or game/server launch.

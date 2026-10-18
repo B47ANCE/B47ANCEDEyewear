@@ -1,6 +1,6 @@
 [h1]B47ANCE'd Eyewear — Development Build[/h1]
 
-[b]Version 0.15.0-dev.1[/b]
+[b]Version 0.15.1-dev.1[/b]
 [b]MP testing build - dedicated multiplayer NOT TESTED[/b]
 [b]Development build for Project Zomboid 42.21. In-game validation remains pending.[/b]
 
@@ -46,3 +46,6 @@ Current 0.15 gameplay: MP testing build - dedicated multiplayer NOT TESTED. SP, 
 
 [b]Crafted-retainer tape[/b]
 Right-click an owned cloth/leather retainer in your main inventory to apply one adhesive or duct tape, worn or unworn. Defaults add +1/+2 native wear resistance without repairing its ten-point condition or replacing the actual item. A server sandbox multiplier snapshots new tape bonuses; the unbreakable retainer is excluded. Development MP testing build; current SP and dedicated gameplay remain NOT TESTED.
+
+[b]Mod icon[/b]
+The mod-list icon shows the glasses and retainer cord with transparent background and no text. Workshop thumbnail artwork is unchanged.

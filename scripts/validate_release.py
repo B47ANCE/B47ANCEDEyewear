@@ -193,7 +193,36 @@ def inventory():
         files[name] = path.read_bytes()
     return files
 
+def validate_mod_icon(files):
+    from PIL import Image
+    manifest = json.loads((ROOT / 'assets/branding/mod-icon.json').read_text(encoding='utf-8'))
+    if manifest['project_version'] != (ROOT / 'VERSION').read_text().strip():
+        raise ValueError('Mod icon manifest version differs from canonical version')
+    runtime = 'media/ui/B47ANCEDEyewear_icon.png'
+    if manifest['runtime'] != 'src/B47ANCEDEyewear/42/' + runtime:
+        raise ValueError('Mod icon manifest points to an unexpected runtime file')
+    if digest(files[runtime]) != manifest['runtime_sha256']:
+        raise ValueError('Runtime mod icon differs from the selected export')
+    metadata = dict(line.split('=', 1) for line in files['mod.info'].decode('utf-8').splitlines() if '=' in line)
+    if metadata.get('icon') != runtime:
+        raise ValueError('Mod icon binding is missing or case incorrect')
+    master = ROOT / 'assets/branding/Eyewear_Icon_Transparent.png'
+    if digest(master.read_bytes()) != manifest['master_sha256']:
+        raise ValueError('Selected mod icon master changed')
+    with Image.open(master) as image, Image.open(SOURCE / runtime) as icon:
+        if icon.size != (64, 64) or icon.mode != 'RGBA' or icon.getchannel('A').getextrema() != (0, 255):
+            raise ValueError('Mod icon must be a transparent 64x64 RGBA PNG')
+        if image.resize((64, 64), Image.Resampling.LANCZOS).tobytes() != icon.tobytes():
+            raise ValueError('Mod icon pixels differ from the selected master export')
+        if any(icon.getpixel(p)[3] for p in ((0, 0), (63, 0), (0, 63), (63, 63))):
+            raise ValueError('Mod icon contains background fill at a canvas corner')
+    if digest((ROOT / 'thumbnail.png').read_bytes()) != manifest['thumbnail_sha256'] or digest(files['poster.png']) != manifest['poster_sha256']:
+        raise ValueError('Thumbnail or poster changed during the mod-icon-only iteration')
+    print('Selected 64px RGBA mod icon, master/export pixels, binding and preserved thumbnail/poster PASS')
+
+
 def validate_source(files):
+    validate_mod_icon(files)
     script = files['media/scripts/B47ANCEDEyewear_Items.txt'].decode('utf-8')
     definitions = dict(re.findall(r'\bitem\s+(\w+)\s*\{([^}]*)\}', script, re.S))
     for suffix in ('Eyes', 'Face', 'Hat'):

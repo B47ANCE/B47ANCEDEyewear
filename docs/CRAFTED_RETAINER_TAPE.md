@@ -1,6 +1,6 @@
 # Tape for crafted cloth and leather retainers
 
-Project Version: 0.15.0-dev.1
+Project Version: 0.15.1-dev.1
 
 MINOR capability addition, implemented 2026-10-16 against the existing installed
 PZ 42.21 / Steam build 25485521 evidence. Lua-only; no item definitions, recipes,

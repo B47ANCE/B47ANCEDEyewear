@@ -1,6 +1,6 @@
 # Roadmap
 
-Current development source is 0.15.0-dev.1: crafted-retainer tape and fourteen-material improvised ties,
+Current development source is 0.15.1-dev.1: crafted-retainer tape and fourteen-material improvised ties,
 strand/tape reinforcement and zip-tie cutting alongside Lua-only context-menu and crafting
 retention, two craftable wearable items, a rare loot-only unbreakable retainer,
 distinct inventory icons, native head/clothing durability for all improvised ties

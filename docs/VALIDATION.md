@@ -1,8 +1,35 @@
 # Validation and release gates
 
-Project Version: 0.15.0-dev.1
+Project Version: 0.15.1-dev.1
 
-## Current 0.15 crafted-retainer tape
+## Current 0.15.1 transparent mod icon
+
+[VERIFIED: source] Asset-only PATCH: runtime differences from merged main are
+modversion and media/ui/B47ANCEDEyewear_icon.png. All Lua, item/recipe data,
+translations, clothing/models, thumbnail and poster retain their original bytes.
+Server authority, configuration and save formats are unaffected; no new sandbox
+option or networking is appropriate for a fixed local mod-list image.
+
+[TESTED: offline Windows Python 3.12, 2026-10-18] Run from project root:
+`python -B scripts/build_mod_icon.py`, `python -B scripts/check_versions.py`,
+`python -B scripts/validate_release.py`. Icon preflight checks selected master
+SHA-256, deterministic 64px RGBA pixels/alpha, native mod.info binding and preserved
+thumbnail/poster hashes. Authorized packaging additionally runs
+`./Build-Workshop.ps1 -PythonExe <verified-python> -Visibility preserve`,
+`python -B scripts/check_versions.py --release`, and
+`./Publish-Workshop.ps1 -PrepareOnly -PythonExe <verified-python> -Visibility preserve`.
+These check ZIP CRC/inventory/path/case/source-staging parity and real VDF paragraphs.
+Actual commands/results/commit/package hashes are bound by generated publication
+provenance. No custom Java or test/debug harness is included in runtime payload.
+
+[RUNTIME GATE] Visual appearance in the native mod list is NOT TESTED. This local
+presentation change introduces no shared gameplay, but inherited 0.15 gameplay
+has no current SP/dedicated acceptance: G7 BLOCKED / NOT TESTED; stable G8 BLOCKED.
+An authorized labelled MP test upload is distribution evidence only. No PZ/server
+launch or local mod deployment. Steam desktop restart requires a separate reply.
+Prior 0.15 ZIP/checksum/provenance are retained unchanged with SHA-256 and CRC.
+
+## Historical 0.15 crafted-retainer tape audit
 
 [TESTED: offline Windows Python 3.12 / Lupa Lua 5.1, 2026-10-16] Commands from the
 project root: `python -B scripts/check_versions.py`,
