@@ -1,8 +1,6 @@
-[b]Version 0.15.0-dev.1[/b]
+[b]Version 0.15.1-dev.1[/b]
 MP testing build - dedicated multiplayer NOT TESTED
 
-Adds one tape reinforcement to crafted cloth/leather retainers through their inventory context menu. Adhesive tape adds +1 native wear resistance by default; duct tape adds +2. Current condition, its ten-point maximum, actual item identity and worn mapping are preserved. Existing retainers work without recrafting.
+Replaces the mod-list icon with the selected glasses and retainer cord on a transparent background, without text. The Workshop thumbnail and poster are unchanged. No gameplay, recipes, item icons, settings, networking or save format changes.
 
-The server validates target/tape ownership, state/revision, settings and one payment. Broken, already taped and unbreakable items cannot receive tape. New bonuses use a server sandbox multiplier. Improvised-tie reinforcement keeps its existing capacity rules.
-
-Development MP test distribution; no local mod deployment. Current SP/dedicated gameplay NOT TESTED; G7 and stable G8 BLOCKED. Native head/clothing wear applies; no hidden knock-off counter or custom Java.
+Development MP test distribution for existing item 3799754736. Offline source/version/asset/package checks pass before upload. Current SP/dedicated gameplay remains NOT TESTED; G7 and stable G8 BLOCKED. No local deployment or game/server launch.

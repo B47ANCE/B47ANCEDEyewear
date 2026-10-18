@@ -1,0 +1,42 @@
+{
+  "id": "eyewear",
+  "name": "Eyewear",
+  "version": "0.15.1-dev.1",
+  "features": [
+    {
+      "status": "Source",
+      "text": "Glasses/hat ties in fourteen materials; crafted cloth/leather retainers and durability."
+    },
+    {
+      "status": "Source",
+      "text": "Reinforcement, adhesive tape upgrades and server-validated zip-tie cutting."
+    },
+    {
+      "status": "Source",
+      "text": "Rare unbreakable retainers, item identity/provenance and worn/ground models."
+    },
+    {
+      "status": "Source",
+      "text": "Transparent 64px glasses/cord mod icon; original thumbnail and poster unchanged."
+    }
+  ],
+  "limits": "Source review and offline checks only for 0.15.1; native mod-list appearance and current SP/dedicated gameplay NOT TESTED; G7/stable G8 BLOCKED. Historical runtime records retain original versions.",
+  "evidence": [
+    "README.md",
+    "VERSION",
+    "src/B47ANCEDEyewear/42/mod.info",
+    "docs/MOD_ICON.md",
+    "docs/CRAFTED_RETAINER_TAPE.md",
+    "docs/TIE_REINFORCEMENT.md",
+    "docs/VALIDATION.md"
+  ],
+  "mod_ids": [
+    "B47ANCEDEyewear"
+  ],
+  "source_roots": [
+    "src"
+  ],
+  "source_digest": "3390aca18d75a6d01e2c0ff5f1dfd1903ef38d167b9c79402bfa67ab5700faaa",
+  "schema": 1,
+  "reviewed": true
+}

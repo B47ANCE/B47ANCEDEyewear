@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "version": "0.15.0-dev.1",
+  "version": "0.15.1-dev.1",
   "tool": "Blender 4.5.7 LTS",
   "format": "DirectX text xof 0303txt 0032; static, no skin/animation",
   "attachment": "Bip01_Head",

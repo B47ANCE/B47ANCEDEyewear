@@ -1,0 +1,21 @@
+{
+  "project_version": "0.15.1-dev.1",
+  "selection_date": "2026-10-18",
+  "master": "assets/branding/Eyewear_Icon_Transparent.png",
+  "master_sha256": "4734edc206992b892bd6d428eaeed2e8b880056e6ca83bf807d17d5aab3f65ea",
+  "master_dimensions": [
+    1254,
+    1254
+  ],
+  "runtime": "src/B47ANCEDEyewear/42/media/ui/B47ANCEDEyewear_icon.png",
+  "runtime_sha256": "7259e8187758e229b1a3b66d00fdde8a1d387fc59af531dc9295bd1f938119e4",
+  "runtime_dimensions": [
+    64,
+    64
+  ],
+  "mode": "RGBA",
+  "export": "Pillow LANCZOS resize; preserve alpha; no fill, crop or redraw",
+  "thumbnail_sha256": "10ac7ba24b2b0f784a3a0eb294b915088311d8a3924d7aad4af3de2cf9d86758",
+  "poster_sha256": "0e30a776c77dbf66eeb9acfa7596c7f850cb5b334e8873ef94acbb3b071582c3",
+  "provenance": "User selected a built-in image-generation cutout of the existing thumbnail; original prompt retained beside master."
+}

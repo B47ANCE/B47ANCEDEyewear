@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.15.1-dev.1] - 2026-10-18
+
+PATCH: install the user-selected glasses-and-cord cutout as the existing 64x64 RGBA mod icon. Preserve the full-resolution master, prompt and deterministic export provenance; validate true alpha and native metadata binding. Thumbnail and poster remain byte-identical. No Lua/gameplay, item icons, network, configuration or save changes. Offline presentation/package checks only; current SP/dedicated NOT TESTED, G7/stable G8 blocked. Authorized development Workshop distribution uses the existing public item.
+
 ## [0.15.0-dev.1] - 2026-10-16
 
 MINOR: allow one adhesive/duct-tape application to owned crafted cloth/leather retainers. Tape increases native wear resistance (defaults +1/+2), preserving the actual item and its existing ten-point condition. Server validates inventory ownership, setting, revision and one material payment. Adds context action, live tooltip and sandbox multiplier; rare unbreakable retainers are excluded. SP/current dedicated NOT TESTED, G7/G8 blocked. The user separately authorized Workshop MP test distribution; actual upload evidence is recorded in generated publication provenance.
